@@ -54,7 +54,6 @@ export const options = {
     },
     title: {
       display: true,
-      text: '부부리포트',
       font: {
         size: 15, // 제목 글자 크기 조정
       },
