@@ -1,3 +1,5 @@
+// 그래프 라이브러리 사용
+
 import styled from 'styled-components';
 import {
   Chart as ChartJS,
