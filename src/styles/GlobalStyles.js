@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 // TODO : 모바일 화면 크기 & 대표 색상 작성 예정
