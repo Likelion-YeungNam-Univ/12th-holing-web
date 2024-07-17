@@ -29,7 +29,6 @@ const MyFullCalendar = () => {
       setSelectedDate(info.dateStr);
     };
 
-    // on: 메서드, dateClick: 이벤트 이름
     calendar.on('dateClick', handleDateClick);
 
     return () => {
