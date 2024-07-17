@@ -8,3 +8,9 @@ export const CalendarWrapper = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
+
+export const CalendarToggleButton = styled.button`
+  width: 40%;
+  height: 40%;
+  margin: 0 auto;
+`;
