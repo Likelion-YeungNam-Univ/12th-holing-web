@@ -8,7 +8,7 @@ import DatePopUp from './DatePopUp';
 import {
   CalendarWrapper,
   CalendarToggleButton,
-} from '../style/Calendar-styled';
+} from '../../style/Calendar-styled';
 
 const MyFullCalendar = () => {
   const calendarRef = useRef(null);

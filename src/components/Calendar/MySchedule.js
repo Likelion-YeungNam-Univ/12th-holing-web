@@ -3,7 +3,7 @@ import {
   ScheduleBox,
   ScheduleList,
   ScheduleItem,
-} from '../style/Schedule-styled';
+} from '../../style/Schedule-styled';
 
 const MySchedule = ({ selectedDate }) => {
   const [schedules, setSchedules] = useState({});

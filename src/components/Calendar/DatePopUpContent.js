@@ -18,7 +18,7 @@ import {
   DateBox,
   PreviousDate,
   NextDate,
-} from '../style/DatePopUp-styled';
+} from '../../style/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   const [date, setDate] = useState(new Date());

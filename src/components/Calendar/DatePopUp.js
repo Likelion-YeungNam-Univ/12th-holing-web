@@ -11,10 +11,7 @@ const DatePopUp = ({ isOpen, onClose, getSelectedDate }) => {
       onRequestClose={onClose}
       getSelectedDate={getSelectedDate}
     >
-      <DatePopUpContent
-        onClose={onClose}
-        getSelectedDate={getSelectedDate}
-      />
+      <DatePopUpContent onClose={onClose} getSelectedDate={getSelectedDate} />
     </Modal>
   );
 };
