@@ -32,7 +32,7 @@ const MyFullCalendar = () => {
         headerToolbar={{
           start: 'prev,next today',
           center: 'title',
-          end: 'myCustomButton', // 버튼 추가
+          end: 'myCustomButton',
         }}
         customButtons={{
           myCustomButton: {
