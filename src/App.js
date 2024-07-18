@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Frame />}>
             {' '}
             {/* 기본 화면프레임 */}
-            <Route path="/home" element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="/report" element={<Report />} />
           </Route>
         </Routes>
