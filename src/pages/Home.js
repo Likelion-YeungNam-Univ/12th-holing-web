@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <MySummary />
-      {/* <PartnerSummary /> */}
+      {/* <PartnerSummary /> 슬라이드 미구현*/}
     </>
   );
 }
