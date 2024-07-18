@@ -1,33 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ScheduleBox,
   ScheduleList,
   ScheduleItem,
 } from '../../style/Schedule-styled';
+import MyScheduleHook from '../../hooks/MyScheduleHook';
 
 const MySchedule = ({ selectedDate }) => {
-  const [schedules, setSchedules] = useState({});
-
-  const [newSchedule, setNewSchedule] = useState('');
-
-  const handleInputChange = (e) => {
-    setNewSchedule(e.target.value);
-  };
-
-  const handleAddSchedule = () => {
-    if (newSchedule.trim() === '') return;
-
-    setSchedules((prevSchedules) => {
-      const updatedSchedules = { ...prevSchedules };
-      if (!updatedSchedules[selectedDate]) {
-        updatedSchedules[selectedDate] = [];
-      }
-      updatedSchedules[selectedDate].push(newSchedule);
-      return updatedSchedules;
-    });
-
-    setNewSchedule('');
-  };
+  const { schedules, newSchedule, handleInputChange, handleAddSchedule } =
+    MyScheduleHook(selectedDate);
 
   return (
     <ScheduleBox>
