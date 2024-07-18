@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import MySchedule from '../components/calendar/MySchedule';
-import DatePopUp from '../components/calendar/DatePopUp'
+import DatePopUp from '../components/calendar/DatePopUp';
 
 import {
   CalendarWrapper,
