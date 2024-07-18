@@ -30,7 +30,7 @@ const DatePopUpContentHook = () => {
 
   const handleComplete = (onClose, getSelectedDate) => {
     const year = getYear(date);
-    const month = getMonth(date) + 1; // getMonth는 0부터 시작하므로 +1 해줘야 함
+    const month = getMonth(date) + 1;
     const day = getDate(date);
     const formattedDate = `${year}-${month}-${day}`;
     onClose();
