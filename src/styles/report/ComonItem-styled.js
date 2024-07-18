@@ -12,6 +12,7 @@ export const FrameWrapper = styled.div`
   width: 600px;
   margin: auto;
   background-color: #F5F5F5;
+  padding-bottom: 80px;
 `
 
 // ----- MenuBar 스타일

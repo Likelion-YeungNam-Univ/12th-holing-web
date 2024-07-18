@@ -1,13 +1,13 @@
 import LineChart from '../components/report/LineChart';
-import Slides from '../components/report/Slides';
-import {ReportContainer, TopWrapper, GraphWrapper, Title, TapWrapper, TapBtnWrapper, TapBtn1, TapBtn2, SlideWrapper,} from '../styles/report/ReportPage-styled';
-  
+import {ReportContainer, TopWrapper, GraphWrapper, Title, TapWrapper, TapBtnWrapper, TapBtn1, TapBtn2,} from '../styles/report/ReportPage-styled';
+import SlideAnimation from '../components/report/SlideAnimation';
+
 function Report() {
   return (
     <ReportContainer>
       {/* 상단 리포트 컴포넌트 */}
       <TopWrapper>
-
+        {/* TODO : 데이터는 추후 props로 구현 예정 - 임시로 text입력 상태*/}
         <Title>
           홀링 리포트로 나의 증상을<br />한눈으로 확인하세요
         </Title>
@@ -25,18 +25,15 @@ function Report() {
           </GraphWrapper>
 
 
-          {/* 슬라이드 컴포넌트*/}
-          <SlideWrapper>
-            <Slides></Slides>
-            <Slides></Slides>
-          </SlideWrapper>
-
-        </TapWrapper>
-
+          {/* 슬라이드*/}
+          {/* <SlideWrapper></SlideWrapper> */}
+          <SlideAnimation></SlideAnimation>
+        </TapWrapper> 
       </TopWrapper>
 
 
       {/* TODO: 하단 테스트 컴포넌트 */}
+
     </ReportContainer>
   );
 }

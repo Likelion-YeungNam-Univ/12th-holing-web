@@ -15,7 +15,7 @@ export const ReportContainer = styled.div`
 export const TopWrapper = styled.div`
   color: black;
   width: inherit;
-  height: 740px;
+  height: fit-content;
   padding-top: 20px;
 `;
 
@@ -26,7 +26,7 @@ export const GraphWrapper = styled.div`
   background-color: white;
   margin: auto;
   border-radius: 13px;
-  border: 1px solid #DDDDDD
+  border: 1px solid #dddddd;
 `;
 
 export const Title = styled.h2`
@@ -40,7 +40,7 @@ export const TapWrapper = styled.div`
   ${flexCenter}
   flex-direction: column;
   width: 496px;
-  height: 80%;
+  height: fit-content;
   margin: auto;
 `;
 export const TapBtnWrapper = styled.ul`
@@ -49,15 +49,15 @@ export const TapBtnWrapper = styled.ul`
   height: 30px;
   margin: auto;
   margin-bottom: 40px;
-  margin-top: 80px;
+  margin-top: 40px;
 `;
 
 // 탭버튼 공통속성
-export const topBtn = css`  
+export const topBtn = css`
   ${flexCenter}
   width: 233px;
   font-size: 24px;
-  border-bottom: 3px solid #D9D9D9;
+  border-bottom: 3px solid #d9d9d9;
   padding-bottom: 8px;
   cursor: pointer;
 `;
@@ -65,19 +65,7 @@ export const topBtn = css`
 export const TapBtn1 = styled.li`
   ${topBtn}
   border-bottom: 3px solid #9180FF; // TODO: click이벤트 연결
-
 `;
 export const TapBtn2 = styled.li`
   ${topBtn}
-`;
-
-
-
-// ----- 슬라이딩 컴포넌트
-export const SlideWrapper = styled.div`  
-  display: flex;
-  height: 213px;
-  width: fit-content;
-  margin-top: 40px;
-  border: 1px solid #FFFFFF
 `;

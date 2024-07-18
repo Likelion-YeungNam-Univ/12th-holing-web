@@ -13,8 +13,11 @@ export const ContentWrapper = styled.div`
   width: 263px;
   height: 213px;
   background-color: #9180FF;
+  border: 1px solid #FFFFFF;
+
   border-radius: 13px;
-  margin-left: 20px;
+  margin-left: 56px;
+  margin-top: 40px;
 `;
 export const Content = styled.div`  
   width: 212px;
@@ -49,7 +52,6 @@ export const MoreBtn = styled.div`
   font-weight: 700;
 `;
 
-
 export const Rank = styled.div`  
   color: #ffffff;
   font-weight: 700;
@@ -61,5 +63,10 @@ export const OverView = styled.div`
   font-size: 22px;
 `;
 
+// Swiper.js 컴포넌트 스타일링
+export const SwiperWrapper = styled.div`
+  width: 600px;
+  left: 0;
+`;
 
 // ----- TODO: 이전 주차 리포트 컴포넌트

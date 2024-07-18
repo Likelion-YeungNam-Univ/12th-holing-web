@@ -16,9 +16,10 @@ function Slides() {
                 <OverView>지난주보다~~해요</OverView>
               </SlideBottom> 
           </Content>
-      </ContentWrapper>
 
      {/* TODO : 이전주차 컴포넌트 */}
+      </ContentWrapper>
+
     </>
   )
 }
