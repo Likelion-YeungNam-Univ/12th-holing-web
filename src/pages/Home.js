@@ -1,10 +1,10 @@
 import React from 'react';
-import Summary from '../components/home/summary/Summary';
+import MySummary from '../components/home/mySummary/MySummary';
 
 function Home() {
   return (
     <>
-      <Summary />
+      <MySummary />
     </>
   );
 }

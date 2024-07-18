@@ -11,7 +11,7 @@ import {
   //   ScoreGraph,
 } from '../../../styles/home/SummaryCont-styled';
 
-function SummaryCont() {
+function MySummaryCont() {
   return (
     <>
       <SummaryContainer>
@@ -32,4 +32,4 @@ function SummaryCont() {
   );
 }
 
-export default SummaryCont;
+export default MySummaryCont;
