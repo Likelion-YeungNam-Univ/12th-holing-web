@@ -17,12 +17,7 @@ export default function SlideAnimation() {
       <Swiper navigation={true} 
               modules={[Navigation]}
               slidesPerView= {2} // 화면에 보여질 slide 갯수
-
-              breakpoints={{ // 미디어쿼리와 같은 역할
-                600: {
-                },
-              }}>
-        
+      >
         {/* TODO : 추후 props로 Slides컴포넌트 연결 예정 */}
         <SwiperSlide><Slides></Slides></SwiperSlide>
         <SwiperSlide><Slides></Slides></SwiperSlide>

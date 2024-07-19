@@ -26,7 +26,6 @@ function Report() {
 
 
           {/* 슬라이드*/}
-          {/* <SlideWrapper></SlideWrapper> */}
           <SlideAnimation></SlideAnimation>
         </TapWrapper> 
       </TopWrapper>
