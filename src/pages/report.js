@@ -1,5 +1,6 @@
 import LineChart from '../components/report/LineChart';
-import {ReportContainer, TopWrapper, GraphWrapper, Title, TapWrapper, TapBtnWrapper, TapBtn1, TapBtn2,} from '../styles/report/ReportPage-styled';
+import { ReportContainer, TopWrapper, GraphWrapper, Title, TapWrapper, TapBtnWrapper, TapBtn1, TapBtn2, } from '../styles/report/ReportPage-styled';
+import { GotoTestWrapper, TopTitle, TestIcons, BottomBtn } from '../styles/report/GotoTestPage-styled';
 import SlideAnimation from '../components/report/SlideAnimation';
 
 function Report() {
@@ -26,13 +27,22 @@ function Report() {
 
 
           {/* 슬라이드*/}
-          {/* <SlideWrapper></SlideWrapper> */}
           <SlideAnimation></SlideAnimation>
         </TapWrapper> 
       </TopWrapper>
 
 
       {/* TODO: 하단 테스트 컴포넌트 */}
+      <GotoTestWrapper>
+        <TopTitle>
+          <h2>이번주 나의 증상을 <p>테스트</p>로 기록해보세요</h2>
+        </TopTitle>
+        <TestIcons>icons</TestIcons>
+        <BottomBtn>
+          <btn>나의 증상 테스트하기</btn>
+          <p>매주 테스트를 통해 리포트를 제공받아요</p>
+        </BottomBtn>
+      </GotoTestWrapper>
 
     </ReportContainer>
   );
