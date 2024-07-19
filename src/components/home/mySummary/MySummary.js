@@ -7,6 +7,7 @@ function MySummary() {
     <>
       <MySummaryCont />
       <MySummaryRepo />
+      <div>슬라이더</div>
     </>
   );
 }

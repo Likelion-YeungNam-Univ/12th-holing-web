@@ -12,6 +12,7 @@ export const FrameWrapper = styled.div`
   width: 600px;
   margin: auto;
   background-color: #F5F5F5;
+  padding-bottom: 80px;
 `
 
 // ----- MenuBar 스타일
@@ -25,6 +26,7 @@ export const MenuWrapper = styled.div`
   margin: auto;
   box-shadow: 0px 1px 6.8px 0px rgba(208, 208, 208, 1);
   border-radius: 13px 13px 0 0;
+  z-index: 2;
 
   /* 하단에 고정 */
   position: fixed;
