@@ -8,7 +8,7 @@ function Frame() {
     return (
       <FrameWrapper>
         <TopBar />  {/* 상단바 */}
-        <Outlet />  {/* 중첩라우팅 */}
+       < Outlet />  {/* 중첩라우팅 */}
         <MenuBar />  {/* 하단메뉴바 */}
       </FrameWrapper>
     );
