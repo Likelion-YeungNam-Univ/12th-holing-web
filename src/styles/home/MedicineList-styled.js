@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MediListContainer = styled.div`
   width: 496px;
-  min-height: 500px; /* 최소 높이 설정 */
+  min-height: 211px; /* 최소 높이 설정 */
   padding: 24px 20px;
   margin: auto;
   margin-top: 22px;

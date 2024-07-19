@@ -5,12 +5,11 @@ export const SumRepoContainer = styled.div`
   height: 396px;
   border-radius: 13px;
   border: 3px;
-  /* display: flex;
-  text-align: center; */
   background-color: #ffffff;
   border-color: #dddddd;
   margin: auto;
-  box-shadow: 0px 0px 5px 0px #0000001a;
+  border-width: 1px;
+  border-style: solid;
   padding-top: 44px;
   padding-left: 40px;
 `;
