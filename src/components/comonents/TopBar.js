@@ -1,4 +1,4 @@
-import {TopBarWrapper, LogoImg} from 'styles/report/ComonItem-styled';
+import {TopBarWrapper, LogoImg} from 'styles/ComonItem-styled';
 import img_logo from 'assets/images/logo_holing.png'
 
 function TopBar() {

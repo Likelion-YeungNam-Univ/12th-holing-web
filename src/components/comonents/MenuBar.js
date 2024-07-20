@@ -1,4 +1,4 @@
-import {MenuWrapper, MenuList, Menu} from 'styles/report/ComonItem-styled';
+import {MenuWrapper, MenuList, Menu} from 'styles/ComonItem-styled';
 
 function MenuBar() {
   return (
