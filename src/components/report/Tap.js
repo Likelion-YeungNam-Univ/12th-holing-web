@@ -11,6 +11,7 @@ import {
 
 function Tap({ leftTap, setLeftState, setRightState }) {
     
+  // 탭 토글 함수
   const toggleTap = () => {
     setLeftState(!leftTap);
     setRightState(!leftTap);
@@ -19,23 +20,20 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   return (
     <TapWrapper>
           {/* 탭버튼 */}
-          <TapBtnWrapper>
-            
             {leftTap ? (
-            // 내탭 클릭(초기상태)
-            <>
+              // 내탭 클릭(초기상태)
+            <TapBtnWrapper>
               <TapBtn1>나의 증상분석</TapBtn1>
               <TapBtn2 onClick={toggleTap}>짝꿍의 증상분석</TapBtn2>
-            </>
+            </TapBtnWrapper>
             )
             :(
-            // 짝꿍탭 클릭
-            <>
+              // 짝꿍탭 클릭
+            <TapBtnWrapper>
               <TapBtn2 onClick={toggleTap}>나의 증상분석</TapBtn2>
               <TapBtn1>짝꿍의 증상분석</TapBtn1>
-            </>
+            </TapBtnWrapper>
             )}
-          </TapBtnWrapper>
 
           {/* 그래프*/}
           <GraphWrapper>
