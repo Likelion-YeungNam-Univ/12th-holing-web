@@ -174,6 +174,7 @@ export const RightBottom = styled.p`
   color: #8A8A8A;
 `;
 
+
 // 버튼 스타일링
 export const BottomBtn = styled.div`
   display: flex;
@@ -192,6 +193,7 @@ export const Btn = styled.button`
   text-align: left;
   color: #ffffff;
   text-align: center;
+  cursor: pointer;
 `
 
 export const BottomText = styled.p`
@@ -199,4 +201,5 @@ export const BottomText = styled.p`
   font-weight: 600;
   line-height: 52px;
   text-align: center;
+
 `
