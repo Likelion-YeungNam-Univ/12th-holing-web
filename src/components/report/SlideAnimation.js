@@ -18,6 +18,7 @@ export default function SlideAnimation() {
       <Swiper navigation={true} 
               modules={[Navigation]}
               slidesPerView= {2} // 화면에 보여질 slide 갯수
+              slidesOffsetAfter={40} // 오른쪽 끝에 여백 추가
       >
         {/* TODO : 추후 props로 Slides컴포넌트 연결 예정 */}
         <SwiperSlide><CurrentSlide /></SwiperSlide>

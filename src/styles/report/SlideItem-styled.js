@@ -11,8 +11,8 @@ const wrapperStyle = css`
   width: 263px;
   height: 213px;
   border-radius: 13px;
-  margin-left: 56px;
-  margin-top: 40px;
+  margin: 40px 0 0 56px;
+  padding-right: 20px;
 `
 
 // 현재 주차 wrapper
@@ -35,11 +35,13 @@ export const PasttWrapper = styled.div`
 export const Current = styled.div`  
   width: 212px;
   height: 164px;
+
 `;
 // 지난 주차 리포트 컴포넌트
 export const Past = styled.div`  
   width: 212px;
   height: 164px;
+
 `;
 
 
