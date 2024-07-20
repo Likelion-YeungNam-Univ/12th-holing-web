@@ -33,9 +33,19 @@ import {
   TitleText,
   HigLight
 } from 'styles/report/GotoTestPage-styled';
+import { useState } from 'react';
 
 
 function Report() {
+
+  const [leftTap, setLeftState] = useState(true);
+  const [rightTap, setRightState] = useState(false);
+
+  const toggleTap = () => {
+    setLeftState(!leftTap);
+    setRightState(!rightTap);
+  }
+
   return (
     <ReportContainer>
       {/* 상단 리포트 컴포넌트 */}
@@ -50,8 +60,24 @@ function Report() {
         <TapWrapper>
           {/* 탭버튼 */}
           <TapBtnWrapper>
-            <TapBtn1>나의 증상분석</TapBtn1>
-            <TapBtn2>짝꿍의 증상분석</TapBtn2>
+            
+            {leftTap ? (
+            // 초기상태
+            <>
+              <TapBtn1>나의 증상분석</TapBtn1>
+              <TapBtn2 onClick={toggleTap}>짝꿍의 증상분석</TapBtn2>
+            </>
+            )
+            :(
+            // 토글상태
+            <>
+              <TapBtn2 onClick={toggleTap}>나의 증상분석</TapBtn2>
+              <TapBtn1>짝꿍의 증상분석</TapBtn1>
+            </>
+            )}
+
+
+
           </TapBtnWrapper>
           {/* 그래프*/}
           <GraphWrapper>

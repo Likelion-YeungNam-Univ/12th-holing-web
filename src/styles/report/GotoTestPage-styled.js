@@ -84,6 +84,7 @@ export const LeftIconImage = styled.div`
 
 
 // 중간아이콘
+// TODO : D-DAY일때 클릭가능 예정
 export const CenterIcon = styled.div`
   ${btnStyle}
   width: 155px;
