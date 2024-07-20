@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { FrameWrapper } from '../../styles/report/ComonItem-styled';
+import { FrameWrapper } from 'styles/report/ComonItem-styled';
 import MenuBar from './MenuBar';
 import TopBar from './TopBar';
 

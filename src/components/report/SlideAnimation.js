@@ -1,8 +1,8 @@
 // ----- Swiper.js 적용 컴포넌트
 
-import { SwiperWrapper } from '../../styles/report/SlideItem-styled';
+import { SwiperWrapper } from 'styles/report/SlideItem-styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Slides from '../../components/report/Slides';
+import Slides from 'components/report/Slides';
 
 // Swiper 스타일 Import
 import 'swiper/css';

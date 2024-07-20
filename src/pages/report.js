@@ -1,7 +1,7 @@
-import LineChart from '../components/report/LineChart';
+import LineChart from 'components/report/LineChart';
 import { ReportContainer, TopWrapper, GraphWrapper, Title, TapWrapper, TapBtnWrapper, TapBtn1, TapBtn2, } from '../styles/report/ReportPage-styled';
-import { GotoTestWrapper, TopTitle, TestIcons, BottomBtn } from '../styles/report/GotoTestPage-styled';
-import SlideAnimation from '../components/report/SlideAnimation';
+import { GotoTestWrapper, TopTitle, TestIcons, BottomBtn } from 'styles/report/GotoTestPage-styled';
+import SlideAnimation from 'components/report/SlideAnimation';
 
 function Report() {
   return (
