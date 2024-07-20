@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // ----- 공통속성 스타일링
-export const flexCenter = css`
+const flexCenter = css`
   display: flex;
   align-items: center;
   justify-content: center;

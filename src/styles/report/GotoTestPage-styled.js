@@ -5,7 +5,7 @@ import RightImg from 'assets/images/report_right.png';
 
 
 // 공통속성 스타일링
-export const flexCenter = css`
+const flexCenter = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,10 +15,27 @@ export const GotoTestWrapper = styled.div`
   width: 100%;
   background-color: #F5F5F5;
   padding: 28px;
+  margin-top: 20px;
 `
-export const TopTitle = styled.div`
+export const TopTitle = styled.p`
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: left;
+  padding-top: 20px;
+`
+export const TitleText = styled.div`
   width: 100%;
 `
+export const HigLight = styled.span`
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  color: #9180FF;  
+  text-decoration: underline;
+  text-underline-offset : 5px;
+`
+
 export const IconsWrapper = styled.div`
   ${flexCenter}
   width: 496px;
@@ -28,7 +45,7 @@ export const IconsWrapper = styled.div`
 `
 
 // 버튼 공통 스타일링
-export const btnStyle = css`
+const btnStyle = css`
   ${flexCenter};
   gap: 0px;
   border-radius: 13px;
@@ -161,4 +178,24 @@ export const BottomBtn = styled.div`
   display: flex;
   flex-direction: column;
 `
+export const Btn = styled.button`
+  background-color: #9180FF;
+  width: Fixed (496px);
+  height: 76px;
+  padding: 10px;
+  border-radius: 13px;
+  border: solid #9180FF;
 
+  font-size: 25px;
+  font-weight: 600;
+  text-align: left;
+  color: #ffffff;
+  text-align: center;
+`
+
+export const BottomText = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 52px;
+  text-align: center;
+`

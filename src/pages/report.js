@@ -27,7 +27,11 @@ import {
   BottomBtn,
   LeftIconImage,
   CenterIconImage,
-  RightIconImage
+  RightIconImage,
+  Btn,
+  BottomText,
+  TitleText,
+  HigLight
 } from 'styles/report/GotoTestPage-styled';
 
 
@@ -36,11 +40,10 @@ function Report() {
     <ReportContainer>
       {/* 상단 리포트 컴포넌트 */}
       <TopWrapper>
+
         {/* TODO : 데이터는 추후 props로 구현 예정 - 임시로 text입력 상태*/}
         <Title>
-          홀링 리포트로 나의 증상을
-          <br />
-          한눈으로 확인하세요
+          홀링 리포트로 나의 증상을<br /><HigLight>한눈으로</HigLight> 확인하세요
         </Title>
 
         {/* TODO : 탭 컴포넌트 분리 */}
@@ -63,9 +66,9 @@ function Report() {
       {/* TODO: 하단 테스트 컴포넌트 분리 */}
       <GotoTestWrapper>
         <TopTitle>
-          <h2>
-            이번주 나의 증상을<br />테스트로 기록해보세요
-          </h2>
+          <TitleText>
+            이번주 나의 증상을<br /><HigLight>테스트</HigLight>로 기록해보세요
+          </TitleText>
         </TopTitle>
 
         {/* TODO: props로 data 전달 예정 */}
@@ -89,9 +92,11 @@ function Report() {
           </RightIcon>
         </IconsWrapper>
 
+        {/* 증상테스트하기 버튼 */}
         <BottomBtn>
-          <button>나의 증상 테스트하기</button>
-          <p>매주 테스트를 통해 리포트를 제공받아요</p>
+          <Btn>나의 증상 테스트하기</Btn>
+          {/* TODO : 버튼 연결 예정 */}
+          <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>
         </BottomBtn>
       </GotoTestWrapper>
     </ReportContainer>

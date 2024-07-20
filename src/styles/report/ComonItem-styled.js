@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // ----- 공통속성 스타일링
-export const flexCenter = css`
+const flexCenter = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,8 +11,8 @@ export const flexCenter = css`
 export const FrameWrapper = styled.div`
   width: 600px;
   margin: auto;
-  background-color: #F5F5F5;
-  padding-bottom: 80px;
+  /* background-color: #F5F5F5; */
+  /* padding-bottom: 80px; */
 `
 
 // ----- MenuBar 스타일
