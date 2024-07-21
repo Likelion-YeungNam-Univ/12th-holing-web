@@ -78,3 +78,17 @@ export const Divider = styled.div`
   margin-bottom: 20px;
   padding: 0;
 `;
+
+export const Count = styled.div`
+  color: var(--Gray_4, #5b5b5b);
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

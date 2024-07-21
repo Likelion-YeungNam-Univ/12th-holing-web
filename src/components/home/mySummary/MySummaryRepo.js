@@ -9,7 +9,9 @@ import {
   RankWrapper,
   RankDesc,
   Divider,
+  TitleContainer,
 } from '../../../styles/home/SummaryRepo-styled';
+import DayCount from './DayCount';
 import { Link } from 'react-router-dom';
 
 function MySummaryRepo() {
@@ -18,9 +20,12 @@ function MySummaryRepo() {
       <SumRepoContainer>
         {/* 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
         <SumRepoHeader>
-          <SumRepoTitle>요약 리포트</SumRepoTitle>
+          <TitleContainer>
+            <SumRepoTitle>요약 리포트</SumRepoTitle>
+            <DayCount />
+          </TitleContainer>
+
           <SumRepoDisc>홍길동님의 리포트를 자세히 살펴보아요</SumRepoDisc>
-          {/* <DayCount /> */}
         </SumRepoHeader>
         <RankWrapper>
           <RankContainer>
