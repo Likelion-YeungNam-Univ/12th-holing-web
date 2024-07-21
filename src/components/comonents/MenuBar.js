@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuWrapper, MenuList, Menu, MenuIcon } from 'styles/ComonItem-styled';
 import img_actCalender from 'assets/images/calender_activate.png';
 import img_inactCalender from 'assets/images/calender_disabled.png';
-import img_actHome from 'assets/images/home_activate.png';
+import img_actHome from 'assets/images/home_activate2.png';
 import img_inactHome from 'assets/images/home_disabled.png';
 import img_actReport from 'assets/images/report_activate.png';
 import img_inactReport from 'assets/images/report_disabled.png';
