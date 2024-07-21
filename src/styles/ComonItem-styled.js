@@ -35,13 +35,14 @@ export const MenuWrapper = styled.div`
   right: 0;
 `;
 
-export const Menu = styled.ul`
+export const Menu = styled.li`
   ${flexCenter}
   width: 90px;
   height: 54px;
+  cursor: pointer;
 `;
 
-export const MenuList = styled.li`
+export const MenuList = styled.ul`
   ${flexCenter}
   width: 483px;
   height: 54px;

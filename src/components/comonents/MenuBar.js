@@ -1,14 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import {MenuWrapper, MenuList, Menu} from 'styles/ComonItem-styled';
 
 function MenuBar() {
+  const navigate = useNavigate();
+
   return (
+    // TODO: navigate 이동으로 수정
     <>
       <MenuWrapper>
         <MenuList>
-          <Menu><a href="/">홈</a></Menu>
-          <Menu><a href="/report">리포트</a></Menu>
-          <Menu><a href="/calendar">캘린더</a></Menu>
-          <Menu><a href="/my">MY</a></Menu>
+          <Menu onClick={() => navigate('/')}>홈</Menu>
+          <Menu onClick={() => navigate('/report')}>리포트</Menu>
+          <Menu onClick={() => navigate('/calendar')}>캘린더</Menu>
+          <Menu onClick={() => navigate('/my')}>MY</Menu>
         </MenuList>
       </MenuWrapper>
     </>
