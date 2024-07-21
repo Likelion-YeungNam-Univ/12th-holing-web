@@ -180,7 +180,7 @@ export const BottomBtn = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const Btn = styled.button`
+export const GotoBtn = styled.button`
   background-color: #9180FF;
   width: Fixed (496px);
   height: 76px;

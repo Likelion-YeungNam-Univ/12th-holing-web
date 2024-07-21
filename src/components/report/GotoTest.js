@@ -16,7 +16,7 @@ import {
     LeftIconImage,
     CenterIconImage,
     RightIconImage,
-    Btn,
+    GotoBtn,
     BottomText,
     TitleText,
     HigLight
@@ -55,7 +55,7 @@ function GotoTest() {
 
         {/* 증상테스트하기 버튼 */}
         <BottomBtn>
-          <Btn>나의 증상 테스트하기</Btn>
+          <GotoBtn>나의 증상 테스트하기</GotoBtn>
           {/* TODO : 버튼 연결 예정 */}
           <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>
         </BottomBtn>
