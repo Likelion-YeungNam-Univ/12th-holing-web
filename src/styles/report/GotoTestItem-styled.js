@@ -17,7 +17,7 @@ export const GotoTestWrapper = styled.div`
   padding: 28px;
   margin-top: 20px;
 `
-export const TopTitle = styled.p`
+export const TopTitle = styled.span`
   font-size: 32px;
   font-weight: 700;
   line-height: 44px;
