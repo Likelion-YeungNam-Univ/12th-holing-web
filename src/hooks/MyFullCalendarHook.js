@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import moment from 'moment';
 
 export const MyFullCalendarHook = () => {
   const calendarRef = useRef(null);
@@ -6,17 +7,20 @@ export const MyFullCalendarHook = () => {
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
     today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
-    return today.toISOString().split('T')[0];
+    today.toISOString().split('T')[0];
+    const formattedDate = moment(today).format('YYYY년 M월 D일');
+    return formattedDate;
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('dayGridMonth');
+  const [currentView, setCurrentView] = useState('dayGridWeek');
 
   useEffect(() => {
     const calendar = calendarRef.current.getApi();
 
     const handleDateClick = (info) => {
-      setSelectedDate(info.dateStr);
+      const clickedDate = moment(info.dateStr).format('YYYY년 M월 D일');
+      setSelectedDate(clickedDate);
     };
 
     calendar.on('dateClick', handleDateClick);

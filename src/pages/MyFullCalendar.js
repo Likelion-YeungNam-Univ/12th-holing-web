@@ -5,6 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import MySchedule from '../components/calendar/MySchedule';
 import DatePopUp from '../components/calendar/DatePopUp';
+import Mission from '../components/calendar/Mission';
 
 import {
   CalendarWrapper,
@@ -24,34 +25,52 @@ const MyFullCalendar = () => {
     toggleView,
   } = MyFullCalendarHook();
 
+  // Calendar의 date에서 일 제거
+  const dayCellContent = (arg) => {
+    return arg.date.getDate().toString();
+  };
+
   return (
-    <CalendarWrapper>
-      <FullCalendar
-        ref={calendarRef}
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView={currentView}
-        headerToolbar={{
-          start: 'prev,next today',
-          center: 'title',
-          end: 'myCustomButton',
-        }}
-        customButtons={{
-          myCustomButton: {
-            text: 'Button',
-            click: openModal,
-          },
-        }}
-      />
+    <>
+      <CalendarWrapper view={currentView}>
+        <FullCalendar
+          ref={calendarRef}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          initialView={currentView}
+          headerToolbar={{
+            left: 'prev title next',
+            center: '',
+            right: 'myCustomButton',
+          }}
+          customButtons={{
+            myCustomButton: {
+              click: openModal,
+            },
+          }}
+          locale="ko"
+          dayCellContent={dayCellContent}
+          dayHeaderFormat={{ weekday: 'short' }}
+          titleFormat={{ year: 'numeric', month: 'short' }}
+          height={
+            currentView === 'dayGridWeek'
+              ? 263
+              : currentView === 'dayGridMonth'
+                ? 600
+                : 'auto'
+          }
+        />
+      </CalendarWrapper>
       <CalendarToggleButton onClick={toggleView}>
         Calendar Toggle Button
       </CalendarToggleButton>
       <MySchedule selectedDate={selectedDate} />
+      <Mission />
       <DatePopUp
         isOpen={isModalOpen}
         onClose={closeModal}
         getSelectedDate={getSelectedDate}
       ></DatePopUp>
-    </CalendarWrapper>
+    </>
   );
 };
 

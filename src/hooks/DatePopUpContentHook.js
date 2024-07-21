@@ -11,6 +11,7 @@ import {
   subDays,
   format,
 } from 'date-fns';
+import moment from 'moment';
 
 const DatePopUpContentHook = () => {
   const [date, setDate] = useState(new Date());
@@ -32,7 +33,8 @@ const DatePopUpContentHook = () => {
     const year = getYear(date);
     const month = getMonth(date) + 1;
     const day = getDate(date);
-    const formattedDate = `${year}-${month}-${day}`;
+    const formattedDate = `${year}년 ${month}월 ${day}일`;
+
     onClose();
     getSelectedDate(formattedDate);
   };

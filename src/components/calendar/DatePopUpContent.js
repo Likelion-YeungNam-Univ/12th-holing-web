@@ -6,6 +6,9 @@ import {
   DateBox,
   PreviousDate,
   NextDate,
+  DatePopUpWrapper,
+  DatePopUpSaveBtn,
+  DatePopUpCancelBtn,
 } from '../../style/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
@@ -24,7 +27,7 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   } = DatePopUpContentHook();
 
   return (
-    <>
+    <DatePopUpWrapper>
       <DateWrapper>
         <DateColumn>
           <PreviousDate>{previousYear}</PreviousDate>
@@ -48,9 +51,14 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
           <NextDate>{nextDay}일</NextDate>
         </DateColumn>
       </DateWrapper>
-      <button onClick={onClose}>취소</button>
-      <button onClick={() => handleComplete(onClose, getSelectedDate)}>완료</button>
-    </>
+
+      <DatePopUpSaveBtn
+        onClick={() => handleComplete(onClose, getSelectedDate)}
+      >
+        완료
+      </DatePopUpSaveBtn>
+      <DatePopUpCancelBtn onClick={onClose}>취소</DatePopUpCancelBtn>
+    </DatePopUpWrapper>
   );
 };
 
