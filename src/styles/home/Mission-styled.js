@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import img from '../../assets/images/img_coin.png';
 
 export const Title = styled.div`
   font-family: Pretendard;
   font-size: 32px;
   font-weight: 700;
-  /* display: flex;
-  text-align: left; */
+  line-height: 150%;
 
   span {
     text-decoration: underline;
@@ -34,7 +34,9 @@ export const MissionContainer = styled.div`
   height: 188px;
   border-radius: 13px;
   background: var(--White-01, #fff);
-
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-position: right;
   align-self: stretch;
 `;
 
