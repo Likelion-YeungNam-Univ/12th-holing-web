@@ -90,6 +90,9 @@ export const CalendarWrapper = styled.div`
     font-weight: 700;
   }
   .fc-myCustomButton-button {
+    background-color: white;
+    border: none;
+    margin-right: 5px;
   }
   .fc-button-primary span {
     color: #8a8a8a;
@@ -169,8 +172,6 @@ export const CalendarWrapper = styled.div`
   //Calendar Date Unit
 `;
 
-export const CalendarToggleButton = styled.button`
-  width: 100%;
-  height: 40%;
-  margin: 0 auto;
+export const CalendarToggleButton = styled.img`
+  margin-left: 281px;
 `;

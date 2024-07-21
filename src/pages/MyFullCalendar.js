@@ -6,6 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import MySchedule from '../components/calendar/MySchedule';
 import DatePopUp from '../components/calendar/DatePopUp';
 import Mission from '../components/calendar/Mission';
+import img_calendarToggleDownBtn from '../assets/images/calendar_toggle_down_btn.png';
+import img_calendarToggleUpBtn from '../assets/images/calendar_toggle_up_btn.png';
+import img_calendarPopUpBtn from '../assets/images/calendar_popup_btn.png';
 
 import {
   CalendarWrapper,
@@ -59,10 +62,27 @@ const MyFullCalendar = () => {
                 : 'auto'
           }
         />
+        <style>
+          {`
+            .fc-myCustomButton-button {
+              background: url(${img_calendarPopUpBtn}) no-repeat center center;
+              background-size: contain;
+              border: none;
+              width: 33px; /* 적절한 너비로 설정 */
+              height: 33px; /* 적절한 높이로 설정 */
+            }
+          `}
+        </style>
       </CalendarWrapper>
-      <CalendarToggleButton onClick={toggleView}>
-        Calendar Toggle Button
-      </CalendarToggleButton>
+      <CalendarToggleButton
+        src={
+          currentView === 'dayGridWeek'
+            ? img_calendarToggleDownBtn
+            : img_calendarToggleUpBtn
+        }
+        alt="Calendar Toggle Button"
+        onClick={toggleView}
+      />
       <MySchedule selectedDate={selectedDate} />
       <Mission />
       <DatePopUp
