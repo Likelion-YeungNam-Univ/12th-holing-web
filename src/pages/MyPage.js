@@ -16,6 +16,8 @@ import {
   CreditItem,
   CreditItemBoxRow,
 } from '../style/MyPage-styled';
+import img_creditItem1 from '../assets/images/credit_item1.png';
+import img_creditItem2 from '../assets/images/credit_item2.png';
 
 function MyPage() {
   return (
@@ -33,7 +35,9 @@ function MyPage() {
       </CreditWrapper>
       <CreditItemBoxRow>
         <CreditItemBox>
-          <CreditItem></CreditItem>
+          <CreditItem>
+            <img src={img_creditItem1}></img>
+          </CreditItem>
           <CreditItemTitle>괄사&마사지오일</CreditItemTitle>
           <CreditItemDescription>
             [랠리] 콤부차(10p) 4종 택 1
@@ -42,7 +46,33 @@ function MyPage() {
           <CreditItemExchangeBtn>교환하기</CreditItemExchangeBtn>
         </CreditItemBox>
         <CreditItemBox>
-          <CreditItem></CreditItem>
+          <CreditItem>
+            <img src={img_creditItem2}></img>
+          </CreditItem>
+          <CreditItemTitle>콤부차</CreditItemTitle>
+          <CreditItemDescription>
+            [메디테라피,벨레다] 속살 괄사&아니카 마사지
+          </CreditItemDescription>
+          <CreditItemPrice>3500 크레딧</CreditItemPrice>
+          <CreditItemExchangeBtn>교환하기</CreditItemExchangeBtn>
+        </CreditItemBox>
+      </CreditItemBoxRow>
+      <CreditItemBoxRow>
+        <CreditItemBox>
+          <CreditItem>
+            <img src={img_creditItem1}></img>
+          </CreditItem>
+          <CreditItemTitle>괄사&마사지오일</CreditItemTitle>
+          <CreditItemDescription>
+            [랠리] 콤부차(10p) 4종 택 1
+          </CreditItemDescription>
+          <CreditItemPrice>5500 크레딧</CreditItemPrice>
+          <CreditItemExchangeBtn>교환하기</CreditItemExchangeBtn>
+        </CreditItemBox>
+        <CreditItemBox>
+          <CreditItem>
+            <img src={img_creditItem2}></img>
+          </CreditItem>
           <CreditItemTitle>콤부차</CreditItemTitle>
           <CreditItemDescription>
             [메디테라피,벨레다] 속살 괄사&아니카 마사지

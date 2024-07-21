@@ -66,6 +66,7 @@ export const CreditItemBox = styled.div`
   height: 380px;
   border-radius: 13px;
   border-color: black;
+  
 `;
 
 export const CreditItem = styled.div`
