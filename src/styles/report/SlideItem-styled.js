@@ -12,7 +12,6 @@ const wrapperStyle = css`
   height: 213px;
   border-radius: 13px;
   margin: 40px 0 0 56px;
-  padding-right: 20px;
 `
 
 // 현재 주차 wrapper
@@ -21,6 +20,7 @@ export const CurrenttWrapper = styled.div`
   ${wrapperStyle}
   background-color: #9180FF;
   border: 1px solid #FFFFFF;
+
 `;
 // 지난 주차 wrapper
 export const PasttWrapper = styled.div`  
@@ -35,7 +35,6 @@ export const PasttWrapper = styled.div`
 export const Current = styled.div`  
   width: 212px;
   height: 164px;
-
 `;
 // 지난 주차 리포트 컴포넌트
 export const Past = styled.div`  
@@ -45,16 +44,18 @@ export const Past = styled.div`
 `;
 
 
-
 export const SlideTop = styled.div`  
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 212px;
-  height: 87px;
+  height: 30%;
+
 `;
 export const SlideBottom = styled.div`  
   width: 212px;
-  height: 87px;
+  height: 60%;
+  margin-top: 20px;
 `;
 
 // n주차 text 공통 스타일링
@@ -80,18 +81,21 @@ export const PastWeek = styled.div`
   color: #ffffff;
 `;
 
+// 더보기버튼 공통 스타일링
+const moreBtn = css`
+  ${flexCenter}
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+`
 // 더보기버튼
 export const CurrentBtn = styled.div`  
+  ${moreBtn}
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
 `;
-export const PastBtn = styled.div`  
+export const PastBtn = styled.div` 
+  ${moreBtn}
   color: #5B5B5B;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
 `;
 
 // 랭킹 text
@@ -122,5 +126,4 @@ export const PastOverView = styled.div`
 // Swiper.js 컴포넌트 스타일링
 export const SwiperWrapper = styled.div`
   width: 600px;
-  left: 0;
 `;
