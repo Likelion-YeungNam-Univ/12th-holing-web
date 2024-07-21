@@ -34,20 +34,30 @@ export const MenuWrapper = styled.div`
   left: 0;
   right: 0;
 `;
-
-export const Menu = styled.li`
-  ${flexCenter}
-  width: 90px;
-  height: 54px;
-  cursor: pointer;
-`;
-
 export const MenuList = styled.ul`
   ${flexCenter}
   width: 483px;
   height: 54px;
   margin: auto;
+  padding: 0px;
+
+  gap: 41px;
+  left: calc(50% - 483px/2 + 0.5px);
+  top: calc(50% - 54px/2);
 `;
+
+export const Menu = styled.li`
+  ${flexCenter}
+  flex-direction: column;
+  width: 90px;
+  height: 54px;
+  cursor: pointer;
+`;
+export const MenuIcon = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 
 // ----- TopBar 스타일
 export const TopBarWrapper = styled.h2`
