@@ -4,6 +4,7 @@ import SymptomTest from '../components/home/symptomTest/SymptomTest';
 import MedicineNote from '../components/home/medicineNote/MedicineNote';
 // import PartnerSummary from '../components/home/partnerSummary/PartnerSummary';
 import { Wrapper } from '../styles/home/Home-styled';
+import Mission from '../components/home/mission/Mission';
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       {/* <PartnerSummary /> */}
       <SymptomTest />
       <MedicineNote />
+      <Mission />
     </Wrapper>
   );
 }
