@@ -13,7 +13,7 @@ import img_calendarPopUpBtn from '../assets/images/calendar_popup_btn.png';
 import {
   CalendarWrapper,
   CalendarToggleButton,
-} from '../style/Calendar-styled';
+} from '../styles/calendar/Calendar-styled';
 import { MyFullCalendarHook } from '../hooks/MyFullCalendarHook';
 
 const MyFullCalendar = () => {

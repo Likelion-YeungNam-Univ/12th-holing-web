@@ -11,7 +11,7 @@ import {
   MissionRefresh,
   MissionItemWrapper,
   CreditBox,
-} from '../../style/Mission-styled';
+} from '../../styles/calendar/Mission-styled';
 
 const Mission = () => {
   return (
@@ -39,7 +39,7 @@ const Mission = () => {
               fill="#ADA1FF"
             />
           </svg>
-           1
+          1
         </CreditBox>
         <MissionItemWrapper>
           <MissionItem>짝꿍에게 해주기</MissionItem>

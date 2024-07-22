@@ -5,7 +5,7 @@ import {
   ScheduleBody,
   SchedulePopUpSaveBtn,
   SchedulePopUpCancelBtn,
-} from '../../style/SchedulePopUp-styled';
+} from '../../styles/calendar/SchedulePopUp-styled';
 import { useState } from 'react';
 import SchedulePopUpContentHook from '../../hooks/SchedulePopUpContentHook';
 

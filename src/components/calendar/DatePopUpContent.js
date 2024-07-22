@@ -9,7 +9,7 @@ import {
   DatePopUpWrapper,
   DatePopUpSaveBtn,
   DatePopUpCancelBtn,
-} from '../../style/DatePopUp-styled';
+} from '../../styles/calendar/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   const {

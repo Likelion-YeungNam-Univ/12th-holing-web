@@ -52,6 +52,12 @@ export const Credit = styled.div`
   margin-left: 9px;
 `;
 
+export const AdImg = styled.img`
+  width: 600px;
+  height: 373px;
+  margin-top: 48px;
+`;
+
 export const CreditItemBoxRow = styled.div`
   margin: 0 auto;
   width: 498px;
@@ -66,7 +72,6 @@ export const CreditItemBox = styled.div`
   height: 380px;
   border-radius: 13px;
   border-color: black;
-  
 `;
 
 export const CreditItem = styled.div`

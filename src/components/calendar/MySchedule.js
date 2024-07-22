@@ -9,7 +9,7 @@ import {
   CheckComment,
   ScheduleTitle,
   ScheduleContent,
-} from '../../style/Schedule-styled';
+} from '../../styles/calendar/Schedule-styled';
 import MyScheduleHook from '../../hooks/MyScheduleHook';
 import SchedulePopUp from './SchedulePopUp';
 

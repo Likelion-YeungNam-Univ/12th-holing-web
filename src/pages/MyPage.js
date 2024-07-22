@@ -15,7 +15,8 @@ import {
   CreditItemExchangeBtn,
   CreditItemPrice,
   CreditItem,
-} from '../style/MyPage-styled';
+  AdImg,
+} from '../styles/my/MyPage-styled';
 import img_creditItem1 from '../assets/images/credit_item1.png';
 import img_creditItem2 from '../assets/images/credit_item2.png';
 import img_creditItem3 from '../assets/images/credit_item3.png';
@@ -24,6 +25,10 @@ import img_creditItem5 from '../assets/images/credit_item5.png';
 import img_creditItem6 from '../assets/images/credit_item6.png';
 import img_creditItem7 from '../assets/images/credit_item7.png';
 import img_creditItem8 from '../assets/images/credit_item8.png';
+import img_ad1 from '../assets/images/advertise_img1.jpg';
+import img_ad2 from '../assets/images/advertise_img2.jpg';
+import img_ad3 from '../assets/images/advertise_img3.jpg';
+import img_ad4 from '../assets/images/advertise_img4.jpg';
 
 // 아이템 데이터 배열
 const creditItems = [
@@ -85,6 +90,15 @@ const creditItems = [
   ],
 ];
 
+// 광고 이미지 배열
+const adImages = [img_ad1, img_ad2, img_ad3, img_ad4];
+
+// 랜덤 광고 이미지 선택 함수
+const getRandomAdImage = () => {
+  const randomIndex = Math.floor(Math.random() * adImages.length);
+  return adImages[randomIndex];
+};
+
 function MyPage() {
   return (
     <>
@@ -99,6 +113,7 @@ function MyPage() {
           <Credit>크레딧</Credit>
         </CreditBox>
       </CreditWrapper>
+      <AdImg src={getRandomAdImage()} alt="Advertisement"></AdImg>
       {creditItems.map((row, rowIndex) => (
         <CreditItemBoxRow key={rowIndex}>
           {row.map((item, itemIndex) => (
