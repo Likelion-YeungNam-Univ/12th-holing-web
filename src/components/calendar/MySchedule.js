@@ -3,8 +3,8 @@ import {
   ScheduleBox,
   ScheduleList,
   ScheduleItem,
-} from '../../style/Schedule-styled';
-import MyScheduleHook from '../../hooks/MyScheduleHook';
+} from 'style/Schedule-styled';
+import MyScheduleHook from 'hooks/MyScheduleHook';
 
 const MySchedule = ({ selectedDate }) => {
   const { schedules, newSchedule, handleInputChange, handleAddSchedule } =
