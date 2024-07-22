@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../assets/images/img_coin.png';
+import img from 'assets/images/img_coin.png';
 
 export const Title = styled.div`
   font-family: Pretendard;

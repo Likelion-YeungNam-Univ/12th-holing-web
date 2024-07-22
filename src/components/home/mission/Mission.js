@@ -6,8 +6,8 @@ import {
   MissionContainer,
   Desc,
   Button,
-} from '../../../styles/home/Mission-styled';
-import icon_mission from '../../../assets/images/icon_mission.png';
+} from 'styles/home/Mission-styled';
+import icon_mission from 'assets/images/icon_mission.png';
 
 function Mission() {
   const handleClick = () => {};
