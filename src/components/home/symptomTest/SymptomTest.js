@@ -1,5 +1,5 @@
 import React from 'react';
-import { SymptomTestBtn } from '../../../styles/home/SympomTest-styled';
+import { SymptomTestBtn } from 'styles/home/SympomTest-styled';
 import { Link } from 'react-router-dom';
 
 function SymptomTest() {
