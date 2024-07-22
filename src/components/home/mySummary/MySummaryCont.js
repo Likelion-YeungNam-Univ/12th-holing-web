@@ -9,7 +9,7 @@ import {
   UserName,
   PartnerInfo,
   Graph,
-} from '../../../styles/home/SummaryCont-styled';
+} from 'styles/home/SummaryCont-styled';
 import MyScoreGraph from './MyScoreGraph';
 
 function MySummaryCont() {

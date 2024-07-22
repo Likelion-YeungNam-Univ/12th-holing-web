@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Count } from '../../../styles/home/Count-styled';
+import { Count } from 'styles/home/Count-styled';
 
 function DayCount() {
   const initialDate = new Date();

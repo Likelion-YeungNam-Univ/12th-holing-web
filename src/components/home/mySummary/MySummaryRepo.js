@@ -10,7 +10,7 @@ import {
   RankDesc,
   Divider,
   TitleContainer,
-} from '../../../styles/home/SummaryRepo-styled';
+} from 'styles/home/SummaryRepo-styled';
 import DayCount from './DayCount';
 import { Link } from 'react-router-dom';
 

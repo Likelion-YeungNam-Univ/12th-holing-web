@@ -9,7 +9,7 @@ import {
   RankWrapper,
   RankDesc,
   Divider,
-} from '../../../styles/home/SummaryRepo-styled';
+} from 'styles/home/SummaryRepo-styled';
 
 function PartnerSummaryRepo() {
   return (
