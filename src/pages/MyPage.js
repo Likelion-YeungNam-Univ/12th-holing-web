@@ -16,19 +16,19 @@ import {
   CreditItemPrice,
   CreditItem,
   AdImg,
-} from '../styles/my/MyPage-styled';
-import img_creditItem1 from '../assets/images/credit_item1.png';
-import img_creditItem2 from '../assets/images/credit_item2.png';
-import img_creditItem3 from '../assets/images/credit_item3.png';
-import img_creditItem4 from '../assets/images/credit_item4.png';
-import img_creditItem5 from '../assets/images/credit_item5.png';
-import img_creditItem6 from '../assets/images/credit_item6.png';
-import img_creditItem7 from '../assets/images/credit_item7.png';
-import img_creditItem8 from '../assets/images/credit_item8.png';
-import img_ad1 from '../assets/images/advertise_img1.jpg';
-import img_ad2 from '../assets/images/advertise_img2.jpg';
-import img_ad3 from '../assets/images/advertise_img3.jpg';
-import img_ad4 from '../assets/images/advertise_img4.jpg';
+} from 'styles/my/MyPage-styled';
+import img_creditItem1 from 'assets/images/credit_item1.png';
+import img_creditItem2 from 'assets/images/credit_item2.png';
+import img_creditItem3 from 'assets/images/credit_item3.png';
+import img_creditItem4 from 'assets/images/credit_item4.png';
+import img_creditItem5 from 'assets/images/credit_item5.png';
+import img_creditItem6 from 'assets/images/credit_item6.png';
+import img_creditItem7 from 'assets/images/credit_item7.png';
+import img_creditItem8 from 'assets/images/credit_item8.png';
+import img_ad1 from 'assets/images/advertise_img1.jpg';
+import img_ad2 from 'assets/images/advertise_img2.jpg';
+import img_ad3 from 'assets/images/advertise_img3.jpg';
+import img_ad4 from 'assets/images/advertise_img4.jpg';
 
 // 아이템 데이터 배열
 const creditItems = [

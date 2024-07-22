@@ -11,7 +11,7 @@ import {
   MissionRefresh,
   MissionItemWrapper,
   CreditBox,
-} from '../../styles/calendar/Mission-styled';
+} from 'styles/calendar/Mission-styled';
 
 const Mission = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import DatePopUpContentHook from '../../hooks/DatePopUpContentHook';
+import DatePopUpContentHook from 'hooks/DatePopUpContentHook';
 import {
   DateWrapper,
   DateColumn,
@@ -9,7 +9,7 @@ import {
   DatePopUpWrapper,
   DatePopUpSaveBtn,
   DatePopUpCancelBtn,
-} from '../../styles/calendar/DatePopUp-styled';
+} from 'styles/calendar/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   const {

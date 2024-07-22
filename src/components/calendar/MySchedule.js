@@ -9,8 +9,8 @@ import {
   CheckComment,
   ScheduleTitle,
   ScheduleContent,
-} from '../../styles/calendar/Schedule-styled';
-import MyScheduleHook from '../../hooks/MyScheduleHook';
+} from 'styles/calendar/Schedule-styled';
+import MyScheduleHook from 'hooks/MyScheduleHook';
 import SchedulePopUp from './SchedulePopUp';
 
 const MySchedule = ({ selectedDate }) => {

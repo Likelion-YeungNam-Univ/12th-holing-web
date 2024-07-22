@@ -11,7 +11,6 @@ import {
   subDays,
   format,
 } from 'date-fns';
-import moment from 'moment';
 
 const DatePopUpContentHook = () => {
   const [date, setDate] = useState(new Date());

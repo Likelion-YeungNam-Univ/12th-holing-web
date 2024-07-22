@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { FrameWrapper } from '../../styles/report/ComonItem-styled';
+import { FrameWrapper } from 'styles/ComonItem-styled';
 import MenuBar from './MenuBar';
 import TopBar from './TopBar';
 
@@ -8,7 +8,7 @@ function Frame() {
     return (
       <FrameWrapper>
         <TopBar />  {/* 상단바 */}
-        <Outlet />  {/* 중첩라우팅 */}
+       < Outlet />  {/* 중첩라우팅 */}
         <MenuBar />  {/* 하단메뉴바 */}
       </FrameWrapper>
     );

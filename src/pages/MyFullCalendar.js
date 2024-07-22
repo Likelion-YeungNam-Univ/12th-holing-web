@@ -3,12 +3,12 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import MySchedule from '../components/calendar/MySchedule';
-import DatePopUp from '../components/calendar/DatePopUp';
-import Mission from '../components/calendar/Mission';
-import img_calendarToggleDownBtn from '../assets/images/calendar_toggle_down_btn.png';
-import img_calendarToggleUpBtn from '../assets/images/calendar_toggle_up_btn.png';
-import img_calendarPopUpBtn from '../assets/images/calendar_popup_btn.png';
+import MySchedule from 'components/calendar/MySchedule';
+import DatePopUp from 'components/calendar/DatePopUp';
+import Mission from 'components/calendar/Mission';
+import img_calendarToggleDownBtn from 'assets/images/calendar_toggle_down_btn.png';
+import img_calendarToggleUpBtn from 'assets/images/calendar_toggle_up_btn.png';
+import img_calendarPopUpBtn from 'assets/images/calendar_popup_btn.png';
 
 import {
   CalendarWrapper,
