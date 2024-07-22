@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #000000;
 }
 body{
   padding-top: 98px; // 상단바의 높이만큼 body가 겹쳐짐 이슈 해결

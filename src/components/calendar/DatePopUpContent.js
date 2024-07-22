@@ -1,12 +1,12 @@
 import React from 'react';
-import DatePopUpContentHook from '../../hooks/DatePopUpContentHook';
+import DatePopUpContentHook from 'hooks/DatePopUpContentHook';
 import {
   DateWrapper,
   DateColumn,
   DateBox,
   PreviousDate,
   NextDate,
-} from '../../style/DatePopUp-styled';
+} from 'style/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   const {
