@@ -5,12 +5,12 @@ export const SumRepoContainer = styled.div`
   height: 396px;
   border-radius: 13px;
   border: 3px;
-  /* display: flex;
-  text-align: center; */
   background-color: #ffffff;
   border-color: #dddddd;
   margin: auto;
-  box-shadow: 0px 0px 5px 0px #0000001a;
+  margin-bottom: 22px;
+  border-width: 1px;
+  border-style: solid;
   padding-top: 44px;
   padding-left: 40px;
 `;
@@ -78,4 +78,18 @@ export const Divider = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0;
+`;
+
+export const Count = styled.div`
+  color: var(--Gray_4, #5b5b5b);
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
