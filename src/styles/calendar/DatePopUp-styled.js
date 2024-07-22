@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const DateWrapper = styled.div`
   display: flex;
@@ -36,15 +36,11 @@ export const DatePopUpWrapper = styled.div`
   align-items: center;
 `;
 
-export const DatePopUpSaveBtn = styled.button`
-  color: #fff;
+const popupButtonStyle = css`
   font-size: 23px;
   font-weight: 600;
-
   border-radius: 13px;
-  background: #9180ff;
   border: none;
-
   display: flex;
   width: 302px;
   height: 53px;
@@ -52,26 +48,18 @@ export const DatePopUpSaveBtn = styled.button`
   justify-content: center;
   align-items: center;
   gap: 10px;
+`;
 
+export const DatePopUpSaveBtn = styled.button`
+  ${popupButtonStyle}
+  color: #fff;
+  background: #9180ff;
   margin-top: 85px;
 `;
 
 export const DatePopUpCancelBtn = styled.button`
+  ${popupButtonStyle}
   color: #b3b3b3;
-  font-size: 23px;
-  font-weight: 600;
-
-  border-radius: 13px;
   background: #ddd;
-  border: none;
-
-  display: flex;
-  width: 302px;
-  height: 53px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
   margin-top: 16px;
 `;

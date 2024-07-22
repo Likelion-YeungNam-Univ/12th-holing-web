@@ -35,13 +35,11 @@ export const MissionCard = styled.div`
   height: 405px;
   border: 1px solid #ddd;
   background-color: white;
-
   margin: 0 auto;
   margin-top: 45px;
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
-
   border-top: 13px solid #b7acff;
   border-radius: 13px;
 `;
@@ -51,12 +49,10 @@ export const CreditBox = styled.div`
   background: #9180ff;
   width: 67px;
   height: 29px;
-
   color: #fff;
   font-size: 15px;
   font-weight: 700;
   line-height: 140%;
-
   display: flex;
   padding: 4px 15px;
 `;
@@ -91,7 +87,6 @@ export const MissionRefresh = styled.div`
   font-size: 20px;
   font-weight: 700;
   margin-top: 13px;
-
   display: flex;
   justify-content: flex-end;
 `;

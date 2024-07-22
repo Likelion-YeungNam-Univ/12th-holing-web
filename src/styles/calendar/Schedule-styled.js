@@ -9,9 +9,7 @@ export const ScheduleBox = styled.div`
   background-color: white;
   padding-left: 35px;
   padding-right: 35px;
-
   text-align: left;
-
   border-top: 13px solid #b7acff;
   border-radius: 13px;
 `;
@@ -46,8 +44,6 @@ export const ScheduleItem = styled.li`
   margin: 5px 0;
   padding: 5px;
   border-bottom: 1px solid #ddd;
-  font-family: 'Pretendard';
-
   font-size: 30px;
   font-weight: 700;
 `;
@@ -70,11 +66,9 @@ export const AddScheduleButton = styled.button`
   border-radius: 21px;
   border: 1px solid #9180ff;
   background: #fff;
-
   color: #9180ff;
   font-size: 14px;
   font-weight: 700;
-
   padding: 11px 21px;
   margin-top: 24px;
 `;

@@ -4,10 +4,12 @@ import { useState } from 'react';
 const MyScheduleHook = (selectedDate) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // 모달 열기 함수
   const openModal = () => {
     setIsModalOpen(true);
   };
 
+  // 모달 닫기 함수
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -16,7 +18,7 @@ const MyScheduleHook = (selectedDate) => {
 
   const [scheduleContent, setScheduleContent] = useState({});
 
-  //selectedDate와 ScheduleTitle 연동해서 저장
+  //selectedDate와 ScheduleTitle 연동해서 저장하는 함수
   const getScheduleContent = (content) => {
     setScheduleContent((prevContents) => {
       const updatedContents = { ...prevContents };
@@ -30,7 +32,7 @@ const MyScheduleHook = (selectedDate) => {
     });
   };
 
-  //selectedDate와 ScheduleTitle 연동해서 저장
+  //selectedDate와 ScheduleTitle 연동해서 저장하는 함수
   const getScheduleTitle = (title) => {
     setScheduleTitle((prevTitles) => {
       const updatedTitles = { ...prevTitles };
@@ -44,7 +46,7 @@ const MyScheduleHook = (selectedDate) => {
     });
   };
 
-  // Schedule Title, Schedule Content 합치기
+  // Schedule Title, Schedule Content 결합하여 반환
   const schedules = (scheduleTitle[selectedDate] || []).map((title, index) => ({
     title,
     content: (scheduleContent[selectedDate] || [])[index] || '',

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SchedulePopUpContentWrapper = styled.div`
   display: flex;
@@ -21,26 +21,25 @@ export const ScheduleBody = styled.input`
   border: none;
 `;
 
-export const SchedulePopUpSaveBtn = styled.button`
+const popupButtonStyle = css`
   border-radius: 13px;
-  background: #9180ff;
-  color: var(--White-01, #fff);
   font-size: 23px;
-  font-weight: 600;
   border: none;
   width: 302px;
   height: 53px;
+  font-weight: 600;
+`;
+
+export const SchedulePopUpSaveBtn = styled.button`
+  ${popupButtonStyle}
+  background: #9180ff;
+  color: #fff;
   margin-top: 202px;
 `;
 
 export const SchedulePopUpCancelBtn = styled.button`
-  border-radius: 13px;
+  ${popupButtonStyle}
   background: #ddd;
   color: #b3b3b3;
-  font-size: 23px;
-  font-weight: 600;
-  border: none;
-  width: 302px;
-  height: 53px;
   margin-top: 19px;
 `;

@@ -15,19 +15,20 @@ const customModalStyles = {
     zIndex: 1001,
     paddingTop: '113px',
     paddingLeft: '30px',
-    paddingRignt: '30px', 
+    paddingRignt: '30px',
   },
 };
 
 const DatePopUp = ({ isOpen, onClose, getSelectedDate }) => {
+  // 모달이 열려있지 않으면 null 반환
   if (!isOpen) return null;
 
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
+      isOpen={isOpen} // 모달 열기 여부
+      onRequestClose={onClose} // 모달 닫기 핸들러
       getSelectedDate={getSelectedDate}
-      style={customModalStyles}
+      style={customModalStyles} // 커스텀 스타일 적용
       ariaHideApp={false} // 백그라운드 조작 방지
     >
       <DatePopUpContent onClose={onClose} getSelectedDate={getSelectedDate} />
