@@ -50,7 +50,33 @@ export const AddButton = styled.button`
   border: 1px solid #9180ff;
 `;
 
-export const Icon = styled.img`
+export const DeleteButton = styled.button`
+  /* Frame 1171276606 */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 23.87px;
+  text-align: left;
+  margin-left: 37px;
+  border: none;
+  background: none;
+  color: #5b5b5b;
+  display: flex;
+  /* align-items: center; */
+`;
+
+export const IconAdd = styled.img`
   display: inline-block; /* 인라인 블록 요소로 설정하여 수평 중앙 정렬 */
   vertical-align: middle; /* 수직 정렬 */
+`;
+
+export const IconDelete = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
+export const TimeInput = styled.input`
+  width: 60px;
+  margin-left: 1rem;
+  text-align: center;
 `;

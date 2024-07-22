@@ -4,10 +4,13 @@ import {
   MedicineName,
   Checkbox,
   AddButton,
-  Icon,
+  DeleteButton,
+  IconAdd,
+  IconDelete,
 } from '../../../styles/home/MedicineList-styled';
 import Modal from './Modal'; // Modal 컴포넌트 import
 import icon_plus from '../../../assets/images/icon_plus.png';
+import icon_delete from '../../../assets/images/icon_delete.png';
 
 function MedicineList() {
   const [medi, setMedi] = useState([
@@ -44,6 +47,11 @@ function MedicineList() {
     setMedi(newMedi);
   };
 
+  const deleteMedicine = (id) => {
+    const updatedMedi = medi.filter((item) => item.id !== id);
+    setMedi(updatedMedi);
+  };
+
   return (
     <MediListContainer>
       {medi.map((item) => (
@@ -60,12 +68,17 @@ function MedicineList() {
             {item.time &&
               ` - ${item.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}
           </span>
+          <DeleteButton onClick={() => deleteMedicine(item.id)}>
+            삭제하기
+            <IconDelete src={icon_delete} alt="icon" />
+          </DeleteButton>
         </MedicineName>
       ))}
       <AddButton onClick={openModal}>
-        <Icon src={icon_plus} alt="icon" />
+        <IconAdd src={icon_plus} alt="icon" />
         영양제 추가하기
       </AddButton>
+
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
