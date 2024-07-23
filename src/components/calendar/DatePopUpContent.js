@@ -1,5 +1,5 @@
 import React from 'react';
-import DatePopUpContentHook from 'hooks/DatePopUpContentHook';
+import DatePopUpContentHook from 'hooks/calendar/DatePopUpContentHook';
 import {
   DateWrapper,
   DateColumn,

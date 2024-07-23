@@ -5,6 +5,7 @@ import GlobalStyles from 'styles/GlobalStyles';
 import Frame from 'components/comonents/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
+import AccountInfo from 'pages/AccountInfo';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/report" element={<Report />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
+            <Route path="/account-info" element={<AccountInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>

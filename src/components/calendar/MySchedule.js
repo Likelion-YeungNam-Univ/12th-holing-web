@@ -10,7 +10,7 @@ import {
   ScheduleTitle,
   ScheduleContent,
 } from 'styles/calendar/Schedule-styled';
-import MyScheduleHook from 'hooks/MyScheduleHook';
+import MyScheduleHook from 'hooks/calendar/MyScheduleHook';
 import SchedulePopUp from './SchedulePopUp';
 
 const MySchedule = ({ selectedDate }) => {
