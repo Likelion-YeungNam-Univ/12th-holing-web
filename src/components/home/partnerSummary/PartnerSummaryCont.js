@@ -4,12 +4,13 @@ import {
   Status,
   UserInfo,
   UserProfile,
-  Mark,
+  Img,
   UserNameContainer,
   UserName,
   PartnerInfo,
   //   ScoreGraph,
 } from 'styles/home/SummaryCont-styled';
+import profile_img_male from 'assets/images/profile_img_male.png';
 
 function PartnerSummaryCont() {
   return (
@@ -18,7 +19,7 @@ function PartnerSummaryCont() {
         <UserInfo>
           <Status>우울한갱년기</Status>
           <UserProfile>
-            <Mark></Mark>
+            <Img src={profile_img_male} />
             <UserNameContainer>
               <UserName>길동홍 님</UserName> {/* 추후에 이름 받아와서 변경 */}
               <PartnerInfo>홍길동님의 배우자</PartnerInfo>{' '}

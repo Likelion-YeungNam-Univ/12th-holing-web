@@ -31,11 +31,10 @@ export const UserProfile = styled.div`
   height: auto;
 `;
 
-export const Mark = styled.div`
+export const Img = styled.img`
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background-color: #b3b3b3;
+
   text-align: center;
 `;
 
