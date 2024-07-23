@@ -5,6 +5,8 @@ import GlobalStyles from 'styles/GlobalStyles';
 import Home from 'pages/Home';
 import Frame from 'components/comonents/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
+import MyPage from 'pages/MyPage';
+import AccountInfo from 'pages/AccountInfo';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
             {/* 기본 화면프레임 */}
             <Route index element={<Home />} />
             <Route path="/report" element={<Report />} />
-            <Route path="/Calendar" element={<MyFullCalendar />} />
+            <Route path="/calendar" element={<MyFullCalendar />} />
+            <Route path="/my" element={<MyPage />} />
+            <Route path="/account-info" element={<AccountInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>
