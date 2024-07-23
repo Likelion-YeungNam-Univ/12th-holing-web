@@ -20,6 +20,7 @@ import {
   AccountInfoBtn,
   ProfileImg,
   NameWrapper,
+  CreditImg,
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -34,6 +35,9 @@ import img_ad2 from 'assets/images/advertise_img2.jpg';
 import img_ad3 from 'assets/images/advertise_img3.jpg';
 import img_ad4 from 'assets/images/advertise_img4.jpg';
 import img_accountInfoBtn from 'assets/images/account_info_btn.png';
+import img_profileFemale from 'assets/images/profile_img_female.png';
+import img_profileMale from 'assets/images/profile_img_male.png';
+import img_credit from 'assets/images/credit_img.png';
 
 const createCreditItem = (img, title, description, price) => ({
   img,
@@ -48,13 +52,13 @@ const createCreditItems = () => [
     createCreditItem(
       img_creditItem1,
       '괄사&마사지오일',
-      '[랠리] 콤부차(10p) 4종 택 1',
+      '[메디테라피,벨레다] 속살 괄사&아니카 마사지 오일(100ml)세트',
       '5500 크레딧'
     ),
     createCreditItem(
       img_creditItem2,
       '콤부차',
-      '[메디테라피,벨레다] 속살 괄사&아니카 마사지',
+      '[랠리] 콤부차(10p) 4종 택 1',
       '3500 크레딧'
     ),
   ],
@@ -90,7 +94,7 @@ const createCreditItems = () => [
     createCreditItem(
       img_creditItem7,
       '마사지 오일',
-      '[메디테라피] 인더 포레스트 히노키 바디오션',
+      '[메디테라피] 인더 포레스트 히노키 바디오일(100ml)',
       '12500 크레딧'
     ),
     createCreditItem(
@@ -124,7 +128,7 @@ function MyPage() {
   return (
     <>
       <ProfileWrapper>
-        <ProfileImg></ProfileImg>
+        <ProfileImg src={img_profileMale}></ProfileImg>
         <NameWrapper>
           <UserName>홍길동님</UserName>
           <PartnerName>길동홍님의 배우자</PartnerName>
@@ -137,6 +141,7 @@ function MyPage() {
       <CreditWrapper>
         <HoldCredit>현재 보유 크레딧</HoldCredit>
         <CreditBox>
+          <CreditImg src={img_credit}></CreditImg>
           <NumOfCredit>3500</NumOfCredit>
           <Credit>크레딧</Credit>
         </CreditBox>

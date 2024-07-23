@@ -2,16 +2,15 @@ import styled from 'styled-components';
 
 export const ProfileWrapper = styled.div`
   margin: 0 auto;
-  margin-top: 72px;
+  margin-top: 40px;
   width: 496px;
   height: 102px;
   display: flex;
   align-items: center;
 `;
-export const ProfileImg = styled.div`
+export const ProfileImg = styled.img`
   width: 102px;
   height: 102px;
-  background-color: red;
 `;
 export const NameWrapper = styled.div`
   display: block;
@@ -53,11 +52,17 @@ export const CreditBox = styled.div`
   margin-top: 7px;
 `;
 
+export const CreditImg = styled.img`
+  width: 43px;
+  height: 43px;
+`;
+
 export const NumOfCredit = styled.div`
   color: #5643d1;
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
+  margin-left: 9px;
 `;
 export const Credit = styled.div`
   color: #5b5b5b;
@@ -78,8 +83,8 @@ export const CreditItemBoxRow = styled.div`
   width: 498px;
   display: flex;
   justify-content: center;
-  padding: 10px;
   gap: 30px;
+  margin-top: 40px;
 `;
 
 export const CreditItemBox = styled.div`

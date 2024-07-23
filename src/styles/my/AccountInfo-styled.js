@@ -4,9 +4,8 @@ export const MyInfoText = styled.div`
   font-size: 28px;
   font-weight: 700;
   margin-left: 52px;
-  margin-top: 59px;
+  margin-top: 60px;
 `;
-
 export const PhoneNumberRow = styled.div`
   display: flex;
   justify-content: space-between;
