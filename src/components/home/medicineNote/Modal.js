@@ -14,6 +14,7 @@ const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000; /* 높은 z-index 값 설정 */
 `;
 
 const ModalContent = styled.div`
@@ -25,6 +26,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1001; /* ModalOverlay보다 높은 z-index 값 설정 */
 `;
 
 const StyledInput = styled.input`
