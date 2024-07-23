@@ -32,6 +32,7 @@ export const Checkbox = styled.input`
   accent-color: #9180ff;
   width: 29px;
   height: 30px;
+
   cursor: pointer;
 `;
 
@@ -51,10 +52,12 @@ export const AddButton = styled.button`
 
 export const DeleteButton = styled.button`
   font-family: Pretendard;
-  font-size: 20px;
+  font-family: Pretendard;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 23.87px;
+  line-height: 17.9px;
   text-align: left;
+  margin-left: auto;
   border: none;
   background: none;
   color: #5b5b5b;
@@ -74,6 +77,8 @@ export const IconAdd = styled.img`
 export const IconDelete = styled.img`
   display: inline-block;
   vertical-align: middle;
+  width: 17px;
+  height: 17px;
 `;
 
 export const Icon = styled.img`
@@ -90,5 +95,13 @@ export const Time = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
-  margin-left: 25px;
+  margin-left: 20px;
+`;
+
+export const Name = styled.div`
+  display: inline-block;
+  max-width: 226px; /* 원하는 최대 너비를 설정하세요 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

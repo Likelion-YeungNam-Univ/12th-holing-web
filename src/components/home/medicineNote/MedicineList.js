@@ -9,6 +9,7 @@ import {
   IconDelete,
   Icon,
   Time,
+  Name,
 } from 'styles/home/MedicineList-styled';
 import Modal from './Modal';
 import icon_plus from 'assets/images/icon_plus.png';
@@ -70,6 +71,7 @@ function MedicineList() {
             checked={item.completed}
             onChange={() => handleToggle(item.id)}
           />
+
           <div
             style={{
               display: 'flex',
@@ -77,13 +79,14 @@ function MedicineList() {
               whiteSpace: 'nowrap',
             }}
           >
-            <span
+            <Name
               style={{
                 textDecoration: item.completed ? 'line-through' : 'none',
               }}
             >
               {item.text}
-            </span>
+            </Name>
+
             {item.time && (
               <Time>
                 <Icon src={icon_alarm} alt="icon" />
