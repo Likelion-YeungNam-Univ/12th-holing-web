@@ -10,7 +10,7 @@ export const MediListContainer = styled.div`
   background: #ffffff;
   border: 1px solid #dddddd;
   text-align: center;
-  overflow: auto; /* 내용이 많아지면 스크롤바가 생기도록 설정 */
+  /* overflow: auto;  */
 `;
 
 export const MedicineName = styled.div`
@@ -75,8 +75,8 @@ export const IconDelete = styled.img`
   vertical-align: middle;
 `;
 
-export const TimeInput = styled.input`
-  width: 60px;
-  margin-left: 1rem;
-  text-align: center;
-`;
+// export const TimeInput = styled.input`
+//   width: 60px;
+//   margin-left: 1rem;
+//   text-align: center;
+// `;
