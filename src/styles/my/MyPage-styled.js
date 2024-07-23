@@ -5,14 +5,29 @@ export const ProfileWrapper = styled.div`
   margin-top: 72px;
   width: 496px;
   height: 102px;
+  display: flex;
+  align-items: center;
+`;
+export const ProfileImg = styled.div`
+  width: 102px;
+  height: 102px;
+  background-color: red;
+`;
+export const NameWrapper = styled.div`
+  display: block;
+  margin-left: 30px;
 `;
 export const UserName = styled.div`
   font-size: 32px;
-  font-weight: 700;
 `;
 export const PartnerName = styled.div`
   font-size: 18px;
   font-weight: 500;
+`;
+export const AccountInfoBtn = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-left: 180px; //폰트 나오면 바꿔야 함
 `;
 export const CreditWrapper = styled.div`
   margin: 0 auto;

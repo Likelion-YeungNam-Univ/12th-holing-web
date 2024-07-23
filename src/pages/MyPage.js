@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ProfileWrapper,
   UserName,
@@ -16,6 +17,9 @@ import {
   CreditItemPrice,
   CreditItem,
   AdImg,
+  AccountInfoBtn,
+  ProfileImg,
+  NameWrapper,
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -29,6 +33,7 @@ import img_ad1 from 'assets/images/advertise_img1.jpg';
 import img_ad2 from 'assets/images/advertise_img2.jpg';
 import img_ad3 from 'assets/images/advertise_img3.jpg';
 import img_ad4 from 'assets/images/advertise_img4.jpg';
+import img_accountInfoBtn from 'assets/images/account_info_btn.png';
 
 const createCreditItem = (img, title, description, price) => ({
   img,
@@ -110,11 +115,24 @@ const getRandomAdImage = () => {
 };
 
 function MyPage() {
+  const navigate = useNavigate();
+
+  const handleAccountInfoClick = () => {
+    navigate('/account-info');
+  };
+
   return (
     <>
       <ProfileWrapper>
-        <UserName>홍길동님</UserName>
-        <PartnerName>길동홍님의 배우자</PartnerName>
+        <ProfileImg></ProfileImg>
+        <NameWrapper>
+          <UserName>홍길동님</UserName>
+          <PartnerName>길동홍님의 배우자</PartnerName>
+        </NameWrapper>
+        <AccountInfoBtn
+          src={img_accountInfoBtn}
+          onClick={handleAccountInfoClick}
+        ></AccountInfoBtn>
       </ProfileWrapper>
       <CreditWrapper>
         <HoldCredit>현재 보유 크레딧</HoldCredit>
