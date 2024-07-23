@@ -43,7 +43,6 @@ export const HoldCredit = styled.div`
   margin-top: 15px;
   margin-left: 42px;
 `;
-
 export const CreditBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -51,12 +50,10 @@ export const CreditBox = styled.div`
   margin-left: 42px;
   margin-top: 7px;
 `;
-
 export const CreditImg = styled.img`
   width: 43px;
   height: 43px;
 `;
-
 export const NumOfCredit = styled.div`
   color: #5643d1;
   font-size: 32px;
@@ -71,13 +68,11 @@ export const Credit = styled.div`
   line-height: 140%;
   margin-left: 9px;
 `;
-
 export const AdImg = styled.img`
   width: 600px;
   height: 373px;
   margin-top: 48px;
 `;
-
 export const CreditItemBoxRow = styled.div`
   margin: 0 auto;
   width: 498px;
@@ -86,14 +81,12 @@ export const CreditItemBoxRow = styled.div`
   gap: 30px;
   margin-top: 40px;
 `;
-
 export const CreditItemBox = styled.div`
   width: 233px;
   height: 380px;
   border-radius: 13px;
   border-color: black;
 `;
-
 export const CreditItem = styled.div`
   width: 233px;
   height: 233px;
@@ -101,17 +94,13 @@ export const CreditItem = styled.div`
   border: 1px solid #b9bec9;
   background: #faf9f7;
 `;
-
 export const CreditItemTitle = styled.div`
   color: #9180ff;
   font-size: 14px;
   font-weight: 700;
   margin-top: 7px;
 `;
-
 export const CreditItemDescription = styled.div`
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -150,4 +139,5 @@ export const CreditItemExchangeBtn = styled.div`
   gap: 10px;
 
   margin-top: 7px;
+  cursor: pointer;
 `;

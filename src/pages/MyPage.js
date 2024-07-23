@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import MyPageHook from 'hooks/my/MyPageHook';
 import {
   ProfileWrapper,
   UserName,
@@ -38,6 +39,7 @@ import img_accountInfoBtn from 'assets/images/account_info_btn.png';
 import img_profileFemale from 'assets/images/profile_img_female.png';
 import img_profileMale from 'assets/images/profile_img_male.png';
 import img_credit from 'assets/images/credit_img.png';
+import PurchasePopUp from 'components/my/PurchasePopUp';
 
 const createCreditItem = (img, title, description, price) => ({
   img,
@@ -121,6 +123,9 @@ const getRandomAdImage = () => {
 function MyPage() {
   const navigate = useNavigate();
 
+  const { isModalOpen, selectedItem, openModal, closeModal } = MyPageHook();
+
+  //계정 정보 클릭 핸들러
   const handleAccountInfoClick = () => {
     navigate('/account-info');
   };
@@ -157,11 +162,20 @@ function MyPage() {
               <CreditItemTitle>{item.title}</CreditItemTitle>
               <CreditItemDescription>{item.description}</CreditItemDescription>
               <CreditItemPrice>{item.price}</CreditItemPrice>
-              <CreditItemExchangeBtn>교환하기</CreditItemExchangeBtn>
+              <CreditItemExchangeBtn onClick={() => openModal(item)}>
+                교환하기
+              </CreditItemExchangeBtn>
             </CreditItemBox>
           ))}
         </CreditItemBoxRow>
       ))}
+      {isModalOpen && (
+        <PurchasePopUp
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          selectedItem={selectedItem}
+        />
+      )}
     </>
   );
 }
