@@ -1,12 +1,15 @@
 import React from 'react';
-import DatePopUpContentHook from 'hooks/DatePopUpContentHook';
+import DatePopUpContentHook from 'hooks/calendar/DatePopUpContentHook';
 import {
   DateWrapper,
   DateColumn,
   DateBox,
   PreviousDate,
   NextDate,
-} from 'style/DatePopUp-styled';
+  DatePopUpWrapper,
+  DatePopUpSaveBtn,
+  DatePopUpCancelBtn,
+} from 'styles/calendar/DatePopUp-styled';
 
 const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   const {
@@ -24,7 +27,7 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
   } = DatePopUpContentHook();
 
   return (
-    <>
+    <DatePopUpWrapper>
       <DateWrapper>
         <DateColumn>
           <PreviousDate>{previousYear}</PreviousDate>
@@ -48,9 +51,14 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
           <NextDate>{nextDay}일</NextDate>
         </DateColumn>
       </DateWrapper>
-      <button onClick={onClose}>취소</button>
-      <button onClick={() => handleComplete(onClose, getSelectedDate)}>완료</button>
-    </>
+
+      <DatePopUpSaveBtn
+        onClick={() => handleComplete(onClose, getSelectedDate)}
+      >
+        완료
+      </DatePopUpSaveBtn>
+      <DatePopUpCancelBtn onClick={onClose}>취소</DatePopUpCancelBtn>
+    </DatePopUpWrapper>
   );
 };
 
