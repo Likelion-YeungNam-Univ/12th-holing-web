@@ -2,33 +2,65 @@
 import { useState } from 'react';
 
 const MyScheduleHook = (selectedDate) => {
-  const [schedules, setSchedules] = useState({});
-  const [newSchedule, setNewSchedule] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleInputChange = (e) => {
-    setNewSchedule(e.target.value);
+  // 모달 열기 함수
+  const openModal = () => {
+    setIsModalOpen(true);
   };
 
-  const handleAddSchedule = () => {
-    if (newSchedule.trim() === '') return;
+  // 모달 닫기 함수
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-    setSchedules((prevSchedules) => {
-      const updatedSchedules = { ...prevSchedules };
-      if (!updatedSchedules[selectedDate]) {
-        updatedSchedules[selectedDate] = [];
+  const [scheduleTitle, setScheduleTitle] = useState('');
+
+  const [scheduleContent, setScheduleContent] = useState({});
+
+  //selectedDate와 ScheduleTitle 연동해서 저장하는 함수
+  const getScheduleContent = (content) => {
+    setScheduleContent((prevContents) => {
+      const updatedContents = { ...prevContents };
+
+      if (!updatedContents[selectedDate]) {
+        updatedContents[selectedDate] = [];
       }
-      updatedSchedules[selectedDate].push(newSchedule);
-      return updatedSchedules;
-    });
 
-    setNewSchedule('');
+      updatedContents[selectedDate].push(content);
+      return updatedContents;
+    });
   };
+
+  //selectedDate와 ScheduleTitle 연동해서 저장하는 함수
+  const getScheduleTitle = (title) => {
+    setScheduleTitle((prevTitles) => {
+      const updatedTitles = { ...prevTitles };
+
+      if (!updatedTitles[selectedDate]) {
+        updatedTitles[selectedDate] = [];
+      }
+
+      updatedTitles[selectedDate].push(title);
+      return updatedTitles;
+    });
+  };
+
+  // Schedule Title, Schedule Content 결합하여 반환
+  const schedules = (scheduleTitle[selectedDate] || []).map((title, index) => ({
+    title,
+    content: (scheduleContent[selectedDate] || [])[index] || '',
+  }));
 
   return {
+    isModalOpen,
+    openModal,
+    closeModal,
+    scheduleTitle,
+    scheduleContent,
+    getScheduleContent,
+    getScheduleTitle,
     schedules,
-    newSchedule,
-    handleInputChange,
-    handleAddSchedule,
   };
 };
 
