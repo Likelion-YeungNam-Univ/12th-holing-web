@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // react-router-dom에서 useNavigate 훅 import
 import {
   Wrapper,
   Gender,
@@ -15,9 +16,9 @@ import UserInfo_Fe2 from 'assets/images/UserInfo_Fe2.png';
 import UserInfo_Ma1 from 'assets/images/UserInfo_Ma1.png';
 import UserInfo_Ma2 from 'assets/images/UserInfo_Ma2.png';
 import useImageToggle from '../hooks/userInfo/useImgToggle';
-
 function UserInfo() {
   const [selectedGender, setSelectedGender] = useState(null);
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const [
     femaleImage,
@@ -55,6 +56,16 @@ function UserInfo() {
 
   const isNextBtnEnabled = selectedGender !== null;
 
+  const handleNextButtonClick = () => {
+    if (isNextBtnEnabled) {
+      if (selectedGender === 'female') {
+        navigate('/FeSelfTest'); // 여성 선택 시 FeSelfTest 페이지로 전환
+      } else if (selectedGender === 'male') {
+        navigate('/MaSelfTest'); // 남성 선택 시 MaSelfTest 페이지로 전환
+      }
+    }
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -83,7 +94,9 @@ function UserInfo() {
           </TextStyled>
         </ImgContainer>
       </Gender>
-      <NextBtn enabled={isNextBtnEnabled}>다음</NextBtn>
+      <NextBtn enabled={isNextBtnEnabled} onClick={handleNextButtonClick}>
+        다음
+      </NextBtn>
     </Wrapper>
   );
 }

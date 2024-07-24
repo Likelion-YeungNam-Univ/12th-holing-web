@@ -9,6 +9,8 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import UserInfo from './pages/UserInfo';
+import FeSelfTest from './pages/SelfTest/FeSelfTest';
+import MaSelfTest from './pages/SelfTest/MaSelfTest';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
+            <Route path="/feSelfTest" element={<FeSelfTest />} />
+            <Route path="/maSelfTest" element={<MaSelfTest />} />
           </Route>
         </Routes>
       </BrowserRouter>

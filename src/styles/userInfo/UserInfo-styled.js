@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin-top: 50px;
+  background-color: #f5f5f5;
 `;
 
 export const Header = styled.div`
@@ -66,7 +67,7 @@ export const NextBtn = styled.div`
   width: 496px;
   height: 76px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 80px;
   padding: 10px 0;
   border-radius: 13px;
   background-color: ${({ enabled }) => (enabled ? '#9180ff' : '#dddddd')};
