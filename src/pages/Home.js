@@ -8,9 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
-import styled from 'styled-components';
 import PartnerSummary from 'components/home/partnerSummary/PartnerSummary';
-import { SwiperWrapper } from 'styles/report/SlideItem-styled';
+import { SwiperWrapper } from 'styles/home/Swiper-styled';
 
 function Home() {
   return (

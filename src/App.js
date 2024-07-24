@@ -7,7 +7,6 @@ import Frame from 'components/comonents/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
-import Home from 'pages/Home';
 
 function App() {
   return (
