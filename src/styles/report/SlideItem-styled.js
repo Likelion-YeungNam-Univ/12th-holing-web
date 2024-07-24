@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components';
 
 // ----- 공통속성 스타일링
-const flexCenter = css`
+export const flexCenter = css`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 // wrapper 공통 스타일링
-const wrapperStyle = css`
+export const wrapperStyle = css`
   width: 263px;
   height: 213px;
   border-radius: 13px;
   margin: 40px 0 0 56px;
+  padding: 25px 25px 24px 26px;
 `
 
 // 현재 주차 wrapper
@@ -50,16 +51,15 @@ export const SlideTop = styled.div`
   justify-content: space-between;
   width: 212px;
   height: 30%;
-
 `;
 export const SlideBottom = styled.div`  
   width: 212px;
-  height: 60%;
+  height: 87px;
   margin-top: 20px;
 `;
 
 // n주차 text 공통 스타일링
-const weekStyle = css`
+export const weekStyle = css`
   width: 66px;
   height: 29px;
   border-radius: 21px;
@@ -121,6 +121,20 @@ export const PastOverView = styled.div`
   font-weight: 700;
   font-size: 22px;
 `;
+export const TextDecoWhite = styled.span`  
+  color: #ffffff;
+  text-decoration: underline;
+`;
+export const TextDecoBlue = styled.span`  
+  color: #5643D1;
+  text-decoration: underline;
+`;
+export const TextDecoGray = styled.span`  
+  color: #5B5B5B;
+  text-decoration: underline;
+`;
+
+
 
 
 // Swiper.js 컴포넌트 스타일링

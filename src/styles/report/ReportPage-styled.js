@@ -11,13 +11,17 @@ export const ReportContainer = styled.div`
   width: 600px;
   margin: auto;
 `;
+export const ReportBody = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px 0;
+`;
 
 export const TopWrapper = styled.div`
   color: black;
   background-color: #F5F5F5;
   width: inherit;
   height: fit-content;
-  padding: 20px 0 40px;
+  padding: 20px 0;
 `;
 
 export const GraphWrapper = styled.div`
@@ -79,4 +83,9 @@ export const TapBtn1 = styled.li`
 export const TapBtn2 = styled.li`
   ${topBtn}
   color: #8A8A8A;
+`;
+
+
+export const CheckImg = styled.img`
+  margin-right: 4px;
 `;

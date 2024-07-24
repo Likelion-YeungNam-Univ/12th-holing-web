@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Report from 'pages/report';
+import ReportDetail from 'pages/reportDetail';
 import GlobalStyles from 'styles/GlobalStyles';
 import Home from 'pages/Home';
 import Frame from 'components/comonents/Frame';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/report" element={<Report />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
+            <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
           </Route>
         </Routes>

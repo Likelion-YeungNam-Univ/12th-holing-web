@@ -21,6 +21,9 @@ import {
     TitleText,
     HigLight
 } from 'styles/report/GotoTestItem-styled';
+import img_check from 'assets/images/report_check.png';
+import { CheckImg } from 'styles/report/ReportPage-styled';
+
 
 
 function GotoTest() {
@@ -28,7 +31,7 @@ function GotoTest() {
     <GotoTestWrapper>
         <TopTitle>
           <TitleText>
-            이번주 나의 증상을<br /><HigLight>테스트</HigLight>로 기록해보세요
+            이번주 나의 증상을<br /><CheckImg src={img_check}/><HigLight>테스트</HigLight>로 기록해보세요
           </TitleText>
         </TopTitle>
 
