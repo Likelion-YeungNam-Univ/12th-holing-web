@@ -21,12 +21,13 @@ function PartnerSummaryCont() {
           <UserProfile>
             <Img src={profile_img_male} />
             <UserNameContainer>
-              <UserName>길동홍 님</UserName> {/* 추후에 이름 받아와서 변경 */}
+              <UserName>길동홍 님</UserName>{' '}
+              {/* TODO: 추후에 이름 받아와서 변경 */}
               <PartnerInfo>홍길동님의 배우자</PartnerInfo>{' '}
-              {/* 추후에 이름 받아와서 변경 */}
+              {/* TODO: 추후에 이름 받아와서 변경 */}
             </UserNameContainer>
           </UserProfile>
-          {/* <ScoreGraph /> */}
+          {/* TODO: <ScoreGraph /> */}
         </UserInfo>
       </SummaryContainer>
     </>

@@ -12,6 +12,7 @@ import {
   Divider,
   TitleContainer,
 } from 'styles/home/SummaryRepo-styled';
+
 import DayCount from './DayCount';
 
 function MySummaryRepo() {

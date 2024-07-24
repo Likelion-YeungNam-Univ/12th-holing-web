@@ -5,9 +5,9 @@ import {
   Checkbox,
   AddButton,
   Icon,
-} from '../../../styles/home/MedicineList-styled';
+} from 'styles/home/MedicineList-styled';
 import Modal from './Modal'; // Modal 컴포넌트 import
-import icon_plus from '../../../assets/images/icon_plus.png';
+import icon_plus from 'assets/images/icon_plus.png';
 
 function MedicineList() {
   const [medi, setMedi] = useState([

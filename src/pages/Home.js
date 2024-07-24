@@ -1,14 +1,15 @@
 import React from 'react';
+import MySummary from 'components/home/mySummary/MySummary';
+import SymptomTest from 'components/home/symptomTest/SymptomTest';
+import MedicineNote from 'components/home/medicineNote/MedicineNote';
+import { Wrapper } from 'styles/home/Home-styled';
+import Mission from 'components/home/mission/Mission';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
 import styled from 'styled-components';
-import MySummary from '../components/home/mySummary/MySummary';
 import PartnerSummary from '../components/home/partnerSummary/PartnerSummary';
-import { Wrapper } from '../styles/home/Home-styled';
-import SymptomTest from 'components/home/symptomTest/SymptomTest';
-import MedicineNote from 'components/home/medicineNote/MedicineNote';
 
 const SwiperWrapper = styled.div`
   .swiper-scrollbar {
@@ -52,7 +53,7 @@ function Home() {
       </SwiperWrapper>
       <SymptomTest />
       <MedicineNote />
-      {/* <Mission/> */}
+      <Mission />
     </Wrapper>
   );
 }
