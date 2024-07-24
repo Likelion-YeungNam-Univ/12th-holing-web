@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Report from 'pages/report';
 import GlobalStyles from 'styles/GlobalStyles';
+import Home from 'pages/Home';
 import Frame from 'components/comonents/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Frame />}>
             {' '}
             {/* 기본 화면프레임 */}
+            <Route index element={<Home />} />
             <Route path="/report" element={<Report />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
