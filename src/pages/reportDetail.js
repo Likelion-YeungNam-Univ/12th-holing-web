@@ -13,7 +13,9 @@ function reportDetail() {
         <Title>
             4주차 홀링<br/><CheckImg src={img_check}/><HigLight>리포트</HigLight>가 도착했습니다
         </Title>
+        {/* 현재 리포트 컴포넌트 */}
         <DropDownCurrent/>
+        {/* 지난 리포트 컴포넌트 */}
         <DropDownPast/>
     </ReportBody>
   )

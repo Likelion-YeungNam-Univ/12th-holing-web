@@ -10,8 +10,9 @@ const flexCenter = css`
 `;
 // wrapper 공통 스타일링
 const wrapperStyle = css`
+  flex-direction: column;
   width: 498px;
-  height: 213px;
+  height: fit-content;
   border-radius: 13px;
   margin: 40px 0 40px 56px;
   padding: 25px 25px 24px 26px;
@@ -35,11 +36,13 @@ export const CurrentDropDown = styled.div`
   width: fit-content;
   height: 164px;
   display: flex;
+  margin-bottom: 20px;
 `;
 export const PastDropDown = styled.div`  
   width: fit-content;
   height: 164px;
   display: flex;
+  margin-bottom: 20px;
 `;
 
 export const PastRank2 = styled.div`  
