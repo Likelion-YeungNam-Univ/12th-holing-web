@@ -8,6 +8,7 @@ export const SumRepoContainer = styled.div`
   background-color: #ffffff;
   border-color: #dddddd;
   margin: auto;
+  margin-bottom: 22px;
   border-width: 1px;
   border-style: solid;
   padding-top: 44px;
