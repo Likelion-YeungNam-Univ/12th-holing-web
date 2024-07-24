@@ -10,7 +10,7 @@ import {
   RankDesc,
   Divider,
   TitleContainer,
-} from '../../../styles/home/SummaryRepo-styled';
+} from 'styles/home/SummaryRepo-styled';
 import DayCount from './DayCount';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ function MySummaryRepo() {
   return (
     <Link to="/report" style={{ textDecoration: 'none' }}>
       <SumRepoContainer>
-        {/* 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
+        {/* TODO: 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
         <SumRepoHeader>
           <TitleContainer>
             <SumRepoTitle>요약 리포트</SumRepoTitle>

@@ -9,17 +9,16 @@ import {
   RankWrapper,
   RankDesc,
   Divider,
-} from '../../../styles/home/SummaryRepo-styled';
+} from 'styles/home/SummaryRepo-styled';
 
 function PartnerSummaryRepo() {
   return (
     <>
       <SumRepoContainer>
-        {/* 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
+        {/* TODO: 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
         <SumRepoHeader>
           <SumRepoTitle>요약 리포트</SumRepoTitle>
           <SumRepoDisc>길동홍님의 리포트를 자세히 살펴보아요</SumRepoDisc>
-          {/* <DayCount /> */}
         </SumRepoHeader>
         <RankWrapper>
           <RankContainer>

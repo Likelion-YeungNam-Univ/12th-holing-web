@@ -9,7 +9,7 @@ import {
   UserName,
   PartnerInfo,
   Graph,
-} from '../../../styles/home/SummaryCont-styled';
+} from 'styles/home/SummaryCont-styled';
 import MyScoreGraph from './MyScoreGraph';
 
 function MySummaryCont() {
@@ -20,16 +20,15 @@ function MySummaryCont() {
         <UserProfile>
           <Mark></Mark>
           <UserNameContainer>
-            <UserName>홍길동 님</UserName> {/* 추후에 이름 받아와서 변경 */}
+            <UserName>홍길동 님</UserName>{' '}
+            {/* TODO: 추후에 이름 받아와서 변경 */}
             <PartnerInfo>길동홍님의 배우자</PartnerInfo>{' '}
-            {/* 추후에 이름 받아와서 변경 */}
           </UserNameContainer>
         </UserProfile>
       </UserInfo>
       <Graph>
         <MyScoreGraph />
       </Graph>
-      {/* </UserInfo> */}
     </SummaryContainer>
   );
 }

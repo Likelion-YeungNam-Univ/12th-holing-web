@@ -1,7 +1,12 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import styled from 'styled-components';
+import {
+  Container,
+  OverlayContainer,
+  OverlayScore,
+  OverlayTotal,
+} from 'styles/home/MyScoreGraph-styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,42 +38,6 @@ function MyScoreGraph() {
       },
     },
   };
-
-  const Container = styled.div`
-    position: relative;
-    width: 164px;
-    height: 164px;
-  `;
-
-  const OverlayContainer = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* 수직 정렬 */
-    align-items: center; /* 수평 정렬 */
-    text-align: center;
-  `;
-
-  const OverlayTotal = styled.div`
-    font-family: Pretendard;
-    font-size: 15px;
-    font-weight: 500;
-
-    text-align: center;
-    color: #5643d1;
-  `;
-
-  const OverlayScore = styled.div`
-    font-family: Pretendard;
-    font-size: 40px;
-    font-weight: 600;
-    line-height: 47.73px;
-    text-align: center;
-    color: #5643d1;
-  `;
 
   return (
     <Container>
