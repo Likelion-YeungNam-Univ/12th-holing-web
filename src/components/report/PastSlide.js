@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { PasttWrapper, SlideTop, SlideBottom, Past, PastWeek, PastBtn, PastRank, PastOverView, TextDeco2 } from 'styles/report/SlideItem-styled';
+import { PasttWrapper, SlideTop, SlideBottom, Past, PastWeek, PastBtn, PastRank, PastOverView, TextDecoBlue } from 'styles/report/SlideItem-styled';
 import { IoIosArrowForward } from "react-icons/io";
 
 // 이전 주차 컴포넌트
@@ -17,7 +17,7 @@ function PastSlide() {
           </SlideTop> 
           <SlideBottom>
           <PastRank>Top1</PastRank> 
-          <PastOverView>지난 주보다 <TextDeco2>체온변화</TextDeco2>로 가장 큰 어려움을 겪어요</PastOverView>
+          <PastOverView>지난 주보다 <TextDecoBlue>체온변화</TextDecoBlue>로 가장 큰 어려움을 겪어요</PastOverView>
           </SlideBottom> 
       </Past>
     </PasttWrapper>
