@@ -13,7 +13,7 @@ const wrapperStyle = css`
   width: 498px;
   height: 213px;
   border-radius: 13px;
-  margin: 40px 0 0 56px;
+  margin: 40px 0 40px 56px;
   padding: 25px 25px 24px 26px;
 `
 
