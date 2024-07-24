@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Wrapper, Title, Icon } from '../../../styles/home/MedicineNote-styled';
+import { Wrapper, Title, Icon } from 'styles/home/MedicineNote-styled';
 
-import icon_medi from '../../../assets/images/icon_medi.png';
+import icon_medi from 'assets/images/icon_medi.png';
 import MedicineList from './MedicineList';
 
 function MedicineNote() {
