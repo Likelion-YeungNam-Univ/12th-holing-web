@@ -1,8 +1,8 @@
 import React from 'react'
 
 import img_check from 'assets/images/report_check.png';
-import DropDownCurrent from 'components/report/DropDownCurrent';
-import DropDownPast from 'components/report/DropDownPast';
+import DropDownCurrent from 'components/report/dropdown/DropDownCurrent';
+import DropDownPast from 'components/report/dropdown/DropDownPast';
 import { HigLight } from 'styles/report/GotoTestItem-styled';
 import { ReportBody, Title, CheckImg } from 'styles/report/ReportPage-styled';
 
