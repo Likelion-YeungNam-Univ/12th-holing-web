@@ -5,8 +5,10 @@ import {
   StyledInput,
   DialWrapper,
   Dial,
+  DialAmPm,
+  Colon,
   DialValue,
-  DialLabel,
+  Button,
   SaveBtn,
   CancelBtn,
   Divider,
@@ -22,14 +24,12 @@ const getSurroundingValues = (value, max, step = 1) => {
   return [prev, value, next];
 };
 
-// Modal Component
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   const [newMedicine, setNewMedicine] = useState('');
   const [ampm, setAmPm] = useState('오전');
   const [hour, setHour] = useState(12);
   const [minute, setMinute] = useState(0);
 
-  // Disable scroll on body when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -37,7 +37,7 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
       document.body.style.overflow = 'auto';
     }
     return () => {
-      document.body.style.overflow = 'auto'; // Cleanup on unmount
+      document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
 
@@ -50,7 +50,6 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
       const time = new Date();
       let adjustedHour = hour;
 
-      // Adjust hour based on AM/PM
       if (ampm === '오후' && hour !== 12) {
         adjustedHour += 12;
       } else if (ampm === '오전' && hour === 12) {
@@ -61,13 +60,11 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
       time.setMinutes(minute);
       onAddMedicine(newMedicine, time);
 
-      // Reset states after adding
       setNewMedicine('');
       setAmPm('오전');
       setHour(12);
       setMinute(0);
 
-      // Close the modal
       onClose();
     }
   };
@@ -81,16 +78,25 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   };
 
   const handleWheel = (unit, delta) => {
-    if (unit === 'ampm') {
-      setAmPm((prev) => (prev === '오전' ? '오후' : '오전'));
-    } else if (unit === 'hour') {
-      setHour((prev) => {
-        let newHour = (prev + delta + 24) % 24;
-        if (newHour === 0) newHour = 12;
-        return newHour;
-      });
-    } else if (unit === 'minute') {
-      setMinute((prev) => (prev + delta + 60) % 60);
+    switch (unit) {
+      case 'ampm':
+        setAmPm((prev) => (prev === '오전' ? '오후' : '오전'));
+        break;
+      case 'hour':
+        setHour((prev) => {
+          let newHour = (prev + delta + 12) % 12;
+          if (newHour === 0) newHour = 12;
+          if ((prev === 11 && delta > 0) || (prev === 12 && delta < 0)) {
+            setAmPm((prevAmPm) => (prevAmPm === '오전' ? '오후' : '오전'));
+          }
+          return newHour;
+        });
+        break;
+      case 'minute':
+        setMinute((prev) => (prev + delta * 5 + 60) % 60);
+        break;
+      default:
+        break;
     }
   };
 
@@ -107,58 +113,60 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
             />
             <Divider />
             <DialWrapper>
+              <DialAmPm>
+                {['오전', '오후'].map((value) => (
+                  <DialValue
+                    key={value}
+                    onWheel={(e) => {
+                      e.preventDefault();
+                      handleWheel('ampm', e.deltaY < 0 ? 1 : -1);
+                    }}
+                    style={{
+                      color: value === ampm ? 'black' : '#DDD',
+                    }}
+                  >
+                    {value}
+                  </DialValue>
+                ))}
+              </DialAmPm>
               <Dial>
-                <DialLabel>AM/PM</DialLabel>
-                {getSurroundingValues(ampm === '오전' ? 0 : 1, 2).map(
-                  (value, index) => (
-                    <DialValue
-                      key={index}
-                      onWheel={(e) => {
-                        e.preventDefault();
-                        handleWheel('ampm');
-                      }}
-                    >
-                      {value === 0 ? '오전' : '오후'}
-                    </DialValue>
-                  )
-                )}
-              </Dial>
-              <Dial>
-                <DialLabel>Hour</DialLabel>
-                {getSurroundingValues(hour, 24, 1).map((value, index) => (
+                {getSurroundingValues(hour, 12, 1).map((value, index) => (
                   <DialValue
                     key={index}
                     onWheel={(e) => {
                       e.preventDefault();
                       handleWheel('hour', e.deltaY < 0 ? 1 : -1);
                     }}
-                  >
-                    {formatTimeValue(value)}
-                  </DialValue>
-                ))}
-                <DialLabel>0-23</DialLabel>
-              </Dial>
-              :
-              <Dial>
-                <DialLabel>Minute</DialLabel>
-                {getSurroundingValues(minute, 60, 1).map((value, index) => (
-                  <DialValue
-                    key={index}
-                    onWheel={(e) => {
-                      e.preventDefault();
-                      handleWheel('minute', e.deltaY < 0 ? 15 : -15);
+                    style={{
+                      color: value === hour ? 'black' : '#DDD',
                     }}
                   >
                     {formatTimeValue(value)}
                   </DialValue>
                 ))}
-                <DialLabel>00-59</DialLabel>
+              </Dial>
+              <Colon>:</Colon>
+              <Dial>
+                {getSurroundingValues(minute, 60, 5).map((value, index) => (
+                  <DialValue
+                    key={index}
+                    onWheel={(e) => {
+                      e.preventDefault();
+                      handleWheel('minute', e.deltaY < 0 ? 1 : -1);
+                    }}
+                    style={{
+                      color: value === minute ? 'black' : '#DDD',
+                    }}
+                  >
+                    {formatTimeValue(value)}
+                  </DialValue>
+                ))}
               </Dial>
             </DialWrapper>
-            <div>
+            <Button>
               <SaveBtn onClick={handleAdd}>저장하기</SaveBtn>
               <CancelBtn onClick={handleClose}>취소하기</CancelBtn>
-            </div>
+            </Button>
           </ModalContent>
         </ModalOverlay>
       )}

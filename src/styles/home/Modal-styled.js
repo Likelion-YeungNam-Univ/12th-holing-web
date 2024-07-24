@@ -27,7 +27,7 @@ export const ModalContent = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
@@ -36,7 +36,6 @@ export const StyledInput = styled.input`
   text-align: left;
   border: none;
   width: 100%;
-  color: #dddddd;
 `;
 
 export const DialWrapper = styled.div`
@@ -51,16 +50,39 @@ export const Dial = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80px;
-  height: 100%;
-  border: 1px solid #ccc;
+  width: 25px;
+  height: 159px;
+
   border-radius: 8px;
   background-color: white;
   position: relative;
 `;
 
+export const DialAmPm = styled.div`
+  width: 100px;
+  height: 60px;
+
+  font-family: Pretendard;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 27.45px;
+  text-align: left;
+  margin-top: 20%;
+`;
+
+export const Colon = styled.div`
+  font-family: Pretendard;
+  font-size: 37.48px;
+  font-weight: 600;
+  line-height: 44.73px;
+  display: flex;
+  margin-top: 19%;
+  align-items: center;
+`;
+
 export const DialValue = styled.div`
   font-size: 32px;
+  line-height: 1;
   font-weight: bold;
   margin: 20px 0;
   text-align: center;
@@ -68,11 +90,8 @@ export const DialValue = styled.div`
   cursor: pointer; /* Indicates that the value is interactable */
 `;
 
-export const DialLabel = styled.div`
-  font-size: 14px;
-  color: #888;
-  margin: 4px 0;
-  text-align: center;
+export const Button = styled.div`
+  margin-top: 50px;
 `;
 
 export const SaveBtn = styled.div`
@@ -120,5 +139,5 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background-color: #b9bec9;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
