@@ -10,6 +10,9 @@ export const MediListContainer = styled.div`
   background: #ffffff;
   border: 1px solid #dddddd;
   text-align: center;
+  margin: auto;
+  margin-top: 22px;
+  box-sizing: border-box;
 `;
 
 export const MedicineName = styled.div`
@@ -30,8 +33,8 @@ export const MedicineName = styled.div`
 export const Checkbox = styled.input`
   margin-right: 20px;
   accent-color: #9180ff;
-  width: 29px;
-  height: 30px;
+  width: 19px;
+  height: 20px;
 
   cursor: pointer;
 `;
