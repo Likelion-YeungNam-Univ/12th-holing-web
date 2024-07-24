@@ -1,115 +1,97 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useState, useEffect } from 'react';
+import {
+  ModalOverlay,
+  ModalContent,
+  StyledInput,
+  DialWrapper,
+  Dial,
+  DialValue,
+  DialLabel,
+  SaveBtn,
+  CancelBtn,
+  Divider,
+} from 'styles/home/Modal-styled';
 
-// Styled Components
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* 높은 z-index 값 설정 */
-`;
+// Helper function to format time values
+const formatTimeValue = (value) => (value < 10 ? `0${value}` : value);
 
-const ModalContent = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 13px;
-  width: 380px;
-  height: 320px; /* 높이를 늘려서 시간 입력 필드를 추가할 공간 확보 */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 1001; /* ModalOverlay보다 높은 z-index 값 설정 */
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  text-align: left;
-
-  ::placeholder {
-    color: #dddddd;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: left;
-  }
-`;
-
-const StyledButton = styled.button`
-  margin-right: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-`;
-
-const DatePickerWrapper = styled.div`
-  margin-bottom: 20px; /* 시간 입력 필드와 다른 요소 사이의 간격 조정 */
-`;
-
-const DateBox = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-`;
+// Helper function to get previous and next values
+const getSurroundingValues = (value, max, step = 1) => {
+  const prev = (value - step + max) % max;
+  const next = (value + step) % max;
+  return [prev, value, next];
+};
 
 // Modal Component
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   const [newMedicine, setNewMedicine] = useState('');
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [ampm, setAmPm] = useState('오전');
+  const [hour, setHour] = useState(12);
+  const [minute, setMinute] = useState(0);
+
+  // Disable scroll on body when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto'; // Cleanup on unmount
+    };
+  }, [isOpen]);
 
   const handleChange = (e) => {
     setNewMedicine(e.target.value);
   };
 
   const handleAdd = () => {
-    if (newMedicine.trim() !== '' && selectedTime) {
-      onAddMedicine(newMedicine, selectedTime);
+    if (newMedicine.trim() !== '') {
+      const time = new Date();
+      let adjustedHour = hour;
+
+      // Adjust hour based on AM/PM
+      if (ampm === '오후' && hour !== 12) {
+        adjustedHour += 12;
+      } else if (ampm === '오전' && hour === 12) {
+        adjustedHour = 0;
+      }
+
+      time.setHours(adjustedHour);
+      time.setMinutes(minute);
+      onAddMedicine(newMedicine, time);
+
+      // Reset states after adding
       setNewMedicine('');
-      setSelectedTime(null); // 입력 필드 초기화
+      setAmPm('오전');
+      setHour(12);
+      setMinute(0);
+
+      // Close the modal
+      onClose();
     }
   };
 
   const handleClose = () => {
     onClose();
     setNewMedicine('');
-    setSelectedTime(null); // 입력 필드 초기화
+    setAmPm('오전');
+    setHour(12);
+    setMinute(0);
   };
 
-  const handleWheel = (event, unit) => {
-    event.preventDefault();
-    let newDate = selectedTime;
-
-    if (!newDate) return; // 날짜가 선택되지 않았으면 아무 작업도 하지 않음
-
-    if (unit === 'year') {
-      newDate = new Date(
-        newDate.setFullYear(newDate.getFullYear() + (event.deltaY < 0 ? 1 : -1))
-      );
-    } else if (unit === 'month') {
-      newDate = new Date(
-        newDate.setMonth(newDate.getMonth() + (event.deltaY < 0 ? 1 : -1))
-      );
-    } else if (unit === 'day') {
-      newDate = new Date(
-        newDate.setDate(newDate.getDate() + (event.deltaY < 0 ? 1 : -1))
-      );
+  const handleWheel = (unit, delta) => {
+    if (unit === 'ampm') {
+      setAmPm((prev) => (prev === '오전' ? '오후' : '오전'));
+    } else if (unit === 'hour') {
+      setHour((prev) => {
+        let newHour = (prev + delta + 24) % 24;
+        if (newHour === 0) newHour = 12;
+        return newHour;
+      });
+    } else if (unit === 'minute') {
+      setMinute((prev) => (prev + delta + 60) % 60);
     }
-
-    setSelectedTime(newDate);
   };
 
   return (
@@ -121,25 +103,61 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
               type="text"
               value={newMedicine}
               onChange={handleChange}
-              placeholder="영양제 추가하기"
+              placeholder="먹어야 하는 영양제 이름"
             />
-            <DatePickerWrapper>
-              <DateBox onWheel={(event) => handleWheel(event, 'year')}>
-                <DatePicker
-                  selected={selectedTime}
-                  onChange={(time) => setSelectedTime(time)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption="Time"
-                  dateFormat="h:mm aa"
-                  placeholderText="시간 설정"
-                />
-              </DateBox>
-            </DatePickerWrapper>
+            <Divider />
+            <DialWrapper>
+              <Dial>
+                <DialLabel>AM/PM</DialLabel>
+                {getSurroundingValues(ampm === '오전' ? 0 : 1, 2).map(
+                  (value, index) => (
+                    <DialValue
+                      key={index}
+                      onWheel={(e) => {
+                        e.preventDefault();
+                        handleWheel('ampm');
+                      }}
+                    >
+                      {value === 0 ? '오전' : '오후'}
+                    </DialValue>
+                  )
+                )}
+              </Dial>
+              <Dial>
+                <DialLabel>Hour</DialLabel>
+                {getSurroundingValues(hour, 24, 1).map((value, index) => (
+                  <DialValue
+                    key={index}
+                    onWheel={(e) => {
+                      e.preventDefault();
+                      handleWheel('hour', e.deltaY < 0 ? 1 : -1);
+                    }}
+                  >
+                    {formatTimeValue(value)}
+                  </DialValue>
+                ))}
+                <DialLabel>0-23</DialLabel>
+              </Dial>
+              :
+              <Dial>
+                <DialLabel>Minute</DialLabel>
+                {getSurroundingValues(minute, 60, 1).map((value, index) => (
+                  <DialValue
+                    key={index}
+                    onWheel={(e) => {
+                      e.preventDefault();
+                      handleWheel('minute', e.deltaY < 0 ? 15 : -15);
+                    }}
+                  >
+                    {formatTimeValue(value)}
+                  </DialValue>
+                ))}
+                <DialLabel>00-59</DialLabel>
+              </Dial>
+            </DialWrapper>
             <div>
-              <StyledButton onClick={handleAdd}>추가하기</StyledButton>
-              <StyledButton onClick={handleClose}>닫기</StyledButton>
+              <SaveBtn onClick={handleAdd}>저장하기</SaveBtn>
+              <CancelBtn onClick={handleClose}>취소하기</CancelBtn>
             </div>
           </ModalContent>
         </ModalOverlay>
