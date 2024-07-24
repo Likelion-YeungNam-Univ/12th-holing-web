@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Wrapper,
   Gender,
@@ -7,14 +7,54 @@ import {
   Desc,
   Img,
   ImgContainer,
-  Female,
-  Male,
+  Text as TextStyled,
   NextBtn,
 } from 'styles/userInfo/UserInfo-styled';
-import UserInfo_Fe1 from '../assets/images/UserInfo_Fe1.png';
-import UserInfo_Ma1 from '../assets/images/UserInfo_Ma1.png';
+import UserInfo_Fe1 from 'assets/images/UserInfo_Fe1.png';
+import UserInfo_Fe2 from 'assets/images/UserInfo_Fe2.png';
+import UserInfo_Ma1 from 'assets/images/UserInfo_Ma1.png';
+import UserInfo_Ma2 from 'assets/images/UserInfo_Ma2.png';
+import useImageToggle from '../hooks/userInfo/useImgToggle';
 
 function UserInfo() {
+  const [selectedGender, setSelectedGender] = useState(null);
+
+  const [
+    femaleImage,
+    femaleColor,
+    toggleFemaleImageAndColor,
+    resetFemaleImageAndColor,
+  ] = useImageToggle(UserInfo_Fe1, UserInfo_Fe2, '#b3b3b3', '#5643D1');
+
+  const [
+    maleImage,
+    maleColor,
+    toggleMaleImageAndColor,
+    resetMaleImageAndColor,
+  ] = useImageToggle(UserInfo_Ma1, UserInfo_Ma2, '#b3b3b3', '#5643D1');
+
+  const handleFemaleClick = () => {
+    if (selectedGender !== 'female') {
+      setSelectedGender('female');
+      toggleFemaleImageAndColor();
+      if (selectedGender === 'male') {
+        resetMaleImageAndColor();
+      }
+    }
+  };
+
+  const handleMaleClick = () => {
+    if (selectedGender !== 'male') {
+      setSelectedGender('male');
+      toggleMaleImageAndColor();
+      if (selectedGender === 'female') {
+        resetFemaleImageAndColor();
+      }
+    }
+  };
+
+  const isNextBtnEnabled = selectedGender !== null;
+
   return (
     <Wrapper>
       <Header>
@@ -24,16 +64,26 @@ function UserInfo() {
         </Desc>
       </Header>
       <Gender>
-        <ImgContainer>
-          <Img src={UserInfo_Fe1} alt="Female" />
-          <Female>여성</Female>
+        <ImgContainer onClick={handleFemaleClick}>
+          <Img
+            src={selectedGender === 'female' ? UserInfo_Fe2 : UserInfo_Fe1}
+            alt="Female"
+          />
+          <TextStyled align="right" active={selectedGender === 'female'}>
+            여성
+          </TextStyled>
         </ImgContainer>
-        <ImgContainer>
-          <Img src={UserInfo_Ma1} alt="Male" />
-          <Male>남성</Male>
+        <ImgContainer onClick={handleMaleClick}>
+          <Img
+            src={selectedGender === 'male' ? UserInfo_Ma2 : UserInfo_Ma1}
+            alt="Male"
+          />
+          <TextStyled align="left" active={selectedGender === 'male'}>
+            남성
+          </TextStyled>
         </ImgContainer>
       </Gender>
-      <NextBtn>다음</NextBtn>
+      <NextBtn enabled={isNextBtnEnabled}>다음</NextBtn>
     </Wrapper>
   );
 }

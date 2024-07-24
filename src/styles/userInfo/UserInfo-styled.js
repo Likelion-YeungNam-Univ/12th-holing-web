@@ -40,6 +40,7 @@ export const Gender = styled.div`
 export const ImgContainer = styled.div`
   position: relative;
   margin: 0 10px;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`
@@ -48,30 +49,17 @@ export const Img = styled.img`
   border-radius: 13px;
 `;
 
-export const Female = styled.div`
+export const Text = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #b3b3b3;
+  color: ${({ active }) => (active ? '#5643D1' : '#b3b3b3')};
   font-family: Pretendard;
   font-size: 32px;
   font-weight: 700;
-  text-align: right;
-  padding: 20px; /* 패딩 값 수정 */
-`;
-
-export const Male = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: #b3b3b3;
-  font-family: Pretendard;
-  font-size: 32px;
-  font-weight: 700;
-  text-align: left;
-  padding: 20px; /* 패딩 값 수정 */
+  text-align: ${({ align }) => align};
+  padding: 20px;
 `;
 
 export const NextBtn = styled.div`
@@ -81,13 +69,13 @@ export const NextBtn = styled.div`
   margin-top: 20px;
   padding: 10px 0;
   border-radius: 13px;
-  background-color: #dddddd;
-  color: #b3b3b3;
+  background-color: ${({ enabled }) => (enabled ? '#9180ff' : '#dddddd')};
+  color: ${({ enabled }) => (enabled ? '#ffffff' : '#b3b3b3')};
   font-family: Pretendard;
   font-size: 25px;
   font-weight: 600;
   text-align: center;
-  cursor: pointer;
+  cursor: ${({ enabled }) => (enabled ? 'pointer' : 'not-allowed')};
   display: flex;
   justify-content: center;
   align-items: center;
