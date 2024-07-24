@@ -6,7 +6,7 @@ import {
   SchedulePopUpSaveBtn,
   SchedulePopUpCancelBtn,
 } from 'styles/calendar/SchedulePopUp-styled';
-import SchedulePopUpContentHook from 'hooks/SchedulePopUpContentHook';
+import SchedulePopUpContentHook from 'hooks/calendar/SchedulePopUpContentHook';
 
 const SchedulePopUpContent = ({
   onClose,

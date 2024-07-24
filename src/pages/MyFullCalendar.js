@@ -14,7 +14,7 @@ import {
   CalendarWrapper,
   CalendarToggleButton,
 } from '../styles/calendar/Calendar-styled';
-import { MyFullCalendarHook } from '../hooks/MyFullCalendarHook';
+import { MyFullCalendarHook } from '../hooks/calendar/MyFullCalendarHook';
 
 const MyFullCalendar = () => {
   const {
