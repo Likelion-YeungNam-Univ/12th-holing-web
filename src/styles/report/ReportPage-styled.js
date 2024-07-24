@@ -84,3 +84,8 @@ export const TapBtn2 = styled.li`
   ${topBtn}
   color: #8A8A8A;
 `;
+
+
+export const CheckImg = styled.img`
+  margin-right: 4px;
+`;
