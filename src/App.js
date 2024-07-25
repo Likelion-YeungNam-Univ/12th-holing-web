@@ -13,6 +13,7 @@ import SymptomTest from 'pages/symptomTest';
 // import KakaoLogin from 'components/login/KakaoLogin';
 // import Kakao from 'components/login/KaKao';
 import Login from 'pages/Login';
+import ShareUrl from 'pages/ShareUrl';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/symptomTest" element={<SymptomTest />} />
             <Route path="/auth/signIn" element={<Login />} />
+            <Route path="/share-url" element={<ShareUrl />} />
             {/* <Route
               path="/auth/signIn"
               element={<KakaoLogin />} */}
