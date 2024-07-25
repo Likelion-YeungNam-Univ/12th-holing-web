@@ -19,7 +19,7 @@ function MySummaryRepo() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/report');
+    navigate('/symptomTest');
   };
 
   return (
