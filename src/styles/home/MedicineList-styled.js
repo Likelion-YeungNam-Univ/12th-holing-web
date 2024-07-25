@@ -55,7 +55,6 @@ export const AddButton = styled.button`
 
 export const DeleteButton = styled.button`
   font-family: Pretendard;
-  font-family: Pretendard;
   font-size: 15px;
   font-weight: 700;
   line-height: 17.9px;
