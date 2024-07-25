@@ -10,6 +10,7 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
+import KakaoLogin from 'components/login/KakaoLogin';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/symptomTest" element={<SymptomTest />} />
+            <Route path="/auth/signIn" element={<KakaoLogin />} />
           </Route>
         </Routes>
       </BrowserRouter>
