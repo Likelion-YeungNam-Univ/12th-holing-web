@@ -8,7 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
-import PartnerSummary from 'components/home/partnerSummary/PartnerSummary';
+// import PartnerSummary from 'components/home/partnerSummary/PartnerSummary';
+import PtnConnect from 'components/home/partnerSummary/PtnConnect';
 import { SwiperWrapper } from 'styles/home/Swiper-styled';
 
 function Home() {
@@ -25,7 +26,8 @@ function Home() {
             <MySummary />
           </SwiperSlide>
           <SwiperSlide>
-            <PartnerSummary />
+            <PtnConnect />
+            {/* <PartnerSummary /> */}
           </SwiperSlide>
         </Swiper>
       </SwiperWrapper>
