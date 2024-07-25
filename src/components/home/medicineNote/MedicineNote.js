@@ -17,8 +17,6 @@ function MedicineNote() {
       </Title>
 
       <MedicineList />
-
-      {/* <MedicineList /> */}
     </Wrapper>
   );
 }

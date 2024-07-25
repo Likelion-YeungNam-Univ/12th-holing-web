@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
+
 import Report from 'pages/report';
 import ReportDetail from 'pages/reportDetail';
 import GlobalStyles from 'styles/GlobalStyles';
