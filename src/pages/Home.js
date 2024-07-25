@@ -30,6 +30,7 @@ function Home() {
         </Swiper>
       </SwiperWrapper>
       <SymptomTest />
+
       <MedicineNote />
       <Mission />
     </Wrapper>

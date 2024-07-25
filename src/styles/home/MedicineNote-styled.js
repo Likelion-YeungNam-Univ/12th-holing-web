@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 496px;
-  height: 323px;
+  height: fit-content;
   margin: auto;
-  margin-top: 52px;
+  margin: 52px;
 `;
 
 export const Title = styled.div`
