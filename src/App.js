@@ -8,7 +8,7 @@ import Frame from 'components/comonents/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
-import Symptom from 'pages/symptom';
+import SymptomTest from 'pages/symptomTest';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path="/my" element={<MyPage />} />
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/symptom" element={<Symptom />} />
+            <Route path="/symptomTest" element={<SymptomTest />} />
           </Route>
         </Routes>
       </BrowserRouter>
