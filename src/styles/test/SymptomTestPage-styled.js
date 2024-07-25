@@ -14,7 +14,7 @@ export const TestBody = styled.div`
   justify-content: center;
   width: 100%;
   background-color: #F5F5F5;
-  height: 100vh;
+  height: fit-content;
   margin: auto;
 `
 export const WrapperLayout = styled.div`
