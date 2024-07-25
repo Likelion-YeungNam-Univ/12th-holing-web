@@ -98,3 +98,14 @@ export const ChoiceText = styled.p`
   font-family: Pretendard ;
   margin-top: 16px;
 `
+export const ChoiceTextColored = styled.p`
+  width: 52px;
+  height: 36px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 17.9px;
+  text-align: center;
+  color: #5643D1;
+  font-family: Pretendard ;
+  margin-top: 16px;
+`
