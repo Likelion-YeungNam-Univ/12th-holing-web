@@ -11,12 +11,12 @@ import {
   Img,
   StartDesc,
 } from 'styles/home/PtnConnect-styled';
-import home_plus from '../../../assets/images/home_plus.png';
+import home_plus from 'assets/images/home_plus.png';
 function PtnConnect() {
   return (
     <>
       <Container>
-        <Title>홀링 짝꿍 커넥트</Title>
+        z<Title>홀링 짝꿍 커넥트</Title>
         <Desc>
           홀링 짝꿍 커넥트를 통해
           <br />
