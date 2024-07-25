@@ -16,6 +16,15 @@ function Tests() {
     setChoicestate(choice);
   }
 
+  // 선택지 배열
+  // TODO : GET data로 교체예정
+  const choices = [
+    { id: 'choice1', text: '10분 이하', selectedImg: selectedBig, unselectedImg: unselectedBig },
+    { id: 'choice2', text: '10분 ~30분', selectedImg: selectedSmall, unselectedImg: unselectedSmall },
+    { id: 'choice3', text: '30분 ~1시간', selectedImg: selectedSmall, unselectedImg: unselectedSmall },
+    { id: 'choice4', text: '1시간 이상', selectedImg: selectedBig, unselectedImg: unselectedBig }
+  ];
+
   return (
     // 문제 wrapper_ 문제별
     <Test>
@@ -27,22 +36,15 @@ function Tests() {
       {/* 선택지 list */}
       {/* TODO: 선택에 따른 값 전달 구현 예정 */}
       <ChoiceList>
-        <Choice onClick={()=>{handleChoiceClick('choice1')}}>
-          <img src={ selectedChoice === 'choice1' ? selectedBig : unselectedBig }/>
-          {selectedChoice === 'choice1' ? <ChoiceTextColored>10분 이하</ChoiceTextColored> : <ChoiceText>10분 이하</ChoiceText>}
-        </Choice>
-        <Choice onClick={()=>{handleChoiceClick('choice2')}}>
-          <img src={ selectedChoice === 'choice2' ? selectedSmall : unselectedSmall }/>
-          {selectedChoice === 'choice2' ? <ChoiceTextColored>10분 ~30분</ChoiceTextColored> : <ChoiceText>10분 ~30분</ChoiceText>}
-        </Choice>
-        <Choice onClick={()=>{handleChoiceClick('choice3')}}>
-          <img src={ selectedChoice === 'choice3' ? selectedSmall : unselectedSmall }/>
-          {selectedChoice === 'choice3' ? <ChoiceTextColored>30분 ~1시간</ChoiceTextColored> : <ChoiceText>30분 ~1시간</ChoiceText>}
-        </Choice>
-        <Choice onClick={()=>{handleChoiceClick('choice4')}}>
-          <img src={ selectedChoice === 'choice4' ? selectedBig : unselectedBig }/>
-          {selectedChoice === 'choice4' ? <ChoiceTextColored>1시간 이상</ChoiceTextColored> : <ChoiceText>1시간 이상</ChoiceText>}
-        </Choice>
+
+        {/* choices 배열을 이용해 프로퍼티 값 사용 */}
+        {choices.map(choice => (
+          <Choice key={choice.id} onClick={() => handleChoiceClick(choice.id)}>
+            <img src={selectedChoice === choice.id ? choice.selectedImg : choice.unselectedImg} alt={choice.text}/>
+            {selectedChoice === choice.id ? <ChoiceTextColored>{choice.text}</ChoiceTextColored> : <ChoiceText>{choice.text}</ChoiceText>}
+          </Choice>
+        ))}
+        
       </ChoiceList>
   </Test>
   )
