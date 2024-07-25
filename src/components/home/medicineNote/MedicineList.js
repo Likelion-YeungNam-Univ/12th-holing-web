@@ -1,5 +1,4 @@
-// components/home/medicineNote/MedicineList.js
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MediListContainer,
   MedicineName,
@@ -16,9 +15,20 @@ import Modal from './Modal';
 import icon_plus from 'assets/images/icon_plus.png';
 import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
+import useMedicineList from 'hooks/home/useMedicineList';
 
+// 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  const [medi, setMedi] = useState([
+  // 커스텀 훅을 사용하여 상태와 함수들을 가져옴
+  const {
+    medi,
+    isModalOpen,
+    handleToggle,
+    openModal,
+    closeModal,
+    addNewMedicine,
+    deleteMedicine,
+  } = useMedicineList([
     {
       id: 1,
       text: '오메가3',
@@ -32,39 +42,10 @@ function MedicineList() {
       completed: false,
     },
   ]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleToggle = (id) => {
-    const updatedMedi = medi.map((item) =>
-      item.id === id ? { ...item, completed: !item.completed } : item
-    );
-    setMedi(updatedMedi);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const addNewMedicine = (newMedicine, time) => {
-    const nextId = medi.length + 1;
-    const newMedi = [
-      ...medi,
-      { id: nextId, text: newMedicine, time: time, completed: false },
-    ];
-    setMedi(newMedi);
-  };
-
-  const deleteMedicine = (id) => {
-    const updatedMedi = medi.filter((item) => item.id !== id);
-    setMedi(updatedMedi);
-  };
 
   return (
     <MediListContainer>
+      {/* 약 목록을 순회하여 각각의 항목을 렌더링 */}
       {medi.map((item) => (
         <MedicineName key={item.id}>
           <Checkbox
@@ -110,6 +91,7 @@ function MedicineList() {
         영양제 추가하기
       </AddButton>
 
+      {/* 모달 컴포넌트 */}
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
