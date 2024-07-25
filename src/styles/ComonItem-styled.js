@@ -59,22 +59,59 @@ export const MenuIcon = styled.img`
 `;
 
 
-// ----- TopBar 스타일
-export const TopBarWrapper = styled.h2`
-  margin: auto;
+// ----- TopBar wrapper 공통스타일
+const TopBarStyle = css`
   height: 98px;
   width: 600px;
   background-color: #F5F5F5;
   position: relative;
-  z-index: 2; // box-shaow 가려짐 때문에 topbar가 상단에 위치하도록 함
+  z-index: 2; // box-shadow 가려짐 때문에 topbar가 상단에 위치하도록 함
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
 
   /* 상단에 고정 */
   position: fixed;
   top: 0;
+`
+
+
+// TopBar 스타일
+export const TopBarWrapper = styled.h2`
+  margin: auto;
+  ${TopBarStyle};
   left: 0;
   right: 0;
 `
+
+// TestTopBar 스타일
+export const TestTopBarWrapper = styled.div`
+  ${flexCenter};
+  ${TopBarStyle};
+`;
+
+export const TestTopBarContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+
+export const BackIconWrapper = styled.div`
+  position: absolute;
+  left: 16px;
+  display: flex;
+  align-items: center;
+`;
+
+export const TestTopBarText = styled.p`
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 26.25px;
+  text-align: center;
+  color: #5B5B5B;
+  margin: 0;
+`;
+
+
 
 export const LogoImg = styled.img`
   width: 179px;

@@ -87,25 +87,24 @@ export const Choice = styled.li`
   height: 104px;
   cursor: pointer;
 `
+
+// ----- choiceText 공통스타일
+const choiceTextStyled = css`
+    width: 52px;
+    height: 36px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.9px;
+    text-align: center;
+    font-family: Pretendard ;
+    margin-top: 16px;
+`
+
 export const ChoiceText = styled.p`
-  width: 52px;
-  height: 36px;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 17.9px;
-  text-align: center;
+  ${choiceTextStyled};
   color: #5B5B5B;
-  font-family: Pretendard ;
-  margin-top: 16px;
 `
 export const ChoiceTextColored = styled.p`
-  width: 52px;
-  height: 36px;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 17.9px;
-  text-align: center;
+  ${choiceTextStyled};
   color: #5643D1;
-  font-family: Pretendard ;
-  margin-top: 16px;
 `
