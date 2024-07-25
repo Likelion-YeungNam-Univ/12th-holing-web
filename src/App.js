@@ -28,7 +28,8 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
           </Route>
-            {/* 테스트 화면프레임 */}
+
+          {/* 테스트 화면프레임 */}
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
           </Route>

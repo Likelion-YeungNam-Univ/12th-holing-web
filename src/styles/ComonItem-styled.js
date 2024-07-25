@@ -100,6 +100,7 @@ export const BackIconWrapper = styled.div`
   left: 16px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const TestTopBarText = styled.p`
@@ -111,10 +112,25 @@ export const TestTopBarText = styled.p`
   margin: 0;
 `;
 
-
-
 export const LogoImg = styled.img`
   width: 179px;
   height: 43px;
   margin: 37px 0 0 52px;
+`
+
+export const PostTestBtn = styled.button`
+width: 496px;
+height: 62px;
+padding: 10px;
+border: solid #9180FF 1px;
+border-radius: 13px;
+background-color: #9180FF;
+
+font-size: 25px;
+font-weight: 600;
+line-height: 29.83px;
+text-align: left;
+color: #ffffff;
+text-align: center;
+cursor: pointer;
 `
