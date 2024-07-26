@@ -7,13 +7,20 @@ import { IoIosArrowForward } from "react-icons/io";
 function PastSlide() {
   const navigate = useNavigate();
 
+  {/* TODO : navigate uri 변경예정 */}
+  const goToReportDetail = () => {
+    navigate('/reportDetail');
+    console.log("click!!");
+  }
+
   return (
     <PasttWrapper>
       <Past>
           <SlideTop>
           <PastWeek>몇주차</PastWeek> 
           {/* TODO : navigate uri 변경예정 */}
-          <PastBtn>더보기<IoIosArrowForward onClick={() => navigate('/reportDetail')} size={36} style={{color:'#5B5B5B'}}/></PastBtn> 
+          {/* TODO : 배우자일시, 더보기 컴포넌트 제거 */}
+          <PastBtn onClick={goToReportDetail}>더보기<IoIosArrowForward size={36} style={{color:'#5B5B5B'}}/></PastBtn> 
           </SlideTop> 
           <SlideBottom>
           <PastRank>Top1</PastRank> 
