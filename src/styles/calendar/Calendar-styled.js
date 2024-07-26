@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const CalendarWrapper = styled.div`
   width: 494px;
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
 
   // dayGridMonth일 때
   ${(props) =>
@@ -17,7 +15,7 @@ export const CalendarWrapper = styled.div`
     }
     .fc .fc-scroller.fc-scroller-liquid-absolute {
       overflow-x: hidden;
-      //overflow-y: hidden !important;
+      overflow-y: hidden !important;
     }
     .fc-daygrid-body-unbalanced {
       height: 414px;
@@ -39,7 +37,7 @@ export const CalendarWrapper = styled.div`
     props.view === 'dayGridWeek' &&
     `
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
-      height: 52px;
+      height: 60px; //week view에서 점 안보이는 거 해결
       margin-top: 0px;
       margin-bottom: 45px;
     }
