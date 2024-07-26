@@ -33,9 +33,11 @@ const DatePopUpContentHook = () => {
 
   // 날짜 선택 완료 시 처리 함수
   const handleComplete = (onClose, getSelectedDate) => {
+    // 팝업창에서 선택된 year, month, day
     const year = getYear(date);
-    const month = getMonth(date) + 1;
-    const day = getDate(date);
+    const month = String(getMonth(date) + 1).padStart(2, '0');
+    const day = String(getDate(date)).padStart(2, '0');
+    // UI 렌더링 포맷 YYYY년 MM월 DD일
     const formattedDate = `${year}년 ${month}월 ${day}일`;
 
     onClose();

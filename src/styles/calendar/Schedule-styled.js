@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ScheduleBox = styled.div`
   width: 494px;
-  height: 435px;
+  height: fit-content;
   margin: 20px auto;
   padding: 10px;
   border: 1px solid #ddd;
@@ -21,37 +21,70 @@ export const ScheduleDate = styled.div`
   margin-top: 30px;
 `;
 
-export const Highlight = styled.span`
+export const ScheduleComment = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ScheduleCheckImg = styled.img`
+  margin-right: 6px;
+`;
+
+export const Highlight = styled.div`
   color: #9180ff;
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
   text-decoration-line: underline;
+  text-underline-offset: 4px;
 `;
 
-export const CheckComment = styled.span`
+export const CheckComment = styled.div`
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
 `;
 
-export const ScheduleList = styled.ul`
-  padding: 0;
-  margin: 10px 0 0 0;
+export const ScheduleImg = styled.img`
+  margin-top: 24px;
 `;
 
-export const ScheduleItem = styled.li`
-  margin: 5px 0;
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-  font-size: 30px;
-  font-weight: 700;
+export const ScheduleItem = styled.div`
+  margin-top: 24px;
+  border-bottom: 1px solid #b3b3b3;
+`;
+
+export const ScheduleRow = styled.div`
+  width: 427px;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+`;
+
+export const BulletPoint = styled.img`
+  margin-right: 12px;
 `;
 
 export const ScheduleTitle = styled.div`
   font-size: 30px;
   font-weight: 700;
-  margin-top: 24px;
+`;
+
+export const DeleteBtn = styled.div`
+  color: #5b5b5b;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  right: 26px;
+`;
+
+export const DeleteBtnImg = styled.img`
+  position: absolute;
+  right: 0;
 `;
 
 export const ScheduleContent = styled.div`
@@ -59,6 +92,7 @@ export const ScheduleContent = styled.div`
   font-size: 20px;
   font-weight: 500;
   margin-top: 12px;
+  margin-bottom: 11px;
 `;
 
 export const AddScheduleButton = styled.button`
@@ -71,4 +105,5 @@ export const AddScheduleButton = styled.button`
   font-weight: 700;
   padding: 11px 21px;
   margin-top: 24px;
+  margin-bottom: 23px;
 `;

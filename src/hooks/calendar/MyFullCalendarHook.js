@@ -7,8 +7,6 @@ export const MyFullCalendarHook = () => {
 
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
-    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
-    today.toISOString().split('T')[0];
     const formattedDate = moment(today).format('YYYY년 M월 D일');
     return formattedDate;
   });
@@ -22,7 +20,9 @@ export const MyFullCalendarHook = () => {
   useEffect(() => {
     const calendar = calendarRef.current.getApi();
 
+    //캘린더 날짜 클릭 이벤트 핸들러
     const handleDateClick = (info) => {
+      //selectedDate는 YYYY년 M월 D일 포맷으로 설정(UI 렌더링)
       const clickedDate = moment(info.dateStr).format('YYYY년 M월 D일');
       setSelectedDate(clickedDate);
     };

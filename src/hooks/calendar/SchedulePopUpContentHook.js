@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-const SchedulePopUpContentHook = (
-  getScheduleTitle,
-  getScheduleContent,
-  onClose
-) => {
+const SchedulePopUpContentHook = (onClose) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -18,13 +14,7 @@ const SchedulePopUpContentHook = (
     setContent(e.target.value);
   };
 
-  // 저장 버튼 클릭 시 호출되는 핸들러
-  const handleSave = () => {
-    getScheduleTitle(title);
-    getScheduleContent(content);
-    onClose();
-  };
-  return { title, content, handleContentChange, handleTitleChange, handleSave };
+  return { title, content, handleContentChange, handleTitleChange };
 };
 
 export default SchedulePopUpContentHook;
