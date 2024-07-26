@@ -134,3 +134,20 @@ color: #ffffff;
 text-align: center;
 cursor: pointer;
 `
+
+// -----  intro 페이지
+//하단 다음 버튼 스타일
+export const NextBtnWrapper = styled.div`
+  ${flexCenter}
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-bottom: 42px;
+  z-index: 2;
+
+  /* 하단에 고정 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;

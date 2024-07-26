@@ -12,6 +12,9 @@ import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
 import TestFrame from 'components/test/TestFrame';
 
+import IntroFrame from 'components/comonents/IntroFrame';
+import Intro from 'pages/intro';
+
 function App() {
   return (
     <React.Fragment>
@@ -32,6 +35,11 @@ function App() {
           {/* 테스트 화면프레임 */}
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
+          </Route>
+          
+          {/* 로고 가운데 화면프레임 */}
+          <Route path="/" element={<IntroFrame />}>
+            <Route path="/intro" element={<Intro/>} />
           </Route>
         </Routes>
       </BrowserRouter>

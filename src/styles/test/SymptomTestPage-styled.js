@@ -48,7 +48,7 @@ export const Test = styled.div`
   margin: auto;
   border-bottom: 1px solid #B3B3B3;
   margin-bottom: 48px;
-  padding-bottom: 20px; /* 추가된 부분 */
+  padding-bottom: 20px;
 `
 export const TestNum = styled.span`
   color: #DDDDDD;
