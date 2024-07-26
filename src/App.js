@@ -5,14 +5,14 @@ import Report from 'pages/report';
 import ReportDetail from 'pages/reportDetail';
 import GlobalStyles from 'styles/GlobalStyles';
 import Home from 'pages/Home';
-import Frame from 'components/comonents/Frame';
+import Frame from 'components/comonents/frame/Frame';
 import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
-import TestFrame from 'components/test/TestFrame';
+import TestFrame from 'components/comonents/frame/TestFrame';
 
-import IntroFrame from 'components/comonents/IntroFrame';
+import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 
 function App() {
@@ -36,10 +36,10 @@ function App() {
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
           </Route>
-          
+
           {/* 로고 가운데 화면프레임 */}
           <Route path="/" element={<IntroFrame />}>
-            <Route path="/intro" element={<Intro/>} />
+            <Route path="/intro" element={<Intro />} />
           </Route>
         </Routes>
       </BrowserRouter>
