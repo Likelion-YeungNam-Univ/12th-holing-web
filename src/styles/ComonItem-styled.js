@@ -116,8 +116,14 @@ export const LogoImg = styled.img`
   width: 179px;
   height: 43px;
   margin: 37px 0 0 52px;
+  cursor: pointer;
 `
-
+export const CenterLogoImg = styled.img`
+  width: 153px;
+  height: 36px;
+  margin-top: 8px;
+  cursor: pointer;
+`
 export const PostTestBtn = styled.button`
 width: 496px;
 height: 62px;
