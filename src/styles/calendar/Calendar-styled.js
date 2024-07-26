@@ -11,7 +11,6 @@ export const CalendarWrapper = styled.div`
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
       height: 414px;
       margin-top: 0px;
-      margin-bottom: 45px;
     }
     .fc .fc-scroller.fc-scroller-liquid-absolute {
       overflow-x: hidden;
@@ -39,7 +38,7 @@ export const CalendarWrapper = styled.div`
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
       height: 60px; //week view에서 점 안보이는 거 해결
       margin-top: 0px;
-      margin-bottom: 45px;
+      margin-bottom: 20px;
     }
     .fc .fc-scroller.fc-scroller-liquid-absolute {
       overflow-x: hidden;
@@ -52,14 +51,14 @@ export const CalendarWrapper = styled.div`
       height: 52px;
     }
     .fc-dayGridWeek-view {
-      height: 138px;
+      height: 122px;
     }
-    .fc-scrollgrid-section-body {
-      height: 87px;
+    .fc-scrollgrid.fc-scrollgrid-liquid {
+      //border: none;
+      height: 122px;
     }
   `}
 
-  
   //today
   .fc .fc-daygrid-day.fc-day-today {
     background-color: white;
@@ -80,7 +79,7 @@ export const CalendarWrapper = styled.div`
   }
   .fc .fc-toolbar-title {
     font-weight: 700;
-    width: 180px;
+    width: fit-content;
     margin: 0;
 
     text-align: center;
@@ -172,4 +171,5 @@ export const CalendarWrapper = styled.div`
 
 export const CalendarToggleButton = styled.img`
   margin-left: 281px;
+  cursor: pointer;
 `;

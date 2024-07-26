@@ -125,9 +125,9 @@ const MyFullCalendar = () => {
           titleFormat={{ year: 'numeric', month: 'short' }}
           height={
             currentView === 'dayGridWeek'
-              ? 263
+              ? 228
               : currentView === 'dayGridMonth'
-                ? 600
+                ? 570
                 : 'auto'
           }
         />
