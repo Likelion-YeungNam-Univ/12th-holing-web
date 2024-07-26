@@ -20,8 +20,8 @@ const customModalStyles = {
 const SchedulePopUp = ({
   isOpen,
   onClose,
-  getScheduleTitle,
-  getScheduleContent,
+  selectedDate,
+  onAddSchedule,
 }) => {
   // 모달이 열려있지 않으면 null 반환
   if (!isOpen) return null;
@@ -35,8 +35,8 @@ const SchedulePopUp = ({
     >
       <SchedulePopUpContent
         onClose={onClose}
-        getScheduleTitle={getScheduleTitle}
-        getScheduleContent={getScheduleContent}
+        selectedDate={selectedDate}
+        onAddSchedule={onAddSchedule}
       />
     </Modal>
   );

@@ -13,8 +13,8 @@ import img_calendarPopUpBtn from 'assets/images/calendar_popup_btn.png';
 import {
   CalendarWrapper,
   CalendarToggleButton,
-} from '../styles/calendar/Calendar-styled';
-import { MyFullCalendarHook } from '../hooks/calendar/MyFullCalendarHook';
+} from 'styles/calendar/Calendar-styled';
+import { MyFullCalendarHook } from 'hooks/calendar/MyFullCalendarHook';
 
 const MyFullCalendar = () => {
   const {
@@ -83,7 +83,7 @@ const MyFullCalendar = () => {
         alt="Calendar Toggle Button"
         onClick={toggleView}
       />
-      <MySchedule selectedDate={selectedDate} />
+      <MySchedule selectedDate={selectedDate}/>
       <Mission />
       <DatePopUp
         isOpen={isModalOpen}
