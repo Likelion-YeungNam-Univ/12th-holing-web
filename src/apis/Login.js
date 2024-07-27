@@ -1,14 +1,14 @@
-import React from 'react';
 export const getToken = async () => {
-  const search = new URLSearchParams(window.location.search);
+  const search = new URLSearchParams(window.location.href);
   const code = search.get('code');
   if (!code) {
+    console.log('No authorization code found in URL');
     return {};
   }
   const param = new URLSearchParams({
     grant_type: 'authorization_code',
     client_id: 'd6f6575143c8fbcb6742cad1756bc92f',
-    redirect_url: 'http://43.201.5.161:8080/auth/token',
+    redirect_uri: 'http://43.201.5.161:8080/auth/token',
     code,
   });
   const response = await fetch('https://kauth.kakao.com/oauth/token', {
@@ -20,6 +20,6 @@ export const getToken = async () => {
   });
 
   const result = await response.json();
-  console.log('reult: ', result);
+  console.log('result: ', result);
   return result;
 };

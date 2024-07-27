@@ -14,6 +14,7 @@ import SymptomTest from 'pages/symptomTest';
 // import Kakao from 'components/login/KaKao';
 import Login from 'pages/Login';
 import ShareUrl from 'pages/ShareUrl';
+import Callback from 'components/login/Callback';
 
 function App() {
   return (
@@ -31,17 +32,11 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/symptomTest" element={<SymptomTest />} />
-            <Route path="/auth/signIn" element={<Login />} />
+            <Route path="/intro" element={<Login />} />
+            {/*서비스 소개 후 로그인 버튼 있는 페이지*/}
+            <Route path="/auth/signIn" element={<Callback />} />
             <Route path="/share-url" element={<ShareUrl />} />
-            {/* <Route
-              path="/auth/signIn"
-              element={<KakaoLogin />} */}
-            {/* // Component={Kakao}/> */}
-            {/* <Route
-              path="/auth/signIn/kakao"
-              
-              Component={Kakao}
-            /> */}
+            {/*짝꿍과 공유하기 페이지*/}
           </Route>
         </Routes>
       </BrowserRouter>
