@@ -38,7 +38,7 @@ const Callback = () => {
     params.append('client_id', REST_API_KEY);
 
     try {
-      const response = await axios.post(tokenEndpoint, params, {
+      const response = await axios.get(tokenEndpoint, params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
         },
