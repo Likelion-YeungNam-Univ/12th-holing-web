@@ -30,7 +30,7 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/symptomTest" element={<SymptomTest />} />
-            <Route path="/intro" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             {/*서비스 소개 후 로그인 버튼 있는 페이지*/}
             <Route path="/auth/signIn" element={<Callback />} />
             <Route path="/share-url" element={<ShareUrl />} />
