@@ -48,7 +48,7 @@ export const Test = styled.div`
   margin: auto;
   border-bottom: 1px solid #B3B3B3;
   margin-bottom: 48px;
-  padding-bottom: 20px; /* 추가된 부분 */
+  padding-bottom: 20px;
 `
 export const TestNum = styled.span`
   color: #DDDDDD;
@@ -87,25 +87,24 @@ export const Choice = styled.li`
   height: 104px;
   cursor: pointer;
 `
+
+// ----- choiceText 공통스타일
+const choiceTextStyled = css`
+    width: 52px;
+    height: 36px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.9px;
+    text-align: center;
+    font-family: Pretendard ;
+    margin-top: 16px;
+`
+
 export const ChoiceText = styled.p`
-  width: 52px;
-  height: 36px;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 17.9px;
-  text-align: center;
+  ${choiceTextStyled};
   color: #5B5B5B;
-  font-family: Pretendard ;
-  margin-top: 16px;
 `
 export const ChoiceTextColored = styled.p`
-  width: 52px;
-  height: 36px;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 17.9px;
-  text-align: center;
+  ${choiceTextStyled};
   color: #5643D1;
-  font-family: Pretendard ;
-  margin-top: 16px;
 `

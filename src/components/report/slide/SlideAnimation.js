@@ -21,15 +21,19 @@ export default function SlideAnimation() {
         <SwiperSlide>
           <CurrentSlide />
         </SwiperSlide>
+
         <SwiperSlide>
           <PastSlide />
         </SwiperSlide>
+
         <SwiperSlide>
           <PastSlide />
         </SwiperSlide>
+
         <SwiperSlide>
           <PastSlide />
         </SwiperSlide>
+        
       </Swiper>
     </SwiperWrapper>
   );
