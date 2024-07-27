@@ -100,11 +100,17 @@ export const CalendarWrapper = styled.div`
     border: none;
     padding: 0 13px 0 0;
   }
+  .fc .fc-prev-button:active {
+    background-color: white;
+  }
   .fc .fc-next-button {
     background-color: white;
     border: none;
     padding: 0 0 0 13px;
     margin-left: 0;
+  }
+  .fc .fc-next-button:active {
+    background-color: white;
   }
   //toolbar
 
