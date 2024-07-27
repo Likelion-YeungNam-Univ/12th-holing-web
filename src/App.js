@@ -10,8 +10,6 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
-// import KakaoLogin from 'components/login/KakaoLogin';
-// import Kakao from 'components/login/KaKao';
 import Login from 'pages/Login';
 import ShareUrl from 'pages/ShareUrl';
 import Callback from 'components/login/Callback';
