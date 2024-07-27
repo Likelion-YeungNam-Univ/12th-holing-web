@@ -7,13 +7,18 @@ import { IoIosArrowForward } from "react-icons/io";
 function CurrentSlide() {
   const navigate = useNavigate();
 
+  {/* TODO : navigate uri 변경예정 */}
+  const goToReportDetail = () => {
+    navigate('/reportDetail');
+    console.log("click!!");
+  }
+
   return (
     <CurrenttWrapper>
         <Current>
             <SlideTop>
               <CurrentWeek>몇주차</CurrentWeek> 
-              {/* TODO : navigate uri 변경예정 */}
-              <CurrentBtn>더보기<IoIosArrowForward onClick={() => navigate('/reportDetail')} size={36} style={{color:'white'}}/></CurrentBtn> 
+              <CurrentBtn onClick={goToReportDetail}>더보기<IoIosArrowForward size={36} style={{color:'white'}}/></CurrentBtn> 
             </SlideTop>
             <SlideBottom>
               <CurrentRank>Top1</CurrentRank> 
