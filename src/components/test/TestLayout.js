@@ -15,8 +15,6 @@ function TestLayout() {
         {/* 문제 */}
         {/* TODO : props 연결예정 */}
         <Tests/>
-        <Tests/>
-        <Tests/>
 
         </TestListWrapper>
       </TestWrapper>
