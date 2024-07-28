@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+const client_id = process.env.REACT_APP_REST_API_KEY;
+const redirect_uri = process.env.REACT_APP_REDIRECT_URI;
 const Callback = () => {
   const location = useLocation(); // 현재 위치 객체를 가져옵니다.
 
@@ -28,14 +30,12 @@ const Callback = () => {
 
   const fetchAccessToken = async (code) => {
     const tokenEndpoint = 'https://kauth.kakao.com/oauth/authorization'; // 카카오의 토큰 엔드포인트 URL입니다.
-    const REST_API_KEY = 'd6f6575143c8fbcb6742cad1756bc92f';
-    const REDIRECT_URI = 'http://43.201.5.161:8080/auth/token';
 
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('code', code);
-    params.append('redirect_uri', REDIRECT_URI);
-    params.append('client_id', REST_API_KEY);
+    params.append('redirect_uri', redirect_uri);
+    params.append('client_id', client_id);
 
     try {
       const response = await axios.get(tokenEndpoint, params, {

@@ -1,10 +1,8 @@
 import React from 'react';
 import login_kakao from 'assets/images/login_kakao.png';
 
-// 클라이언트 ID, 리다이렉트 URI, 인가 엔드포인트 설정
-const REST_API_KEY = 'd6f6575143c8fbcb6742cad1756bc92f';
-const REDIRECT_URI = 'http://43.201.5.161:8080/auth/token'; // 리다이렉트 URI
-// const authorizationEndpoint = 'https://authorization-server.com/auth/authorize';
+const client_id = process.env.REACT_APP_REST_API_KEY;
+const redirect_uri = process.env.REACT_APP_REDIRECT_URI;
 
 const LoginButton = () => {
   const handleLogin = () => {
@@ -13,7 +11,7 @@ const LoginButton = () => {
     localStorage.setItem('oauth_state', state);
 
     // 인가 요청 URL 생성
-    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`;
     // 인가 URL로 리다이렉트
     window.location.href = authUrl;
   };
