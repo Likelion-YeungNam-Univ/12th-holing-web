@@ -65,13 +65,13 @@ const createCreditItems = () => [
       img_creditItem1,
       '괄사&마사지오일',
       '[메디테라피,벨레다] 속살 괄사&아니카 마사지 오일(100ml)세트',
-      '5500 크레딧'
+      '5500'
     ),
     createCreditItem(
       img_creditItem2,
       '콤부차',
       '[랠리] 콤부차(10p) 4종 택 1',
-      '3500 크레딧'
+      '3500'
     ),
   ],
   [
@@ -79,13 +79,13 @@ const createCreditItems = () => [
       img_creditItem3,
       '요가링',
       '[센시안] 요가링(1p)',
-      '3500 크레딧'
+      '3500'
     ),
     createCreditItem(
       img_creditItem4,
       '마시지 도구',
       '[마이롤러] 마이 마사지테라피볼 피넛형',
-      '6500 크레딧'
+      '6500'
     ),
   ],
   [
@@ -93,13 +93,13 @@ const createCreditItems = () => [
       img_creditItem5,
       '마사지 도구',
       '[마이웨잇] 지압버섯',
-      '6500 크레딧'
+      '6500'
     ),
     createCreditItem(
       img_creditItem6,
       '홈트밴드',
       '[마이웨잇] 마이 홈트밴드 세트',
-      '18500 크레딧'
+      '18500'
     ),
   ],
   [
@@ -107,13 +107,13 @@ const createCreditItems = () => [
       img_creditItem7,
       '마사지 오일',
       '[메디테라피] 인더 포레스트 히노키 바디오일(100ml)',
-      '12500 크레딧'
+      '12500'
     ),
     createCreditItem(
       img_creditItem8,
       '수면안대',
       '[바른생각] 눈편한생각(5p)',
-      '3500 크레딧'
+      '3500'
     ),
   ],
 ];
@@ -233,7 +233,7 @@ function MyPage() {
               </CreditItem>
               <CreditItemTitle>{item.title}</CreditItemTitle>
               <CreditItemDescription>{item.description}</CreditItemDescription>
-              <CreditItemPrice>{item.price}</CreditItemPrice>
+              <CreditItemPrice>{item.price} 크레딧</CreditItemPrice>
               <CreditItemExchangeBtn onClick={() => openModal(item)}>
                 교환하기
               </CreditItemExchangeBtn>
@@ -246,6 +246,7 @@ function MyPage() {
           isOpen={isModalOpen}
           onClose={closeModal}
           selectedItem={selectedItem}
+          point={point}
         />
       )}
     </>
