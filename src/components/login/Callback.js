@@ -29,7 +29,7 @@ const Callback = () => {
   }, [location]);
 
   const fetchAccessToken = async (code) => {
-    const tokenEndpoint = 'https://kauth.kakao.com/oauth/authorization'; // 카카오의 토큰 엔드포인트 URL입니다.
+    const tokenEndpoint = `auth/signIn`; // 카카오의 토큰 엔드포인트 URL입니다.
 
     const params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
@@ -40,14 +40,15 @@ const Callback = () => {
     try {
       const response = await axios.get(tokenEndpoint, params, {
         headers: {
+          Accept: '*/*',
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
         },
       });
 
       const data = response.data;
-      if (data.access_token) {
-        localStorage.setItem('access_token', data.access_token);
-        console.log('Access Token:', data.access_token);
+      if (data.accessToken) {
+        localStorage.setItem('accessToken', data.accessToken);
+        console.log('Access Token:', data.accessToken);
       } else {
         console.error('액세스 토큰 요청 오류', data);
       }

@@ -1,6 +1,5 @@
 import React from 'react';
 import login_kakao from 'assets/images/login_kakao.png';
-
 const client_id = process.env.REACT_APP_REST_API_KEY;
 const redirect_uri = process.env.REACT_APP_REDIRECT_URI;
 
