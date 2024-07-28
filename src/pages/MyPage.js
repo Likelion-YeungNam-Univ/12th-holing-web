@@ -5,11 +5,13 @@ import {
   ProfileWrapper,
   UserName,
   PartnerName,
-  CreditWrapper,
+  CreditWrapper1,
+  CreditWrapper2,
   HoldCredit,
   NumOfCredit,
   Credit,
-  CreditBox,
+  CreditBoxRow,
+  CreditBoxCol,
   CreditItemBox,
   CreditItemBoxRow,
   CreditItemTitle,
@@ -22,6 +24,10 @@ import {
   ProfileImg,
   NameWrapper,
   CreditImg,
+  CreditToggleDownBtn,
+  CreditExpandWrapper,
+  CreditDescriptionList,
+  CreditDescription,
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -38,8 +44,12 @@ import img_ad4 from 'assets/images/advertise_img4.jpg';
 import img_accountInfoBtn from 'assets/images/account_info_btn.png';
 import img_profileFemale from 'assets/images/profile_img_female.png';
 import img_profileMale from 'assets/images/profile_img_male.png';
-import img_credit from 'assets/images/credit_img.png';
+import img_credit from 'assets/images/credit_img.svg';
+import img_creditToggleDownBtn from 'assets/images/credit_toggle_down_btn.svg';
+import img_creditToggleUpBtn from 'assets/images/credit_toggle_up_btn.svg';
 import PurchasePopUp from 'components/my/PurchasePopUp';
+import { useEffect, useState } from 'react';
+import { getUserInfo } from 'apis/my/userInfoGet';
 
 const createCreditItem = (img, title, description, price) => ({
   img,
@@ -125,32 +135,94 @@ function MyPage() {
 
   const { isModalOpen, selectedItem, openModal, closeModal } = MyPageHook();
 
+  const [nickname, setNickname] = useState('');
+  const [gender, setGender] = useState('');
+  const [point, setPoint] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   //계정 정보 클릭 핸들러
   const handleAccountInfoClick = () => {
     navigate('/account-info');
   };
 
+  useEffect(() => {
+    getUserInfo()
+      .then((response) => {
+        const data = response.data;
+        setNickname(data.nickname);
+        setGender(data.gender);
+        setPoint(data.point);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  }, []);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <>
       <ProfileWrapper>
-        <ProfileImg src={img_profileMale}></ProfileImg>
+        <ProfileImg
+          src={gender === 'MALE' ? img_profileMale : img_profileFemale}
+        ></ProfileImg>
         <NameWrapper>
-          <UserName>홍길동님</UserName>
-          <PartnerName>길동홍님의 배우자</PartnerName>
+          <UserName>{nickname}님</UserName>
+          <PartnerName>길동홍님의 짝꿍</PartnerName>
         </NameWrapper>
         <AccountInfoBtn
           src={img_accountInfoBtn}
           onClick={handleAccountInfoClick}
         ></AccountInfoBtn>
       </ProfileWrapper>
-      <CreditWrapper>
-        <HoldCredit>현재 보유 크레딧</HoldCredit>
-        <CreditBox>
-          <CreditImg src={img_credit}></CreditImg>
-          <NumOfCredit>3500</NumOfCredit>
-          <Credit>크레딧</Credit>
-        </CreditBox>
-      </CreditWrapper>
+      {isExpanded ? (
+        <CreditExpandWrapper>
+          <CreditWrapper2>
+            <CreditBoxCol>
+              <HoldCredit>현재 보유 크레딧</HoldCredit>
+              <CreditBoxRow>
+                <CreditImg src={img_credit}></CreditImg>
+                <NumOfCredit>{point}</NumOfCredit>
+                <Credit>크레딧</Credit>
+              </CreditBoxRow>
+            </CreditBoxCol>
+            <CreditToggleDownBtn
+              src={img_creditToggleUpBtn}
+              onClick={toggleExpand}
+            ></CreditToggleDownBtn>
+          </CreditWrapper2>
+          <CreditDescription>
+            <CreditDescriptionList>
+              코인은 홀링 페이지에서 현금처럼 사용하실 수 있습니다. (배송비
+              제외)
+            </CreditDescriptionList>
+            <CreditDescriptionList>
+              짝꿍과의 미션을 통해 크레딧을 받을 수 있습니다.
+            </CreditDescriptionList>
+            <CreditDescriptionList>
+              제품은 교환 협력사에서 발송되는 제품으로, 발송까지 최대 3영업일이
+              소요될 수 있습니다.
+            </CreditDescriptionList>
+          </CreditDescription>
+        </CreditExpandWrapper>
+      ) : (
+        <CreditWrapper1>
+          <CreditBoxCol>
+            <HoldCredit>현재 보유 크레딧</HoldCredit>
+            <CreditBoxRow>
+              <CreditImg src={img_credit}></CreditImg>
+              <NumOfCredit>{point}</NumOfCredit>
+              <Credit>크레딧</Credit>
+            </CreditBoxRow>
+          </CreditBoxCol>
+          <CreditToggleDownBtn
+            src={img_creditToggleDownBtn}
+            onClick={toggleExpand}
+          ></CreditToggleDownBtn>
+        </CreditWrapper1>
+      )}
       <AdImg src={getRandomAdImage()} alt="Advertisement"></AdImg>
       {creditItems.map((row, rowIndex) => (
         <CreditItemBoxRow key={rowIndex}>
