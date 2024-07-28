@@ -22,6 +22,7 @@ const SchedulePopUp = ({
   onClose,
   selectedDate,
   onAddSchedule,
+  updateScheduleDates,
 }) => {
   // 모달이 열려있지 않으면 null 반환
   if (!isOpen) return null;
@@ -37,6 +38,7 @@ const SchedulePopUp = ({
         onClose={onClose}
         selectedDate={selectedDate}
         onAddSchedule={onAddSchedule}
+        updateScheduleDates={updateScheduleDates}
       />
     </Modal>
   );
