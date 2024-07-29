@@ -75,6 +75,12 @@ export const MissionItem = styled.div`
   margin-right: 103px; //체크 박스 밀기
 `;
 
+export const MissionCompleteBtn = styled.img`
+  width: 58px;
+  height: 60px;
+  cursor: pointer;
+`
+
 export const MissionDiscription = styled.div`
   color: #5b5b5b;
   font-size: 20px;
@@ -90,4 +96,5 @@ export const MissionRefresh = styled.div`
   margin-top: 13px;
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 `;
