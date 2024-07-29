@@ -5,6 +5,7 @@ export const MissionTitleWrapper = styled.div`
   height: 90px;
   margin: 0 auto;
   margin-top: 48px;
+  margin-bottom: 48px;
 `;
 
 export const MissionTitle1 = styled.div`
@@ -32,11 +33,11 @@ export const MissionTitle3 = styled.div`
 
 export const MissionCard = styled.div`
   width: 497px;
-  height: 405px;
+  height: fit-content;
   border: 1px solid #ddd;
   background-color: white;
   margin: 0 auto;
-  margin-top: 45px;
+  margin-bottom: 26px;
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
@@ -70,7 +71,7 @@ export const MissionItem = styled.div`
   font-weight: 600;
   line-height: 140%;
   width: 266px;
-  height: 100px;
+  height: fit-content;
   margin-right: 103px; //체크 박스 밀기
 `;
 

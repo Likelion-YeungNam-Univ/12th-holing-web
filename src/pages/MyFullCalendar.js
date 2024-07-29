@@ -156,7 +156,7 @@ const MyFullCalendar = () => {
         selectedDate={selectedDate}
         updateScheduleDates={updateScheduleDates}
       />
-      <Mission />
+      <Mission selectedDate={selectedDate} />
       <DatePopUp
         isOpen={isModalOpen}
         onClose={closeModal}
