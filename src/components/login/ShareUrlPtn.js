@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import level4_1 from 'assets/images/level4_1.png';
 import {
   Header,
@@ -9,6 +10,18 @@ import {
 } from 'styles/home/SharePtn-styled';
 
 function ShareUrlPtn() {
+  const copyUrlToClipboard = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        alert('URL이 클립보드에 복사되었습니다.');
+      })
+      .catch((err) => {
+        console.error('Failed to copy: ', err);
+      });
+  };
+
   return (
     <>
       <Header>카톡으로 전송하여</Header>
@@ -21,8 +34,12 @@ function ShareUrlPtn() {
         <img src={level4_1} alt="result4_1" />
         {/* {TODO:api} */}
       </Result>
-      <ShareBtn>URL 복사하여 짝꿍과 연동하기</ShareBtn>
-      <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
+      <ShareBtn onClick={copyUrlToClipboard}>
+        URL 복사하여 짝꿍과 연동하기
+      </ShareBtn>
+      <Link to="/">
+        <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
+      </Link>
     </>
   );
 }
