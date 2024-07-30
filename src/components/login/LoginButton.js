@@ -1,7 +1,7 @@
 import React from 'react';
 import login_kakao from 'assets/images/login_kakao.png';
-const client_id = process.env.REACT_APP_REST_API_KEY;
-const redirect_uri = process.env.REACT_APP_REDIRECT_URI;
+const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
 const LoginButton = () => {
   const handleLogin = () => {
@@ -10,7 +10,7 @@ const LoginButton = () => {
     localStorage.setItem('oauth_state', state);
 
     // 인가 요청 URL 생성
-    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`;
+    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
     // 인가 URL로 리다이렉트
     window.location.href = authUrl;
   };

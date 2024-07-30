@@ -19,6 +19,8 @@ import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 
+import Kakaologin from 'pages/Kakaologin';
+
 function App() {
   return (
     <React.Fragment>
@@ -42,8 +44,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             {/*서비스 소개 후 로그인 버튼 있는 페이지*/}
             <Route path="/auth/signIn" element={<Callback />} />
-            <Route path="/share-url" element={<ShareUrl />} />
+            {/* <Route path="/share-url" element={<ShareUrl />} /> */}
             {/*짝꿍과 공유하기 페이지*/}
+            <Route path="/kakaologin" element={<ShareUrl />} />
           </Route>
 
           {/* 로고 가운데 화면프레임 */}
