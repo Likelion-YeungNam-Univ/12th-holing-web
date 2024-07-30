@@ -18,12 +18,15 @@ export const MissionTitleRow = styled.div`
   display: flex;
 `;
 
+export const MissionTitleImg = styled.img``;
+
 export const MissionTitle2 = styled.div`
   color: #9180ff;
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
   text-decoration-line: underline;
+  text-underline-offset: 4px;
 `;
 export const MissionTitle3 = styled.div`
   font-size: 32px;
@@ -41,8 +44,58 @@ export const MissionCard = styled.div`
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
-  border-top: 13px solid #b7acff;
+  border-top: 13px solid #9180ff;
   border-radius: 13px;
+  position: relative;
+`;
+
+export const MissionConnectTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const MissionConnectTitle = styled.div`
+  color: #9180ff;
+  font-size: 25px;
+  font-weight: 700;
+`;
+
+export const MissionConnectNextBtn = styled.img`
+  margin-left: 4px;
+  cursor: pointer;
+`;
+
+export const MissionConnectDescription = styled.div`
+  color: #5b5b5b;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  margin-top: 4px;
+  width: 286px;
+`;
+
+export const MissionConnectPlusBtn = styled.img`
+  margin-top: 39px;
+  margin-left: 188px;
+  cursor: pointer;
+`;
+
+export const MissionConnectStart = styled.div`
+  color: #5b5b5b;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 22px;
+  text-align: center;
+  margin-bottom: 36px;
+  z-index: 2;
+  position: relative;
+`;
+
+export const MissionConnectImg = styled.img`
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
 `;
 
 export const CreditBox = styled.div`
@@ -72,14 +125,14 @@ export const MissionItem = styled.div`
   line-height: 140%;
   width: 266px;
   height: fit-content;
-  margin-right: 103px; //체크 박스 밀기
+  margin-right: 103px;
 `;
 
 export const MissionCompleteBtn = styled.img`
   width: 58px;
   height: 60px;
   cursor: pointer;
-`
+`;
 
 export const MissionDiscription = styled.div`
   color: #5b5b5b;

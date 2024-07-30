@@ -10,7 +10,7 @@ export const ScheduleBox = styled.div`
   padding-left: 35px;
   padding-right: 35px;
   text-align: left;
-  border-top: 13px solid #b7acff;
+  border-top: 13px solid #9180FF;
   border-radius: 13px;
 `;
 

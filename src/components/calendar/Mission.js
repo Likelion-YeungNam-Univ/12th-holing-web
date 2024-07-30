@@ -13,17 +13,32 @@ import {
   MissionItemWrapper,
   CreditBox,
   MissionCompleteBtn,
+  MissionConnectTitle,
+  MissionConnectDescription,
+  MissionConnectPlusBtn,
+  MissionConnectStart,
+  MissionConnectImg,
+  MissionConnectNextBtn,
+  MissionConnectTitleWrapper,
+  MissionTitleImg,
 } from 'styles/calendar/Mission-styled';
 import moment from 'moment';
 import { createMissions } from 'apis/mission/missionsCreate';
 import { getMissions } from 'apis/mission/missionsGet';
 import { patchMissions } from 'apis/mission/missionsPatch';
 import { completeMissions } from 'apis/mission/missionsComplete';
+import { getUserInfo } from 'apis/my/userInfoGet';
 import img_missionCompleteBtnActive from 'assets/images/mission_complete_btn_active.svg';
 import img_missionCompleteBtnInactive from 'assets/images/mission_complete_btn_inactive.svg';
+import img_missionConnectMale from 'assets/images/mission_connect_img_male.svg';
+import img_missionConnectFemale from 'assets/images/mission_connect_img_female.svg';
+import img_missionConnectPlusBtn from 'assets/images/mission_connect_plus_btn.svg';
+import img_missionConnectNextBtn from 'assets/images/mission_connect_next_btn.svg';
+import img_missionTitle from 'assets/images/mission_title_img.svg';
 
 const Mission = (selectedDate) => {
   const [missions, setMissions] = useState([]);
+  const [gender, setGender] = useState('');
 
   useEffect(() => {
     // 미션 조회 포맷 YYYY-MM-DD
@@ -51,9 +66,20 @@ const Mission = (selectedDate) => {
         console.error('Error fetching missions:', error);
       });
 
+    // API 호출을 통해 성별 조회하기
+    getUserInfo()
+      .then((response) => {
+        const data = response.data;
+        setGender(data.gender);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+
     // selectedDate에 대한 미션 조회
   }, [selectedDate]);
 
+  // 새로고침 버튼 눌렀을 때 미션 교체
   const handleRefresh = (missionResultId) => {
     patchMissions(missionResultId)
       .then((response) => {
@@ -75,6 +101,7 @@ const Mission = (selectedDate) => {
       });
   };
 
+  // 완료 체크 눌렀을 때 미션 완료
   const handleComplete = (missionResultId) => {
     completeMissions(missionResultId)
       .then((response) => {
@@ -100,29 +127,61 @@ const Mission = (selectedDate) => {
       <MissionTitleWrapper>
         <MissionTitle1>당신의 짝꿍을 위한</MissionTitle1>
         <MissionTitleRow>
+          <MissionTitleImg src={img_missionTitle}></MissionTitleImg>
           <MissionTitle2>미션</MissionTitle2>
           <MissionTitle3>을 수행해보세요</MissionTitle3>
         </MissionTitleRow>
       </MissionTitleWrapper>
-      {missions.map((mission) => (
-        <MissionCard key={mission.id}>
-          <CreditBox>{mission.missionInfoDto.reward}</CreditBox>
-          <MissionItemWrapper>
-            <MissionItem>{mission.missionInfoDto.missionTitle}</MissionItem>
-            <MissionCompleteBtn
-              src={mission.isCompleted ? img_missionCompleteBtnActive : img_missionCompleteBtnInactive}
-              onClick={() => handleComplete(mission.id)}
-              alt="Complete Mission"
-            ></MissionCompleteBtn>
-          </MissionItemWrapper>
-          <MissionDiscription>
-            {mission.missionInfoDto.missionContent}
-          </MissionDiscription>
-          <MissionRefresh onClick={() => handleRefresh(mission.id)}>
-            새로고침
-          </MissionRefresh>
+      {missions.isMateConnected === false ? (
+        <MissionCard>
+          <MissionConnectTitleWrapper>
+            <MissionConnectTitle>짝꿍 미션</MissionConnectTitle>
+            <MissionConnectNextBtn
+              src={img_missionConnectNextBtn}
+            ></MissionConnectNextBtn>
+          </MissionConnectTitleWrapper>
+          <MissionConnectDescription>
+            짝꿍의 증상에 따라 맞춤형 미션을 제공하여 서로의 증상에 대한
+            미션으로 친밀감을 강화합니다.
+          </MissionConnectDescription>
+          <MissionConnectPlusBtn
+            src={img_missionConnectPlusBtn}
+          ></MissionConnectPlusBtn>
+          <MissionConnectImg
+            src={
+              gender === 'MALE'
+                ? img_missionConnectFemale
+                : img_missionConnectMale
+            }
+            alt="Connect Image"
+          ></MissionConnectImg>
+          <MissionConnectStart>짝꿍과 커넥트 시작하기</MissionConnectStart>
         </MissionCard>
-      ))}
+      ) : (
+        missions.map((mission) => (
+          <MissionCard key={mission.id}>
+            <CreditBox>{mission.missionInfoDto.reward}</CreditBox>
+            <MissionItemWrapper>
+              <MissionItem>{mission.missionInfoDto.missionTitle}</MissionItem>
+              <MissionCompleteBtn
+                src={
+                  mission.isCompleted
+                    ? img_missionCompleteBtnActive
+                    : img_missionCompleteBtnInactive
+                }
+                onClick={() => handleComplete(mission.id)}
+                alt="Complete Mission"
+              />
+            </MissionItemWrapper>
+            <MissionDiscription>
+              {mission.missionInfoDto.missionContent}
+            </MissionDiscription>
+            <MissionRefresh onClick={() => handleRefresh(mission.id)}>
+              새로고침
+            </MissionRefresh>
+          </MissionCard>
+        ))
+      )}
     </>
   );
 };
