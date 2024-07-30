@@ -19,7 +19,7 @@ import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 
-import Kakaologin from 'pages/Kakaologin';
+// import Kakaologin from 'pages/Kakaologin';
 
 function App() {
   return (
