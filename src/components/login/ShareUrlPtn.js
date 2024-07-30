@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import level4_1 from 'assets/images/level4_1.png';
 import {
@@ -8,18 +8,25 @@ import {
   ShareBtn,
   CloseBtn,
 } from 'styles/home/SharePtn-styled';
+import ShareLink from '../../hooks/login/ShareLink';
 
 function ShareUrlPtn() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const copyUrlToClipboard = () => {
     const currentUrl = window.location.href;
     navigator.clipboard
       .writeText(currentUrl)
       .then(() => {
-        alert('URL이 클립보드에 복사되었습니다.');
+        setModalIsOpen(true);
       })
       .catch((err) => {
         console.error('Failed to copy: ', err);
       });
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
 
   return (
@@ -40,6 +47,11 @@ function ShareUrlPtn() {
       <Link to="/">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
+      <ShareLink
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="카카오톡에서 붙여넣기하여 짝꿍과 함께하세요!"
+      />
     </>
   );
 }
