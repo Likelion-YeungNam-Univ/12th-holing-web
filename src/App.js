@@ -11,7 +11,7 @@ import AccountInfo from 'pages/AccountInfo';
 import UserInfo from './pages/UserInfo';
 import FeSelfTest from './pages/SelfTest/FeSelfTest';
 import MaSelfTest from './pages/SelfTest/MaSelfTest';
-
+import Start from 'pages/Start';
 function App() {
   return (
     <React.Fragment>
@@ -30,7 +30,9 @@ function App() {
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/feSelfTest" element={<FeSelfTest />} />
             <Route path="/maSelfTest" element={<MaSelfTest />} />
+            <Route path="/start" element={<Start />} />
           </Route>
+          <Route path="/start" element={<Start />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
