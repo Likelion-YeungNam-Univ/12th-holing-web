@@ -31,7 +31,7 @@ const LoginButton = () => {
         src={login_kakao} // 이미지 URL을 입력하세요
         alt="카카오 로그인"
         style={{
-          width: 'auto', // 이미지 너비 설정
+          width: '496px', // 이미지 너비 설정
           height: 'auto',
         }}
       />
