@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Test, TestNum, TestText, RealNum, ChoiceList, Choice, ChoiceText, ChoiceTextColored } from 'styles/test/SymptomTestPage-styled';
+import React, { useState } from 'react';
+import { Test, TestNum, TestText, RealNum, ChoiceList, Choice, ChoiceText, ChoiceTextColored, TestBorder } from 'styles/test/SymptomTestPage-styled';
 import selectedBig from 'assets/images/test_selectedBig.svg';
 import selectedSmall from 'assets/images/test_selectedSmall.svg';
 import unselectedBig from 'assets/images/test_unselectedBig.svg';
 import unselectedSmall from 'assets/images/test_unselectedSmall.svg';
-import axios from 'axios';
+import useSurveyData from 'hooks/test/useSurveyData';
 
 function Tests() {
-  // 선택지 state 객체로 관리
-  const [selectedChoices, setChoicestate] = useState({});
-  // 문제 list 관리
-  const [tests, setTests] = useState([]);
+  const [selectedChoices, setChoicestate] = useState({}); // 선택지 state 객체로 관리
+  const tests = useSurveyData(); // 문제 list
 
   // 선택지 클릭 이벤트
   const handleChoiceClick = (questionId, choiceId) => {
@@ -19,34 +17,6 @@ function Tests() {
       [questionId]: choiceId
     }));
   }
-
-  const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
-  const serverUrl = process.env.REACT_APP_API_URL;
-  const endpoint = '/questions/symptom';
-  const apiUrl = `${serverUrl}${endpoint}`;
-
-  const getSurvey = async () => {
-    try {
-      const res = await axios.get(apiUrl, {
-        headers: {
-          'Content-Type': 'application/json', 
-          Authorization: `Bearer ${authToken}`
-        },
-      });
-
-      const testList = res.data;
-      setTests(testList);
-      console.log("tests[0] = ", testList[0]);
-
-    } catch (error) {
-      console.log('Error details:', error.response ? error.response.data : error.message);
-    }
-  }
-
-  useEffect(() => {
-    getSurvey();
-  }, []);
-
 
   // 선택지 배열 함수
   const createChoices = (test) => {
@@ -59,30 +29,29 @@ function Tests() {
   };
 
   return (
-    
     <Test>
     {tests.map(test => {
       const choices = createChoices(test);
       return(
-        <div key={test.id}>
-        <TestNum><RealNum>{test.id}</RealNum>/17</TestNum>
-        <TestText>{test.statement}</TestText>
+        <TestBorder key={test.id}>
+          <TestNum><RealNum>{test.id}</RealNum>/17</TestNum>
+          <TestText>{test.statement}</TestText>
 
-        <ChoiceList>
-            {choices.map(choice => (
-              <Choice 
-                key={choice.id} 
-                onClick={() => handleChoiceClick(test.id, choice.id)}
-              >
-                <img 
-                  src={selectedChoices[test.id] === choice.id ? choice.selectedImg : choice.unselectedImg} 
-                  alt={choice.text} 
-                />
-                {selectedChoices[test.id] === choice.id ? <ChoiceTextColored>{choice.text}</ChoiceTextColored> : <ChoiceText>{choice.text}</ChoiceText>}
-              </Choice>
-          ))}
-        </ChoiceList>
-        </div>
+          <ChoiceList>
+              {choices.map(choice => (
+                <Choice 
+                  key={choice.id} 
+                  onClick={() => handleChoiceClick(test.id, choice.id)}
+                >
+                  <img 
+                    src={selectedChoices[test.id] === choice.id ? choice.selectedImg : choice.unselectedImg} 
+                    alt={choice.text} 
+                  />
+                  {selectedChoices[test.id] === choice.id ? <ChoiceTextColored>{choice.text}</ChoiceTextColored> : <ChoiceText>{choice.text}</ChoiceText>}
+                </Choice>
+            ))}
+          </ChoiceList>
+        </TestBorder>
       )
     })}
     </Test>
