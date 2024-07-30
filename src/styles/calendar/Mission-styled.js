@@ -27,6 +27,7 @@ export const MissionTitle2 = styled.div`
   line-height: 140%;
   text-decoration-line: underline;
   text-underline-offset: 4px;
+  margin-left: 6px;
 `;
 export const MissionTitle3 = styled.div`
   font-size: 32px;
@@ -98,25 +99,15 @@ export const MissionConnectImg = styled.img`
   z-index: 1;
 `;
 
-export const CreditBox = styled.div`
-  border-radius: 21px;
-  background: #9180ff;
-  width: 67px;
-  height: 29px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 140%;
-  display: flex;
-  padding: 4px 15px;
-`;
+export const CreditBox = styled.img``;
 
 export const MissionItemWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 13px;
-  margin-bottom: 13px;
+  padding-bottom: 13px;
   border-bottom: 1px solid #b3b3b3;
+  margin-bottom: 13px;
 `;
 
 export const MissionItem = styled.div`
@@ -142,12 +133,63 @@ export const MissionDiscription = styled.div`
   margin-top: 13px;
 `;
 
+export const MissionRefreshWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 13px;
+  margin-bottom: 21px;
+`
+
 export const MissionRefresh = styled.div`
   color: #5b5b5b;
   font-size: 20px;
   font-weight: 700;
-  margin-top: 13px;
   display: flex;
-  justify-content: flex-end;
   cursor: pointer;
+`;
+
+export const MissionRefreshImg = styled.img`
+  margin-left: 6px;
+  cursor: pointer;
+`
+
+export const MissionNoCard = styled.div`
+  width: 497px;
+  height: fit-content;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin: 0 auto;
+  margin-bottom: 26px;
+  border-radius: 13px;
+  position: relative;
+`;
+
+export const MissionNoCardBorderTop = styled.div`
+  height: 69px;
+  background-color: #9180ff;
+  border-radius: 13px 13px 0 0;
+`;
+
+export const MissionNoImg = styled.img`
+  margin-top: -46px;
+  margin-left: 40px;
+  position: absolute;
+`;
+
+export const MissionNoTitle = styled.div`
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 65px;
+  margin-left: 32px;
+`;
+
+export const MissionNoDescription = styled.div`
+  color: #5b5b5b;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 9px;
+  margin-bottom: 33px;
+  margin-left: 32px;
+  margin-right: 32px;
 `;

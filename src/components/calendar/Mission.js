@@ -21,6 +21,13 @@ import {
   MissionConnectNextBtn,
   MissionConnectTitleWrapper,
   MissionTitleImg,
+  MissionNoCard,
+  MissionNoImg,
+  MissionNoTitle,
+  MissionNoDescription,
+  MissionNoCardBorderTop,
+  MissionRefreshImg,
+  MissionRefreshWrapper,
 } from 'styles/calendar/Mission-styled';
 import moment from 'moment';
 import { createMissions } from 'apis/mission/missionsCreate';
@@ -35,6 +42,9 @@ import img_missionConnectFemale from 'assets/images/mission_connect_img_female.s
 import img_missionConnectPlusBtn from 'assets/images/mission_connect_plus_btn.svg';
 import img_missionConnectNextBtn from 'assets/images/mission_connect_next_btn.svg';
 import img_missionTitle from 'assets/images/mission_title_img.svg';
+import img_missionNo from 'assets/images/mission_no_img.svg';
+import img_missionCredit from 'assets/images/mission_credit_img.svg';
+import img_missionRefresh from 'assets/images/mission_refresh_img.svg';
 
 const Mission = (selectedDate) => {
   const [missions, setMissions] = useState([]);
@@ -157,10 +167,20 @@ const Mission = (selectedDate) => {
           ></MissionConnectImg>
           <MissionConnectStart>짝꿍과 커넥트 시작하기</MissionConnectStart>
         </MissionCard>
+      ) : missions.length === 0 ? (
+        <MissionNoCard>
+          <MissionNoCardBorderTop></MissionNoCardBorderTop>
+          <MissionNoImg src={img_missionNo}></MissionNoImg>
+          <MissionNoTitle>미션 리스트가 없습니다</MissionNoTitle>
+          <MissionNoDescription>
+            해당 주의 짝꿍의 증상테스트가 완료되어있지 않거나 사이트에 접속하지
+            않은 경우 미션 리스트가 생성되지 않았을 수 있습니다.
+          </MissionNoDescription>
+        </MissionNoCard>
       ) : (
         missions.map((mission) => (
           <MissionCard key={mission.id}>
-            <CreditBox>{mission.missionInfoDto.reward}</CreditBox>
+            <CreditBox src={img_missionCredit}></CreditBox>
             <MissionItemWrapper>
               <MissionItem>{mission.missionInfoDto.missionTitle}</MissionItem>
               <MissionCompleteBtn
@@ -176,9 +196,15 @@ const Mission = (selectedDate) => {
             <MissionDiscription>
               {mission.missionInfoDto.missionContent}
             </MissionDiscription>
-            <MissionRefresh onClick={() => handleRefresh(mission.id)}>
-              새로고침
-            </MissionRefresh>
+            <MissionRefreshWrapper>
+              <MissionRefresh onClick={() => handleRefresh(mission.id)}>
+                새로고침
+              </MissionRefresh>
+              <MissionRefreshImg
+                src={img_missionRefresh}
+                onClick={() => handleRefresh(mission.id)}
+              ></MissionRefreshImg>
+            </MissionRefreshWrapper>
           </MissionCard>
         ))
       )}
