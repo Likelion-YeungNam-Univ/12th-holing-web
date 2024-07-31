@@ -20,26 +20,40 @@ function Tap({ leftTap, setLeftState, setRightState }) {
     <TapWrapper>
       {/* 탭버튼 */}
       {leftTap ? (
-        // 내탭 클릭(초기상태)
+      <>
+        {/* 내탭 클릭(초기상태) */}
         <TapBtnWrapper>
           <TapBtn1>나의 증상분석</TapBtn1>
           <TapBtn2 onClick={toggleTap}>짝꿍의 증상분석</TapBtn2>
         </TapBtnWrapper>
+
+        
+        {/* 그래프 */}
+        <GraphWrapper>
+          <LineChart />
+        </GraphWrapper>
+
+        {/* 슬라이드 */}
+        <SlideAnimation />
+      </>
       ) : (
-        // 짝꿍탭 클릭
+      // 짝꿍탭 클릭 시
+      <>
         <TapBtnWrapper>
           <TapBtn2 onClick={toggleTap}>나의 증상분석</TapBtn2>
           <TapBtn1>짝꿍의 증상분석</TapBtn1>
         </TapBtnWrapper>
+
+        {/* 그래프*/}
+        <GraphWrapper>
+          <LineChart />
+        </GraphWrapper>
+
+        {/* 슬라이드*/}
+        <SlideAnimation />
+      </>
       )}
 
-      {/* 그래프*/}
-      <GraphWrapper>
-        <LineChart />
-      </GraphWrapper>
-
-      {/* 슬라이드*/}
-      <SlideAnimation />
     </TapWrapper>
   );
 }

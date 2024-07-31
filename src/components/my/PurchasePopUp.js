@@ -16,7 +16,7 @@ const customModalStyles = {
   },
 };
 
-const SchedulePopUp = ({ isOpen, onClose, selectedItem }) => {
+const SchedulePopUp = ({ isOpen, onClose, selectedItem, point }) => {
   // 모달이 열려있지 않으면 null 반환
   if (!isOpen) return null;
 
@@ -27,7 +27,10 @@ const SchedulePopUp = ({ isOpen, onClose, selectedItem }) => {
       style={customModalStyles} // 커스텀 스타일 적용
       ariaHideApp={false} // 백그라운드 조작 방지
     >
-      <PuchasePopUpContent selectedItem={selectedItem}></PuchasePopUpContent>
+      <PuchasePopUpContent
+        selectedItem={selectedItem}
+        point={point}
+      ></PuchasePopUpContent>
     </Modal>
   );
 };

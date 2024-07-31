@@ -18,6 +18,7 @@ export const NameWrapper = styled.div`
 `;
 export const UserName = styled.div`
   font-size: 32px;
+  font-weight: 700;
 `;
 export const PartnerName = styled.div`
   font-size: 18px;
@@ -27,46 +28,88 @@ export const AccountInfoBtn = styled.img`
   width: 24px;
   height: 24px;
   margin-left: 180px; //폰트 나오면 바꿔야 함
+  cursor: pointer;
 `;
-export const CreditWrapper = styled.div`
+export const CreditWrapper1 = styled.div`
   margin: 0 auto;
   margin-top: 48px;
   width: 496px;
   height: 122px;
   border-radius: 13px;
   border: 1px solid #ddd;
+  background: #9180ff;
+  display: flex;
 `;
-export const HoldCredit = styled.div`
-  color: #9180ff;
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 15px;
+export const CreditWrapper2 = styled.div`
+  margin: 0 auto;
+  width: 496px;
+  height: 122px;
+  border-radius: 13px 13px 0 0;
+  border: 1px solid #ddd;
+  background: #9180ff;
+  display: flex;
+`;
+export const CreditExpandWrapper = styled.div`
+  width: 497px;
+  height: 322px;
+  border-radius: 13px;
+  border: 1px solid #ddd;
+  border-bottom: 31px solid #9180ff;
+  margin: 0 auto;
+  margin-top: 48px;
+`;
+export const CreditDescription = styled.ul`
+  margin-left: 45px;
+  margin-top: 25px;
+  margin-right: 45px;
+`;
+export const CreditDescriptionList = styled.li`
+  list-style-type: disc;
+  color: #5b5b5b;
+  font-size: 17px;
+  font-weight: 400;
+`;
+export const CreditBoxCol = styled.div`
+  width: 212px;
   margin-left: 42px;
 `;
-export const CreditBox = styled.div`
+export const HoldCredit = styled.div`
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 27px;
+`;
+export const CreditBoxRow = styled.div`
+  width: 212px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 42px;
-  margin-top: 7px;
+  margin-top: 5px;
 `;
 export const CreditImg = styled.img`
-  width: 43px;
-  height: 43px;
+  width: 46px;
+  height: 46px;
 `;
 export const NumOfCredit = styled.div`
-  color: #5643d1;
+  color: #fff;
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
-  margin-left: 9px;
+  margin-left: 15px;
 `;
 export const Credit = styled.div`
-  color: #5b5b5b;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
   line-height: 140%;
-  margin-left: 9px;
+  margin-left: 3px;
+`;
+export const CreditToggleDownBtn = styled.img`
+  margin-left: 140px;
+  margin-top: 34px;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
 `;
 export const AdImg = styled.img`
   width: 600px;

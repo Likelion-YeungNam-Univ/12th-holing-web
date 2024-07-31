@@ -4,20 +4,27 @@ import { CurrenttWrapper, SlideTop, SlideBottom, CurrentWeek, CurrentBtn, Curren
 import { IoIosArrowForward } from "react-icons/io";
 
 // 현재 주차 컴포넌트
-function CurrentSlide() {
+function CurrentSlide( { reportId, weekOfMonth, title } ) {
   const navigate = useNavigate();
+
+  {/* TODO : navigate uri 변경예정 */}
+  const goToReportDetail = () => {
+    navigate('/reportDetail');
+    console.log("click!!");
+  }
 
   return (
     <CurrenttWrapper>
         <Current>
             <SlideTop>
-              <CurrentWeek>몇주차</CurrentWeek> 
-              {/* TODO : navigate uri 변경예정 */}
-              <CurrentBtn>더보기<IoIosArrowForward onClick={() => navigate('/reportDetail')} size={36} style={{color:'white'}}/></CurrentBtn> 
+              <CurrentWeek>{weekOfMonth}주차</CurrentWeek> 
+              {/* TODO : reportId 파라미터로 navigate uri 변경예정 */}
+              <CurrentBtn onClick={goToReportDetail}>더보기<IoIosArrowForward size={36} style={{color:'white'}}/></CurrentBtn> 
             </SlideTop>
             <SlideBottom>
               <CurrentRank>Top1</CurrentRank> 
-              <CurrentOverView>지난 주보다 <TextDecoWhite>체온변화</TextDecoWhite>로 가장 큰 어려움을 겪어요</CurrentOverView>
+              {/* TODO : TextDeco 적용할 text 확인하기 */}
+              <CurrentOverView>{title}<TextDecoWhite></TextDecoWhite></CurrentOverView>
             </SlideBottom> 
         </Current>
     </CurrenttWrapper>

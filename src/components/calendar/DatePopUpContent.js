@@ -57,7 +57,7 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
       >
         완료
       </DatePopUpSaveBtn>
-      <DatePopUpCancelBtn onClick={onClose}>취소</DatePopUpCancelBtn>
+      <DatePopUpCancelBtn onClick={onClose}>취소 </DatePopUpCancelBtn>
     </DatePopUpWrapper>
   );
 };

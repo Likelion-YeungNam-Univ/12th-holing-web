@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MediListContainer = styled.div`
   width: 496px;
-  min-height: 211px; /* 최소 높이 설정 */
+  min-height: 211px;
   padding: 24px 20px;
   margin: auto;
   margin-top: 22px;
@@ -10,12 +10,15 @@ export const MediListContainer = styled.div`
   background: #ffffff;
   border: 1px solid #dddddd;
   text-align: center;
-  overflow: auto; /* 내용이 많아지면 스크롤바가 생기도록 설정 */
+  margin: auto;
+  margin-top: 22px;
+  box-sizing: border-box;
 `;
 
 export const MedicineName = styled.div`
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   margin-bottom: 8px;
   font-family: Pretendard;
   font-size: 25px;
@@ -30,8 +33,9 @@ export const MedicineName = styled.div`
 export const Checkbox = styled.input`
   margin-right: 20px;
   accent-color: #9180ff;
-  width: 29px; /* 원하는 너비 */
-  height: 30px; /* 원하는 높이 */
+  width: 19px;
+  height: 20px;
+
   cursor: pointer;
 `;
 
@@ -40,17 +44,66 @@ export const AddButton = styled.button`
   height: 39px;
   margin-top: 2px;
   border-radius: 17px;
-  border: 1px;
-  cursor: pointer;
+  border: 1px solid #9180ff;
   background: #ffffff;
   color: #9180ff;
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 700;
-  border: 1px solid #9180ff;
+  cursor: pointer;
+`;
+
+export const DeleteButton = styled.button`
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.9px;
+  text-align: left;
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: #5b5b5b;
+
+  display: flex;
+  width: 129px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+`;
+
+export const IconAdd = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
+export const IconDelete = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+  width: 17px;
+  height: 17px;
 `;
 
 export const Icon = styled.img`
-  display: inline-block; /* 인라인 블록 요소로 설정하여 수평 중앙 정렬 */
-  vertical-align: middle; /* 수직 정렬 */
+  vertical-align: middle;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+`;
+
+export const Time = styled.div`
+  color: #b9bec9;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+`;
+
+export const Name = styled.div`
+  display: inline-block;
+  max-width: 226px; /* 원하는 최대 너비를 설정하세요 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

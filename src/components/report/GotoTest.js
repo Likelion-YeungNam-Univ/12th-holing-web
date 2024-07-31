@@ -23,10 +23,12 @@ import {
 } from 'styles/report/GotoTestItem-styled';
 import img_check from 'assets/images/report_check.png';
 import { CheckImg } from 'styles/report/ReportPage-styled';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function GotoTest() {
+  const navigate = useNavigate();
   return (
     <GotoTestWrapper>
         <TopTitle>
@@ -58,8 +60,7 @@ function GotoTest() {
 
         {/* 증상테스트하기 버튼 */}
         <BottomBtn>
-          <GotoBtn>나의 증상 테스트하기</GotoBtn>
-          {/* TODO : 버튼 연결 예정 */}
+          <GotoBtn onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtn>
           <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>
         </BottomBtn>
     </GotoTestWrapper>

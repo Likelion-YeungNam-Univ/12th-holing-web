@@ -11,8 +11,23 @@ import {
   BirthDaterRow,
   EmailRow,
 } from 'styles/my/AccountInfo-styled';
+import { useEffect, useState } from 'react';
+import { getUserInfo } from 'apis/my/userInfoGet';
 
 function AccountInfo() {
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    getUserInfo()
+      .then((response) => {
+        const data = response.data;
+        setEmail(data.email);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  }, []);
+
   return (
     <>
       <MyInfoText>내 정보</MyInfoText>
@@ -26,7 +41,7 @@ function AccountInfo() {
       </BirthDaterRow>
       <EmailRow>
         <EmailText>이메일</EmailText>
-        <UserEmail>0000@naver.com</UserEmail>
+        <UserEmail>{email}</UserEmail>
       </EmailRow>
     </>
   );
