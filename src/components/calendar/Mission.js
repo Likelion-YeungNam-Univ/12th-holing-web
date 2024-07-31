@@ -46,15 +46,13 @@ import img_missionNo from 'assets/images/mission_no_img.svg';
 import img_missionCredit from 'assets/images/mission_credit_img.svg';
 import img_missionRefresh from 'assets/images/mission_refresh_img.svg';
 
-const Mission = (selectedDate, updateMissions) => {
+const Mission = ({ selectedDate, updateMissions }) => {
   const [missions, setMissions] = useState([]);
   const [gender, setGender] = useState('');
 
   useEffect(() => {
     // 미션 조회 포맷 YYYY-MM-DD
-    const isoDate = moment(selectedDate.selectedDate, 'YYYY년 M월 D일').format(
-      'YYYY-MM-DD'
-    );
+    const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format('YYYY-MM-DD');
 
     // API 호출을 통해 미션 생성하기
     createMissions()
@@ -95,10 +93,9 @@ const Mission = (selectedDate, updateMissions) => {
       .then((response) => {
         console.log('Mission refreshed:', response.data);
         // 미션 새로고침 후 최신 미션 조회
-        const isoDate = moment(
-          selectedDate.selectedDate,
-          'YYYY년 M월 D일'
-        ).format('YYYY-MM-DD');
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
         return getMissions(isoDate);
       })
       .then((response) => {
@@ -118,19 +115,18 @@ const Mission = (selectedDate, updateMissions) => {
       .then((response) => {
         console.log('Mission completed:', response.data);
         // 미션 완료 후 최신 미션 조회
-        const isoDate = moment(
-          selectedDate.selectedDate,
-          'YYYY년 M월 D일'
-        ).format('YYYY-MM-DD');
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
         return getMissions(isoDate);
       })
       .then((response) => {
         setMissions(response.data);
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
         console.log('completed missions:', response.data);
-        const completedMissionCount = response.data.filter(
-          (mission) => mission.isCompleted
-        ).length;
-        updateMissions(isoDate, completedMissionCount);
+        updateMissions(isoDate, 1);
       })
       .catch((error) => {
         console.error('Error completing mission:', error);

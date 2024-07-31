@@ -32,7 +32,7 @@ const MyFullCalendar = () => {
   } = MyFullCalendarHook();
 
   const [scheduleDates, setScheduleDates] = useState([]);
-  const [missions, setMissions] = useState([]);
+  const [completedMissions, setCompletedMissions] = useState([]);
 
   useEffect(() => {
     // 일정 개수 조회 포맷 YYYY-MM-DD
@@ -61,7 +61,7 @@ const MyFullCalendar = () => {
           acc[entry.date] = entry.count;
           return acc;
         }, {});
-        setMissions(datesWithMissions);
+        setCompletedMissions(datesWithMissions);
         console.log('completedMissions:', datesWithMissions);
       })
       .catch((error) => {
@@ -73,8 +73,8 @@ const MyFullCalendar = () => {
 
   // mission 완료 상태가 변경될 때마다 재렌더링
   useEffect(() => {
-    console.log('Missions state updated:', missions);
-  }, [missions]);
+    console.log('Missions state updated:', completedMissions);
+  }, [completedMissions]);
 
   // 일정 날짜 업데이트 함수
   const updateScheduleDates = (date, countChange) => {
@@ -87,7 +87,7 @@ const MyFullCalendar = () => {
   };
 
   const updateMissions = (date, countChange) => {
-    setMissions((prev) => {
+    setCompletedMissions((prev) => {
       const newMissions = { ...prev };
       newMissions[date] = (newMissions[date] || 0) + countChange;
       if (newMissions[date] <= 0) delete newMissions[date];
@@ -101,21 +101,21 @@ const MyFullCalendar = () => {
     const scheduleCount = scheduleDates[cellDate] || 0;
     const dotCount = Math.min(scheduleCount, 2); // 최대 2개의 점만 표시
 
-    const missionCount = missions[cellDate] || 0;
+    const missionCount = completedMissions[cellDate] || 0;
 
-    let backgroundColor = '#F5F5F5'; // Default light gray
+    let backgroundColor = '#F5F5F5';
     switch (missionCount) {
       case 1:
-        backgroundColor = '#F0EEFF'; // Slightly darker gray
+        backgroundColor = '#F0EEFF';
         break;
       case 2:
-        backgroundColor = '#DDD8FF'; // Darker gray
+        backgroundColor = '#DDD8FF';
         break;
       case 3:
-        backgroundColor = '#B7ACFF'; // Darkest gray
+        backgroundColor = '#B7ACFF';
         break;
       default:
-        backgroundColor = '#F5F5F5'; // Lightest gray
+        backgroundColor = '#F5F5F5';
     }
 
     return (
