@@ -6,7 +6,7 @@ const getSurvey = async () => {
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = '/survey/symptom-test';
   const apiUrl = `${serverUrl}${endpoint}`;
-
+  
   try {
     const res = await axios.get(apiUrl, {
       headers: {

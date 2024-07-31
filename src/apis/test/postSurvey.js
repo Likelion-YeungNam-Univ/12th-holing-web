@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 증상테스트 결과 post
-const postTest = async (selectedDetails, navigate) => {
+const postSurvey = async (selectedDetails, navigate) => {
 
   const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
@@ -35,4 +35,4 @@ const postTest = async (selectedDetails, navigate) => {
   }
 };
 
-export default postTest;
+export default postSurvey;
