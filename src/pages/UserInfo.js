@@ -59,9 +59,9 @@ function UserInfo() {
   const handleNextButtonClick = () => {
     if (isNextBtnEnabled) {
       if (selectedGender === 'female') {
-        navigate('/FeSelfTest'); // 여성 선택 시 FeSelfTest 페이지로 전환
+        navigate('/feselftest'); // 여성 선택 시 FeSelfTest 페이지로 전환
       } else if (selectedGender === 'male') {
-        navigate('/MaSelfTest'); // 남성 선택 시 MaSelfTest 페이지로 전환
+        navigate('/selftest'); // 남성 선택 시 MaSelfTest 페이지로 전환
       }
     }
   };
