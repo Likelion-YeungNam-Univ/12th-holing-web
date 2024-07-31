@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MediListContainer,
   MedicineName,
@@ -12,6 +12,7 @@ import {
   Name,
 } from 'styles/home/MedicineList-styled';
 import Modal from './Modal';
+import axios from 'axios'; // axios import 추가
 import icon_plus from 'assets/images/icon_plus.png';
 import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
@@ -19,7 +20,9 @@ import useMedicineList from 'hooks/home/useMedicineList';
 
 // 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  // 커스텀 훅을 사용하여 상태와 함수들을 가져옴
+  const baseUrl = 'http://localhost:8080';
+  const [medicine, setMedicine] = useState();
+
   const {
     medi,
     isModalOpen,
@@ -42,6 +45,25 @@ function MedicineList() {
       completed: false,
     },
   ]);
+
+  const addMedicineToServer = (medicineData) => {
+    axios
+      .post(`${baseUrl}/user/medicines`, medicineData)
+      .then((response) => {
+        console.log('성공', response);
+      })
+      .catch((error) => {
+        console.log('실패', error);
+      })
+      .then(() => {
+        console.log('데이터 요청 완료');
+      });
+  };
+
+  const handleAddMedicine = (medicineData) => {
+    addNewMedicine(medicineData);
+    addMedicineToServer(medicineData);
+  };
 
   return (
     <MediListContainer>
@@ -95,7 +117,7 @@ function MedicineList() {
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        onAddMedicine={addNewMedicine}
+        onAddMedicine={handleAddMedicine} // 수정된 함수 사용
       />
     </MediListContainer>
   );
