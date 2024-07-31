@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import ShareUrlPtn from 'components/login/ShareUrlPtn'; // 경로 확인 필요
+import ShareUrlPtn from 'components/login/ShareUrlPtn';
+import { load, save } from 'react-cookies'; // react-cookies에서 필요한 메서드만 가져오기
 
 const ShareUrl = () => {
   const location = useLocation(); // 현재 위치 객체를 가져옴
-  const [code, setCode] = useState(sessionStorage.getItem('code')); // 로컬 스토리지에서 초기값 설정
+  const [code, setCode] = useState(load('code')); // 쿠키에서 초기값 설정
 
   useEffect(() => {
     // URL에서 쿼리 파라미터를 추출
@@ -13,10 +14,10 @@ const ShareUrl = () => {
     const codeFromUrl = searchParams.get('code');
 
     if (codeFromUrl) {
-      // code가 URL에서 발견되면 로컬 스토리지와 상태를 업데이트
-      sessionStorage.setItem('code', codeFromUrl);
+      // code가 URL에서 발견되면 쿠키와 상태를 업데이트
+      save('code', codeFromUrl, { path: '/' });
       setCode(codeFromUrl);
-      console.log('code: ', code);
+      console.log('code: ', codeFromUrl);
     }
   }, [location.search]); // location.search가 변경될 때마다 useEffect가 실행됨
 
@@ -40,9 +41,12 @@ const ShareUrl = () => {
           params: { code: code }, // code를 객체 형태로 전달
         })
         .then((response) => {
+          // console.log(response.headers);
           console.log('Data posted successfully:', response.data);
+
           if (response.data.accessToken) {
-            sessionStorage.setItem('accessToken', response.data.accessToken);
+            // accessToken 값을 jwtToken으로 쿠키에 저장
+            save('jwtToken', response.data.accessToken, { path: '/' });
           }
         })
         .catch((error) => {
@@ -52,7 +56,7 @@ const ShareUrl = () => {
           );
         });
     }
-  }); // code가 변경될 때만 useEffect 실행
+  }, [code]); // code가 변경될 때만 useEffect 실행
 
   if (!code) {
     return null; // code가 없으면 아무 것도 렌더링하지 않음

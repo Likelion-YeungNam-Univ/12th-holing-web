@@ -1,16 +1,22 @@
 import React from 'react';
 import login_kakao from 'assets/images/login_kakao.png';
+import Cookies from 'js-cookie';
+
 const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+
+// const saveCookie = (key, value, expiresDays = 1) => {
+//   Cookies.set(key, value, { expires: expiresDays });
+// };
 
 const LoginButton = () => {
   const handleLogin = () => {
     // CSRF 방지를 위한 임의의 상태 값 생성 및 저장
     const state = Math.random().toString(36).substring(2);
-    localStorage.setItem('oauth_state', state);
+    // saveCookie('oauth_state', state);
 
     // 인가 요청 URL 생성
-    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&state=${state}`;
     // 인가 URL로 리다이렉트
     window.location.href = authUrl;
   };
