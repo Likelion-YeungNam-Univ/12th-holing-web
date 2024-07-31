@@ -12,7 +12,6 @@ import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
 import Login from 'pages/Login';
 import ShareUrl from 'pages/ShareUrl';
-import Callback from 'components/login/Callback';
 
 import TestFrame from 'components/comonents/frame/TestFrame';
 
