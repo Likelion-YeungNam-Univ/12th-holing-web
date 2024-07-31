@@ -16,7 +16,7 @@ function Tests() {
   const navigate = useNavigate();
 
   const tests = getSurveyHook(); // 문제 get API
-  const  {selectedChoices, selectedDetails, handleChoiceClick } = setSurveyHook(); // 선택지 저장 HOOK
+  const {selectedChoices, selectedDetails, handleChoiceClick } = setSurveyHook(); // 선택지 저장 HOOK
 
   // 상태 업데이트 후 selectedDetails 확인
   useEffect(() => {

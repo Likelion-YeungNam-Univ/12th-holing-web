@@ -6,16 +6,19 @@ const getReportHook = () => {
     const [reports, setreportList] = useState([]);
   
     useEffect(() => {
-      getReportDetail() // 리포트 list get API
-        .then(report =>{
-          setreportList(report);
-        })
-        .catch(error => {
+      const fetchReport = async () => {
+        try {
+          const data = await getReportDetail(); // 리포트 list get API
+          setreportList(data);
+        } catch (error) {
           console.log('Error fetching survey:', error);
-        });
+        }
+      };
+    
+      fetchReport();
     }, []);
   
     return reports;
 }
   
-  export default getReportHook;
+export default getReportHook;

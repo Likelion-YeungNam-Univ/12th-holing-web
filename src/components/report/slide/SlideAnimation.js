@@ -13,7 +13,6 @@ import getReportHook from 'hooks/report/getReportHook';
 function SlideAnimation() {
 
   const reportDetail = getReportHook() // 본인 리포트 요약 조회 HOOK
-  console.log("reportDetail = ",reportDetail);
   // TODO : 짝꿍 리포트 요약 조회 HOOK 추가
 
   return (

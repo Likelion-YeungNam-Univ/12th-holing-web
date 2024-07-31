@@ -12,6 +12,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import getGraphHook from 'hooks/report/getGraphHook';
 
 ChartJS.register(
   CategoryScale,
@@ -90,6 +91,8 @@ export const options = {
   },
 };
 
+
+// TODO : 임의 data 제거
 const labels = ['1주차', '2주차', '3주차', '4주차']; // x축 기준
 
 export const data = {
@@ -133,7 +136,17 @@ export const data = {
   ],
 };
 
+
+
+
+
+
+
+
 export default function LineChart() {
+  const graphList = getGraphHook();
+  console.log("graphList = ", graphList);
+
   return (
     <GraphContainer>
       <ContentInner>
