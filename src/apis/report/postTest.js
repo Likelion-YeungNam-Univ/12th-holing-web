@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // 증상테스트 결과 post
-const postTest = async () => {
+const postTest = async (selectedDetails, navigate) => {
+
   const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = '/reports';
@@ -21,15 +22,15 @@ const postTest = async () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${authToken}`,
       },
-      // data: filteredDetails
     });
 
     console.log('filteredDetails=', filteredDetails);
-    // console.log('server response =', res.data);
     alert(res.data);
-    return res.data;
+    navigate('/');
+    // return res.data;
   } catch (error) {
     console.log('Error details:', error.response ? error.response.data : error.message);
+    alert(error.response.data.cause);
     throw error;
   }
 };

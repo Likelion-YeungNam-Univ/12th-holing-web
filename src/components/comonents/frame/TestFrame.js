@@ -10,7 +10,7 @@ function TestFrame() {
     <FrameWrapper>
       <TestTopBar /> {/* 상단바 */}
       <Outlet /> {/* 중첩라우팅 */}
-      <TestMenuBar /> {/* 하단메뉴바 */}
+      {/* <TestMenuBar /> 하단메뉴바 */}
     </FrameWrapper>
   );
 }
