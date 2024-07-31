@@ -7,7 +7,7 @@ import selectedSmall from 'assets/images/test_selectedSmall.svg';
 import unselectedBig from 'assets/images/test_unselectedBig.svg';
 import unselectedSmall from 'assets/images/test_unselectedSmall.svg';
 
-import postTest from 'apis/report/postTest';
+import postSurvey from 'apis/test/postSurvey';
 import setSurveyHook from 'hooks/test/setSurveyHook';
 import getSurveyHook from 'hooks/test/getSurveyHook';
 
@@ -35,7 +35,7 @@ function Tests() {
       alert('모든 문제의 선택지를 입력해 주세요!');
       return;
     }
-    postTest(selectedDetails, navigate);  // 결과 post API
+    postSurvey(selectedDetails, navigate);  // 결과 post API
   };
 
 

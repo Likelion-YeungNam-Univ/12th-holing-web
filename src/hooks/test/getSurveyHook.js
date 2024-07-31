@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import getSurvey from 'apis/report/getSurvey';
+import getSurvey from 'apis/test/getSurvey';
 
-const useSurveyData = () => {
+const getSurveyHook = () => {
   // 문제 list 관리 hook
   const [tests, setTests] = useState([]);
 
@@ -20,4 +20,4 @@ const useSurveyData = () => {
   return tests;
 }
 
-export default useSurveyData;
+export default getSurveyHook;
