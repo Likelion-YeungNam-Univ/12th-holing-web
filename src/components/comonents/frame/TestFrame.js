@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { FrameWrapper } from 'styles/ComonItem-styled';
 import TestTopBar from 'components/comonents/topBar/TestTopBar';
-import TestMenuBar from 'components/comonents/menuBar/TestMenuBar';
 
 // Test 화면 프레임
 function TestFrame() {
