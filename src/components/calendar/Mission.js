@@ -46,7 +46,7 @@ import img_missionNo from 'assets/images/mission_no_img.svg';
 import img_missionCredit from 'assets/images/mission_credit_img.svg';
 import img_missionRefresh from 'assets/images/mission_refresh_img.svg';
 
-const Mission = (selectedDate) => {
+const Mission = (selectedDate, updateMissions) => {
   const [missions, setMissions] = useState([]);
   const [gender, setGender] = useState('');
 
@@ -107,6 +107,7 @@ const Mission = (selectedDate) => {
       })
       .catch((error) => {
         // 날짜가 지난 미션을 새로고침하거나 이미 새로고침을 한 미션에 대해 새로고침을 한 경우
+        // 새로 고침은 하나의 미션에 대해서만 가능함
         console.error('Error refreshing mission:', error);
       });
   };
@@ -126,6 +127,10 @@ const Mission = (selectedDate) => {
       .then((response) => {
         setMissions(response.data);
         console.log('completed missions:', response.data);
+        const completedMissionCount = response.data.filter(
+          (mission) => mission.isCompleted
+        ).length;
+        updateMissions(isoDate, completedMissionCount);
       })
       .catch((error) => {
         console.error('Error completing mission:', error);
@@ -179,10 +184,12 @@ const Mission = (selectedDate) => {
         </MissionNoCard>
       ) : (
         missions.map((mission) => (
-          <MissionCard key={mission.id}>
+          <MissionCard key={mission.id} isCompleted={mission.isCompleted}>
             <CreditBox src={img_missionCredit}></CreditBox>
             <MissionItemWrapper>
-              <MissionItem>{mission.missionInfoDto.missionTitle}</MissionItem>
+              <MissionItem isCompleted={mission.isCompleted}>
+                {mission.missionInfoDto.missionTitle}
+              </MissionItem>
               <MissionCompleteBtn
                 src={
                   mission.isCompleted

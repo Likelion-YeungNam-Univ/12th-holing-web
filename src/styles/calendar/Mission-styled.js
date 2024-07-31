@@ -45,7 +45,7 @@ export const MissionCard = styled.div`
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
-  border-top: 13px solid #9180ff;
+  border-top: ${({ isCompleted }) => (isCompleted ? '13px solid #9180ff' : '13px solid #DDD')};
   border-radius: 13px;
   position: relative;
 `;
@@ -111,6 +111,8 @@ export const MissionItemWrapper = styled.div`
 `;
 
 export const MissionItem = styled.div`
+  color: ${({ isCompleted }) => (isCompleted ? '#B9BEC9' : 'black')};
+  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
   font-size: 36px;
   font-weight: 600;
   line-height: 140%;
@@ -139,7 +141,7 @@ export const MissionRefreshWrapper = styled.div`
   justify-content: flex-end;
   margin-top: 13px;
   margin-bottom: 21px;
-`
+`;
 
 export const MissionRefresh = styled.div`
   color: #5b5b5b;
@@ -152,7 +154,7 @@ export const MissionRefresh = styled.div`
 export const MissionRefreshImg = styled.img`
   margin-left: 6px;
   cursor: pointer;
-`
+`;
 
 export const MissionNoCard = styled.div`
   width: 497px;
