@@ -9,24 +9,25 @@ export const CalendarWrapper = styled.div`
     props.view === 'dayGridMonth' &&
     `
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
-      height: 414px;
+      height: 440px;
       margin-top: 0px;
+      margin-bottom: 30px;
     }
     .fc .fc-scroller.fc-scroller-liquid-absolute {
       overflow-x: hidden;
       overflow-y: hidden !important;
     }
     .fc-daygrid-body-unbalanced {
-      height: 414px;
+      height: 440px;
     }
     .fc-scrollgrid-sync-table {
-      height: 414px;
+      height: 440px;
     }
     .fc-dayGridMonth-view {
-      height: 414px;
+      height: 440px;
     }
     .fc-scrollgrid-section-body {
-      height: 414px;
+      height: 440px;
     }
 
   `}
@@ -36,7 +37,7 @@ export const CalendarWrapper = styled.div`
     props.view === 'dayGridWeek' &&
     `
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
-      height: 60px; //week view에서 점 안보이는 거 해결
+      height: 85px; //week view에서 점 안보이는 거 해결
       margin-top: 0px;
       margin-bottom: 20px;
     }
@@ -45,10 +46,10 @@ export const CalendarWrapper = styled.div`
       overflow-y: hidden !important;
     }
     .fc-daygrid-body-unbalanced {
-      height: 52px;
+      height: 85px;
     }
     .fc-scrollgrid-sync-table {
-      height: 52px;
+      height: 85px;
     }
     .fc-dayGridWeek-view {
       height: 122px;
@@ -123,7 +124,7 @@ export const CalendarWrapper = styled.div`
   .fc-scroller-harness {
     height: 24px;
     margin-top: 18px;
-    margin-bottom: 9px;
+    //margin-bottom: 9px;
   }
   .fc-scroller {
     overflow: hidden;
@@ -142,7 +143,7 @@ export const CalendarWrapper = styled.div`
   .fc-col-header-cell-cushion {
     color: #5643d1;
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
   }
   //Calendar Day Unit
@@ -163,14 +164,17 @@ export const CalendarWrapper = styled.div`
     justify-content: center;
     text-align: center;
     width: 50px;
-    height: 52px;
+    height: 50px;
     margin-bottom: 8px;
+    margin-top: 32px;
     display: flex;
     align-items: center;
   }
   .fc-daygrid-day-number {
     width: 35px;
     height: 32px;
+    font-size: 27px;
+    font-weight: 600;
   }
   //Calendar Date Unit
 `;
