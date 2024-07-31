@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { FrameWrapper } from 'styles/ComonItem-styled';
 import TestTopBar from 'components/comonents/topBar/TestTopBar';
-import TestMenuBar from 'components/comonents/menuBar/TestMenuBar';
 
 // Test 화면 프레임
 function TestFrame() {
@@ -10,7 +9,7 @@ function TestFrame() {
     <FrameWrapper>
       <TestTopBar /> {/* 상단바 */}
       <Outlet /> {/* 중첩라우팅 */}
-      <TestMenuBar /> {/* 하단메뉴바 */}
+      {/* <TestMenuBar /> 하단메뉴바 */}
     </FrameWrapper>
   );
 }

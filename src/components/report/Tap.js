@@ -21,7 +21,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
       {/* 탭버튼 */}
       {leftTap ? (
       <>
-        // 내탭 클릭(초기상태)
+        {/* 내탭 클릭(초기상태) */}
         <TapBtnWrapper>
           <TapBtn1>나의 증상분석</TapBtn1>
           <TapBtn2 onClick={toggleTap}>짝꿍의 증상분석</TapBtn2>
