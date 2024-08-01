@@ -16,55 +16,62 @@ import icon_plus from 'assets/images/icon_plus.png';
 import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
-import axios from 'axios';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
+
+// 시간 형식을 24시간 형태로 포맷팅하는 함수
+const formatTime = (timeString) => {
+  try {
+    const [hours, minutes] = timeString.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours, 10));
+    date.setMinutes(parseInt(minutes, 10));
+    date.setSeconds(0);
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false, // 24시간 형식
+    });
+  } catch (error) {
+    console.error('Error formatting time:', error);
+    return timeString; // 오류 발생 시 원래 문자열 반환
+  }
+};
 
 // 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  // 커스텀 훅을 사용하여 상태와 함수들을 가져옴
-  const [medi, setMedi] = useState([]);
   const {
-    // medi,
     isModalOpen,
     handleToggle,
     openModal,
     closeModal,
     addNewMedicine,
     deleteMedicine,
-  } = useMedicineList([
-    // {
-    //   id: 1,
-    //   text: '오메가3',
-    //   time: new Date().setHours(8, 0, 0, 0),
-    //   completed: false,
-    // },
-    // {
-    //   id: 2,
-    //   text: '메가슬립 수면엔 미강테아닌',
-    //   time: new Date().setHours(22, 0, 0, 0),
-    //   completed: false,
-    // },
-  ]);
+  } = useMedicineList();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const medicines = await getMedicines();
-  //     setMedi(medicines);
-  //   };
+  const [medi, setMedi] = useState([]);
 
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const medicine = await getMedicines();
+        console.log('Data received:', medicine.data); // 데이터 본문 출력
+        setMedi(medicine.data); // 상태 업데이트
+      } catch (error) {
+        console.error('Error fetching data:', error); // 에러 핸들링
+      }
+    };
 
-  // setMedi((medi) => getMedicines());
+    fetchData();
+  }, []);
+
   return (
     <MediListContainer>
-      {/* 약 목록을 순회하여 각각의 항목을 렌더링 */}
-      {medi &&
+      {Array.isArray(medi) &&
         medi.map((item) => (
           <MedicineName key={item.id}>
             <Checkbox
               type="checkbox"
-              checked={item.completed}
+              checked={item.isTaken}
               onChange={() => handleToggle(item.id)}
             />
 
@@ -77,20 +84,16 @@ function MedicineList() {
             >
               <Name
                 style={{
-                  textDecoration: item.completed ? 'line-through' : 'none',
+                  textDecoration: item.isTaken ? 'line-through' : 'none',
                 }}
               >
-                {item.text}
+                {item.name}
               </Name>
 
-              {item.time && (
+              {item.takenAt && (
                 <Time>
                   <Icon src={icon_alarm} alt="icon" />
-                  {new Date(item.time).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false,
-                  })}
+                  {formatTime(item.takenAt)}
                 </Time>
               )}
             </div>
@@ -105,7 +108,6 @@ function MedicineList() {
         영양제 추가하기
       </AddButton>
 
-      {/* 모달 컴포넌트 */}
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
