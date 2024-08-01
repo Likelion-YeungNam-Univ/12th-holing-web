@@ -21,7 +21,6 @@ function Report() {
         </Title>
 
         {/* 탭 컴포넌트 */}
-        {/* TODO : 데이터는 추후 props로 구현 예정 - 임시로 text입력 상태*/}
         <Tap leftTap={leftTap} rightTap={rightTap} setLeftState={setLeftState} setRightState={setRightState}/>
       </TopWrapper>
 

@@ -6,10 +6,10 @@ import { IoIosArrowForward } from "react-icons/io";
 // 이전 주차 컴포넌트
 function PastSlide({ reportId, weekOfMonth, title, month, user }) {
   const navigate = useNavigate();
-
-  {/* TODO : navigate uri 변경예정 */}
+  
   const goToReportDetail = () => {
-    navigate('/reportDetail');
+    navigate(`/report/${reportId}`);
+    console.log("click!!");
   }
 
   return (

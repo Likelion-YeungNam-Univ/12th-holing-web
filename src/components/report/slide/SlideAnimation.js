@@ -19,7 +19,6 @@ function SlideAnimation({reportSummary, user}) {
       >
 
       {reportSummary.map((report, index) => (
-        // TODO : 짝꿍은 더보기 컴포넌트 제거
         <SwiperSlide key={report.reportId}>
           {index === 0 ? (
             <CurrentSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} month={report.month} title={report.top1Report.title} user={user}/>  

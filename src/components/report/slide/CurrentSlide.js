@@ -7,9 +7,8 @@ import { IoIosArrowForward } from "react-icons/io";
 function CurrentSlide( { reportId, weekOfMonth, title, month, user } ) {
   const navigate = useNavigate();
 
-  {/* TODO : navigate uri 변경예정 */}
   const goToReportDetail = () => {
-    navigate('/reportDetail');
+    navigate(`/report/${reportId}`);
     console.log("click!!");
   }
 

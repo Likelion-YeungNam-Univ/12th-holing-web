@@ -92,47 +92,49 @@ export const options = {
 // tagName을 한국어로 매핑 함수
 const getKoreanLabel = (tagName) => {
   const labelMap = {
-    'SLEEP_PROBLEM': '수면문제',
-    'TEMPERATURE_CHANGE': '체온변화',
-    'MOOD_CHANGE': '기분변화',
-    'PHYSICAL_CHANGE': '신체변화',
-    'WEIGHT_CHANGE': '체중변화',
-    'PERIOD': '월경',
+    SLEEP_PROBLEM: '수면문제',
+    TEMPERATURE_CHANGE: '체온변화',
+    MOOD_CHANGE: '기분변화',
+    PHYSICAL_CHANGE: '신체변화',
+    WEIGHT_CHANGE: '체중변화',
+    PERIOD: '월경',
   };
   return labelMap[tagName] || tagName; // 일치 라벨 없으면 tagName 반환
 };
 
-
-
-
-function LineChart({graphList}) {
-  const [weekLabels, setWeekLabels] = useState([]); // 그래프 하단 주차 라벨
-  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
+function LineChart({ graphList }) {
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] }); // 그래프 데이터 관리
 
   useEffect(() => {
     if (graphList.length > 0) {
       // 월, 주차 추출 및 데이터 구조화
-      const weeks = graphList.map(graph => ({
+      const weeks = graphList.map((graph) => ({
         weekOfMonth: graph.weekOfMonth,
         month: graph.month,
-        list: graph.reportList
+        list: graph.reportList,
       }));
 
-      // weekLabels(주차) 배열 표현형식
-      const updatedWeekLabels = weeks.map(week => `${week.month}월 ${week.weekOfMonth}주차`);
+      // 주차 배열 표현형식
+      const updatedWeekLabels = weeks.map(
+        (week) => `${week.month}월 ${week.weekOfMonth}주차`
+      );
       const limitedWeekLabels = updatedWeekLabels.slice(-5); // 최신 5개 유지
-      setWeekLabels(limitedWeekLabels);
 
       // tagName 추출, 중복제거
-      const tagNames = [...new Set(weeks.flatMap(week => week.list.map(report => report.tagName)))];
-      console.log("tagNames = ", tagNames);
+      const tagNames = [
+        ...new Set(
+          weeks.flatMap((week) => week.list.map((report) => report.tagName))
+        ),
+      ];
 
       // tagName에 따른 score값
-      const datasets = tagNames.map(tagName => {
-        const data = weeks.map(week => {
-          const report = week.list.find(r => r.tagName === tagName);
-          return report ? report.score : 0; // score 값이 없으면 0으로 처리
-        }).slice(-5); // 최신 5개 데이터만 유지
+      const datasets = tagNames.map((tagName) => {
+        const data = weeks
+          .map((week) => {
+            const report = week.list.find((r) => r.tagName === tagName);
+            return report ? report.score : 0; // score 값이 없으면 0으로 처리
+          })
+          .slice(-5); // 최신 5개 데이터만 유지
 
         return {
           label: tagName, // 한국어 라벨로 변환
@@ -145,7 +147,7 @@ function LineChart({graphList}) {
 
       setChartData({
         labels: limitedWeekLabels,
-        datasets: datasets
+        datasets: datasets,
       });
     }
   }, [graphList]);
@@ -153,19 +155,15 @@ function LineChart({graphList}) {
   // tagName에 따른 색상 설정 함수
   const getColor = (tagName) => {
     const colorMap = {
-      'SLEEP_PROBLEM': '#9180FF',
-      'TEMPERATURE_CHANGE': '#EA6363',
-      'MOOD_CHANGE': '#57A4FE',
-      'PHYSICAL_CHANGE': '#8ED51E',
-      'WEIGHT_CHANGE': '#FFD260',
-      'PERIOD': '#000000'
+      SLEEP_PROBLEM: '#9180FF',
+      TEMPERATURE_CHANGE: '#EA6363',
+      MOOD_CHANGE: '#57A4FE',
+      PHYSICAL_CHANGE: '#8ED51E',
+      WEIGHT_CHANGE: '#FFD260',
+      PERIOD: '#000000',
     };
     return colorMap[tagName] || '#000000'; // 기본 색상
   };
-
-  console.log("graphList = ", graphList);
-  console.log("weekLabels = ", weekLabels);
-  console.log("chartData = ", chartData);
 
   return (
     <GraphContainer>
