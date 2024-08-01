@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import {
   Wrapper,
   Header,
@@ -11,6 +12,7 @@ import {
   Img,
 } from 'styles/selfTest/selfTest-styled';
 import { useSelfTest } from 'hooks/test/selfTestHook';
+import { getSelftest } from 'apis/selftest/selftestGet';
 
 function SelfTest() {
   const {
@@ -20,6 +22,25 @@ function SelfTest() {
     handleNextButtonClick,
   } = useSelfTest('/SelfTest4');
 
+  const [statement, setStatement] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [choice1, setChoice1] = useState('');
+  const [choice2, setChoice2] = useState('');
+
+  useEffect(() => {
+    // 2번 문제부터 gender에 상관없이 문제 동일
+    getSelftest('MALE', 2)
+      .then((response) => {
+        setStatement(response.data.content[0].statement);
+        setImgUrl(response.data.content[0].imgUrl);
+        setChoice1(response.data.content[0].choice1);
+        setChoice2(response.data.content[0].choice2);
+      })
+      .catch((error) => {
+        console.error('Error fetching self-test:', error);
+      });
+  }, []);
+
   return (
     <Wrapper>
       <Header>
@@ -27,24 +48,21 @@ function SelfTest() {
         <Num>
           <span>03</span>/10
         </Num>
-        <Question>
-          갑자기 얼굴이나 몸이 뜨거워지거나, 땀이 많이 나는 경우가 자주 있나요?
-        </Question>
+        <Question>{statement}</Question>
       </Header>
-      {/* <Img src={test_4} alt="test4" /> */}
-      {/* 이미지 넣어주시면 됩니다! */}
+      <Img src={imgUrl} alt="test1"></Img>
       <AnsContainer>
         <Answer
-          onClick={() => handleAnswerClick('네')}
-          isSelected={selectedAnswer === '네'}
+          onClick={() => handleAnswerClick(choice1)}
+          isSelected={selectedAnswer === choice1}
         >
-          네
+          {choice1}
         </Answer>
         <Answer
-          onClick={() => handleAnswerClick('아니요')}
-          isSelected={selectedAnswer === '아니요'}
+          onClick={() => handleAnswerClick(choice2)}
+          isSelected={selectedAnswer === choice2}
         >
-          아니요
+          {choice2}
         </Answer>
       </AnsContainer>
       <NextBtn
