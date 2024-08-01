@@ -13,7 +13,6 @@ const getReportSummary = async (user) => {
         Authorization: `Bearer ${authToken}`,
       },
     });
-    console.log("res.data = ",res.data)
     return res.data;
   } catch (error) {
     console.log( 'Error details:', error.response ? error.response.data : error.message);

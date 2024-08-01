@@ -21,7 +21,7 @@ import {
 
 import PastSolution from './PastSolution';
 
-function DropDownPast( {title, solution, week} ) {
+function DropDownPast( {title, solution, week, rank} ) {
   const [togglestate, setToggleState] = useState(false);
 
   // 드롭다운 버튼 토글
@@ -34,12 +34,11 @@ function DropDownPast( {title, solution, week} ) {
       {/* 과거 드롭다운 */}
       <PastWrapper>
         <PastDropDown>
-          {/* TODO : 컴포넌트에 데이터 props로 전달 예정 */}
           <LeftReport>
             <PastWeek>{week}주차</PastWeek>
 
             <BottomText>
-              <PastRank2>Top1</PastRank2>
+              <PastRank2>TOP{rank}</PastRank2>
               <PastDetailText>
                 {/* TODO : 키워드 TextDecoGray 적용*/}
                 {title}
@@ -62,12 +61,17 @@ function DropDownPast( {title, solution, week} ) {
           <SolutionWrapper>
             <MainSolution>{solution.summary}</MainSolution>
 
+           
             <SolutionList>
-              {/* TODO : props 전달 예정 */}
               {/* 해결법  01 ~ 03 */}
-              <PastSolution></PastSolution>
-              <PastSolution></PastSolution>
-              <PastSolution></PastSolution>
+              {/* 객체타입이라 배열로 변환 */}
+              {Object.keys(solution)
+                // solution에서 content 인것만 
+                .filter(key => key.startsWith('content'))
+                .map((key, index) => (
+                  <PastSolution key={index} content={solution[key]} id={index+1}></PastSolution>
+                ))}
+              {/* TODO : 밑부분 solution컴포넌트 */}
             </SolutionList>
           </SolutionWrapper>
         )}

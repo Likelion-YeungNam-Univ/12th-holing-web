@@ -14,7 +14,6 @@ function reportDetail() {
   const reportId = parts[parts.length - 1]; // 마지막 부분 추출
 
   const reportDetail = getDetailHook(reportId);
-  console.log("reportDetail= ", reportDetail)
 
 
   // TODO : 로딩 중 화면으로 교체
@@ -41,8 +40,8 @@ function reportDetail() {
             <div key={index}>
               {/* 맨처음만 현재 리포트 컴포넌트 */}
               {index==0 
-                ? (<DropDownCurrent title={reports.title} solution={reports.solution} week={reportDetail.weekOfMonth}/>) 
-                : (<DropDownPast title={reports.title} solution={reports.solution} week={reportDetail.weekOfMonth}/>)}
+                ? (<DropDownCurrent title={reports.title} solution={reports.solution} week={reportDetail.weekOfMonth} rank={index+1}/>) 
+                : (<DropDownPast title={reports.title} solution={reports.solution} week={reportDetail.weekOfMonth} rank={index+1}/>)}
             </div>
           )
         })}

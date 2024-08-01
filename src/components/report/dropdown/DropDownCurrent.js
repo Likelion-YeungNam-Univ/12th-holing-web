@@ -24,9 +24,8 @@ import CurrentSolution from './CurrentSolution';
 
 
 
-function DropDownCurrent( {title, solution, week} ) {
+function DropDownCurrent( {title, solution, week, rank} ) {
   const [togglestate, setToggleState] = useState(false);
-  // console.log("reportList = ", reportList);
 
 
   // 드롭다운 버튼 토글
@@ -39,12 +38,11 @@ function DropDownCurrent( {title, solution, week} ) {
       {/* 현재 드롭다운 */}
       <CurrentWrapper>
         <CurrentDropDown>
-          {/* TODO : 컴포넌트에 데이터 props로 전달 예정 */}
           <LeftReport>
             <CurrentWeek>{week}주차</CurrentWeek>
 
             <BottomText>
-              <CurrentRank>Top1</CurrentRank>
+              <CurrentRank>TOP{rank}</CurrentRank>
               <CurrentDetailText>
                 {/* TODO : 키워드 TextDecoWhite 적용*/}
                 {title}
@@ -68,11 +66,15 @@ function DropDownCurrent( {title, solution, week} ) {
             <MainSolution>{solution.summary}</MainSolution>
 
             <SolutionList>
-              {/* TODO : props 전달 예정 */}
               {/* 해결법  01 ~ 03 */}
-              <CurrentSolution></CurrentSolution>
-              <CurrentSolution></CurrentSolution>
-              <CurrentSolution></CurrentSolution>
+              {/* 객체타입이라 배열로 변환 */}
+              {Object.keys(solution)
+                // solution에서 content 인것만 
+                .filter(key => key.startsWith('content'))
+                .map((key, index) => (
+                  <CurrentSolution key={index} content={solution[key]} id={index+1}></CurrentSolution>
+                ))}
+              {/* TODO : 밑부분 solution컴포넌트 */}
             </SolutionList>
           </SolutionWrapper>
         )}
