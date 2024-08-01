@@ -10,7 +10,6 @@ const getSurveyHook = () => {
     getSurvey()
       .then(testList =>{
         setTests(testList);
-        console.log("tests[] = ", testList);
       })
       .catch(error => {
         console.log('Error fetching survey:', error);

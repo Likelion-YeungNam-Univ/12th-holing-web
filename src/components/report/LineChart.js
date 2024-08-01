@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +12,6 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import getGraphHook from 'hooks/report/getGraphHook';
-import { useState, useEffect } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +23,7 @@ ChartJS.register(
   Legend
 );
 
+// 그래프 옵션 설정
 export const options = {
   responsive: true,
   plugins: {
@@ -37,7 +38,7 @@ export const options = {
         generateLabels: function (chart) {
           return chart.data.datasets.map(function (dataset) {
             return {
-              text: getLabel(dataset.label), // 라벨을 한국어로 변환
+              text: getKoreanLabel(dataset.label), // 라벨을 한국어로 변환
               fillStyle: dataset.backgroundColor, // 각 데이터셋의 backgroundColor를 fillStyle로 사용
               hidden: false,
               lineCap: 'round',
@@ -89,8 +90,8 @@ export const options = {
   },
 };
 
-// 라벨을 한국어로 변환
-const getLabel = (tagName) => {
+// tagName을 한국어로 매핑 함수
+const getKoreanLabel = (tagName) => {
   const labelMap = {
     'SLEEP_PROBLEM': '수면문제',
     'TEMPERATURE_CHANGE': '체온변화',
@@ -99,14 +100,13 @@ const getLabel = (tagName) => {
     'WEIGHT_CHANGE': '체중변화',
     'PERIOD': '월경',
   };
-  return labelMap[tagName] || tagName; // 기본적으로 원래 라벨 반환
+  return labelMap[tagName] || tagName; // 일치 라벨 없으면 tagName 반환
 };
 
-export default function LineChart() {
+function LineChart() {
   const graphList = getGraphHook();
-  const [weekList, setWeekList] = useState([]);
-  const [labels, setLabels] = useState([]);
-  const [data, setData] = useState({ labels: [], datasets: [] });
+  const [weekLabels, setWeekLabels] = useState([]); // 그래프 하단 주차 라벨
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 
   useEffect(() => {
     if (graphList.length > 0) {
@@ -117,15 +117,16 @@ export default function LineChart() {
         list: graph.reportList
       }));
 
-      // labels 배열 업데이트
-      const updatedLabels = weeks.map(week => `${week.month}월 ${week.weekOfMonth}주차`);
-      // labels를 최대 5개로 제한
-      const limitedLabels = updatedLabels.slice(-5); // 최신 5개의 레이블만 유지
-      setLabels(limitedLabels);
+      // weekLabels(주차) 배열 표현형식
+      const updatedWeekLabels = weeks.map(week => `${week.month}월 ${week.weekOfMonth}주차`);
+      const limitedWeekLabels = updatedWeekLabels.slice(-5); // 최신 5개 유지
+      setWeekLabels(limitedWeekLabels);
 
-      // 데이터셋 업데이트
+      // tagName 추출, 중복제거
       const tagNames = [...new Set(weeks.flatMap(week => week.list.map(report => report.tagName)))];
+      console.log("tagNames = ", tagNames);
 
+      // tagName에 따른 score값
       const datasets = tagNames.map(tagName => {
         const data = weeks.map(week => {
           const report = week.list.find(r => r.tagName === tagName);
@@ -133,25 +134,23 @@ export default function LineChart() {
         }).slice(-5); // 최신 5개 데이터만 유지
 
         return {
-          label: getLabel(tagName), // 한국어 라벨로 변환
-          data: data,
+          label: tagName, // 한국어 라벨로 변환
+          data: data, // score값
           borderColor: getColor(tagName),
           backgroundColor: getColor(tagName),
           borderWidth: 2,
         };
       });
 
-      setData({
-        labels: limitedLabels,
+      setChartData({
+        labels: limitedWeekLabels,
         datasets: datasets
       });
-
-      setWeekList(weeks);
     }
   }, [graphList]);
 
+  // tagName에 따른 색상 설정 함수
   const getColor = (tagName) => {
-    // 특정 태그 이름에 대한 색상 설정
     const colorMap = {
       'SLEEP_PROBLEM': '#9180FF',
       'TEMPERATURE_CHANGE': '#EA6363',
@@ -164,18 +163,19 @@ export default function LineChart() {
   };
 
   console.log("graphList = ", graphList);
-  console.log("weekList = ", weekList);
-  console.log("labels = ", labels);
-  console.log("data = ", data);
+  console.log("weekLabels = ", weekLabels);
+  console.log("chartData = ", chartData);
 
   return (
     <GraphContainer>
       <ContentInner>
-        <Line options={options} data={data} height={500} width={800} />
+        <Line options={options} data={chartData} height={500} width={800} />
       </ContentInner>
     </GraphContainer>
   );
 }
+
+export default LineChart;
 
 const GraphContainer = styled.div`
   width: 100%;
