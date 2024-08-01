@@ -21,7 +21,7 @@ function reportDetail() {
     return <div>Loading...</div>;
   }
 
-  // `reportDetail`이 정의되어 있고 `reportList`가 배열인지 확인
+  // reportDetail이 정의되어 있고 `reportList`가 배열인지 확인
   if (!reportDetail.reportList || !Array.isArray(reportDetail.reportList)) {
     return <div>No reports available</div>;
   }
