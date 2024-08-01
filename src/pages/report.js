@@ -4,7 +4,6 @@ import { HigLight } from 'styles/report/GotoTestItem-styled';
 import Tap from 'components/report/Tap';
 import GotoTest from 'components/report/GotoTest';
 
-
 function Report() {
 
   // 탭 상태 관리
