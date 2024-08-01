@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_4 from 'assets/images/test_4.svg';
 
 function SelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -40,7 +39,8 @@ function SelfTest() {
           갑자기 얼굴이나 몸이 뜨거워지거나, 땀이 많이 나는 경우가 자주 있나요?
         </Question>
       </Header>
-      <Img src={test_4} alt="test4" />
+      {/* <Img src={test_4} alt="test4" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네')}

@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_8 from 'assets/images/test_8.svg';
 
 function SelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -40,7 +39,8 @@ function SelfTest() {
           평소보다 쉽게 피로를 느끼거나, 에너지가 부족하다는 생각이 드나요?
         </Question>
       </Header>
-      <Img src={test_8} alt="test8" />
+      {/* <Img src={test_8} alt="test8" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네')}

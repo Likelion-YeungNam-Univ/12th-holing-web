@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_9 from 'assets/images/test_9.svg';
 
 function SelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -38,7 +37,8 @@ function SelfTest() {
         </Num>
         <Question>가슴 두근거림이 하루 2번이상 발생하나요?</Question>
       </Header>
-      <Img src={test_9} alt="test9" />
+      {/* <Img src={test_9} alt="test9" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네')}

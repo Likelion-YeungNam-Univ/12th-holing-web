@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_1 from 'assets/images/test_1.svg';
 
 function FeSelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -40,7 +39,8 @@ function FeSelfTest() {
           최근 생리 주기가 불규칙해지거나, 생리량이 변하는 등의 변화가 있나요?
         </Question>
       </Header>
-      <Img src={test_1} alt="test1" />
+      {/* <Img src={test_1} alt="test1" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네, 규칙적으로 발생합니다.')}

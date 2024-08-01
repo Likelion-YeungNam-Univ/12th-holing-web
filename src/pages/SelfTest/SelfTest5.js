@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_6 from 'assets/images/test_6.svg';
 
 function SelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -40,7 +39,8 @@ function SelfTest() {
           최근 일상적인 일이나 업무에 집중하는데 어려움을 느끼고 있나요?
         </Question>
       </Header>
-      <Img src={test_6} alt="test6" />
+      {/* <Img src={test_6} alt="test6" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네')}

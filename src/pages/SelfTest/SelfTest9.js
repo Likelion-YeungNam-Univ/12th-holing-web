@@ -11,7 +11,6 @@ import {
   NextBtn,
   Img,
 } from 'styles/selfTest/selfTest-styled';
-import test_10 from 'assets/images/test_10.svg';
 
 function SelfTest() {
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
@@ -40,7 +39,8 @@ function SelfTest() {
           갑자기 어지럽거나 균형을 잃을 것 같은 느낌이 드는 경우가 있나요?
         </Question>
       </Header>
-      <Img src={test_10} alt="test10" />
+      {/* <Img src={test_10} alt="test10" /> */}
+      {/* 이미지 넣어주시면 됩니다! */}
       <AnsContainer>
         <Answer
           onClick={() => handleAnswerClick('네')}
