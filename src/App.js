@@ -47,14 +47,12 @@ function App() {
               <Route path="/login" element={<Login />} />
               {/*서비스 소개 후 로그인 버튼 있는 페이지*/}
 
-              {/* <Route path="/auth/signIn" element={<Callback />} /> */}
-              {/* <Route path="/share-url" element={<ShareUrl />} /> */}
               {/*짝꿍과 공유하기 페이지*/}
-              <Route path="/kakaologin" element={<ShareUrl />} />
             </Route>
 
             {/* 로고 가운데 화면프레임 */}
             <Route path="/" element={<IntroFrame />}>
+              <Route path="/kakaologin" element={<ShareUrl />} />
               <Route path="/intro" element={<Intro />} />
             </Route>
           </Routes>
