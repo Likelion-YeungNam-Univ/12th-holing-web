@@ -50,10 +50,7 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
           </Route>
-          {/* <React.Fragment> */}
-          {/* <GlobalStyles /> {/* 전역스타일링 */}
-          {/* <BrowserRouter>
-        <Routes>  */}
+
           <Route path="/start" element={<Start />} />
           {/* 기본 화면프레임 */}
           <Route element={<Frame />}>
