@@ -9,24 +9,17 @@ import {
   AnsContainer,
   Answer,
   NextBtn,
-  Img,
+  // Img,
 } from 'styles/selfTest/selfTest-styled';
+import { useSelfTest } from 'hooks/test/selfTestHook';
 
 function FeSelfTest() {
-  const [selectedAnswer, setSelectedAnswer] = useState(null); // 현재 선택된 답변을 저장하는 상태
-  const navigate = useNavigate(); // useNavigate 훅 사용
-
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswer(answer); // 클릭된 답변을 상태로 설정
-  };
-
-  const isButtonActive = selectedAnswer !== null; // 버튼 활성화 상태
-
-  const handleNextButtonClick = () => {
-    if (isButtonActive) {
-      navigate('/SelfTest2'); // 다음 페이지로 이동
-    }
-  };
+  const {
+    selectedAnswer,
+    handleAnswerClick,
+    isButtonActive,
+    handleNextButtonClick,
+  } = useSelfTest('/SelfTest2');
 
   return (
     <Wrapper>
