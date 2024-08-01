@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import {
   MissionTitleWrapper,
   MissionTitle1,
@@ -11,57 +12,205 @@ import {
   MissionRefresh,
   MissionItemWrapper,
   CreditBox,
+  MissionCompleteBtn,
+  MissionConnectTitle,
+  MissionConnectDescription,
+  MissionConnectPlusBtn,
+  MissionConnectStart,
+  MissionConnectImg,
+  MissionConnectNextBtn,
+  MissionConnectTitleWrapper,
+  MissionTitleImg,
+  MissionNoCard,
+  MissionNoImg,
+  MissionNoTitle,
+  MissionNoDescription,
+  MissionNoCardBorderTop,
+  MissionRefreshImg,
+  MissionRefreshWrapper,
 } from 'styles/calendar/Mission-styled';
+import moment from 'moment';
+import { createMissions } from 'apis/mission/missionsCreate';
+import { getMissions } from 'apis/mission/missionsGet';
+import { patchMissions } from 'apis/mission/missionsPatch';
+import { completeMissions } from 'apis/mission/missionsComplete';
+import { getUserInfo } from 'apis/my/userInfoGet';
+import img_missionCompleteBtnActive from 'assets/images/mission_complete_btn_active.svg';
+import img_missionCompleteBtnInactive from 'assets/images/mission_complete_btn_inactive.svg';
+import img_missionConnectMale from 'assets/images/mission_connect_img_male.svg';
+import img_missionConnectFemale from 'assets/images/mission_connect_img_female.svg';
+import img_missionConnectPlusBtn from 'assets/images/mission_connect_plus_btn.svg';
+import img_missionConnectNextBtn from 'assets/images/mission_connect_next_btn.svg';
+import img_missionTitle from 'assets/images/mission_title_img.svg';
+import img_missionNo from 'assets/images/mission_no_img.svg';
+import img_missionCredit from 'assets/images/mission_credit_img.svg';
+import img_missionRefresh from 'assets/images/mission_refresh_img.svg';
 
-const Mission = () => {
+const Mission = ({ selectedDate, updateMissions }) => {
+  const [missions, setMissions] = useState([]);
+  const [gender, setGender] = useState('');
+
+  useEffect(() => {
+    // 미션 조회 포맷 YYYY-MM-DD
+    const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format('YYYY-MM-DD');
+
+    // API 호출을 통해 미션 생성하기
+    createMissions()
+      .then((response) => {
+        console.log('missions:', response.data);
+      })
+      .catch((error) => {
+        // 미션을 한번 생성하면 409 에러 발생
+        console.error('Missions already exists:', error);
+      });
+
+    // API 호출을 통해 미션 조회하기
+    getMissions(isoDate)
+      .then((response) => {
+        setMissions(response.data);
+        console.log('missions:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching missions:', error);
+      });
+
+    // API 호출을 통해 성별 조회하기
+    getUserInfo()
+      .then((response) => {
+        const data = response.data;
+        setGender(data.gender);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+
+    // selectedDate에 대한 미션 조회
+  }, [selectedDate]);
+
+  // 새로고침 버튼 눌렀을 때 미션 교체
+  const handleRefresh = (missionResultId) => {
+    patchMissions(missionResultId)
+      .then((response) => {
+        console.log('Mission refreshed:', response.data);
+        // 미션 새로고침 후 최신 미션 조회
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
+        return getMissions(isoDate);
+      })
+      .then((response) => {
+        setMissions(response.data);
+        console.log('refreshed missions:', response.data);
+      })
+      .catch((error) => {
+        // 날짜가 지난 미션을 새로고침하거나 이미 새로고침을 한 미션에 대해 새로고침을 한 경우
+        // 새로 고침은 하나의 미션에 대해서만 가능함
+        console.error('Error refreshing mission:', error);
+      });
+  };
+
+  // 완료 체크 눌렀을 때 미션 완료
+  const handleComplete = (missionResultId) => {
+    completeMissions(missionResultId)
+      .then((response) => {
+        console.log('Mission completed:', response.data);
+        // 미션 완료 후 최신 미션 조회
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
+        return getMissions(isoDate);
+      })
+      .then((response) => {
+        setMissions(response.data);
+        const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
+          'YYYY-MM-DD'
+        );
+        console.log('completed missions:', response.data);
+        updateMissions(isoDate, 1);
+      })
+      .catch((error) => {
+        console.error('Error completing mission:', error);
+      });
+  };
+
   return (
     <>
       <MissionTitleWrapper>
         <MissionTitle1>당신의 짝꿍을 위한</MissionTitle1>
         <MissionTitleRow>
+          <MissionTitleImg src={img_missionTitle}></MissionTitleImg>
           <MissionTitle2>미션</MissionTitle2>
           <MissionTitle3>을 수행해보세요</MissionTitle3>
         </MissionTitleRow>
       </MissionTitleWrapper>
-      <MissionCard>
-        <CreditBox>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="19"
-            viewBox="0 0 20 19"
-            fill="none"
-          >
-            <circle cx="10" cy="9.5" r="9.5" fill="#ADA1FF" />
-            <circle cx="10.0092" cy="9.50941" r="7.13196" fill="white" />
-            <path
-              d="M11.9075 8.06994C11.7759 7.23916 11.1011 6.73549 10.1739 6.7303C8.93955 6.73549 8.12211 7.62859 8.12211 9.21227C8.12211 10.8323 8.95052 11.689 10.163 11.6942C11.0682 11.689 11.7484 11.2217 11.9075 10.4065L13.5753 10.4169C13.3943 11.8085 12.1599 13.0754 10.141 13.0754C8.01788 13.0754 6.44336 11.6579 6.44336 9.21227C6.44336 6.75626 8.04531 5.34912 10.141 5.34912C11.9734 5.34912 13.3559 6.34087 13.5753 8.06994H11.9075Z"
-              fill="#ADA1FF"
-            />
-          </svg>
-          1
-        </CreditBox>
-        <MissionItemWrapper>
-          <MissionItem>짝꿍에게 해주기</MissionItem>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="58"
-            height="60"
-            viewBox="0 0 58 60"
-            fill="none"
-          >
-            <path
-              d="M45.9166 0H12.0834C5.41326 0.00832031 0.00804297 5.59992 0 12.5V47.5001C0.00804297 54.4001 5.41326 59.9918 12.0834 60H45.9167C52.5867 59.9918 57.9921 54.4001 58 47.5V12.5C57.9921 5.59992 52.5867 0.00832031 45.9166 0ZM48.3334 20.1975L25.9695 43.3325C24.0823 45.2856 21.0221 45.2862 19.1341 43.3339L19.1327 43.3325L9.66663 33.5426C8.72096 32.5643 8.72096 30.9783 9.66663 30.0001C10.6123 29.0219 12.1454 29.0218 13.091 30.0001L22.5546 39.7901L44.9209 16.655C45.8666 15.6803 47.397 15.6831 48.3393 16.6612C49.2816 17.6395 49.2789 19.2227 48.3334 20.1975Z"
-              fill="#9180FF"
-            />
-          </svg>
-        </MissionItemWrapper>
-
-        <MissionDiscription>
-          건강한 체중을 유지하고, 체중 변화를 효과적으로 관리하기 위해 아침에...
-        </MissionDiscription>
-        <MissionRefresh>새로고침</MissionRefresh>
-      </MissionCard>
+      {missions.isMateConnected === false ? (
+        <MissionCard>
+          <MissionConnectTitleWrapper>
+            <MissionConnectTitle>짝꿍 미션</MissionConnectTitle>
+            <MissionConnectNextBtn
+              src={img_missionConnectNextBtn}
+            ></MissionConnectNextBtn>
+          </MissionConnectTitleWrapper>
+          <MissionConnectDescription>
+            짝꿍의 증상에 따라 맞춤형 미션을 제공하여 서로의 증상에 대한
+            미션으로 친밀감을 강화합니다.
+          </MissionConnectDescription>
+          <MissionConnectPlusBtn
+            src={img_missionConnectPlusBtn}
+          ></MissionConnectPlusBtn>
+          <MissionConnectImg
+            src={
+              gender === 'MALE'
+                ? img_missionConnectFemale
+                : img_missionConnectMale
+            }
+            alt="Connect Image"
+          ></MissionConnectImg>
+          <MissionConnectStart>짝꿍과 커넥트 시작하기</MissionConnectStart>
+        </MissionCard>
+      ) : missions.length === 0 ? (
+        <MissionNoCard>
+          <MissionNoCardBorderTop></MissionNoCardBorderTop>
+          <MissionNoImg src={img_missionNo}></MissionNoImg>
+          <MissionNoTitle>미션 리스트가 없습니다</MissionNoTitle>
+          <MissionNoDescription>
+            해당 주의 짝꿍의 증상테스트가 완료되어있지 않거나 사이트에 접속하지
+            않은 경우 미션 리스트가 생성되지 않았을 수 있습니다.
+          </MissionNoDescription>
+        </MissionNoCard>
+      ) : (
+        missions.map((mission) => (
+          <MissionCard key={mission.id} isCompleted={mission.isCompleted}>
+            <CreditBox src={img_missionCredit}></CreditBox>
+            <MissionItemWrapper>
+              <MissionItem isCompleted={mission.isCompleted}>
+                {mission.missionInfoDto.missionTitle}
+              </MissionItem>
+              <MissionCompleteBtn
+                src={
+                  mission.isCompleted
+                    ? img_missionCompleteBtnActive
+                    : img_missionCompleteBtnInactive
+                }
+                onClick={() => handleComplete(mission.id)}
+                alt="Complete Mission"
+              />
+            </MissionItemWrapper>
+            <MissionDiscription>
+              {mission.missionInfoDto.missionContent}
+            </MissionDiscription>
+            <MissionRefreshWrapper>
+              <MissionRefresh onClick={() => handleRefresh(mission.id)}>
+                새로고침
+              </MissionRefresh>
+              <MissionRefreshImg
+                src={img_missionRefresh}
+                onClick={() => handleRefresh(mission.id)}
+              ></MissionRefreshImg>
+            </MissionRefreshWrapper>
+          </MissionCard>
+        ))
+      )}
     </>
   );
 };

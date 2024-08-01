@@ -3,38 +3,34 @@
 import { SwiperWrapper } from 'styles/report/SlideItem-styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Swiper 스타일 Import
-import 'swiper/css';
+import 'swiper/css';  // Swiper 스타일 Import
 
 // 필요모듈 import
 import CurrentSlide from './CurrentSlide';
 import PastSlide from './PastSlide';
 
-export default function SlideAnimation() {
+function SlideAnimation({reportSummary, user}) {
+
   return (
     <SwiperWrapper>
       <Swiper
         slidesPerView={2} // 화면에 보여질 slide 갯수
         slidesOffsetAfter={40} // 오른쪽 끝에 여백 추가
       >
-        {/* TODO : 추후 props로 Slides컴포넌트 연결 예정 */}
-        <SwiperSlide>
-          <CurrentSlide />
-        </SwiperSlide>
 
-        <SwiperSlide>
-          <PastSlide />
+      {reportSummary.map((report, index) => (
+        <SwiperSlide key={report.reportId}>
+          {index === 0 ? (
+            <CurrentSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} month={report.month} title={report.top1Report.title} user={user}/>  
+          ) : (
+            <PastSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} month={report.month} title={report.top1Report.title} user={user}/>
+          )}
         </SwiperSlide>
-
-        <SwiperSlide>
-          <PastSlide />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <PastSlide />
-        </SwiperSlide>
+      ))}
         
       </Swiper>
     </SwiperWrapper>
   );
 }
+
+export default SlideAnimation;
