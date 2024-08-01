@@ -27,7 +27,7 @@ import img_schedule from 'assets/images/schedule_img.svg';
 import { getSchedules } from 'apis/schedule/scheduleGet';
 import { deleteSchedule } from 'apis/schedule/scheduleDelete';
 
-const MySchedule = ({ selectedDate }) => {
+const MySchedule = ({ selectedDate, updateScheduleDates }) => {
   const { isModalOpen, openModal, closeModal } = MyScheduleHook();
   const [schedules, setSchedules] = useState([]);
 
@@ -55,12 +55,14 @@ const MySchedule = ({ selectedDate }) => {
 
   // 일정 삭제 핸들러
   const handleDelete = (scheduleId) => {
+    const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format('YYYY-MM-DD');
     deleteSchedule(scheduleId)
       .then(() => {
         // 성공적으로 삭제된 경우, 스케줄 목록 업데이트
         setSchedules(
           schedules.filter((schedule) => schedule.id !== scheduleId)
         );
+        updateScheduleDates(isoDate, -1); // 일정 개수 업데이트
       })
       .catch((error) => {
         console.error('Error deleting schedule:', error);
@@ -104,6 +106,7 @@ const MySchedule = ({ selectedDate }) => {
           onClose={closeModal}
           selectedDate={selectedDate}
           onAddSchedule={handleAddSchedule}
+          updateScheduleDates={updateScheduleDates}
         />
       )}
     </ScheduleBox>

@@ -10,7 +10,12 @@ import {
 import SchedulePopUpContentHook from 'hooks/calendar/SchedulePopUpContentHook';
 import { postSchedule } from 'apis/schedule/schedulePost';
 
-const SchedulePopUpContent = ({ onClose, selectedDate, onAddSchedule }) => {
+const SchedulePopUpContent = ({
+  onClose,
+  selectedDate,
+  onAddSchedule,
+  updateScheduleDates,
+}) => {
   const { title, content, handleTitleChange, handleContentChange } =
     SchedulePopUpContentHook(onClose);
 
@@ -32,6 +37,7 @@ const SchedulePopUpContent = ({ onClose, selectedDate, onAddSchedule }) => {
       .then((response) => {
         console.log('Data posted successfully:', response.data);
         onAddSchedule(response.data);
+        updateScheduleDates(date, 1);
       })
       .catch((error) => {
         console.error('Error posting data:', error);
