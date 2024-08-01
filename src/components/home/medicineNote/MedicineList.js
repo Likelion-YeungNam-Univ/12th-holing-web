@@ -46,14 +46,14 @@ function MedicineList() {
     // },
   ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const medicines = await getMedicines();
-      setMedi(medicines);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const medicines = await getMedicines();
+  //     setMedi(medicines);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // setMedi((medi) => getMedicines());
   return (

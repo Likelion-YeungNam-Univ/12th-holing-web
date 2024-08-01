@@ -16,6 +16,7 @@ import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 import UserInfo from 'pages/UserInfo';
+import { CookiesProvider } from 'react-cookie';
 // import FeSelfTest from 'pages/FeSelfTest';
 // import SelfTest from 'pages/SelfTest';
 // import SelfTest2 from 'pages/SelfTest2';
@@ -44,6 +45,8 @@ function App() {
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/kakaologin" element={<ShareUrl />} />
             {/* <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -58,15 +61,14 @@ function App() {
           </Route>
 
           {/* 테스트 화면프레임 */}
+
           <Route path="/symptomTest" element={<TestFrame />}>
             <Route index element={<SymptomTest />} />
-            <Route path="/login" element={<Login />} />
           </Route>
 
           {/* 로고 가운데 화면프레임 */}
           <Route path="/intro" element={<IntroFrame />}>
             <Route index element={<Intro />} />
-            <Route path="/kakaologin" element={<ShareUrl />} />
           </Route>
 
           {/* 시작 화면 */}
