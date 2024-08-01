@@ -43,7 +43,7 @@ function App() {
             <Route path="/my" element={<MyPage />} />
             <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/start" element={<Start />} />
+
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
@@ -67,6 +67,7 @@ function App() {
           <Route element={<IntroFrame />}>
             <Route path="/intro" element={<Intro />} />
           </Route>
+          <Route path="/start" element={<Start />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

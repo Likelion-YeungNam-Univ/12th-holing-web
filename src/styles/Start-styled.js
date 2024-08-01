@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import background from 'assets/images/background.svg';
 
 export const Wrapper = styled.div`
-  margin-top: 50px;
+  margin: auto;
   background-color: #f5f5f5;
   background-image: url(${background}); // 배경 이미지 설정
   background-size: 600px 998px; // 배경 이미지 크기 설정
