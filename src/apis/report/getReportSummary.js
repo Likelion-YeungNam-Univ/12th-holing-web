@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getReportDetail = async () => {
+const getReportSummary = async () => {
   const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = '/user/me/reports/summary';
@@ -20,4 +20,4 @@ const getReportDetail = async () => {
   }
 }
 
-export default getReportDetail;
+export default getReportSummary;
