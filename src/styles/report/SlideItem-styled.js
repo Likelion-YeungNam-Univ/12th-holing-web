@@ -60,7 +60,7 @@ export const SlideBottom = styled.div`
 
 // n주차 text 공통 스타일링
 export const weekStyle = css`
-  width: 66px;
+  width: 80px;
   height: 29px;
   border-radius: 21px;
   padding: 15px, 4px, 15px;

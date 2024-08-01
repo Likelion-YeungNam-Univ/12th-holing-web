@@ -8,6 +8,9 @@ import {
   TapBtn1,
   TapBtn2,
 } from 'styles/report/ReportPage-styled';
+import getGraphHook from 'hooks/report/getGraphHook';
+import getReportHook from 'hooks/report/getReportHook';
+
 
 function Tap({ leftTap, setLeftState, setRightState }) {
   // 탭 토글 함수
@@ -15,6 +18,15 @@ function Tap({ leftTap, setLeftState, setRightState }) {
     setLeftState(!leftTap);
     setRightState(!leftTap);
   };
+
+  // graph 데이터 GET HOOK
+  const myGraphList = getGraphHook('my');
+  const mateGraphList = getGraphHook('mate');
+
+  // 리포트 요약 조회 HOOK
+  const myReportSummary = getReportHook('my')
+  const mateReportSummary = getReportHook('mate')
+
 
   return (
     <TapWrapper>
@@ -30,11 +42,11 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         
         {/* 그래프 */}
         <GraphWrapper>
-          <LineChart />
+          <LineChart graphList={myGraphList}/>
         </GraphWrapper>
 
         {/* 슬라이드 */}
-        <SlideAnimation />
+        <SlideAnimation reportSummary={myReportSummary} user={'me'}/>
       </>
       ) : (
       // 짝꿍탭 클릭 시
@@ -46,11 +58,11 @@ function Tap({ leftTap, setLeftState, setRightState }) {
 
         {/* 그래프*/}
         <GraphWrapper>
-          <LineChart />
+          <LineChart graphList={mateGraphList}/>
         </GraphWrapper>
 
         {/* 슬라이드*/}
-        <SlideAnimation />
+        <SlideAnimation reportSummary={mateReportSummary} user={'mate'}/>
       </>
       )}
 

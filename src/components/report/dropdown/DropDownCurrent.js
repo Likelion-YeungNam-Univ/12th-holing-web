@@ -22,8 +22,11 @@ import {
 } from 'styles/report/ReportDropDown-styled';
 import CurrentSolution from './CurrentSolution';
 
-function DropDownCurrent() {
+
+
+function DropDownCurrent( {title, solution, week, rank} ) {
   const [togglestate, setToggleState] = useState(false);
+
 
   // 드롭다운 버튼 토글
   const ToggleState = () => {
@@ -35,15 +38,14 @@ function DropDownCurrent() {
       {/* 현재 드롭다운 */}
       <CurrentWrapper>
         <CurrentDropDown>
-          {/* TODO : 컴포넌트에 데이터 props로 전달 예정 */}
           <LeftReport>
-            <CurrentWeek>몇주차</CurrentWeek>
+            <CurrentWeek>{week}주차</CurrentWeek>
 
             <BottomText>
-              <CurrentRank>Top1</CurrentRank>
+              <CurrentRank>TOP{rank}</CurrentRank>
               <CurrentDetailText>
-                안면홍조로 인한 <TextDecoWhite>체온변화</TextDecoWhite>에 가장
-                큰 어려움을 겪어요
+                {/* TODO : 키워드 TextDecoWhite 적용*/}
+                {title}
               </CurrentDetailText>
             </BottomText>
           </LeftReport>
@@ -51,9 +53,9 @@ function DropDownCurrent() {
           {/* 토글상태에 따른 arrow 아이콘 변경 */}
           <DropDownBtn onClick={ToggleState}>
             {togglestate ? (
-              <IoIosArrowDown size={120} style={{ color: '#5643D1' }} />
-            ) : (
               <IoIosArrowUp size={120} style={{ color: '#5643D1' }} />
+            ) : (
+              <IoIosArrowDown size={120} style={{ color: '#5643D1' }} />
             )}
           </DropDownBtn>
         </CurrentDropDown>
@@ -61,19 +63,18 @@ function DropDownCurrent() {
         {/* 토글됐을 때 */}
         {togglestate && (
           <SolutionWrapper>
-            <MainSolution>
-              갱년기 수면장애는 여성호르몬의 감소로 인해 야간 안면홍조와 야간
-              발한을 일으키고, 이는 불면증과 같은 수면장애를 일으킵니다. 즉
-              잠자리에서 야간발한과 안면홍조 증상은 깊은 수면에 많은 방해가
-              됩니다.
-            </MainSolution>
+            <MainSolution>{solution.summary}</MainSolution>
 
             <SolutionList>
-              {/* TODO : props 전달 예정 */}
               {/* 해결법  01 ~ 03 */}
-              <CurrentSolution></CurrentSolution>
-              <CurrentSolution></CurrentSolution>
-              <CurrentSolution></CurrentSolution>
+              {/* 객체타입이라 배열로 변환 */}
+              {Object.keys(solution)
+                // solution에서 content 인것만 
+                .filter(key => key.startsWith('content'))
+                .map((key, index) => (
+                  <CurrentSolution key={index} content={solution[key]} id={index+1}></CurrentSolution>
+                ))}
+              {/* TODO : 밑부분 solution컴포넌트 */}
             </SolutionList>
           </SolutionWrapper>
         )}

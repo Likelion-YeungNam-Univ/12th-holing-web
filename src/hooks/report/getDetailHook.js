@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import getReportSummary from 'apis/report/getReportSummary';
+import { useEffect, useState } from "react";
+import getDetail from "apis/report/getDetail";
 
-const getReportHook = (user) => {
-  // 리포트 list 관리 hook
+const getDetailHook = (reportId) => {
+  // 리포트 detail list 관리 hook
   const [reports, setreportList] = useState([]);
 
   useEffect(() => {
     const fetchReport = async () => {
       try {
-        const data = await getReportSummary(user); // 리포트 list get API
+        const data = await getDetail(reportId); // 리포트 list get API
         setreportList(data);
       } catch (error) {
         console.log('Error fetching survey:', error);
@@ -20,5 +20,5 @@ const getReportHook = (user) => {
 
   return reports;
 }
-  
-export default getReportHook;
+
+export default getDetailHook;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ReportContainer, TopWrapper, Title } from 'styles/report/ReportPage-styled';
 import { HigLight } from 'styles/report/GotoTestItem-styled';
 import Tap from 'components/report/Tap';
@@ -21,15 +21,12 @@ function Report() {
         </Title>
 
         {/* 탭 컴포넌트 */}
-        {/* TODO : 데이터는 추후 props로 구현 예정 - 임시로 text입력 상태*/}
         <Tap leftTap={leftTap} rightTap={rightTap} setLeftState={setLeftState} setRightState={setRightState}/>
       </TopWrapper>
 
 
       {/* 하단 테스트 컴포넌트 */}
-      {/* TODO: props로 data 전달 예정 */}
       <GotoTest />
-      
     </ReportContainer>
   );
 }
