@@ -46,7 +46,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </GraphWrapper>
 
         {/* 슬라이드 */}
-        <SlideAnimation reportSummary={myReportSummary}/>
+        <SlideAnimation reportSummary={myReportSummary} user={'me'}/>
       </>
       ) : (
       // 짝꿍탭 클릭 시
@@ -62,7 +62,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </GraphWrapper>
 
         {/* 슬라이드*/}
-        <SlideAnimation reportSummary={mateReportSummary}/>
+        <SlideAnimation reportSummary={mateReportSummary} user={'mate'}/>
       </>
       )}
 
