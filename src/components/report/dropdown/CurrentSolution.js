@@ -3,7 +3,6 @@ import { Solution, SolutionNumBlue, SolutionText } from 'styles/report/ReportDro
 
 function CurrentSolution() {
   return (
-    // TODO : 컴포넌트 분리 및 props 전달
     <Solution>
       <SolutionNumBlue>01</SolutionNumBlue>
 

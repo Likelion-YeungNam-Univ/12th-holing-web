@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ReportContainer, TopWrapper, Title } from 'styles/report/ReportPage-styled';
 import { HigLight } from 'styles/report/GotoTestItem-styled';
 import Tap from 'components/report/Tap';
@@ -26,9 +26,7 @@ function Report() {
 
 
       {/* 하단 테스트 컴포넌트 */}
-      {/* TODO: props로 data 전달 예정 */}
       <GotoTest />
-      
     </ReportContainer>
   );
 }
