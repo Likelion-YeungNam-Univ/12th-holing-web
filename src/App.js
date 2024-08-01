@@ -15,18 +15,18 @@ import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 
-import UserInfo from './pages/UserInfo';
-import FeSelfTest from './pages/SelfTest/FeSelfTest';
-import SelfTest from './pages/SelfTest/SelfTest';
-import SelfTest2 from './pages/SelfTest/SelfTest2';
-import SelfTest3 from './pages/SelfTest/SelfTest3';
-import SelfTest4 from './pages/SelfTest/SelfTest4';
-import SelfTest5 from './pages/SelfTest/SelfTest5';
-import SelfTest6 from './pages/SelfTest/SelfTest6';
-import SelfTest7 from './pages/SelfTest/SelfTest7';
-import SelfTest8 from './pages/SelfTest/SelfTest8';
-import SelfTest9 from './pages/SelfTest/SelfTest9';
-import SelfTest10 from './pages/SelfTest/SelfTest10';
+import UserInfo from 'pages/UserInfo';
+import FeSelfTest from 'pages/SelfTest/FeSelfTest';
+import SelfTest from 'pages/SelfTest/SelfTest';
+import SelfTest2 from 'pages/SelfTest/SelfTest2';
+import SelfTest3 from 'pages/SelfTest/SelfTest3';
+import SelfTest4 from 'pages/SelfTest/SelfTest4';
+import SelfTest5 from 'pages/SelfTest/SelfTest5';
+import SelfTest6 from 'pages/SelfTest/SelfTest6';
+import SelfTest7 from 'pages/SelfTest/SelfTest7';
+import SelfTest8 from 'pages/SelfTest/SelfTest8';
+import SelfTest9 from 'pages/SelfTest/SelfTest9';
+import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 
 function App() {
