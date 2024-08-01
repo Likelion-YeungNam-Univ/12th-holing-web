@@ -53,9 +53,9 @@ function DropDownCurrent( {title, solution, week, rank} ) {
           {/* 토글상태에 따른 arrow 아이콘 변경 */}
           <DropDownBtn onClick={ToggleState}>
             {togglestate ? (
-              <IoIosArrowDown size={120} style={{ color: '#5643D1' }} />
-            ) : (
               <IoIosArrowUp size={120} style={{ color: '#5643D1' }} />
+            ) : (
+              <IoIosArrowDown size={120} style={{ color: '#5643D1' }} />
             )}
           </DropDownBtn>
         </CurrentDropDown>

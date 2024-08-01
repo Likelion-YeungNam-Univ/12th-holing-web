@@ -49,9 +49,9 @@ function DropDownPast( {title, solution, week, rank} ) {
           {/* 토글상태에 따른 arrow 아이콘 변경 */}
           <DropDownBtn onClick={ToggleState}>
             {togglestate ? (
-              <IoIosArrowDown size={120} style={{ color: '#8A8A8A' }} />
-            ) : (
               <IoIosArrowUp size={120} style={{ color: '#8A8A8A' }} />
+            ) : (
+              <IoIosArrowDown size={120} style={{ color: '#8A8A8A' }} />
             )}
           </DropDownBtn>
         </PastDropDown>
