@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useImageToggle = (
+export const useImageToggle = (
   initialImage,
   toggledImage,
   initialColor,
@@ -26,4 +26,4 @@ const useImageToggle = (
   return [image, color, toggleImageAndColor, resetImageAndColor];
 };
 
-export default useImageToggle;
+// export default useImageToggle;

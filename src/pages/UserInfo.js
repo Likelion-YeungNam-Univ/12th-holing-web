@@ -15,7 +15,8 @@ import UserInfo_Fe1 from 'assets/images/UserInfo_Fe1.png';
 import UserInfo_Fe2 from 'assets/images/UserInfo_Fe2.png';
 import UserInfo_Ma1 from 'assets/images/UserInfo_Ma1.png';
 import UserInfo_Ma2 from 'assets/images/UserInfo_Ma2.png';
-import useImageToggle from 'hooks/userInfo/useImgToggle';
+import { useImageToggle } from 'hooks/useImgToggle'; // 경로를 올바르게 수정
+
 function UserInfo() {
   const [selectedGender, setSelectedGender] = useState(null);
   const navigate = useNavigate(); // useNavigate 훅 사용
