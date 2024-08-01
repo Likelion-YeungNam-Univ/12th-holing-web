@@ -8,7 +8,7 @@ import {
   ShareBtn,
   CloseBtn,
 } from 'styles/home/SharePtn-styled';
-import ShareLink from '../../hooks/login/ShareLink';
+import ShareLink from 'hooks/login/ShareLink';
 
 function ShareUrlPtn() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
