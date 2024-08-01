@@ -16,17 +16,17 @@ import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
 
 import UserInfo from './pages/UserInfo';
-import FeSelfTest from './pages/selfTest/FeSelfTest';
-import SelfTest from './pages/selfTest/SelfTest';
-import SelfTest2 from './pages/selfTest/SelfTest2';
-import SelfTest3 from './pages/selfTest/SelfTest3';
-import SelfTest4 from './pages/selfTest/SelfTest4';
-import SelfTest5 from './pages/selfTest/SelfTest5';
-import SelfTest6 from './pages/selfTest/SelfTest6';
-import SelfTest7 from './pages/selfTest/SelfTest7';
-import SelfTest8 from './pages/selfTest/SelfTest8';
-import SelfTest9 from './pages/selfTest/SelfTest9';
-import SelfTest10 from './pages/selfTest/SelfTest10';
+import FeSelfTest from './pages/SelfTest/FeSelfTest';
+import SelfTest from './pages/SelfTest/SelfTest';
+import SelfTest2 from './pages/SelfTest/SelfTest2';
+import SelfTest3 from './pages/SelfTest/SelfTest3';
+import SelfTest4 from './pages/SelfTest/SelfTest4';
+import SelfTest5 from './pages/SelfTest/SelfTest5';
+import SelfTest6 from './pages/SelfTest/SelfTest6';
+import SelfTest7 from './pages/SelfTest/SelfTest7';
+import SelfTest8 from './pages/SelfTest/SelfTest8';
+import SelfTest9 from './pages/SelfTest/SelfTest9';
+import SelfTest10 from './pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 
 function App() {
@@ -36,9 +36,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* 기본 화면프레임 */}
-          <Route path="/" element={<Frame />}>
-            {' '}
-            <Route index element={<Home />} />
+          <Route element={<Frame />}>
+            <Route path="/" element={<Home />} />
             <Route path="/report" element={<Report />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
@@ -60,15 +59,14 @@ function App() {
           </Route>
 
           {/* 테스트 화면프레임 */}
-          <Route path="/" element={<TestFrame />}>
+          <Route element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
           </Route>
 
           {/* 로고 가운데 화면프레임 */}
-          <Route path="/" element={<IntroFrame />}>
+          <Route element={<IntroFrame />}>
             <Route path="/intro" element={<Intro />} />
           </Route>
-          <Route path="/start" element={<Start />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>
