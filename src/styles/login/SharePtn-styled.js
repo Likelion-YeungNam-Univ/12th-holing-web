@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 
+// 공통 속성 변수
+const BtnStyles = `
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 496px;
+  height: 76px;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 29.83px;
+  text-align: left;
+  border-radius: 13px;
+  margin: auto;
+`;
+
 export const Header = styled.div`
   font-family: Pretendard;
   font-size: 20px;
@@ -22,51 +42,19 @@ export const Title = styled.div`
     color: #9180ff;
   }
 `;
+
 export const ShareBtn = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-  margin: auto;
-  width: 496px;
-  height: 76px;
+  ${BtnStyles}
   color: white;
   background: #9180ff;
-  border-radius: 13px;
-  align-self: stretch;
-
-  font-family: Pretendard;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 29.83px;
-  text-align: left;
   margin-bottom: 25px;
 `;
+
 export const CloseBtn = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-
-  width: 496px;
-  height: 76px;
-
+  ${BtnStyles}
   background: #f5f5f5;
   color: #5643d1;
   border: 1px solid #5643d1;
-  border-radius: 13px;
-  margin: auto;
-  font-family: Pretendard;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 29.83px;
-  text-align: left;
 `;
 
 export const Result = styled.div`

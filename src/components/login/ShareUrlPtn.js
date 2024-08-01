@@ -7,7 +7,7 @@ import {
   Result,
   ShareBtn,
   CloseBtn,
-} from 'styles/home/SharePtn-styled';
+} from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
 
 function ShareUrlPtn() {
