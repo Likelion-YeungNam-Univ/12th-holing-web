@@ -8,11 +8,9 @@ import 'swiper/css';  // Swiper 스타일 Import
 // 필요모듈 import
 import CurrentSlide from './CurrentSlide';
 import PastSlide from './PastSlide';
-import getReportHook from 'hooks/report/getReportHook';
 
-function SlideAnimation() {
+function SlideAnimation({reportSummary}) {
 
-  const reportDetail = getReportHook() // 본인 리포트 요약 조회 HOOK
   // TODO : 짝꿍 리포트 요약 조회 HOOK 추가
 
   return (
@@ -22,13 +20,13 @@ function SlideAnimation() {
         slidesOffsetAfter={40} // 오른쪽 끝에 여백 추가
       >
 
-      {reportDetail.map((report, index) => (
+      {reportSummary.map((report, index) => (
         // TODO : 짝꿍은 더보기 컴포넌트 제거
         <SwiperSlide key={report.reportId}>
           {index === 0 ? (
-            <CurrentSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} title={report.top1Report.title}/>  
+            <CurrentSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} month={report.month} title={report.top1Report.title}/>  
           ) : (
-            <PastSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} title={report.top1Report.title}/>
+            <PastSlide reportId={report.reportId} weekOfMonth={report.weekOfMonth} month={report.month} title={report.top1Report.title}/>
           )}
         </SwiperSlide>
       ))}

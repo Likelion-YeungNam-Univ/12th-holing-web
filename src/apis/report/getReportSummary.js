@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const getReportSummary = async () => {
+const getReportSummary = async (user) => {
   const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
-  const endpoint = '/user/me/reports/summary';
+  const endpoint = user==='my' ? ('/user/me/reports/summary') : ('/user/mate/reports/summary');
   const apiUrl = `${serverUrl}${endpoint}`;
   
   try {

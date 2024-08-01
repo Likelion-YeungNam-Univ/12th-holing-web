@@ -9,6 +9,7 @@ import {
   TapBtn2,
 } from 'styles/report/ReportPage-styled';
 import getGraphHook from 'hooks/report/getGraphHook';
+import getReportHook from 'hooks/report/getReportHook';
 
 
 function Tap({ leftTap, setLeftState, setRightState }) {
@@ -21,6 +22,10 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   // graph 데이터 GET HOOK
   const myGraphList = getGraphHook('my');
   const mateGraphList = getGraphHook('mate');
+
+  // 리포트 요약 조회 HOOK
+  const myReportSummary = getReportHook('my')
+  const mateReportSummary = getReportHook('mate')
 
 
   return (
@@ -41,7 +46,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </GraphWrapper>
 
         {/* 슬라이드 */}
-        <SlideAnimation />
+        <SlideAnimation reportSummary={myReportSummary}/>
       </>
       ) : (
       // 짝꿍탭 클릭 시
@@ -57,7 +62,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </GraphWrapper>
 
         {/* 슬라이드*/}
-        <SlideAnimation />
+        <SlideAnimation reportSummary={mateReportSummary}/>
       </>
       )}
 
