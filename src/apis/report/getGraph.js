@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const getGraph = async() => {
+const getGraph = async(user) => {
   const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
-  const endpoint = '/user/me/reports/score';
+  // 탭 위치에 따른 endpoint 변화
+  const endpoint = user==='my' ? ('/user/me/reports/score') : ('/user/mate/reports/score');
   const apiUrl = `${serverUrl}${endpoint}`;
   
   try {

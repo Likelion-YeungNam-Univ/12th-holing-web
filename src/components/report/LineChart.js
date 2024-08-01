@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import getGraphHook from 'hooks/report/getGraphHook';
 
 ChartJS.register(
   CategoryScale,
@@ -103,8 +102,10 @@ const getKoreanLabel = (tagName) => {
   return labelMap[tagName] || tagName; // 일치 라벨 없으면 tagName 반환
 };
 
-function LineChart() {
-  const graphList = getGraphHook();
+
+
+
+function LineChart({graphList}) {
   const [weekLabels, setWeekLabels] = useState([]); // 그래프 하단 주차 라벨
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 

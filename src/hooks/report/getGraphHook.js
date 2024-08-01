@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import getGraph from "apis/report/getGraph";
 
-const getGraphHook = () => {
+const getGraphHook = (user) => {
   const [graphList, setGraphList] = useState([]);
 
   useEffect(() => {
     const fetchGraph = async () => {
       try {
-        const data = await getGraph(); // 그래프 list get API
+        const data = await getGraph(user); // 그래프 list get API
         setGraphList(data);
       } catch (error) {
         console.log('Error fetching survey:', error);
