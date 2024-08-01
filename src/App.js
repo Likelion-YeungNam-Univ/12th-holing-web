@@ -40,9 +40,9 @@ function App() {
           <Route path="/" element={<Frame />}>
             <Route index element={<Home />} />
             <Route path="/report" element={<Report />} />
+            <Route path="/report/:id" element={<ReportDetail />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
-            <Route path="/reportDetail" element={<ReportDetail />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />

@@ -4,12 +4,11 @@ import { CurrenttWrapper, SlideTop, SlideBottom, CurrentWeek, CurrentBtn, Curren
 import { IoIosArrowForward } from "react-icons/io";
 
 // 현재 주차 컴포넌트
-function CurrentSlide( { reportId, weekOfMonth, title } ) {
+function CurrentSlide( { reportId, weekOfMonth, title, month, user } ) {
   const navigate = useNavigate();
 
-  {/* TODO : navigate uri 변경예정 */}
   const goToReportDetail = () => {
-    navigate('/reportDetail');
+    navigate(`/report/${reportId}`);
     console.log("click!!");
   }
 
@@ -17,9 +16,12 @@ function CurrentSlide( { reportId, weekOfMonth, title } ) {
     <CurrenttWrapper>
         <Current>
             <SlideTop>
-              <CurrentWeek>{weekOfMonth}주차</CurrentWeek> 
+              <CurrentWeek>{month}월 {weekOfMonth}주차</CurrentWeek> 
               {/* TODO : reportId 파라미터로 navigate uri 변경예정 */}
-              <CurrentBtn onClick={goToReportDetail}>더보기<IoIosArrowForward size={36} style={{color:'white'}}/></CurrentBtn> 
+              {user === 'me' ? (<CurrentBtn onClick={goToReportDetail}>더보기<IoIosArrowForward size={36} style={{color:'white'}}/></CurrentBtn>) 
+                : (<></>)
+              }
+              
             </SlideTop>
             <SlideBottom>
               <CurrentRank>Top1</CurrentRank> 
