@@ -35,6 +35,7 @@ function App() {
       <GlobalStyles /> {/* 전역스타일링 */}
       <BrowserRouter>
         <Routes>
+          <Route path="/start" element={<Start />} />
           {/* 기본 화면프레임 */}
           <Route element={<Frame />}>
             <Route path="/" element={<Home />} />
@@ -67,7 +68,6 @@ function App() {
           <Route element={<IntroFrame />}>
             <Route path="/intro" element={<Intro />} />
           </Route>
-          <Route path="/start" element={<Start />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

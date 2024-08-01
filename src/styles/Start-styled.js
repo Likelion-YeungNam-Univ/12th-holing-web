@@ -11,13 +11,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-`; // 배경 이미지가 반복되지 않도록 설정
-/* background-position: 1098px 2706px; // 배경 이미지 위치 설정 */
-/* gap: 0px;
-  opacity: 0;
+  align-items: center; // 배경 이미지가 반복되지 않도록 설정
+  /* background-position: 1098px 2706px; // 배경 이미지 위치 설정 */
+  /* gap: 0px;
+  opacity: 0;*/
   width: 100%;
-  height: 100vh;  */
+  height: 100vh;
+`;
 
 export const Title = styled.div`
   font-family: Pretendard;
