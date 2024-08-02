@@ -53,6 +53,7 @@ function MedicineList() {
 
   const [medi, setMedi] = useState([]);
 
+  //GET 영양제 목록 조회
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,29 +66,14 @@ function MedicineList() {
     };
 
     fetchData();
-
-    // const handleToggleMedicine = async (id) => {
-    //   try {
-    //     await takenMedicine({ id });
-    //     setMedi((prevMedi) => {
-    //       if (!Array.isArray(prevMedi)) return [];
-
-    //       return prevMedi.map((item) =>
-    //         item.id === id ? { ...item, isTaken: !item.isTaken } : item
-    //       );
-    //     });
-    //   } catch (error) {
-    //     console.error('Error toggling medicine taken status:', error);
-    //   }
-    // };
-    // handleToggleMedicine();
   }, []);
+
   const DeleteData = async (id) => {
     try {
-      await deleteMedicine(id);
-      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id));
+      await deleteMedicine(id); // `id`를 `medicineId`로 전달하여 삭제 API 호출
+      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id)); // 상태에서 삭제
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.error('Error deleting data:', error); // 에러 핸들링
     }
   };
 

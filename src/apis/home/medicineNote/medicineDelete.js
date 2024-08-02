@@ -12,7 +12,6 @@ const deleteMedicine = (medicineId) => {
   return axios.delete(url, medicineId, {
     headers: {
       Accept: '*/*',
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${jwtToken}`,
     },
   });

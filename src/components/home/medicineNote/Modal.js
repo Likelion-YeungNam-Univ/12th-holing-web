@@ -27,9 +27,17 @@ const getSurroundingValues = (value, max, step = 1) => {
 
 // 모달 컴포넌트
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
+  // 입력된 새 영양제 이름을 저장하는 상태
+  const [medicineData, setMedicineData] = useState('');
   const [newMedicine, setNewMedicine] = useState('');
+
+  // 오전/오후 상태
   const [ampm, setAmPm] = useState('오전');
+
+  // 시 상태
   const [hour, setHour] = useState(12);
+
+  // 분 상태
   const [minute, setMinute] = useState(0);
 
   // 모달이 열릴 때 스크롤을 막는 효과 적용
@@ -63,29 +71,27 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
 
       time.setHours(adjustedHour);
       time.setMinutes(minute);
-      time.setSeconds(0); // 초를 0으로 설정하여 시간의 정확성을 높임
-      time.setMilliseconds(0); // 밀리초를 0으로 설정
+      onAddMedicine(newMedicine, time);
 
-      // 영양제 데이터 객체
       const medicineData = {
         name: newMedicine,
-        takenAt: time.toISOString(), // ISO 8601 포맷으로 시간을 설정
+        takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
       };
 
-      // 데이터를 서버에 전송
       postMedicines(medicineData)
-        .then((response) => {
-          console.log('Data posted successfully:', response.data);
-          onAddMedicine(response.data);
-          // 상태 초기화 및 모달 닫기
-          setNewMedicine('');
-          setAmPm('오전');
-          setHour(12);
-          setMinute(0);
+        .then((medicine) => {
+          console.log('Data received:', medicine.data);
+          setMedicineData(medicine.data);
         })
         .catch((error) => {
-          console.error('Error posting data:', error);
+          console.error('Error fetching data:', error);
         });
+
+      setNewMedicine('');
+      setAmPm('오전');
+      setHour(12);
+      setMinute(0);
+
       onClose();
     }
   };
@@ -100,16 +106,16 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   };
 
   // 휠로 시간을 조절하는 함수
-  const handleWheel = (unit, delta) => {
+  const handleWheel = (unit, deltaY) => {
     switch (unit) {
       case 'ampm':
         setAmPm((prev) => (prev === '오전' ? '오후' : '오전'));
         break;
       case 'hour':
         setHour((prev) => {
-          let newHour = (prev + delta + 12) % 12;
+          let newHour = (prev + (deltaY > 0 ? 1 : -1) + 12) % 12;
           if (newHour === 0) newHour = 12;
-          if ((prev === 11 && delta > 0) || (prev === 12 && delta < 0)) {
+          if ((prev === 11 && deltaY > 0) || (prev === 12 && deltaY < 0)) {
             setAmPm((prevAmPm) => (prevAmPm === '오전' ? '오후' : '오전'));
           }
           return newHour;
@@ -117,7 +123,7 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
         break;
       case 'minute':
         setMinute((prev) => {
-          let newMinute = (prev + delta * 5 + 60) % 60;
+          let newMinute = (prev + (deltaY > 0 ? 5 : -5) + 60) % 60;
           return newMinute;
         });
         break;
