@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom';
 
 function GotoTest( {lastTest, gotest, daysForNext, daysForTest} ) {
   const navigate = useNavigate();
+  console.log("lastTest=",lastTest);
   return (
     <GotoTestWrapper>
         <TopTitle>
@@ -39,7 +40,7 @@ function GotoTest( {lastTest, gotest, daysForNext, daysForTest} ) {
             <LeftTop>마지막 테스트</LeftTop>
             <LeftBottom>
               {/* 최근 테스트가 없을때 예외처리 */}
-              {lastTest === 0 ? '' : lastTest}
+              {lastTest || "없음"}
             </LeftBottom>
           </LeftIcon>
 

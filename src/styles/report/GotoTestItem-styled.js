@@ -63,18 +63,16 @@ export const LeftIcon = styled.div`
 `;
 // 중간아이콘
 // TODO : D-DAY일때 클릭가능 예정
-export const CenterIcon = styled.div.attrs(props => ({
-  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
-}))`
+export const CenterIcon = styled.div`
   ${btnStyle}
-  background-image: url(${props => props.gotest ? ActImg : DisImg});
-  border: ${({ gotest }) => gotest ? `none` : `1.52px solid #ADA1FF`}; 
-  border-radius: ${({ gotest }) => gotest ? `0` : `19.7px`}; 
+  background-image: url(${props => props.gotest === 'active' ? ActImg : DisImg});
+  border: ${({ gotest }) => gotest === 'active' ? 'none' : '1.52px solid #ADA1FF'};
+  border-radius: ${({ gotest }) => gotest === 'active' ? '0' : '19.7px'};
   width: 155px;
   height: 147px;
+  /* cursor: ${({ gotest }) => (gotest === 'active' ? 'pointer' : 'not-allowed')}; */
 `;
-  /* cursor: ${({ gotest }) => (gotest ? 'pointer' : 'not-allowed')}; */
-
+  
 // 오른쪽아이콘
 export const RightIcon = styled.div`
   ${btnStyle}
@@ -103,22 +101,18 @@ export const LeftBottom = styled.p`
   line-height: 25.2px;
   color: #5643D1;
 `;
-export const CenterTop = styled.p.attrs(props => ({
-  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
-}))`
+export const CenterTop = styled.p`
   ${TextStyle}
   font-size: 13px;
   line-height: 18.2px;
-  color: ${({ gotest }) => gotest ? '#5643D1' : '#8A8A8A'};
+  color: ${({ gotest }) => gotest === 'active' ? '#5643D1' : '#8A8A8A'};
 `;
 
-export const CenterBottom = styled.p.attrs(props => ({
-  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
-}))`
+export const CenterBottom = styled.p`
   ${TextStyle}
   font-size: 27.28px;
   line-height: 38.19px;
-  color: ${({ gotest }) => gotest ? '#5643D1' : '#8A8A8A'};
+  color: ${({ gotest }) => gotest === 'active' ? '#5643D1' : '#8A8A8A'};
 `;
 
 export const RightTop = styled.p`

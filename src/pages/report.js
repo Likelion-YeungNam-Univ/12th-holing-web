@@ -23,23 +23,39 @@ function Report() {
 
 
   useEffect(() => {
-    if (myReportSummary.length !== 0) {
-      // 테스트 년월일 값 형태로 변환
-      const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const year = date.getFullYear().toString().slice(2); // 마지막 두 자리
-        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 두 자리 형식
-        const day = date.getDate().toString().padStart(2, '0'); // 두 자리 형식
-        return `${year}${month}${day}`;
-      };
+    // 날짜 값을 포맷하는 함수
+    const formatDate = (date) => {
+      if (!(date instanceof Date) || isNaN(date.getTime())) {
+        // Date 객체가 아니거나 유효하지 않은 경우
+        return '';
+      }
+      const year = date.getFullYear().toString().slice(2); // 마지막 두 자리
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 두 자리 형식
+      const day = date.getDate().toString().padStart(2, '0'); // 두 자리 형식
+      return `${year}${month}${day}`;
+    };
 
+    if (myReportSummary.length === 0) {
+      // myReportSummary가 비어 있을 때
+      const today = new Date();
+      const date7DaysLater = new Date(today);
+      date7DaysLater.setDate(today.getDate() + 7);
+
+      // 기본 값 설정
+      setFormattedDate(''); // 최근 테스트가 없으므로 빈 문자열로 설정
+      setFormattedDate7DaysLater(formatDate(date7DaysLater));
+      setFormattedDate14DaysLater(formatDate(new Date(date7DaysLater).setDate(date7DaysLater.getDate() + 7))); // 14일 후 날짜
+      setGoTest(true); // 테스트 활성화
+      setDaysForNext(7); // 다음 테스트까지의 일수는 7일
+      setDaysForTest(0); // 첫 번째 날짜와 7일 후 날짜 사이의 일수는 0일
+    } else {
+      // myReportSummary가 비어 있지 않을 때
       const firstCreatedAt = myReportSummary[0].createdAt; // 가장 최근 테스트 일자
       const date = new Date(firstCreatedAt); // 상태 업데이트
-      console.log("firstCreatedAt=",firstCreatedAt)
+      console.log("firstCreatedAt=", firstCreatedAt);
+
       // 포맷된 날짜 값 설정
-      setFormattedDate(formatDate(firstCreatedAt));
-
-
+      setFormattedDate(formatDate(date));
 
       // 7일 후 날짜 계산
       const date7DaysLater = new Date(date);
@@ -60,7 +76,7 @@ function Report() {
       const diffTime = date14DaysLater - date7DaysLater;
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 7;
       setDaysForNext(diffDays);
-      
+
       // 첫 번째 날짜와 7일 후 날짜 사이의 일수 계산
       const firstDate = new Date(firstCreatedAt);
       const diffTimeFromFirstTo7DaysLater = date7DaysLater - firstDate;
@@ -68,8 +84,6 @@ function Report() {
       setDaysForTest(diffDaysFromFirstTo7DaysLater);
     }
   }, [myReportSummary]);
-
-
 
   // 상태 업데이트 후 콘솔 로그
   useEffect(() => {
@@ -80,8 +94,6 @@ function Report() {
     console.log("daysForNext=", daysForNext);
     console.log("daysForTest=", daysForTest);
   }, [formattedDate, formattedDate7DaysLater, formattedDate14DaysLater, gotest, daysForNext, daysForTest]);
-
-
 
   return (
     <ReportContainer>
@@ -95,9 +107,8 @@ function Report() {
         <Tap leftTap={leftTap} rightTap={rightTap} setLeftState={setLeftState} setRightState={setRightState}/>
       </TopWrapper>
 
-
       {/* 하단 테스트 컴포넌트 */}
-      <GotoTest lastTest={formattedDate} gotest={gotest} daysForNext={daysForNext} daysForTest={daysForTest}/>
+      <GotoTest lastTest={formattedDate} gotest={gotest ? 'active' : 'inactive'} daysForNext={daysForNext} daysForTest={daysForTest}/>
     </ReportContainer>
   );
 }

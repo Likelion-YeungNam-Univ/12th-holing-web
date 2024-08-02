@@ -34,7 +34,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   console.log("myReportSummary = ", myReportSummary);
 
   // 유저 정보 상태
-  const [userInfo, setUserInfo] = useState([]); 
+  const [userInfo, setUserInfo] = useState(null); 
 
   // 내 정보 조회_gender 정보 추출
   useEffect(() => {
@@ -45,10 +45,12 @@ function Tap({ leftTap, setLeftState, setRightState }) {
     fetchUserInfo();
   }, []);
 
-  useEffect(() => {
-    console.log("userInfo =", userInfo); // 유저 정보 콘솔 출력
-    console.log("userInfo.data.gender =", userInfo.data.gender); // 유저 정보 콘솔 출력
-  }, [userInfo]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //   console.log("userInfo =", userInfo); // 유저 정보 콘솔 출력
+  //   console.log("userInfo.data.gender =", userInfo.data.gender); // 유저 정보 콘솔 출력
+  //   }
+  // }, [userInfo]);
 
   return (
     <TapWrapper>

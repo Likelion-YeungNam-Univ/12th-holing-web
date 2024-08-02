@@ -5,7 +5,7 @@ export const MissionTitleWrapper = styled.div`
   height: 90px;
   margin: 0 auto;
   margin-top: 48px;
-  margin-bottom: 48px; 
+  margin-bottom: 48px;
 `;
 
 export const MissionTitle1 = styled.div`
@@ -45,7 +45,8 @@ export const MissionCard = styled.div`
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
-  border-top: ${({ isCompleted }) => (isCompleted ? '13px solid #9180ff' : '13px solid #DDD')};
+  border-top: ${({ completedStatus }) =>
+    completedStatus === 'active' ? '13px solid #9180ff' : '13px solid #DDD'};
   border-radius: 13px;
   position: relative;
 `;
@@ -111,8 +112,10 @@ export const MissionItemWrapper = styled.div`
 `;
 
 export const MissionItem = styled.div`
-  color: ${({ isCompleted }) => (isCompleted ? '#B9BEC9' : 'black')};
-  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
+  color: ${({ completedStatus }) =>
+    completedStatus === 'active' ? '#B9BEC9' : 'black'};
+  text-decoration: ${({ completedStatus }) =>
+    completedStatus === 'active' ? 'line-through' : 'none'};
   font-size: 36px;
   font-weight: 600;
   line-height: 140%;
