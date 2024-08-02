@@ -11,7 +11,7 @@ export const PhoneNumberRow = styled.div`
   justify-content: space-between;
   width: 497px;
   margin-left: 52px;
-  margin-top: 60px;
+  margin-top: 35px;
   padding-bottom: 11px;
   border-bottom: 1px solid #b3b3b3;
 `;
@@ -47,7 +47,7 @@ export const EmailRow = styled.div`
   justify-content: space-between;
   width: 497px;
   margin-left: 52px;
-  margin-top: 35px;
+  margin-top: 60px;
   padding-bottom: 11px;
   border-bottom: 1px solid #b3b3b3;
 `;

@@ -60,12 +60,42 @@ export const CreditItemExchangeBtn = styled.button`
   cursor: pointer;
 `;
 export const ExchangedComment = styled.div`
-  color: #9180ff;
-  text-align: center;
-  font-size: 32px;
+  color: #000;
+  text-align: left;
+  font-size: 23px;
   font-weight: 700;
-  width: 287px;
-  height: 90px;
+  width: 263px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 94px;
+`;
+export const TransferComment = styled.div`
+  margin: 0 auto;
+  margin-top: 9px;
+  width: 263px;
+  color: #5b5b5b;
+  font-size: 13px;
+  font-weight: 500;
+`;
+export const CloseBtn = styled.div`
+  width: 302px;
+  height: 53px;
+  border-radius: 13px;
+  background: #e3dfff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5643d1;
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 29px;
+  cursor: pointer;
+`;
+export const ExchangeBackground = styled.img`
+  position: relative;
+`;
+export const ExchangeImg = styled.img`
+  position: absolute;
+  top: 151px;
+  left: 42px;
 `;

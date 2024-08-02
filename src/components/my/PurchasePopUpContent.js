@@ -11,9 +11,15 @@ import {
   CreditItemExchangeWrapper,
   CreditItemExchangeCheckBtn,
   ExchangedComment,
+  TransferComment,
+  CloseBtn,
+  ExchangeBackground,
+  ExchangeImg,
 } from 'styles/my/PurchasePopUp-styled';
 import img_creditExchangeBtnInactive from 'assets/images/credit_exchange_btn_inactive.svg';
 import img_creditExchangeBtnActive from 'assets/images/credit_exchange_btn_active.svg';
+import img_creditExchangeBackground from 'assets/images/credit_exchange_background.svg'
+import img_creditExchange from 'assets/images/credit_exchange_img.svg'
 
 const PuchasePopUpContent = ({ onClose, selectedItem, point }) => {
   const [isExchangeActive, setIsExchangeActive] = useState(false);
@@ -43,7 +49,13 @@ const PuchasePopUpContent = ({ onClose, selectedItem, point }) => {
   return (
     <>
       {isExchanged ? (
-        <ExchangedComment>카카오톡 선물하기를 통해 전송되었습니다!</ExchangedComment>
+        <>
+          <ExchangeBackground src={img_creditExchangeBackground}></ExchangeBackground>
+          <ExchangeImg src={img_creditExchange}></ExchangeImg>
+          <ExchangedComment>교환성공!<br />목표 달성을 축하합니다.</ExchangedComment>
+          <TransferComment>카카오톡 선물하기를 통해 전송되었습니다!</TransferComment>
+          <CloseBtn onClick={onClose}>닫기</CloseBtn>
+        </>
       ) : (
         <>
           <CreditItemWrapper>

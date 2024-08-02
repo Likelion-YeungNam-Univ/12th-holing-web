@@ -16,12 +16,16 @@ import { getUserInfo } from 'apis/my/userInfoGet';
 
 function AccountInfo() {
   const [email, setEmail] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [gender, setGender] = useState('');
 
   useEffect(() => {
     getUserInfo()
       .then((response) => {
         const data = response.data;
         setEmail(data.email);
+        setNickname(data.nickname);
+        setGender(data.gender);
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
@@ -31,18 +35,18 @@ function AccountInfo() {
   return (
     <>
       <MyInfoText>내 정보</MyInfoText>
-      <PhoneNumberRow>
-        <PhoneNumberText>휴대폰 정보</PhoneNumberText>
-        <UserPhoneNumber>010-0000-0000</UserPhoneNumber>
-      </PhoneNumberRow>
-      <BirthDaterRow>
-        <BirthDateText>생년월일</BirthDateText>
-        <UserBirthDate>2000년 00월 00일</UserBirthDate>
-      </BirthDaterRow>
       <EmailRow>
         <EmailText>이메일</EmailText>
         <UserEmail>{email}</UserEmail>
       </EmailRow>
+      <PhoneNumberRow>
+        <PhoneNumberText>성별</PhoneNumberText>
+        <UserPhoneNumber>{gender === 'MALE' ? '남자' : '여자'}</UserPhoneNumber>
+      </PhoneNumberRow>
+      <BirthDaterRow>
+        <BirthDateText>닉네임</BirthDateText>
+        <UserBirthDate>{nickname}</UserBirthDate>
+      </BirthDaterRow>
     </>
   );
 }

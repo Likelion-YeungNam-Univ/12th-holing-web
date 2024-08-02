@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
+
+const jwtToken = load('jwtToken');
 
 const completeMissions = (missionResultId) => {
   const endPoint = `/missions/${missionResultId}/complete`;
@@ -11,7 +13,7 @@ const completeMissions = (missionResultId) => {
     params: { missionResultId },
     headers: {
       Accept: '*/*',
-      Authorization: authToken,
+      Authorization: `Bearer ${jwtToken}`,
     },
   });
 };

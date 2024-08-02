@@ -136,6 +136,7 @@ function MyPage() {
   const { isModalOpen, selectedItem, openModal, closeModal } = MyPageHook();
 
   const [nickname, setNickname] = useState('');
+  const [mateNickname, setMateNickName] = useState('');
   const [gender, setGender] = useState('');
   const [point, setPoint] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -150,6 +151,7 @@ function MyPage() {
       .then((response) => {
         const data = response.data;
         setNickname(data.nickname);
+        setMateNickName(data.mateNickname);
         setGender(data.gender);
         setPoint(data.point);
       })
@@ -169,8 +171,8 @@ function MyPage() {
           src={gender === 'MALE' ? img_profileMale : img_profileFemale}
         ></ProfileImg>
         <NameWrapper>
-          <UserName>{nickname}님</UserName>
-          <PartnerName>길동홍님의 짝꿍</PartnerName>
+          <UserName>{nickname} 님</UserName>
+          <PartnerName>{mateNickname}님의 짝꿍</PartnerName>
         </NameWrapper>
         <AccountInfoBtn
           src={img_accountInfoBtn}

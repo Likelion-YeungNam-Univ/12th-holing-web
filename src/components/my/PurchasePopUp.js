@@ -13,6 +13,7 @@ const customModalStyles = {
     margin: 'auto',
     padding: 0,
     zIndex: 1001,
+    overflow: 'hidden',
   },
 };
 
@@ -30,6 +31,7 @@ const SchedulePopUp = ({ isOpen, onClose, selectedItem, point }) => {
       <PuchasePopUpContent
         selectedItem={selectedItem}
         point={point}
+        onClose={onClose}
       ></PuchasePopUpContent>
     </Modal>
   );
