@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // react-router-dom에서 useNavigate 훅 import
+import React, { useState, useEffect } from 'react';
 import {
   Wrapper,
   Header,
@@ -9,17 +8,58 @@ import {
   AnsContainer,
   Answer,
   NextBtn,
-  // Img,
+  Img,
 } from 'styles/selfTest/selfTest-styled';
 import { useSelfTest } from 'hooks/test/selfTestHook';
+import { getSelftest } from 'apis/selftest/selftestGet';
 
 function FeSelfTest() {
   const {
     selectedAnswer,
     handleAnswerClick,
     isButtonActive,
-    handleNextButtonClick,
+    handleNextButtonClickWithScore,
   } = useSelfTest('/SelfTest2');
+
+  const [statement, setStatement] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [choice1, setChoice1] = useState('');
+  const [choice2, setChoice2] = useState('');
+  const [choice3, setChoice3] = useState('');
+  const [page, setPage] = useState('');
+
+  useEffect(() => {
+    getSelftest('FEMALE', 0)
+      .then((response) => {
+        setPage(response.data.pageable.pageNumber);
+        setStatement(response.data.content[0].statement);
+        setImgUrl(response.data.content[0].imgUrl);
+        setChoice1(response.data.content[0].choice1);
+        setChoice2(response.data.content[0].choice2);
+        setChoice3(response.data.content[0].choice3);
+      })
+      .catch((error) => {
+        console.error('Error fetching self-test:', error);
+      });
+  }, []);
+
+  const handleNext = () => {
+    // 로컬 스토리지에서 selfTestScore 값을 가져오고, 값이 없으면 길이 10의 배열을 생성
+    const currentScores =
+      JSON.parse(localStorage.getItem('selfTestScore')) || Array(10).fill(0);
+    // 현재 페이지 번호를 인덱스로 사용
+    const scoreIndex = page;
+    // 선택된 답변에 따라 점수를 설정
+    if (selectedAnswer === choice1) {
+      currentScores[scoreIndex] = 2;
+    } else if (selectedAnswer === choice2 || selectedAnswer === choice3) {
+      currentScores[scoreIndex] = 0;
+    }
+    // 업데이트된 점수를 로컬 스토리지에 저장
+    localStorage.setItem('selfTestScore', JSON.stringify(currentScores));
+    // 다음 페이지로 이동
+    handleNextButtonClickWithScore();
+  };
 
   return (
     <Wrapper>
@@ -28,32 +68,27 @@ function FeSelfTest() {
         <Num>
           <span>01</span>/10
         </Num>
-        <Question>
-          최근 생리 주기가 불규칙해지거나, 생리량이 변하는 등의 변화가 있나요?
-        </Question>
+        <Question>{statement}</Question>
       </Header>
-      {/* <Img src={test_1} alt="test1" /> */}
-      {/* 이미지 넣어주시면 됩니다! */}
+      <Img src={imgUrl} alt="test1"></Img>
       <AnsContainer>
         <Answer
-          onClick={() => handleAnswerClick('네, 규칙적으로 발생합니다.')}
-          isSelected={selectedAnswer === '네, 규칙적으로 발생합니다.'}
+          onClick={() => handleAnswerClick(choice1)}
+          isSelected={selectedAnswer === choice1}
         >
-          네, 규칙적으로 발생합니다.
+          {choice1}
         </Answer>
         <Answer
-          onClick={() => handleAnswerClick('아니요, 불규칙적입니다.')}
-          isSelected={selectedAnswer === '아니요, 불규칙적입니다.'}
+          onClick={() => handleAnswerClick(choice2)}
+          isSelected={selectedAnswer === choice2}
         >
-          아니요, 불규칙적입니다.
+          {choice2}
         </Answer>
         <Answer
-          onClick={() =>
-            handleAnswerClick('아니요, 더 이상 발생하지 않습니다.')
-          }
-          isSelected={selectedAnswer === '아니요, 더 이상 발생하지 않습니다.'}
+          onClick={() => handleAnswerClick(choice3)}
+          isSelected={selectedAnswer === choice3}
         >
-          아니요, 더 이상 발생하지 않습니다.
+          {choice3}
         </Answer>
       </AnsContainer>
       <NextBtn
@@ -63,7 +98,7 @@ function FeSelfTest() {
           color: isButtonActive ? '#FFFFFF' : '#B3B3B3',
           cursor: isButtonActive ? 'pointer' : 'not-allowed',
         }}
-        onClick={handleNextButtonClick} // 클릭 시 페이지 이동
+        onClick={handleNext} // 클릭 시 페이지 이동
       >
         다음
       </NextBtn>

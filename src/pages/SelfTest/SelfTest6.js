@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Wrapper,
   Header,
@@ -11,14 +11,53 @@ import {
   Img,
 } from 'styles/selfTest/selfTest-styled';
 import { useSelfTest } from 'hooks/test/selfTestHook';
+import { getSelftest } from 'apis/selftest/selftestGet';
 
-function SelfTest() {
+function SelfTest6() {
   const {
     selectedAnswer,
     handleAnswerClick,
     isButtonActive,
-    handleNextButtonClick,
+    handleNextButtonClickWithScore,
   } = useSelfTest('/SelfTest7');
+
+  const [statement, setStatement] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+  const [choice1, setChoice1] = useState('');
+  const [choice2, setChoice2] = useState('');
+  const [page, setPage] = useState('');
+
+  useEffect(() => {
+    getSelftest('FEMALE', 5)
+      .then((response) => {
+        setPage(response.data.pageable.pageNumber);
+        setStatement(response.data.content[0].statement);
+        setImgUrl(response.data.content[0].imgUrl);
+        setChoice1(response.data.content[0].choice1);
+        setChoice2(response.data.content[0].choice2);
+      })
+      .catch((error) => {
+        console.error('Error fetching self-test:', error);
+      });
+  }, []);
+
+  const handleNext = () => {
+    // 로컬 스토리지에서 selfTestScore 값을 가져오고, 값이 없으면 길이 10의 배열을 생성
+    const currentScores =
+      JSON.parse(localStorage.getItem('selfTestScore')) || Array(10).fill(0);
+    // 현재 페이지 번호를 인덱스로 사용
+    const scoreIndex = page;
+    // 선택된 답변에 따라 점수를 설정
+    if (selectedAnswer === choice1) {
+      currentScores[scoreIndex] = 2;
+    } else if (selectedAnswer === choice2) {
+      currentScores[scoreIndex] = 0;
+    }
+    // 업데이트된 점수를 로컬 스토리지에 저장
+    localStorage.setItem('selfTestScore', JSON.stringify(currentScores));
+    // 다음 페이지로 이동
+    handleNextButtonClickWithScore();
+  };
 
   return (
     <Wrapper>
@@ -27,25 +66,21 @@ function SelfTest() {
         <Num>
           <span>06</span>/10
         </Num>
-        <Question>
-          기존 질병 외 관절이나 근육에 통증이나 뻣뻣함을 느끼는 일이 자주
-          있나요?
-        </Question>
+        <Question>{statement}</Question>
       </Header>
-      {/* <Img src={test_7} alt="test7" /> */}
-      {/* 이미지 넣어주시면 됩니다! */}
+      <Img src={imgUrl} alt="test1"></Img>
       <AnsContainer>
         <Answer
-          onClick={() => handleAnswerClick('네')}
-          isSelected={selectedAnswer === '네'}
+          onClick={() => handleAnswerClick(choice1)}
+          isSelected={selectedAnswer === choice1}
         >
-          네
+          {choice1}
         </Answer>
         <Answer
-          onClick={() => handleAnswerClick('아니요')}
-          isSelected={selectedAnswer === '아니요'}
+          onClick={() => handleAnswerClick(choice2)}
+          isSelected={selectedAnswer === choice2}
         >
-          아니요
+          {choice2}
         </Answer>
       </AnsContainer>
       <NextBtn
@@ -55,7 +90,7 @@ function SelfTest() {
           color: isButtonActive ? '#FFFFFF' : '#B3B3B3',
           cursor: isButtonActive ? 'pointer' : 'not-allowed',
         }}
-        onClick={handleNextButtonClick} // 클릭 시 페이지 이동
+        onClick={handleNext} // 클릭 시 페이지 이동
       >
         다음
       </NextBtn>
@@ -63,4 +98,4 @@ function SelfTest() {
   );
 }
 
-export default SelfTest;
+export default SelfTest6;
