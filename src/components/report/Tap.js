@@ -10,7 +10,6 @@ import {
 } from 'styles/report/ReportPage-styled';
 import getGraphHook from 'hooks/report/getGraphHook';
 import getReportHook from 'hooks/report/getReportHook';
-
 import MateCard from './MateCard';
 import MateReport from './MateReport';
 
@@ -30,7 +29,8 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   // 리포트 요약 조회 HOOK
   const myReportSummary = getReportHook('my')
   const mateReportSummary = getReportHook('mate')
-
+  console.log("myReportSummary = ", myReportSummary);
+  
 
   return (
     <TapWrapper>
@@ -45,7 +45,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
 
 
         {/* TODO : 내 리포트 미존재 시 예외처리코드 */}
-        {mateErrorCode===404 ? (
+        {myErrorCode===404 ? (
           <MateReport target={'나'}/>
         ) : (
           <>
@@ -69,7 +69,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
 
 
         {/* TODO : 짝꿍 리포트 미존재 시 예외처리 */}
-        <MateReport target={'짝꿍'}/>
+        {/* <MateReport target={'짝꿍'}/> */}
 
         {/*짝꿍 비연동시 예외처리 */}
         {mateErrorCode===404 ? (

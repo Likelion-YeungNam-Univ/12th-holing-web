@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 import LeftImg from 'assets/images/report_left.png';
 import CenterImg from 'assets/images/report_center.png';
 import RightImg from 'assets/images/report_right.png';
-
+import ActImg from 'assets/images/report_Btn_act.png'
+import DisImg from 'assets/images/report_Btn_dis.png'
+import PastImg from 'assets/images/report_Btn_past.png'
 
 // 공통속성 스타일링
 const flexCenter = css`
@@ -47,85 +49,36 @@ export const IconsWrapper = styled.div`
 // 버튼 공통 스타일링
 const btnStyle = css`
   ${flexCenter};
-  gap: 0px;
-  border-radius: 13px;
-  border: 1px solid #ADA1FF;
-  opacity: 0px;
-  background-color: #E4E0FF;
   flex-direction: column;
   justify-content: space-between;
   padding: 12px 0;
-  position: relative; // 배경 이미지를 위해 상대 위치 지정
+  background-repeat: no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  width: 102px;
+  height: 97px;
 `;
-// 공통 이미지 스타일링
-const IconImage = css`
-  background-size: 110%;
-  opacity: 0.30;
-  position: absolute;
-  /* background-repeat: no-repeat; */
-`;
-
 
 // 왼쪽아이콘
 export const LeftIcon = styled.div`
   ${btnStyle}
-  width: 102px;
-  height: 97px;
-  overflow: hidden;
+  background-image: url(${PastImg});
 `;
-export const LeftIconImage = styled.div`
-  background-image: url(${LeftImg});
-  ${IconImage};
-  width: 120px;
-  height: 120px;
-  top: -10px;
-  left: -27px;
-`;
-
-
 // 중간아이콘
 // TODO : D-DAY일때 클릭가능 예정
 export const CenterIcon = styled.div`
   ${btnStyle}
+  background-image: ${({ goTest }) => goTest ? `url(${ActImg})` : `url(${DisImg})`};
   width: 155px;
   height: 147px;
-  border-radius: 19.7px;
-  border: 1.52px solid #ADA1FF;
-  overflow: hidden;
 `
-export const CenterIconImage = styled.div`
-  background-image: url(${CenterImg});
-  ${IconImage};
-  width: 218px;
-  height: 218px;
-  top: -20px;
-  left: -60px;
-  gap: 0px;
-  opacity: 0px;
-`;
-
-
 // 오른쪽아이콘
 export const RightIcon = styled.div`
   ${btnStyle}
-  width: 102px;
-  height: 97px;
-  background: #FFFFFF; 
-  border: 1px solid #B9BEC9; 
-  overflow: hidden;
+  background-image: url(${DisImg});
 `
-export const RightIconImage = styled.div`
-  background-image: url(${RightImg});
-  ${IconImage};
-  width: 120px;
-  height: 120px;
-  top: -10px;
-  left: -27px;
-`;
-
 
 // ----- 글자스타일링
-
 // 공통 텍스트 스타일링
 const TextStyle = css`
   font-weight: 600;
@@ -152,13 +105,13 @@ export const CenterTop = styled.p`
   ${TextStyle}
   font-size: 13px;
   line-height: 18.2px;
-  color: #5643D1;
+  color: ${({ goTest }) => goTest ? `#5643D1` : `#8A8A8A`};
 `;
 export const CenterBottom = styled.p`
   ${TextStyle}
   font-size: 27.28px;
   line-height: 38.19px;
-  color: #5643D1;
+  color: ${({ goTest }) => goTest ? `#5643D1` : `#8A8A8A`};
 `;
 
 export const RightTop = styled.p`

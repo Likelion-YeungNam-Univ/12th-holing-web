@@ -27,7 +27,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function GotoTest() {
+function GotoTest( {lastTest, goTest} ) {
   const navigate = useNavigate();
   return (
     <GotoTestWrapper>
@@ -37,23 +37,20 @@ function GotoTest() {
           </TitleText>
         </TopTitle>
 
-        {/* TODO: props로 data 전달 예정 */}
         <IconsWrapper>
           <LeftIcon>
-            <LeftIconImage />
-            <LeftTop>N주차 테스트</LeftTop>
-            <LeftBottom>240608</LeftBottom>
+            <LeftTop>마지막 테스트</LeftTop>
+            <LeftBottom>{lastTest}</LeftBottom>
           </LeftIcon>
 
-          <CenterIcon>
-            <CenterIconImage />
-            <CenterTop>N주차 테스트</CenterTop>
-            <CenterBottom>D-DAY</CenterBottom>
+          {/* TODO: 이번 테스트 날짜가 오늘 날짜보다 지났다면 활성화 */}
+          <CenterIcon goTest={goTest}>
+            <CenterTop goTest={goTest}>이번 테스트</CenterTop>
+            <CenterBottom goTest={goTest}>D-DAY</CenterBottom>
           </CenterIcon>
 
           <RightIcon>
-            <RightIconImage />
-            <RightTop>N주차 테스트</RightTop>
+            <RightTop>다음 테스트</RightTop>
             <RightBottom>D-007</RightBottom>
           </RightIcon>
         </IconsWrapper>
