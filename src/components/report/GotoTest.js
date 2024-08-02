@@ -13,9 +13,6 @@ import {
     RightTop,
     RightBottom,
     BottomBtn,
-    LeftIconImage,
-    CenterIconImage,
-    RightIconImage,
     GotoBtn,
     BottomText,
     TitleText,
@@ -27,7 +24,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function GotoTest( {lastTest, goTest} ) {
+function GotoTest( {lastTest, gotest, daysForNext, daysForTest} ) {
   const navigate = useNavigate();
   return (
     <GotoTestWrapper>
@@ -40,18 +37,26 @@ function GotoTest( {lastTest, goTest} ) {
         <IconsWrapper>
           <LeftIcon>
             <LeftTop>마지막 테스트</LeftTop>
-            <LeftBottom>{lastTest}</LeftBottom>
+            <LeftBottom>
+              {/* 최근 테스트가 없을때 예외처리 */}
+              {lastTest === 0 ? '' : lastTest}
+            </LeftBottom>
           </LeftIcon>
 
-          {/* TODO: 이번 테스트 날짜가 오늘 날짜보다 지났다면 활성화 */}
-          <CenterIcon goTest={goTest}>
-            <CenterTop goTest={goTest}>이번 테스트</CenterTop>
-            <CenterBottom goTest={goTest}>D-DAY</CenterBottom>
+          {/* 이번 테스트 날짜가 오늘 날짜보다 지났다면 활성화 */}
+          <CenterIcon gotest={gotest}>
+            <CenterTop gotest={gotest}>이번 테스트</CenterTop>
+            <CenterBottom gotest={gotest}>
+              {daysForTest === 0 ? 'D-DAY' : `D-00${daysForTest}`}
+            </CenterBottom>
           </CenterIcon>
 
           <RightIcon>
             <RightTop>다음 테스트</RightTop>
-            <RightBottom>D-007</RightBottom>
+            <RightBottom>
+              {/* daysForNext 자리수에 따른 형식 표기법 */}
+              {daysForNext < 10 ? `D-00${daysForNext}` : `D-0${daysForNext}`}
+            </RightBottom>
           </RightIcon>
         </IconsWrapper>
 

@@ -1,7 +1,4 @@
 import styled, { css } from 'styled-components';
-import LeftImg from 'assets/images/report_left.png';
-import CenterImg from 'assets/images/report_center.png';
-import RightImg from 'assets/images/report_right.png';
 import ActImg from 'assets/images/report_Btn_act.png'
 import DisImg from 'assets/images/report_Btn_dis.png'
 import PastImg from 'assets/images/report_Btn_past.png'
@@ -66,12 +63,18 @@ export const LeftIcon = styled.div`
 `;
 // 중간아이콘
 // TODO : D-DAY일때 클릭가능 예정
-export const CenterIcon = styled.div`
+export const CenterIcon = styled.div.attrs(props => ({
+  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
+}))`
   ${btnStyle}
-  background-image: ${({ goTest }) => goTest ? `url(${ActImg})` : `url(${DisImg})`};
+  background-image: url(${props => props.gotest ? ActImg : DisImg});
+  border: ${({ gotest }) => gotest ? `none` : `1.52px solid #ADA1FF`}; 
+  border-radius: ${({ gotest }) => gotest ? `0` : `19.7px`}; 
   width: 155px;
   height: 147px;
-`
+`;
+  /* cursor: ${({ gotest }) => (gotest ? 'pointer' : 'not-allowed')}; */
+
 // 오른쪽아이콘
 export const RightIcon = styled.div`
   ${btnStyle}
@@ -100,18 +103,22 @@ export const LeftBottom = styled.p`
   line-height: 25.2px;
   color: #5643D1;
 `;
-
-export const CenterTop = styled.p`
+export const CenterTop = styled.p.attrs(props => ({
+  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
+}))`
   ${TextStyle}
   font-size: 13px;
   line-height: 18.2px;
-  color: ${({ goTest }) => goTest ? `#5643D1` : `#8A8A8A`};
+  color: ${({ gotest }) => gotest ? '#5643D1' : '#8A8A8A'};
 `;
-export const CenterBottom = styled.p`
+
+export const CenterBottom = styled.p.attrs(props => ({
+  gotest: undefined // HTML 속성으로 전달되지 않도록 필터링
+}))`
   ${TextStyle}
   font-size: 27.28px;
   line-height: 38.19px;
-  color: ${({ goTest }) => goTest ? `#5643D1` : `#8A8A8A`};
+  color: ${({ gotest }) => gotest ? '#5643D1' : '#8A8A8A'};
 `;
 
 export const RightTop = styled.p`
