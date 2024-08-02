@@ -18,8 +18,9 @@ import {
 } from 'styles/my/PurchasePopUp-styled';
 import img_creditExchangeBtnInactive from 'assets/images/credit_exchange_btn_inactive.svg';
 import img_creditExchangeBtnActive from 'assets/images/credit_exchange_btn_active.svg';
-import img_creditExchangeBackground from 'assets/images/credit_exchange_background.svg'
-import img_creditExchange from 'assets/images/credit_exchange_img.svg'
+import img_creditExchangeBackground from 'assets/images/credit_exchange_background.svg';
+import img_creditExchange from 'assets/images/credit_exchange_img.svg';
+import { postProduct } from 'apis/my/productPost';
 
 const PuchasePopUpContent = ({ onClose, selectedItem, point }) => {
   const [isExchangeActive, setIsExchangeActive] = useState(false);
@@ -46,15 +47,39 @@ const PuchasePopUpContent = ({ onClose, selectedItem, point }) => {
     setIsExchanged(true);
   };
 
+  const handleClose = () => {
+    const product = {
+      productPrice: selectedItem.price,
+    };
+
+    postProduct(product)
+      .then((response) => {
+        console.log('Product exchanged:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error exchanging product:', error);
+      });
+
+    onClose();
+  };
+
   return (
     <>
       {isExchanged ? (
         <>
-          <ExchangeBackground src={img_creditExchangeBackground}></ExchangeBackground>
+          <ExchangeBackground
+            src={img_creditExchangeBackground}
+          ></ExchangeBackground>
           <ExchangeImg src={img_creditExchange}></ExchangeImg>
-          <ExchangedComment>교환성공!<br />목표 달성을 축하합니다.</ExchangedComment>
-          <TransferComment>카카오톡 선물하기를 통해 전송되었습니다!</TransferComment>
-          <CloseBtn onClick={onClose}>닫기</CloseBtn>
+          <ExchangedComment>
+            교환성공!
+            <br />
+            목표 달성을 축하합니다.
+          </ExchangedComment>
+          <TransferComment>
+            카카오톡 선물하기를 통해 전송되었습니다!
+          </TransferComment>
+          <CloseBtn onClick={handleClose}>닫기</CloseBtn>
         </>
       ) : (
         <>

@@ -75,12 +75,7 @@ const createCreditItems = () => [
     ),
   ],
   [
-    createCreditItem(
-      img_creditItem3,
-      '요가링',
-      '[센시안] 요가링(1p)',
-      '3500'
-    ),
+    createCreditItem(img_creditItem3, '요가링', '[센시안] 요가링(1p)', '3500'),
     createCreditItem(
       img_creditItem4,
       '마시지 도구',
