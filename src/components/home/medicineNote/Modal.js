@@ -13,6 +13,7 @@ import {
   CancelBtn,
   Divider,
 } from 'styles/home/Modal-styled';
+import { postMedicines } from 'apis/home/medicineNote/medicinePost';
 
 // 시간 값을 두 자리 숫자로 포맷팅하는 함수
 const formatTimeValue = (value) => (value < 10 ? `0${value}` : value);
@@ -26,16 +27,9 @@ const getSurroundingValues = (value, max, step = 1) => {
 
 // 모달 컴포넌트
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
-  // 입력된 새 영양제 이름을 저장하는 상태
   const [newMedicine, setNewMedicine] = useState('');
-
-  // 오전/오후 상태
   const [ampm, setAmPm] = useState('오전');
-
-  // 시 상태
   const [hour, setHour] = useState(12);
-
-  // 분 상태
   const [minute, setMinute] = useState(0);
 
   // 모달이 열릴 때 스크롤을 막는 효과 적용
@@ -69,13 +63,29 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
 
       time.setHours(adjustedHour);
       time.setMinutes(minute);
-      onAddMedicine(newMedicine, time);
+      time.setSeconds(0); // 초를 0으로 설정하여 시간의 정확성을 높임
+      time.setMilliseconds(0); // 밀리초를 0으로 설정
 
-      setNewMedicine('');
-      setAmPm('오전');
-      setHour(12);
-      setMinute(0);
+      // 영양제 데이터 객체
+      const medicineData = {
+        name: newMedicine,
+        takenAt: time.toISOString(), // ISO 8601 포맷으로 시간을 설정
+      };
 
+      // 데이터를 서버에 전송
+      postMedicines(medicineData)
+        .then((response) => {
+          console.log('Data posted successfully:', response.data);
+          onAddMedicine(response.data);
+          // 상태 초기화 및 모달 닫기
+          setNewMedicine('');
+          setAmPm('오전');
+          setHour(12);
+          setMinute(0);
+        })
+        .catch((error) => {
+          console.error('Error posting data:', error);
+        });
       onClose();
     }
   };
@@ -106,7 +116,10 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
         });
         break;
       case 'minute':
-        setMinute((prev) => (prev + delta * 5 + 60) % 60);
+        setMinute((prev) => {
+          let newMinute = (prev + delta * 5 + 60) % 60;
+          return newMinute;
+        });
         break;
       default:
         break;

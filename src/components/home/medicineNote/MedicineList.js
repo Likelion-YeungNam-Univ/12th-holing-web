@@ -18,6 +18,9 @@ import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
 
+// import { takenMedicine } from 'apis/home/medicineNote/medicineTaken';
+import { deleteMedicine } from 'apis/home/medicineNote/medicineDelete';
+
 // 시간 형식을 24시간 형태로 포맷팅하는 함수
 const formatTime = (timeString) => {
   try {
@@ -45,7 +48,7 @@ function MedicineList() {
     openModal,
     closeModal,
     addNewMedicine,
-    deleteMedicine,
+    // deleteMedicine,
   } = useMedicineList();
 
   const [medi, setMedi] = useState([]);
@@ -62,7 +65,31 @@ function MedicineList() {
     };
 
     fetchData();
+
+    // const handleToggleMedicine = async (id) => {
+    //   try {
+    //     await takenMedicine({ id });
+    //     setMedi((prevMedi) => {
+    //       if (!Array.isArray(prevMedi)) return [];
+
+    //       return prevMedi.map((item) =>
+    //         item.id === id ? { ...item, isTaken: !item.isTaken } : item
+    //       );
+    //     });
+    //   } catch (error) {
+    //     console.error('Error toggling medicine taken status:', error);
+    //   }
+    // };
+    // handleToggleMedicine();
   }, []);
+  const DeleteData = async (id) => {
+    try {
+      await deleteMedicine(id);
+      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('Error deleting data:', error);
+    }
+  };
 
   return (
     <MediListContainer>
@@ -97,7 +124,7 @@ function MedicineList() {
                 </Time>
               )}
             </div>
-            <DeleteButton onClick={() => deleteMedicine(item.id)}>
+            <DeleteButton onClick={() => DeleteData(item.id)}>
               삭제하기
               <IconDelete src={icon_delete} alt="icon" />
             </DeleteButton>
