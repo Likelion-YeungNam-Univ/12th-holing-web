@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> dec9af04420650c47de727560ab6f20a39235ffd
 import {
   MediListContainer,
   MedicineName,
@@ -17,14 +21,15 @@ import icon_plus from 'assets/images/icon_plus.png';
 import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
+import axios from 'axios';
+import { getMedicines } from 'apis/home/medicineNote/medicineGet';
 
 // 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  const baseUrl = 'http://localhost:8080';
-  const [medicine, setMedicine] = useState();
-
+  // 커스텀 훅을 사용하여 상태와 함수들을 가져옴
+  const [medi, setMedi] = useState([]);
   const {
-    medi,
+    // medi,
     isModalOpen,
     handleToggle,
     openModal,
@@ -32,82 +37,74 @@ function MedicineList() {
     addNewMedicine,
     deleteMedicine,
   } = useMedicineList([
-    {
-      id: 1,
-      text: '오메가3',
-      time: new Date().setHours(8, 0, 0, 0),
-      completed: false,
-    },
-    {
-      id: 2,
-      text: '메가슬립 수면엔 미강테아닌',
-      time: new Date().setHours(22, 0, 0, 0),
-      completed: false,
-    },
+    // {
+    //   id: 1,
+    //   text: '오메가3',
+    //   time: new Date().setHours(8, 0, 0, 0),
+    //   completed: false,
+    // },
+    // {
+    //   id: 2,
+    //   text: '메가슬립 수면엔 미강테아닌',
+    //   time: new Date().setHours(22, 0, 0, 0),
+    //   completed: false,
+    // },
   ]);
 
-  const addMedicineToServer = (medicineData) => {
-    axios
-      .post(`${baseUrl}/user/medicines`, medicineData)
-      .then((response) => {
-        console.log('성공', response);
-      })
-      .catch((error) => {
-        console.log('실패', error);
-      })
-      .then(() => {
-        console.log('데이터 요청 완료');
-      });
-  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const medicines = await getMedicines();
+  //     setMedi(medicines);
+  //   };
 
-  const handleAddMedicine = (medicineData) => {
-    addNewMedicine(medicineData);
-    addMedicineToServer(medicineData);
-  };
+  //   fetchData();
+  // }, []);
 
+  // setMedi((medi) => getMedicines());
   return (
     <MediListContainer>
       {/* 약 목록을 순회하여 각각의 항목을 렌더링 */}
-      {medi.map((item) => (
-        <MedicineName key={item.id}>
-          <Checkbox
-            type="checkbox"
-            checked={item.completed}
-            onChange={() => handleToggle(item.id)}
-          />
+      {medi &&
+        medi.map((item) => (
+          <MedicineName key={item.id}>
+            <Checkbox
+              type="checkbox"
+              checked={item.completed}
+              onChange={() => handleToggle(item.id)}
+            />
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            <Name
+            <div
               style={{
-                textDecoration: item.completed ? 'line-through' : 'none',
+                display: 'flex',
+                alignItems: 'center',
+                whiteSpace: 'nowrap',
               }}
             >
-              {item.text}
-            </Name>
+              <Name
+                style={{
+                  textDecoration: item.completed ? 'line-through' : 'none',
+                }}
+              >
+                {item.text}
+              </Name>
 
-            {item.time && (
-              <Time>
-                <Icon src={icon_alarm} alt="icon" />
-                {new Date(item.time).toLocaleTimeString([], {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false,
-                })}
-              </Time>
-            )}
-          </div>
-          <DeleteButton onClick={() => deleteMedicine(item.id)}>
-            삭제하기
-            <IconDelete src={icon_delete} alt="icon" />
-          </DeleteButton>
-        </MedicineName>
-      ))}
+              {item.time && (
+                <Time>
+                  <Icon src={icon_alarm} alt="icon" />
+                  {new Date(item.time).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                  })}
+                </Time>
+              )}
+            </div>
+            <DeleteButton onClick={() => deleteMedicine(item.id)}>
+              삭제하기
+              <IconDelete src={icon_delete} alt="icon" />
+            </DeleteButton>
+          </MedicineName>
+        ))}
       <AddButton onClick={openModal}>
         <IconAdd src={icon_plus} alt="icon" />
         영양제 추가하기

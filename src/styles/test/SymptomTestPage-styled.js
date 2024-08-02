@@ -46,16 +46,23 @@ export const Test = styled.div`
   width: 399px;
   height: fit-content;
   margin: auto;
-  border-bottom: 1px solid #B3B3B3;
-  margin-bottom: 48px;
-  padding-bottom: 20px;
+  margin-bottom: 40px;
+
 `
+export const TestBorder = styled.div`
+  border-bottom: 1px solid #B3B3B3;
+  margin-bottom: 40px;
+  height: fit-content;
+  padding: 20px 0 40px;
+  
+`
+
 export const TestNum = styled.span`
   color: #DDDDDD;
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
 `
@@ -76,22 +83,24 @@ export const ChoiceList = styled.ul`
   display: flex;
   justify-content: space-between;
   width: 339px;
-  height: 104px;
+  height: 144px;
   margin: 15px auto;
-  
+  align-items: center; 
 `
 export const Choice = styled.li`
   ${flexCenter};
   flex-direction: column;
-  width: 58px;
+  width: 32px;
   height: 104px;
   cursor: pointer;
+
+  
 `
 
 // ----- choiceText 공통스타일
 const choiceTextStyled = css`
-    width: 52px;
-    height: 36px;
+    width: 82px;
+    height: fit-content;
     font-weight: 700;
     font-size: 15px;
     line-height: 17.9px;
