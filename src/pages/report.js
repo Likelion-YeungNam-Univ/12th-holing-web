@@ -5,7 +5,6 @@ import Tap from 'components/report/Tap';
 import GotoTest from 'components/report/GotoTest';
 import getReportHook from 'hooks/report/getReportHook';
 
-
 function Report() {
 
   // 탭 상태 관리
@@ -18,8 +17,10 @@ function Report() {
   const [daysForNext, setDaysForNext] = useState(0); // 날짜 차이 일수 관리
   const [daysForTest, setDaysForTest] = useState(0);
 
+
   // 리포트 요약 조회 HOOK
   const myReportSummary = getReportHook('my');
+
 
   useEffect(() => {
     if (myReportSummary.length !== 0) {

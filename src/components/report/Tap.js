@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import LineChart from 'components/report/LineChart';
 import SlideAnimation from 'components/report/slide/SlideAnimation';
 import React from 'react';
@@ -12,6 +13,7 @@ import getGraphHook from 'hooks/report/getGraphHook';
 import getReportHook from 'hooks/report/getReportHook';
 import MateCard from './MateCard';
 import MateReport from './MateReport';
+import { getUserInfo } from 'apis/my/userInfoGet';
 
 
 function Tap({ leftTap, setLeftState, setRightState }) {
@@ -30,7 +32,23 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   const myReportSummary = getReportHook('my')
   const mateReportSummary = getReportHook('mate')
   console.log("myReportSummary = ", myReportSummary);
-  
+
+  // 유저 정보 상태
+  const [userInfo, setUserInfo] = useState([]); 
+
+  // 내 정보 조회_gender 정보 추출
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      const data = await getUserInfo();
+      setUserInfo(data); // 유저 정보 상태 업데이트
+    };
+    fetchUserInfo();
+  }, []);
+
+  useEffect(() => {
+    console.log("userInfo =", userInfo); // 유저 정보 콘솔 출력
+    console.log("userInfo.data.gender =", userInfo.data.gender); // 유저 정보 콘솔 출력
+  }, [userInfo]);
 
   return (
     <TapWrapper>
@@ -73,7 +91,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
 
         {/*짝꿍 비연동시 예외처리 */}
         {mateErrorCode===404 ? (
-          <MateCard />
+          <MateCard gender={userInfo.data.gender}/>
         ) : 
         (
           <>
