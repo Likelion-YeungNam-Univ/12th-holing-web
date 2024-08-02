@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import level4 from 'assets/images/level4.png';
 import login_logo_icon from 'assets/images/login_logo_icon.png';
 import service_ex1 from 'assets/images/service_ex1.png';
@@ -10,12 +11,42 @@ import {
   Desc,
   DescContainer,
   Img,
+  ImgContainter,
+  Score,
+  Comment,
 } from 'styles/login/ServiceDesc-styled';
 
 function ServiceDesc() {
+  const [totalScore, setTotalScore] = useState(0);
+
+  // 자가테스트 결과 저장된 점수 합산
+  useEffect(() => {
+    const storedScores =
+      JSON.parse(localStorage.getItem('selfTestScore')) || [];
+    const sum = storedScores.reduce((acc, score) => acc + score, 0);
+    setTotalScore(sum);
+  }, []);
+
+  // totalScore에 따라 다른 메시지를 설정
+  const getComment = (score) => {
+    if (score >= 18) {
+      return '갱년기 증상이 많이 나타나요';
+    } else if (score >= 14) {
+      return '갱년기 증상에 대한 케어가 필요해요';
+    } else if (score >= 8) {
+      return '갱년기 증상이 조금 나타나고 있어요';
+    } else {
+      return '갱년기 증상이 거의 없어요';
+    }
+  };
+
   return (
     <>
-      <Img src={level4} alt="Level 4" />{' '}
+      <ImgContainter>
+        <Img src={level4} alt="Level 4"></Img>
+        <Score>20점 만점에 {totalScore}점으로</Score>
+        <Comment>{getComment(totalScore)}</Comment>
+      </ImgContainter>
       <DescContainer>
         <Title>
           전문가의 도움을 받아
