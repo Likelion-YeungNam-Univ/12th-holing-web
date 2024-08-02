@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const useSelfTest = (nextRoute) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+
   const navigate = useNavigate();
 
   const handleAnswerClick = (answer) => {
@@ -11,7 +12,7 @@ export const useSelfTest = (nextRoute) => {
 
   const isButtonActive = selectedAnswer !== null;
 
-  const handleNextButtonClick = () => {
+  const handleNextButtonClickWithScore = () => {
     if (isButtonActive) {
       navigate(nextRoute);
     }
@@ -21,6 +22,6 @@ export const useSelfTest = (nextRoute) => {
     selectedAnswer,
     handleAnswerClick,
     isButtonActive,
-    handleNextButtonClick,
+    handleNextButtonClickWithScore,
   };
 };

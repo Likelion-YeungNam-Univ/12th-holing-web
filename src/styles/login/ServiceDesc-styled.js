@@ -37,9 +37,32 @@ export const DescContainer = styled.div`
   margin-left: 50px;
   margin-right: 50px;
 `;
+export const ImgContainter = styled.div`
+  position: relative;
+  display: inline-block;
+`;
 export const Img = styled.img`
   max-width: 100%;
   height: auto;
+`;
+export const Score = styled.div`
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F5F5F5;
+  font-size:18px;
+  font-weight: 500;
+`;
+export const Comment = styled.div`
+  position: absolute;
+  top: 118px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F5F5F5;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
 `;
 export const Btn = styled.div`
   img {
