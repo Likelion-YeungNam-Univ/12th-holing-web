@@ -11,8 +11,12 @@ import {
 import getGraphHook from 'hooks/report/getGraphHook';
 import getReportHook from 'hooks/report/getReportHook';
 
+import MateCard from './MateCard';
+import MateReport from './MateReport';
+
 
 function Tap({ leftTap, setLeftState, setRightState }) {
+  
   // 탭 토글 함수
   const toggleTap = () => {
     setLeftState(!leftTap);
@@ -20,8 +24,8 @@ function Tap({ leftTap, setLeftState, setRightState }) {
   };
 
   // graph 데이터 GET HOOK
-  const myGraphList = getGraphHook('my');
-  const mateGraphList = getGraphHook('mate');
+  const { graphList: myGraphList, errorCode: myErrorCode } = getGraphHook('my');
+  const { graphList: mateGraphList, errorCode: mateErrorCode } = getGraphHook('mate');
 
   // 리포트 요약 조회 HOOK
   const myReportSummary = getReportHook('my')
@@ -39,14 +43,21 @@ function Tap({ leftTap, setLeftState, setRightState }) {
           <TapBtn2 onClick={toggleTap}>짝꿍의 증상분석</TapBtn2>
         </TapBtnWrapper>
 
-        
-        {/* 그래프 */}
-        <GraphWrapper>
-          <LineChart graphList={myGraphList}/>
-        </GraphWrapper>
 
-        {/* 슬라이드 */}
-        <SlideAnimation reportSummary={myReportSummary} user={'me'}/>
+        {/* TODO : 내 리포트 미존재 시 예외처리코드 */}
+        {mateErrorCode===404 ? (
+          <MateReport target={'나'}/>
+        ) : (
+          <>
+          {/* 그래프 */}
+          <GraphWrapper>
+            <LineChart graphList={myGraphList}/>
+          </GraphWrapper>
+
+          {/* 슬라이드 */}
+          <SlideAnimation reportSummary={myReportSummary} user={'me'}/>
+          </>
+        )}
       </>
       ) : (
       // 짝꿍탭 클릭 시
@@ -56,13 +67,27 @@ function Tap({ leftTap, setLeftState, setRightState }) {
           <TapBtn1>짝꿍의 증상분석</TapBtn1>
         </TapBtnWrapper>
 
-        {/* 그래프*/}
-        <GraphWrapper>
-          <LineChart graphList={mateGraphList}/>
-        </GraphWrapper>
 
-        {/* 슬라이드*/}
-        <SlideAnimation reportSummary={mateReportSummary} user={'mate'}/>
+        {/* TODO : 짝꿍 리포트 미존재 시 예외처리 */}
+        <MateReport target={'짝꿍'}/>
+
+        {/*짝꿍 비연동시 예외처리 */}
+        {mateErrorCode===404 ? (
+          <MateCard />
+        ) : 
+        (
+          <>
+          {/* 그래프*/}
+          <GraphWrapper>
+            <LineChart graphList={mateGraphList}/>
+          </GraphWrapper>
+
+          {/* 슬라이드*/}
+          <SlideAnimation reportSummary={mateReportSummary} user={'mate'}/>
+         </>
+        )} 
+
+        
       </>
       )}
 

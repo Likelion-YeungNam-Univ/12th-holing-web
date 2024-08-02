@@ -5,7 +5,7 @@ export const MissionTitleWrapper = styled.div`
   height: 90px;
   margin: 0 auto;
   margin-top: 48px;
-  margin-bottom: 48px;
+  margin-bottom: 48px; 
 `;
 
 export const MissionTitle1 = styled.div`
@@ -88,7 +88,7 @@ export const MissionConnectStart = styled.div`
   margin-top: 22px;
   text-align: center;
   margin-bottom: 36px;
-  z-index: 2;
+  z-index: 1; // 상단바 위로 올라오지 않도록 수정 by성임
   position: relative;
 `;
 
