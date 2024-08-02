@@ -14,6 +14,7 @@ import {
     RightBottom,
     BottomBtn,
     GotoBtn,
+    GotoBtnColored,
     BottomText,
     TitleText,
     HigLight
@@ -64,7 +65,13 @@ function GotoTest( {lastTest, gotest, daysForNext, daysForTest} ) {
         {/* 증상테스트하기 버튼 */}
         <BottomBtn>
           {/* TODO : 비활성화하기 */}
-          <GotoBtn onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtn>
+          {daysForTest === 0 ? (
+            <GotoBtnColored onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtnColored>
+          ) : (
+            <GotoBtn onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtn>
+          )} 
+          
+
           <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>
         </BottomBtn>
     </GotoTestWrapper>

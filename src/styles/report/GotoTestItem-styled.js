@@ -134,7 +134,7 @@ export const BottomBtn = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const GotoBtn = styled.button`
+export const GotoBtnColored = styled.button`
   background-color: #9180FF;
   width: Fixed (496px);
   height: 76px;
@@ -149,6 +149,22 @@ export const GotoBtn = styled.button`
   text-align: center;
   cursor: pointer;
 `
+export const GotoBtn = styled.button`
+  background-color: #DDDDDD;
+  width: Fixed (496px);
+  height: 76px;
+  padding: 10px;
+  border-radius: 13px;
+  border: solid #DDDDDD;
+
+  font-size: 25px;
+  font-weight: 600;
+  text-align: left;
+  color: #ffffff;
+  text-align: center;
+`
+
+
 
 export const BottomText = styled.p`
   font-size: 14px;
