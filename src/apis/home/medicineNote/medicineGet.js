@@ -17,4 +17,4 @@ const getMedicines = () => {
   });
 };
 
-export { getMedicines };
+export { getMedicines }; //완료

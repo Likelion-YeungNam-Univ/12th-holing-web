@@ -22,4 +22,4 @@ const takenMedicine = ({ id, isTaken }) => {
   );
 };
 
-export { takenMedicine };
+export { takenMedicine }; //완료

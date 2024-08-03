@@ -18,8 +18,8 @@ import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
 import { takenMedicine } from 'apis/home/medicineNote/medicineTaken'; // POST 형식
+import { deleteMedicine } from 'apis/home/medicineNote/medicineDelete';
 
-// const [medicineId, setMedicineId] = useState();
 // 시간 형식을 24시간 형태로 포맷팅하는 함수
 const formatTime = (timeString) => {
   try {
@@ -43,7 +43,6 @@ const formatTime = (timeString) => {
 function MedicineList() {
   const {
     isModalOpen,
-    // handleToggle,
     openModal,
     closeModal,
     addNewMedicine,
@@ -90,10 +89,22 @@ function MedicineList() {
     // 체크된 상태에서만 API 호출
     try {
       const response = await takenMedicine({ id, isTaken: !isTaken });
-      console.log('Data received:', response.data);
+      console.log(response.data);
       handleToggle(id);
     } catch (error) {
       console.error('Error updating data: ', error);
+    }
+  };
+
+  // DELETE 영양제 삭제
+  const handleDeleteMedicine = async (id) => {
+    try {
+      await deleteMedicine({ id });
+      // 삭제 후 상태 업데이트
+      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id));
+      console.log(`약 복용 기록이 삭제되었습니다.`);
+    } catch (error) {
+      console.error('Error deleting medicine:', error);
     }
   };
 
@@ -130,7 +141,7 @@ function MedicineList() {
                 </Time>
               )}
             </div>
-            <DeleteButton onClick={() => DeleteData(item.id)}>
+            <DeleteButton onClick={() => handleDeleteMedicine(item.id)}>
               삭제하기
               <IconDelete src={icon_delete} alt="icon" />
             </DeleteButton>

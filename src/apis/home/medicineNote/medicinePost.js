@@ -18,4 +18,4 @@ const postMedicines = (medicineData) => {
   });
 };
 
-export { postMedicines };
+export { postMedicines }; //완료
