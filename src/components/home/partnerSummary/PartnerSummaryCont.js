@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import {
   SummaryContainer,
   Status,
@@ -8,27 +9,45 @@ import {
   UserNameContainer,
   UserName,
   PartnerInfo,
-  //   ScoreGraph,
+  Graph,
 } from 'styles/home/SummaryCont-styled';
 import profile_img_male from 'assets/images/profile_img_male.png';
+import MyScoreGraph from './MyScoreGraph';
+import { getMateReport } from 'apis/user/mateReportGet';
 
 function PartnerSummaryCont() {
+  const [nickname, setNickname] = useState('');
+  const [mateNickname, setMateNickName] = useState('');
+  const [gender, setGender] = useState('');
+
+  useEffect(() => {
+    getMateReport()
+      .then((response) => {
+        const data = response.data;
+        setNickname(data.nickname);
+        setMateNickName(data.mateNickname);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
+
   return (
     <>
       <SummaryContainer>
         <UserInfo>
-          <Status>우울한갱년기</Status>
+          <Status>호르몬 힐링 중</Status>
           <UserProfile>
             <Img src={profile_img_male} />
             <UserNameContainer>
-              <UserName>길동홍 님</UserName>{' '}
-              {/* TODO: 추후에 이름 받아와서 변경 */}
-              <PartnerInfo>홍길동님의 배우자</PartnerInfo>{' '}
-              {/* TODO: 추후에 이름 받아와서 변경 */}
+              <UserName>{nickname} 님</UserName>
+              <PartnerInfo>{mateNickname}님의 배우자</PartnerInfo>
             </UserNameContainer>
           </UserProfile>
-          {/* TODO: <ScoreGraph /> */}
         </UserInfo>
+        <Graph>
+          <MyScoreGraph />
+        </Graph>
       </SummaryContainer>
     </>
   );

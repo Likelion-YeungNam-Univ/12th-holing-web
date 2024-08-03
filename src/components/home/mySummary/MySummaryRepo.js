@@ -14,7 +14,6 @@ import {
   TitleContainer,
 } from 'styles/home/SummaryRepo-styled';
 import { getMyReport } from 'apis/user/myReportGet';
-
 import DayCount from './DayCount';
 
 function MySummaryRepo() {
