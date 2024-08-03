@@ -19,6 +19,7 @@ function PartnerSummaryRepo() {
   const [nickname, setNickname] = useState('');
   const [top1Report, setTop1Report] = useState('');
   const [top2Report, setTop2Report] = useState('');
+  const [userRecentReport, setUserRecentReport] = useState('');
 
   useEffect(() => {
     getMateReport()
@@ -27,6 +28,7 @@ function PartnerSummaryRepo() {
         setNickname(data.nickname);
         setTop1Report(data.userRecentReport.top1Report.title);
         setTop2Report(data.userRecentReport.top2Report.title);
+        setUserRecentReport(data.userRecentReport);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -36,28 +38,45 @@ function PartnerSummaryRepo() {
   return (
     <>
       <SumRepoContainer>
-        {/* TODO: 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
-        <SumRepoHeader>
-          <TitleContainer>
-            <SumRepoTitle>요약 리포트</SumRepoTitle>
-            <DayCount />
-          </TitleContainer>
-          <SumRepoDisc>{nickname}님의 리포트를 자세히 살펴보아요</SumRepoDisc>
-        </SumRepoHeader>
-        <RankWrapper>
-          <RankContainer>
-            <Rank>TOP1</Rank>
-            <RankDesc>{top1Report}</RankDesc>
-          </RankContainer>
-        </RankWrapper>
-
-        <Divider />
-        <RankWrapper>
-          <RankContainer>
-            <Rank>TOP2</Rank>
-            <RankDesc>{top2Report}</RankDesc>
-          </RankContainer>
-        </RankWrapper>
+        {userRecentReport ? (
+          <>
+            <SumRepoHeader>
+              <TitleContainer>
+                <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                <DayCount />
+              </TitleContainer>
+              <SumRepoDisc>
+                {nickname}님의 리포트를 자세히 살펴보아요
+              </SumRepoDisc>
+            </SumRepoHeader>
+            <RankWrapper>
+              <RankContainer>
+                <Rank>TOP1</Rank>
+                <RankDesc>{top1Report}</RankDesc>
+              </RankContainer>
+            </RankWrapper>
+            <Divider />
+            <RankWrapper>
+              <RankContainer>
+                <Rank>TOP2</Rank>
+                <RankDesc>{top2Report}</RankDesc>
+              </RankContainer>
+            </RankWrapper>
+          </>
+        ) : (
+          <SumRepoHeader>
+            <TitleContainer>
+              <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+              <DayCount />
+            </TitleContainer>
+            <SumRepoDisc>
+              해당 주의 짝꿍의 증상 테스트가 완료되어 있지 않아 짝꿍의 리포트가
+              제공되어있지 않습니다.
+              <br />
+              짝꿍에게 테스트를 권해보세요!
+            </SumRepoDisc>
+          </SumRepoHeader>
+        )}
       </SumRepoContainer>
     </>
   );

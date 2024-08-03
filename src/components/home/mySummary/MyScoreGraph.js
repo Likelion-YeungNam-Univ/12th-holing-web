@@ -59,7 +59,9 @@ function MyScoreGraph() {
     <Container>
       <Doughnut data={data} options={options} />
       <OverlayContainer>
-        <OverlayTotal>{userRecentReport ? `TOTAL` : '테스트 시작'}</OverlayTotal>
+        <OverlayTotal>
+          {userRecentReport ? `TOTAL` : '테스트 시작'}
+        </OverlayTotal>
         <OverlayScore>{value}</OverlayScore>
       </OverlayContainer>
     </Container>
