@@ -58,7 +58,12 @@ function MedicineList() {
       try {
         const medicine = await getMedicines();
         console.log('Data received:', medicine.data); // 데이터 본문 출력
-        setMedi(medicine.data); // 상태 업데이트
+        // 모든 약의 isTaken 값을 false로 초기화
+        const updatedMedicines = medicine.data.map((item) => ({
+          ...item,
+          isTaken: false, // 기본적으로 체크되지 않도록 설정
+        }));
+        setMedi(updatedMedicines); // 상태 업데이트
       } catch (error) {
         console.error('Error fetching data:', error); // 에러 핸들링
       }
