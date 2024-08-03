@@ -5,21 +5,20 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const jwtToken = load('jwtToken');
 
-const takenMedicine = ({ id, isTaken }) => {
+const deleteMediRec = ({ id }) => {
   const endPoint = `/user/medicines/${id}/history`;
   const url = `${apiUrl}${endPoint}`;
 
-  return axios.post(
+  return axios.delete(
     url,
-    { isTaken },
+
     {
       headers: {
         Accept: '*/*',
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${jwtToken}`,
       },
     }
   );
 };
 
-export { takenMedicine }; //완료
+export { deleteMediRec }; //완료

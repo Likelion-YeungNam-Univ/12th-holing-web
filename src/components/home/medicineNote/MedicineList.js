@@ -18,6 +18,7 @@ import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
 import { takenMedicine } from 'apis/home/medicineNote/medicineTaken'; // POST 형식
+import { deleteMediRec } from 'apis/home/medicineNote/mediRecDelete';
 import { deleteMedicine } from 'apis/home/medicineNote/medicineDelete';
 
 // 시간 형식을 24시간 형태로 포맷팅하는 함수
@@ -41,13 +42,8 @@ const formatTime = (timeString) => {
 
 // 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  const {
-    isModalOpen,
-    openModal,
-    closeModal,
-    addNewMedicine,
-    // deleteMedicine,
-  } = useMedicineList();
+  const { isModalOpen, openModal, closeModal, addNewMedicine } =
+    useMedicineList();
 
   const [medi, setMedi] = useState([]);
 
@@ -78,31 +74,42 @@ function MedicineList() {
     setMedi(updatedMedi);
   };
 
-  //POST 영양제 복용 기록 생성
+  // POST 영양제 복용 기록 생성
   const handleTakenMedicine = async (id, isTaken) => {
-    // 체크 해제 시 API 호출을 하지 않음
-    if (!isTaken) {
-      handleToggle(id); // 상태만 업데이트
-      return; // 함수 종료
-    }
-
-    // 체크된 상태에서만 API 호출
-    try {
-      const response = await takenMedicine({ id, isTaken: !isTaken });
-      console.log(response.data);
-      handleToggle(id);
-    } catch (error) {
-      console.error('Error updating data: ', error);
+    handleToggle(id); // 상태 업데이트를 먼저 수행
+    if (isTaken) {
+      // 체크된 상태에서만 API 호출
+      try {
+        const response = await takenMedicine({ id, isTaken: true });
+        console.log(response.data);
+        handleToggle(id); // 상태 업데이트
+      } catch (error) {
+        console.error('Error updating data: ', error);
+      }
+    } else {
+      // 체크 해제 시 삭제 함수 호출
+      handleDelMediRec(id);
     }
   };
 
-  // DELETE 영양제 삭제
+  // DELETE 영양제 삭제_삭제하기 버튼 클릭시
   const handleDeleteMedicine = async (id) => {
     try {
       await deleteMedicine({ id });
       // 삭제 후 상태 업데이트
       setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id));
-      console.log(`약 복용 기록이 삭제되었습니다.`);
+      console.log(`영양제가 삭제되었습니다.`);
+    } catch (error) {
+      console.error('Error deleting medicine:', error);
+    }
+  };
+
+  // DELETE 영양제 삭제_약 복용기록 삭제_체크박스 해제시
+  const handleDelMediRec = async (id) => {
+    try {
+      await deleteMediRec({ id });
+      // 상태 업데이트는 하지 않음
+      console.log(`영양제 복용 기록이 삭제되었습니다.`);
     } catch (error) {
       console.error('Error deleting medicine:', error);
     }
@@ -116,7 +123,7 @@ function MedicineList() {
             <Checkbox
               type="checkbox"
               checked={item.isTaken}
-              onChange={() => handleTakenMedicine(item.id, item.isTaken)}
+              onChange={(e) => handleTakenMedicine(item.id, e.target.checked)} // 체크박스 상태에 따라 함수 호출
             />
 
             <div
