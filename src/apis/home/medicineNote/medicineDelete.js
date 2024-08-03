@@ -21,4 +21,4 @@ const deleteMedicine = ({ id }) => {
   );
 };
 
-export { deleteMedicine };
+export { deleteMedicine }; //완료
