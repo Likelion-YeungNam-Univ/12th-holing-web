@@ -31,7 +31,7 @@ export const PartnerName = styled.div`
 export const AccountInfoBtn = styled.img`
   width: 24px;
   height: 24px;
-  margin-left: 180px; //폰트 나오면 바꿔야 함
+  margin-left: auto;
   cursor: pointer;
 `;
 export const CreditWrapper1 = styled.div`

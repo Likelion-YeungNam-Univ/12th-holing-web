@@ -152,7 +152,7 @@ function MyPage() {
         setPoint(data.point);
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error);
+        //console.error('Error fetching user data:', error);
       });
   }, []);
 
@@ -168,7 +168,7 @@ function MyPage() {
         ></ProfileImg>
         <NameWrapper>
           <UserName>{nickname} 님</UserName>
-          <PartnerName>{mateNickname}님의 짝꿍</PartnerName>
+          <PartnerName>{mateNickname ? `${mateNickname} 님` : '짝꿍을 연동해주세요'}</PartnerName>
         </NameWrapper>
         <AccountInfoBtn
           src={img_accountInfoBtn}

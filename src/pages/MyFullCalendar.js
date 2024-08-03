@@ -42,17 +42,15 @@ const MyFullCalendar = () => {
     // API 호출을 통해 일정 개수 가져오기
     fetchScheduleCounts(isoDate)
       .then((response) => {
-        console.log('Schedules for the selected month:', response.data);
         // 날짜별 일정 개수를 객체 형태로 변환
         const datesWithSchedules = response.data.reduce((acc, entry) => {
           acc[entry.date] = entry.count;
           return acc;
         }, {});
-        console.log('DateWithSchedules:', datesWithSchedules);
         setScheduleDates(datesWithSchedules);
       })
       .catch((error) => {
-        console.error('Error fetching schedules:', error);
+        //console.error('Error fetching schedules:', error);
       });
 
     // API 호출을 통해 완료된 미션 개수 반환
@@ -63,10 +61,9 @@ const MyFullCalendar = () => {
           return acc;
         }, {});
         setCompletedMissions(datesWithMissions);
-        console.log('completedMissions:', datesWithMissions);
       })
       .catch((error) => {
-        console.error('Error Counting missions:', error);
+        //console.error('Error Counting missions:', error);
       });
 
     // selectedDate 바뀔 때마다 재렌더링
@@ -74,7 +71,6 @@ const MyFullCalendar = () => {
 
   // mission 완료 상태가 변경될 때마다 재렌더링
   useEffect(() => {
-    console.log('Missions state updated:', completedMissions);
   }, [completedMissions]);
 
   // 일정 날짜 업데이트 함수

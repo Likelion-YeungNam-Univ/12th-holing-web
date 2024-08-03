@@ -10,7 +10,7 @@ import {
   PhoneNumberRow,
   BirthDaterRow,
   EmailRow,
-  Wrapper
+  Wrapper,
 } from 'styles/my/AccountInfo-styled';
 import { useEffect, useState } from 'react';
 import { getUserInfo } from 'apis/my/userInfoGet';
@@ -29,7 +29,7 @@ function AccountInfo() {
         setGender(data.gender);
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error);
+        //console.error('Error fetching user data:', error);
       });
   }, []);
 
@@ -42,7 +42,9 @@ function AccountInfo() {
       </EmailRow>
       <PhoneNumberRow>
         <PhoneNumberText>성별</PhoneNumberText>
-        <UserPhoneNumber>{gender === 'MALE' ? '남자' : '여자'}</UserPhoneNumber>
+        <UserPhoneNumber>
+          {gender === 'MALE' ? '남자' : gender === 'FEMALE' ? '여자' : ''}
+        </UserPhoneNumber>
       </PhoneNumberRow>
       <BirthDaterRow>
         <BirthDateText>닉네임</BirthDateText>

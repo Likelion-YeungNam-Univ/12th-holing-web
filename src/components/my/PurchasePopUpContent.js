@@ -54,10 +54,10 @@ const PuchasePopUpContent = ({ onClose, selectedItem, point }) => {
 
     postProduct(product)
       .then((response) => {
-        console.log('Product exchanged:', response.data);
+        //console.log('Product exchanged:', response.data);
       })
       .catch((error) => {
-        console.error('Error exchanging product:', error);
+        //console.error('Error exchanging product:', error);
       });
 
     onClose();

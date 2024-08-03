@@ -50,6 +50,21 @@ export const MissionCard = styled.div`
   position: relative;
 `;
 
+export const MissionConnectCard = styled.div`
+  width: 497px;
+  height: fit-content;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin: 0 auto;
+  margin-bottom: 26px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 26px;
+  border-top: 13px solid #9180ff;
+  border-radius: 13px;
+  position: relative;
+`;
+
 export const MissionConnectTitleWrapper = styled.div`
   display: flex;
   align-items: center;
