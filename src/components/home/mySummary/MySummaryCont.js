@@ -24,6 +24,7 @@ function MySummaryCont() {
     getMyReport()
       .then((response) => {
         const data = response.data;
+        console.log(data)
         setNickname(data.nickname);
         setMateNickName(data.mateNickname);
       })

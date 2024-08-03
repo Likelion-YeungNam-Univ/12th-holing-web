@@ -14,12 +14,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function MyScoreGraph() {
   const [value, setValue] = useState('');
+  const [userRecentReport, setUserRecentReport] = useState('');
 
   useEffect(() => {
     getMyReport()
       .then((response) => {
         const data = response.data;
         setValue(data.userRecentReport.totalScore);
+        setUserRecentReport(data.userRecentReport);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -57,7 +59,7 @@ function MyScoreGraph() {
     <Container>
       <Doughnut data={data} options={options} />
       <OverlayContainer>
-        <OverlayTotal>TOTAL</OverlayTotal>
+        <OverlayTotal>{userRecentReport ? `TOTAL` : '테스트 시작'}</OverlayTotal>
         <OverlayScore>{value}</OverlayScore>
       </OverlayContainer>
     </Container>
