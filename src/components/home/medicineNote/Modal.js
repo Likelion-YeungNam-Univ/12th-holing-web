@@ -71,23 +71,27 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
 
       time.setHours(adjustedHour);
       time.setMinutes(minute);
-      onAddMedicine(newMedicine, time);
 
+      // 영양제 데이터 생성
       const medicineData = {
         name: newMedicine,
         takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
       };
 
-      //POST 영양제 생성
+      // 부모 컴포넌트의 상태 업데이트 함수 호출
+      onAddMedicine(medicineData); // 상태 업데이트를 위한 함수 호출
+
+      // POST 영양제 생성
       postMedicines(medicineData)
-        .then((medicine) => {
-          console.log('Data received:', medicine.data);
-          setMedicineData(medicine.data);
+        .then((response) => {
+          console.log(response.data);
+          // 추가된 영양제 데이터로 상태 업데이트
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
         });
 
+      // 입력 필드 초기화
       setNewMedicine('');
       setAmPm('오전');
       setHour(12);

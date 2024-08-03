@@ -5,13 +5,14 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const jwtToken = load('jwtToken');
 
-const takenMedicine = ({ id, isTaken }) => {
-  const endPoint = `/user/medicines/${id}/history`;
+const takenMedicine = ({ medicineId, isTaken }) => {
+  const endPoint = `/user/medicines/${medicineId}/history`;
   const url = `${apiUrl}${endPoint}`;
 
   return axios.post(
     url,
-    { isTaken },
+
+    { medicineId, isTaken },
     {
       headers: {
         Accept: '*/*',
