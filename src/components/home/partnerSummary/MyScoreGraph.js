@@ -8,7 +8,7 @@ import {
   OverlayScore,
   OverlayTotal,
 } from 'styles/home/MyScoreGraph-styled';
-import { getMyReport } from 'apis/user/myReportGet';
+import { getMateReport } from 'apis/user/mateReportGet';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,7 +17,7 @@ function MyScoreGraph() {
   const [userRecentReport, setUserRecentReport] = useState('');
 
   useEffect(() => {
-    getMyReport()
+    getMateReport()
       .then((response) => {
         const data = response.data;
         setValue(data.userRecentReport.totalScore);

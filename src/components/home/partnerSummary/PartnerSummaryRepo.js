@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   SumRepoContainer,
   SumRepoHeader,
@@ -9,39 +11,113 @@ import {
   RankWrapper,
   RankDesc,
   Divider,
+  TitleContainer,
+  ConnectBtn,
+  ConnectDesc,
 } from 'styles/home/SummaryRepo-styled';
+import { getMateReport } from 'apis/user/mateReportGet';
+import { getMyReport } from 'apis/user/myReportGet';
+import DayCount from './DayCount';
+import img_missionConnectPlusBtn from 'assets/images/mission_connect_plus_btn.svg';
 
 function PartnerSummaryRepo() {
+  const [nickname, setNickname] = useState('');
+  const [top1Report, setTop1Report] = useState('');
+  const [top2Report, setTop2Report] = useState('');
+  const [userRecentReport, setUserRecentReport] = useState('');
+  const [mateNickname, setMateNickname] = useState('');
+  const [myName, setMyName] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getMateReport()
+      .then((response) => {
+        const data = response.data;
+        setNickname(data.nickname);
+        setTop1Report(data.userRecentReport.top1Report.title);
+        setTop2Report(data.userRecentReport.top2Report.title);
+        setUserRecentReport(data.userRecentReport);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+
+    getMyReport()
+      .then((response) => {
+        const data = response.data;
+        setMyName(data.nickname);
+        setMateNickname(data.mateNickname);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
+
+  const handleConnectClick = () => {
+    navigate('/kakaologin');
+  };
+
   return (
     <>
-      <SumRepoContainer>
-        {/* TODO: 클릭 시 자세한 리포트 페이지로 이동; 추후 구현 예정 */}
-        <SumRepoHeader>
-          <SumRepoTitle>요약 리포트</SumRepoTitle>
-          <SumRepoDisc>길동홍님의 리포트를 자세히 살펴보아요</SumRepoDisc>
-        </SumRepoHeader>
-        <RankWrapper>
-          <RankContainer>
-            <Rank>TOP1</Rank>
-            <RankDesc>
-              추위로 인한 <span>체온변화</span>에
-              <br /> 가장 큰 어려움을 겪어요
-            </RankDesc>
-          </RankContainer>
-        </RankWrapper>
-
-        <Divider />
-        <RankWrapper>
-          <RankContainer>
-            <Rank>TOP2</Rank>
-            <RankDesc>
-              <span>감정기복</span>에 심각한
-              <br />
-              어려움을 겪어요
-            </RankDesc>
-          </RankContainer>
-        </RankWrapper>
-      </SumRepoContainer>
+      {mateNickname === null ? (
+        <SumRepoContainer>
+          <TitleContainer>
+            <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+          </TitleContainer>
+          <SumRepoDisc>
+            {myName}님의 짝꿍에게 URP를 전송하여
+            <br />
+            상대방의 갱년기 증상도 함께 알아보아요!
+          </SumRepoDisc>
+          <ConnectBtn
+            src={img_missionConnectPlusBtn}
+            onClick={handleConnectClick}
+          ></ConnectBtn>
+          <ConnectDesc>짝꿍과 커넥트 시작하기</ConnectDesc>
+        </SumRepoContainer>
+      ) : (
+        <SumRepoContainer>
+          {userRecentReport ? (
+            <>
+              <SumRepoHeader>
+                <TitleContainer>
+                  <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                  <DayCount />
+                </TitleContainer>
+                <SumRepoDisc>
+                  {nickname}님의 리포트를 자세히 살펴보아요
+                </SumRepoDisc>
+              </SumRepoHeader>
+              <RankWrapper>
+                <RankContainer>
+                  <Rank>TOP1</Rank>
+                  <RankDesc>{top1Report}</RankDesc>
+                </RankContainer>
+              </RankWrapper>
+              <Divider />
+              <RankWrapper>
+                <RankContainer>
+                  <Rank>TOP2</Rank>
+                  <RankDesc>{top2Report}</RankDesc>
+                </RankContainer>
+              </RankWrapper>
+            </>
+          ) : (
+            <SumRepoHeader>
+              <TitleContainer>
+                <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                <DayCount />
+              </TitleContainer>
+              <SumRepoDisc>
+                해당 주의 짝꿍의 증상 테스트가 완료되어 있지 않아 짝꿍의
+                리포트가 제공되어있지 않습니다.
+                <br />
+                짝꿍에게 테스트를 권해보세요!
+              </SumRepoDisc>
+            </SumRepoHeader>
+          )}
+        </SumRepoContainer>
+      )}
     </>
   );
 }

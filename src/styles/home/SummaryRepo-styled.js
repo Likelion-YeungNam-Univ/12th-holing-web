@@ -13,6 +13,7 @@ export const SumRepoContainer = styled.div`
   border-style: solid;
   padding-top: 44px;
   padding-left: 40px;
+  padding-right: 40px;
 `;
 
 export const SumRepoHeader = styled.div`
@@ -92,4 +93,17 @@ export const Count = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const ConnectBtn = styled.img`
+  margin-top: 88px;
+  margin-left: 156px;
+  cursor: pointer;
+`;
+export const ConnectDesc = styled.div`
+  color: #5b5b5b;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 22px;
+  text-align: center;
 `;
