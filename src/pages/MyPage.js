@@ -28,6 +28,7 @@ import {
   CreditExpandWrapper,
   CreditDescriptionList,
   CreditDescription,
+  Wrapper
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -160,7 +161,7 @@ function MyPage() {
   };
 
   return (
-    <>
+    <Wrapper>
       <ProfileWrapper>
         <ProfileImg
           src={gender === 'MALE' ? img_profileMale : img_profileFemale}
@@ -246,7 +247,7 @@ function MyPage() {
           point={point}
         />
       )}
-    </>
+    </Wrapper>
   );
 }
 

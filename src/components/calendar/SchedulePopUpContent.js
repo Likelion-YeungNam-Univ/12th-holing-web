@@ -53,7 +53,7 @@ const SchedulePopUpContent = ({
         onChange={handleTitleChange}
       ></ScheduleTitle>
       <ScheduleBody
-        placeholder="일정의 장소 및 시간을 메모하세요"
+        placeholder="일정의 장소 및 시간을 메모하세요."
         onChange={handleContentChange}
       ></ScheduleBody>
       <SchedulePopUpSaveBtn onClick={handleSave}>저장하기</SchedulePopUpSaveBtn>

@@ -10,6 +10,7 @@ import {
   PhoneNumberRow,
   BirthDaterRow,
   EmailRow,
+  Wrapper
 } from 'styles/my/AccountInfo-styled';
 import { useEffect, useState } from 'react';
 import { getUserInfo } from 'apis/my/userInfoGet';
@@ -33,7 +34,7 @@ function AccountInfo() {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <MyInfoText>내 정보</MyInfoText>
       <EmailRow>
         <EmailText>이메일</EmailText>
@@ -47,7 +48,7 @@ function AccountInfo() {
         <BirthDateText>닉네임</BirthDateText>
         <UserBirthDate>{nickname}</UserBirthDate>
       </BirthDaterRow>
-    </>
+    </Wrapper>
   );
 }
 

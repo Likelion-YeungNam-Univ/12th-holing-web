@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 600px;
+  background-color: #f5f5f5;
+  padding-top: 60px;
+  height: 100vh;
+`;
 export const MyInfoText = styled.div`
   font-size: 28px;
   font-weight: 700;
   margin-left: 52px;
-  margin-top: 60px;
 `;
 export const PhoneNumberRow = styled.div`
   display: flex;

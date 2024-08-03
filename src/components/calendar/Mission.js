@@ -201,7 +201,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
             </MissionDiscription>
             <MissionRefreshWrapper>
               <MissionRefresh onClick={() => handleRefresh(mission.id)}>
-                새로고침
+                미션 교체하기
               </MissionRefresh>
               <MissionRefreshImg
                 src={img_missionRefresh}

@@ -107,7 +107,6 @@ export const MissionItemWrapper = styled.div`
   margin-top: 13px;
   padding-bottom: 13px;
   border-bottom: 1px solid #b3b3b3;
-  margin-bottom: 13px;
 `;
 
 export const MissionItem = styled.div`

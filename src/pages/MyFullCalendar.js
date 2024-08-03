@@ -12,6 +12,7 @@ import img_calendarPopUpBtn from 'assets/images/calendar_popup_btn.png';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import {
+  Wrapper,
   CalendarWrapper,
   CalendarToggleButton,
 } from 'styles/calendar/Calendar-styled';
@@ -166,7 +167,7 @@ const MyFullCalendar = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <CalendarWrapper view={currentView}>
         <FullCalendar
           ref={calendarRef}
@@ -225,7 +226,7 @@ const MyFullCalendar = () => {
         onClose={closeModal}
         getSelectedDate={getSelectedDate}
       ></DatePopUp>
-    </>
+    </Wrapper>
   );
 };
 
