@@ -13,6 +13,7 @@ import {
   CancelBtn,
   Divider,
 } from 'styles/home/Modal-styled';
+import { postMedicines } from 'apis/home/medicineNote/medicinePost';
 
 // 시간 값을 두 자리 숫자로 포맷팅하는 함수
 const formatTimeValue = (value) => (value < 10 ? `0${value}` : value);
@@ -27,6 +28,7 @@ const getSurroundingValues = (value, max, step = 1) => {
 // 모달 컴포넌트
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   // 입력된 새 영양제 이름을 저장하는 상태
+  const [medicineData, setMedicineData] = useState('');
   const [newMedicine, setNewMedicine] = useState('');
 
   // 오전/오후 상태
@@ -69,8 +71,27 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
 
       time.setHours(adjustedHour);
       time.setMinutes(minute);
-      onAddMedicine(newMedicine, time);
 
+      // 영양제 데이터 생성
+      const medicineData = {
+        name: newMedicine,
+        takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
+      };
+
+      // 부모 컴포넌트의 상태 업데이트 함수 호출
+      onAddMedicine(medicineData); // 상태 업데이트를 위한 함수 호출
+
+      // POST 영양제 생성
+      postMedicines(medicineData)
+        .then((response) => {
+          console.log(response.data);
+          // 추가된 영양제 데이터로 상태 업데이트
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+
+      // 입력 필드 초기화
       setNewMedicine('');
       setAmPm('오전');
       setHour(12);
@@ -90,23 +111,26 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   };
 
   // 휠로 시간을 조절하는 함수
-  const handleWheel = (unit, delta) => {
+  const handleWheel = (unit, deltaY) => {
     switch (unit) {
       case 'ampm':
         setAmPm((prev) => (prev === '오전' ? '오후' : '오전'));
         break;
       case 'hour':
         setHour((prev) => {
-          let newHour = (prev + delta + 12) % 12;
+          let newHour = (prev + (deltaY > 0 ? 1 : -1) + 12) % 12;
           if (newHour === 0) newHour = 12;
-          if ((prev === 11 && delta > 0) || (prev === 12 && delta < 0)) {
+          if ((prev === 11 && deltaY > 0) || (prev === 12 && deltaY < 0)) {
             setAmPm((prevAmPm) => (prevAmPm === '오전' ? '오후' : '오전'));
           }
           return newHour;
         });
         break;
       case 'minute':
-        setMinute((prev) => (prev + delta * 5 + 60) % 60);
+        setMinute((prev) => {
+          let newMinute = (prev + (deltaY > 0 ? 5 : -5) + 60) % 60;
+          return newMinute;
+        });
         break;
       default:
         break;

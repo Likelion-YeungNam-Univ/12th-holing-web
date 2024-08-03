@@ -1,18 +1,20 @@
-// import axios from 'axios';
+import axios from 'axios';
+import { load } from 'react-cookies';
 
-// const apiUrl = process.env.REACT_APP_API_URL;
-// const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
+const apiUrl = process.env.REACT_APP_API_URL;
 
-// const getMedicines = () => {`
-//   const endPoint = `/user/medicines`;
-//   const url = `${apiUrl}${endPoint}`;
+const jwtToken = load('jwtToken');
 
-//   return axios.get(url, {
-//     headers: {
-//       Accept: '*/*',
-//       Authorization: authToken,
-//     },
-//   });
-// };
+const getMedicines = () => {
+  const endPoint = '/user/medicines';
+  const url = `${apiUrl}${endPoint}`;
 
-// export { getMedicines };
+  return axios.get(url, {
+    headers: {
+      Accept: '*/*',
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  });
+};
+
+export { getMedicines }; //완료

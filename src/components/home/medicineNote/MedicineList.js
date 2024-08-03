@@ -16,58 +16,115 @@ import icon_plus from 'assets/images/icon_plus.png';
 import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
-import axios from 'axios';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
+import { takenMedicine } from 'apis/home/medicineNote/medicineTaken';
+import { deleteMediRec } from 'apis/home/medicineNote/mediRecDelete';
+import { deleteMedicine } from 'apis/home/medicineNote/medicineDelete';
+
+// 시간 형식을 24시간 형태로 포맷팅하는 함수
+const formatTime = (timeString) => {
+  try {
+    const [hours, minutes] = timeString.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours, 10));
+    date.setMinutes(parseInt(minutes, 10));
+    date.setSeconds(0);
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false, // 24시간 형식
+    });
+  } catch (error) {
+    console.error('Error formatting time:', error);
+    return timeString; // 오류 발생 시 원래 문자열 반환
+  }
+};
 
 // 약 목록을 위한 메인 컴포넌트
 function MedicineList() {
-  // 커스텀 훅을 사용하여 상태와 함수들을 가져옴
+  const { isModalOpen, openModal, closeModal } = useMedicineList();
   const [medi, setMedi] = useState([]);
-  const {
-    // medi,
-    isModalOpen,
-    handleToggle,
-    openModal,
-    closeModal,
-    addNewMedicine,
-    deleteMedicine,
-  } = useMedicineList([
-    // {
-    //   id: 1,
-    //   text: '오메가3',
-    //   time: new Date().setHours(8, 0, 0, 0),
-    //   completed: false,
-    // },
-    // {
-    //   id: 2,
-    //   text: '메가슬립 수면엔 미강테아닌',
-    //   time: new Date().setHours(22, 0, 0, 0),
-    //   completed: false,
-    // },
-  ]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const medicines = await getMedicines();
-  //     setMedi(medicines);
-  //   };
+  // GET 영양제 목록 조회
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const medicine = await getMedicines();
+        console.log('Data received:', medicine.data);
+        const updatedMedicines = medicine.data.map((item) => ({
+          ...item,
+          isTaken: false, // 기본적으로 체크되지 않도록 설정
+        }));
+        setMedi(updatedMedicines);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
-  // setMedi((medi) => getMedicines());
+  // 새로운 영양제를 추가하는 함수
+  const addNewMedicine = (medicineData) => {
+    setMedi((prevMedi) => [...prevMedi, { ...medicineData, id: Date.now() }]); // ID는 임시로 현재 시간을 사용
+    console.log(medicineData);
+  };
+
+  const handleToggle = (medicineId) => {
+    setMedi((prevMedi) =>
+      prevMedi.map((item) =>
+        item.id === medicineId ? { ...item, isTaken: !item.isTaken } : item
+      )
+    );
+  };
+
+  // POST 영양제 복용 기록 생성
+  const handleTakenMedicine = async (medicineId, isTaken) => {
+    handleToggle(medicineId); // 상태 업데이트를 먼저 수행
+
+    if (isTaken) {
+      try {
+        const response = await takenMedicine({ medicineId, isTaken: true });
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error updating data: ', error);
+      }
+    } else {
+      handleDelMediRec(medicineId);
+    }
+  };
+
+  // DELETE 영양제 삭제
+  const handleDeleteMedicine = async (medicineId) => {
+    try {
+      await deleteMedicine({ medicineId });
+      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== medicineId));
+      console.log(`영양제가 삭제되었습니다.`);
+    } catch (error) {
+      console.error('Error deleting medicine:', error);
+    }
+  };
+
+  // DELETE 영양제 복용 기록 삭제
+  const handleDelMediRec = async (id) => {
+    try {
+      await deleteMediRec({ id });
+      console.log(`영양제 복용 기록이 삭제되었습니다.`);
+    } catch (error) {
+      console.error('Error deleting medicine:', error);
+    }
+  };
+
   return (
     <MediListContainer>
-      {/* 약 목록을 순회하여 각각의 항목을 렌더링 */}
-      {medi &&
+      {Array.isArray(medi) &&
         medi.map((item) => (
           <MedicineName key={item.id}>
             <Checkbox
               type="checkbox"
-              checked={item.completed}
-              onChange={() => handleToggle(item.id)}
+              checked={item.isTaken}
+              onChange={(e) => handleTakenMedicine(item.id, e.target.checked)}
             />
-
             <div
               style={{
                 display: 'flex',
@@ -77,24 +134,19 @@ function MedicineList() {
             >
               <Name
                 style={{
-                  textDecoration: item.completed ? 'line-through' : 'none',
+                  textDecoration: item.isTaken ? 'line-through' : 'none',
                 }}
               >
-                {item.text}
+                {item.name}
               </Name>
-
-              {item.time && (
+              {item.takenAt && (
                 <Time>
                   <Icon src={icon_alarm} alt="icon" />
-                  {new Date(item.time).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false,
-                  })}
+                  {formatTime(item.takenAt)}
                 </Time>
               )}
             </div>
-            <DeleteButton onClick={() => deleteMedicine(item.id)}>
+            <DeleteButton onClick={() => handleDeleteMedicine(item.id)}>
               삭제하기
               <IconDelete src={icon_delete} alt="icon" />
             </DeleteButton>
@@ -105,11 +157,10 @@ function MedicineList() {
         영양제 추가하기
       </AddButton>
 
-      {/* 모달 컴포넌트 */}
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        onAddMedicine={addNewMedicine}
+        onAddMedicine={addNewMedicine} // 추가된 영양제 상태 업데이트 함수 전달
       />
     </MediListContainer>
   );
