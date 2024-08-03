@@ -80,8 +80,14 @@ function MedicineList() {
   };
 
   //POST 영양제 복용 기록 생성
-
   const handleTakenMedicine = async (id, isTaken) => {
+    // 체크 해제 시 API 호출을 하지 않음
+    if (!isTaken) {
+      handleToggle(id); // 상태만 업데이트
+      return; // 함수 종료
+    }
+
+    // 체크된 상태에서만 API 호출
     try {
       const response = await takenMedicine({ id, isTaken: !isTaken });
       console.log('Data received:', response.data);
