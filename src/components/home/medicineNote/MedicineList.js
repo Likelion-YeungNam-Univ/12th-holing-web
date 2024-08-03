@@ -17,10 +17,9 @@ import icon_delete from 'assets/images/icon_delete.png';
 import icon_alarm from 'assets/images/icon_alarm.png';
 import useMedicineList from 'hooks/home/useMedicineList';
 import { getMedicines } from 'apis/home/medicineNote/medicineGet';
+import { takenMedicine } from 'apis/home/medicineNote/medicineTaken'; // POST 형식
 
-// import { takenMedicine } from 'apis/home/medicineNote/medicineTaken';
-import { deleteMedicine } from 'apis/home/medicineNote/medicineDelete';
-
+// const [medicineId, setMedicineId] = useState();
 // 시간 형식을 24시간 형태로 포맷팅하는 함수
 const formatTime = (timeString) => {
   try {
@@ -44,7 +43,7 @@ const formatTime = (timeString) => {
 function MedicineList() {
   const {
     isModalOpen,
-    handleToggle,
+    // handleToggle,
     openModal,
     closeModal,
     addNewMedicine,
@@ -68,12 +67,22 @@ function MedicineList() {
     fetchData();
   }, []);
 
-  const DeleteData = async (id) => {
+  const handleToggle = (id) => {
+    const updatedMedi = medi.map((item) =>
+      item.id === id ? { ...item, isTaken: !item.isTaken } : item
+    );
+    setMedi(updatedMedi);
+  };
+
+  //POST 영양제 복용 기록 생성
+
+  const handleTakenMedicine = async (id, isTaken) => {
     try {
-      await deleteMedicine(id); // `id`를 `medicineId`로 전달하여 삭제 API 호출
-      setMedi((prevMedi) => prevMedi.filter((item) => item.id !== id)); // 상태에서 삭제
+      const response = await takenMedicine({ id, isTaken: !isTaken });
+      console.log('Data received:', response.data);
+      handleToggle(id);
     } catch (error) {
-      console.error('Error deleting data:', error); // 에러 핸들링
+      console.error('Error updating data: ', error);
     }
   };
 
@@ -85,7 +94,7 @@ function MedicineList() {
             <Checkbox
               type="checkbox"
               checked={item.isTaken}
-              onChange={() => handleToggle(item.id)}
+              onChange={() => handleTakenMedicine(item.id, item.isTaken)}
             />
 
             <div

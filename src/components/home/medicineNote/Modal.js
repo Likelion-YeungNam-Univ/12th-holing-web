@@ -78,6 +78,7 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
         takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
       };
 
+      //POST 영양제 생성
       postMedicines(medicineData)
         .then((medicine) => {
           console.log('Data received:', medicine.data);
