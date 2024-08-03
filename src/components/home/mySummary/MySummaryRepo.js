@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   SumRepoContainer,
@@ -12,11 +13,29 @@ import {
   Divider,
   TitleContainer,
 } from 'styles/home/SummaryRepo-styled';
+import { getMyReport } from 'apis/user/myReportGet';
 
 import DayCount from './DayCount';
 
 function MySummaryRepo() {
   const navigate = useNavigate();
+
+  const [nickname, setNickname] = useState('');
+  const [top1Report, setTop1Report] = useState('');
+  const [top2Report, setTop2Report] = useState('');
+
+  useEffect(() => {
+    getMyReport()
+      .then((response) => {
+        const data = response.data;
+        setNickname(data.nickname);
+        setTop1Report(data.userRecentReport.top1Report.title);
+        setTop2Report(data.userRecentReport.top2Report.title);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
 
   const handleClick = () => {
     navigate('/report');
@@ -29,26 +48,19 @@ function MySummaryRepo() {
           <SumRepoTitle>요약 리포트</SumRepoTitle>
           <DayCount />
         </TitleContainer>
-        <SumRepoDisc>홍길동님의 리포트를 자세히 살펴보아요</SumRepoDisc>
+        <SumRepoDisc>{nickname}님의 리포트를 자세히 살펴보아요</SumRepoDisc>
       </SumRepoHeader>
       <RankWrapper>
         <RankContainer>
           <Rank>TOP1</Rank>
-          <RankDesc>
-            추위로 인한 <span>체온변화</span>에
-            <br /> 가장 큰 어려움을 겪어요
-          </RankDesc>
+          <RankDesc>{top1Report}</RankDesc>
         </RankContainer>
       </RankWrapper>
       <Divider />
       <RankWrapper>
         <RankContainer>
           <Rank>TOP2</Rank>
-          <RankDesc>
-            <span>감정기복</span>에 심각한
-            <br />
-            어려움을 겪어요
-          </RankDesc>
+          <RankDesc>{top2Report}</RankDesc>
         </RankContainer>
       </RankWrapper>
     </SumRepoContainer>

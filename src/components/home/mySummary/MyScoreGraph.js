@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {
@@ -7,11 +8,24 @@ import {
   OverlayScore,
   OverlayTotal,
 } from 'styles/home/MyScoreGraph-styled';
+import { getMyReport } from 'apis/user/myReportGet';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function MyScoreGraph() {
-  const value = 82;
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    getMyReport()
+      .then((response) => {
+        const data = response.data;
+        setValue(data.userRecentReport.totalScore);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
+
   const data = {
     labels: ['Score'],
     datasets: [
