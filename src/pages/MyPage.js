@@ -28,6 +28,7 @@ import {
   CreditExpandWrapper,
   CreditDescriptionList,
   CreditDescription,
+  Wrapper
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -75,12 +76,7 @@ const createCreditItems = () => [
     ),
   ],
   [
-    createCreditItem(
-      img_creditItem3,
-      '요가링',
-      '[센시안] 요가링(1p)',
-      '3500'
-    ),
+    createCreditItem(img_creditItem3, '요가링', '[센시안] 요가링(1p)', '3500'),
     createCreditItem(
       img_creditItem4,
       '마시지 도구',
@@ -136,6 +132,7 @@ function MyPage() {
   const { isModalOpen, selectedItem, openModal, closeModal } = MyPageHook();
 
   const [nickname, setNickname] = useState('');
+  const [mateNickname, setMateNickName] = useState('');
   const [gender, setGender] = useState('');
   const [point, setPoint] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -150,11 +147,12 @@ function MyPage() {
       .then((response) => {
         const data = response.data;
         setNickname(data.nickname);
+        setMateNickName(data.mateNickname);
         setGender(data.gender);
         setPoint(data.point);
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error);
+        //console.error('Error fetching user data:', error);
       });
   }, []);
 
@@ -163,14 +161,14 @@ function MyPage() {
   };
 
   return (
-    <>
+    <Wrapper>
       <ProfileWrapper>
         <ProfileImg
           src={gender === 'MALE' ? img_profileMale : img_profileFemale}
         ></ProfileImg>
         <NameWrapper>
-          <UserName>{nickname}님</UserName>
-          <PartnerName>길동홍님의 짝꿍</PartnerName>
+          <UserName>{nickname} 님</UserName>
+          <PartnerName>{mateNickname ? `${mateNickname} 님` : '짝꿍을 연동해주세요'}</PartnerName>
         </NameWrapper>
         <AccountInfoBtn
           src={img_accountInfoBtn}
@@ -249,7 +247,7 @@ function MyPage() {
           point={point}
         />
       )}
-    </>
+    </Wrapper>
   );
 }
 

@@ -30,11 +30,11 @@ const DatePopUpContent = ({ onClose, getSelectedDate }) => {
     <DatePopUpWrapper>
       <DateWrapper>
         <DateColumn>
-          <PreviousDate>{previousYear}</PreviousDate>
+          <PreviousDate>{previousYear}년</PreviousDate>
           <DateBox onWheel={(event) => handleWheel(event, 'year')}>
-            {year}
+            {year}년
           </DateBox>
-          <NextDate>{nextYear}</NextDate>
+          <NextDate>{nextYear}년</NextDate>
         </DateColumn>
         <DateColumn>
           <PreviousDate>{previousMonth}</PreviousDate>

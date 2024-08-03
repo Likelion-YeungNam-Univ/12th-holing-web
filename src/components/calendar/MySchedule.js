@@ -40,15 +40,12 @@ const MySchedule = ({ selectedDate, updateScheduleDates }) => {
   const fetchSchedules = () => {
     const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format('YYYY-MM-DD');
 
-    console.log('isoDate:', isoDate);
-
     getSchedules(isoDate)
       .then((response) => {
-        console.log('Schedules for the selected date:', response.data);
         setSchedules(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching schedules:', error);
+        //console.error('Error fetching schedules:', error);
         setSchedules([]);
       });
   };
@@ -65,7 +62,7 @@ const MySchedule = ({ selectedDate, updateScheduleDates }) => {
         updateScheduleDates(isoDate, -1); // 일정 개수 업데이트
       })
       .catch((error) => {
-        console.error('Error deleting schedule:', error);
+        //console.error('Error deleting schedule:', error);
       });
   };
 

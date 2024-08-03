@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 600px;
+  background-color: #f5f5f5;
+  padding-bottom: 13px;
+`;
+
 export const CalendarWrapper = styled.div`
-  width: 494px;
+  width: 600px;
   margin: 0 auto;
+  background-color: #ffffff;
+  padding: 0 53px;
 
   // dayGridMonth일 때
   ${(props) =>
     props.view === 'dayGridMonth' &&
     `
+    height: 610px;
+
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
       height: 440px;
       margin-top: 0px;
@@ -29,13 +39,18 @@ export const CalendarWrapper = styled.div`
     .fc-scrollgrid-section-body {
       height: 440px;
     }
-
+    .fc-scrollgrid.fc-scrollgrid-liquid {
+      border-color: #ffffff;
+      --fc-border-color: #ffffff;
+    }
   `}
 
   // dayGridWeek일 때
   ${(props) =>
     props.view === 'dayGridWeek' &&
     `
+    height: 243px;
+
     .fc .fc-scroller-harness.fc-scroller-harness-liquid {
       height: 85px; //week view에서 점 안보이는 거 해결
       margin-top: 0px;
@@ -55,8 +70,9 @@ export const CalendarWrapper = styled.div`
       height: 122px;
     }
     .fc-scrollgrid.fc-scrollgrid-liquid {
-      //border: none;
       height: 122px;
+      border-color: #ffffff;
+      --fc-border-color: #ffffff;
     }
   `}
 
@@ -92,6 +108,9 @@ export const CalendarWrapper = styled.div`
     border: none;
     margin-right: 5px;
   }
+  .fc-myCustomButton-button:hover {
+    background-color: white;
+  }
   .fc-button-primary span {
     color: #8a8a8a;
     padding: 0;
@@ -124,7 +143,6 @@ export const CalendarWrapper = styled.div`
   .fc-scroller-harness {
     height: 24px;
     margin-top: 18px;
-    //margin-bottom: 9px;
   }
   .fc-scroller {
     overflow: hidden;

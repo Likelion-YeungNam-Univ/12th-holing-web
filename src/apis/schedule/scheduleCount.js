@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
+
+const jwtToken = load('jwtToken');
 
 const fetchScheduleCounts = (date) => {
   const endPoint = '/calendar/schedules/month';
@@ -11,7 +13,7 @@ const fetchScheduleCounts = (date) => {
     params: { date },
     headers: {
       Accept: '*/*',
-      Authorization: authToken,
+      Authorization: `Bearer ${jwtToken}`,
     },
   });
 };
