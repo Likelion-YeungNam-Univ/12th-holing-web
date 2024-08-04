@@ -28,7 +28,7 @@ import {
   CreditExpandWrapper,
   CreditDescriptionList,
   CreditDescription,
-  Wrapper
+  Wrapper,
 } from 'styles/my/MyPage-styled';
 import img_creditItem1 from 'assets/images/credit_item1.png';
 import img_creditItem2 from 'assets/images/credit_item2.png';
@@ -168,7 +168,9 @@ function MyPage() {
         ></ProfileImg>
         <NameWrapper>
           <UserName>{nickname} 님</UserName>
-          <PartnerName>{mateNickname ? `${mateNickname}님의 짝꿍` : '짝꿍을 연동해주세요'}</PartnerName>
+          <PartnerName>
+            {mateNickname ? `${mateNickname}님의 짝꿍` : '짝꿍을 연동해주세요'}
+          </PartnerName>
         </NameWrapper>
         <AccountInfoBtn
           src={img_accountInfoBtn}

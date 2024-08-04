@@ -14,6 +14,7 @@ export const SumRepoContainer = styled.div`
   padding-top: 44px;
   padding-left: 40px;
   padding-right: 40px;
+  position: relative;
 `;
 
 export const SumRepoHeader = styled.div`
@@ -23,6 +24,11 @@ export const SumRepoHeader = styled.div`
   margin-bottom: 25px;
 `;
 
+export const SumRepoTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 export const SumRepoTitle = styled.div`
   font-weight: 700;
   font-size: 28px;
@@ -31,10 +37,16 @@ export const SumRepoTitle = styled.div`
   margin-bottom: 5px;
 `;
 
+export const RepoIcon = styled.img`
+  margin-left: 4px;
+`
+
 export const SumRepoDisc = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
+  position: relative;
+  z-index: 10001;
 `;
 
 export const RankContainer = styled.div`
@@ -99,11 +111,23 @@ export const ConnectBtn = styled.img`
   margin-top: 88px;
   margin-left: 156px;
   cursor: pointer;
+  position: relative;
+  z-index: 10001;
 `;
+
 export const ConnectDesc = styled.div`
   color: #5b5b5b;
   font-size: 20px;
   font-weight: 500;
   margin-top: 22px;
   text-align: center;
+  position: relative;
+  z-index: 10001;
 `;
+
+export const RepoImg = styled.img`
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1000;
+`

@@ -13,20 +13,24 @@ import {
 } from 'styles/home/SummaryCont-styled';
 import MyScoreGraph from './MyScoreGraph';
 import profile_img_female from 'assets/images/profile_img_female.png';
+import profile_img_male from 'assets/images/profile_img_male.png';
 import { getMyReport } from 'apis/user/myReportGet';
 
 function MySummaryCont() {
   const [nickname, setNickname] = useState('');
   const [mateNickname, setMateNickName] = useState('');
   const [gender, setGender] = useState('');
+  const [userRecentReport, setUserRecentReport] = useState('');
 
   useEffect(() => {
     getMyReport()
       .then((response) => {
         const data = response.data;
-        console.log(data)
+        console.log(data);
         setNickname(data.nickname);
         setMateNickName(data.mateNickname);
+        setUserRecentReport(data.userRecentReport);
+        setGender(data.gender);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -38,10 +42,16 @@ function MySummaryCont() {
       <UserInfo>
         <Status>호르몬 힐링 중</Status>
         <UserProfile>
-          <Img src={profile_img_female} />
+          <Img
+            src={gender === 'MALE' ? profile_img_male : profile_img_female}
+          />
           <UserNameContainer>
             <UserName>{nickname} 님</UserName>{' '}
-            <PartnerInfo>{mateNickname}님의 배우자</PartnerInfo>
+            <PartnerInfo>
+              {userRecentReport
+                ? `${mateNickname}님의 배우자`
+                : '짝꿍을 연동해주세요'}
+            </PartnerInfo>
           </UserNameContainer>
         </UserProfile>
       </UserInfo>

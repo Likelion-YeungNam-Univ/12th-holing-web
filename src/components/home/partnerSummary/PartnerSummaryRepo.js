@@ -14,11 +14,17 @@ import {
   TitleContainer,
   ConnectBtn,
   ConnectDesc,
+  RepoImg,
+  RepoIcon,
+  SumRepoTitleContainer,
 } from 'styles/home/SummaryRepo-styled';
 import { getMateReport } from 'apis/user/mateReportGet';
 import { getMyReport } from 'apis/user/myReportGet';
 import DayCount from './DayCount';
 import img_missionConnectPlusBtn from 'assets/images/mission_connect_plus_btn.svg';
+import img_homeMaleHi from 'assets/images/home_male_hi.svg';
+import img_homeFemaleHi from 'assets/images/home_female_hi.svg';
+import img_reportIcon from 'assets/images/home_report_icon.svg';
 
 function PartnerSummaryRepo() {
   const [nickname, setNickname] = useState('');
@@ -27,6 +33,7 @@ function PartnerSummaryRepo() {
   const [userRecentReport, setUserRecentReport] = useState('');
   const [mateNickname, setMateNickname] = useState('');
   const [myName, setMyName] = useState('');
+  const [myGender, setMyGender] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,6 +54,7 @@ function PartnerSummaryRepo() {
         const data = response.data;
         setMyName(data.nickname);
         setMateNickname(data.mateNickname);
+        setMyGender(data.gender);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -62,7 +70,10 @@ function PartnerSummaryRepo() {
       {mateNickname === null ? (
         <SumRepoContainer>
           <TitleContainer>
-            <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+            <SumRepoTitleContainer>
+              <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+              <RepoIcon src={img_reportIcon}></RepoIcon>
+            </SumRepoTitleContainer>
           </TitleContainer>
           <SumRepoDisc>
             {myName}님의 짝꿍에게 URP를 전송하여
@@ -74,6 +85,9 @@ function PartnerSummaryRepo() {
             onClick={handleConnectClick}
           ></ConnectBtn>
           <ConnectDesc>짝꿍과 커넥트 시작하기</ConnectDesc>
+          <RepoImg
+            src={myGender === 'MALE' ? img_homeFemaleHi : img_homeMaleHi}
+          ></RepoImg>
         </SumRepoContainer>
       ) : (
         <SumRepoContainer>
