@@ -23,6 +23,7 @@ const LoginButton = () => {
         display: 'flex', // 버튼 내부 요소를 플렉스 박스로 설정
         justifyContent: 'center',
         margin: 'auto',
+        marginTop: '121px',
         marginBottom: '25px',
         border: 'none',
         borderRadius: '13px',
