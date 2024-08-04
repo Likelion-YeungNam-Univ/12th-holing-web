@@ -30,6 +30,7 @@ function MySummaryRepo() {
   const [top2Report, setTop2Report] = useState('');
   const [userRecentReport, setUserRecentReport] = useState('');
   const [myGender, setMyGender] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
 
   useEffect(() => {
     getMyReport()
@@ -40,6 +41,7 @@ function MySummaryRepo() {
         setTop2Report(data.userRecentReport.top2Report.title);
         setUserRecentReport(data.userRecentReport);
         setMyGender(data.gender);
+        setImgUrl(data.userRecentReport.backgroundImgUrl);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -74,6 +76,7 @@ function MySummaryRepo() {
               <RankDesc>{top2Report}</RankDesc>
             </RankContainer>
           </RankWrapper>
+          <RepoImg src={imgUrl}></RepoImg>
         </>
       ) : (
         <>

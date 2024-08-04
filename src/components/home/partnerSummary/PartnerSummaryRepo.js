@@ -35,6 +35,7 @@ function PartnerSummaryRepo() {
   const [myName, setMyName] = useState('');
   const [myGender, setMyGender] = useState('');
   const [mateGender, setMateGender] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +47,7 @@ function PartnerSummaryRepo() {
         setTop2Report(data.userRecentReport.top2Report.title);
         setUserRecentReport(data.userRecentReport);
         setMateGender(data.gender);
+        setImgUrl(data.userRecentReport.backgroundImgUrl);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -117,6 +119,7 @@ function PartnerSummaryRepo() {
                   <RankDesc>{top2Report}</RankDesc>
                 </RankContainer>
               </RankWrapper>
+              <RepoImg src={imgUrl}></RepoImg>
             </>
           ) : (
             <>
