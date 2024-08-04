@@ -20,16 +20,13 @@ function MySummaryCont() {
   const [nickname, setNickname] = useState('');
   const [mateNickname, setMateNickName] = useState('');
   const [gender, setGender] = useState('');
-  const [userRecentReport, setUserRecentReport] = useState('');
 
   useEffect(() => {
     getMyReport()
       .then((response) => {
         const data = response.data;
-        console.log(data);
         setNickname(data.nickname);
         setMateNickName(data.mateNickname);
-        setUserRecentReport(data.userRecentReport);
         setGender(data.gender);
       })
       .catch((error) => {
@@ -48,7 +45,7 @@ function MySummaryCont() {
           <UserNameContainer>
             <UserName>{nickname} 님</UserName>{' '}
             <PartnerInfo>
-              {userRecentReport
+              {mateNickname
                 ? `${mateNickname}님의 배우자`
                 : '짝꿍을 연동해주세요'}
             </PartnerInfo>

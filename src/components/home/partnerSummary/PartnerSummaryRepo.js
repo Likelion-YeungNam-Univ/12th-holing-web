@@ -31,9 +31,10 @@ function PartnerSummaryRepo() {
   const [top1Report, setTop1Report] = useState('');
   const [top2Report, setTop2Report] = useState('');
   const [userRecentReport, setUserRecentReport] = useState('');
-  const [mateNickname, setMateNickname] = useState('');
+  const [myMateNickname, setMyMateNickname] = useState('');
   const [myName, setMyName] = useState('');
   const [myGender, setMyGender] = useState('');
+  const [mateGender, setMateGender] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,6 +45,7 @@ function PartnerSummaryRepo() {
         setTop1Report(data.userRecentReport.top1Report.title);
         setTop2Report(data.userRecentReport.top2Report.title);
         setUserRecentReport(data.userRecentReport);
+        setMateGender(data.gender);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -53,7 +55,7 @@ function PartnerSummaryRepo() {
       .then((response) => {
         const data = response.data;
         setMyName(data.nickname);
-        setMateNickname(data.mateNickname);
+        setMyMateNickname(data.mateNickname);
         setMyGender(data.gender);
       })
       .catch((error) => {
@@ -67,7 +69,7 @@ function PartnerSummaryRepo() {
 
   return (
     <>
-      {mateNickname === null ? (
+      {myMateNickname === null ? (
         <SumRepoContainer>
           <TitleContainer>
             <SumRepoTitleContainer>
@@ -117,18 +119,27 @@ function PartnerSummaryRepo() {
               </RankWrapper>
             </>
           ) : (
-            <SumRepoHeader>
-              <TitleContainer>
-                <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
-                <DayCount />
-              </TitleContainer>
-              <SumRepoDisc>
-                해당 주의 짝꿍의 증상 테스트가 완료되어 있지 않아 짝꿍의
-                리포트가 제공되어있지 않습니다.
-                <br />
-                짝꿍에게 테스트를 권해보세요!
-              </SumRepoDisc>
-            </SumRepoHeader>
+            <>
+              <SumRepoHeader>
+                <TitleContainer>
+                  <SumRepoTitleContainer>
+                    <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                    <RepoIcon src={img_reportIcon}></RepoIcon>
+                  </SumRepoTitleContainer>
+                  <DayCount />
+                </TitleContainer>
+                <SumRepoDisc>
+                  해당 주의 짝꿍의 증상 테스트가 완료되어 있지 않아
+                  <br />
+                  짝꿍의 리포트가 제공되어있지 않습니다.
+                  <br />
+                  짝꿍에게 테스트를 권해보세요!
+                </SumRepoDisc>
+              </SumRepoHeader>
+              <RepoImg
+                src={mateGender === 'MALE' ? img_homeMaleHi : img_homeFemaleHi}
+              ></RepoImg>
+            </>
           )}
         </SumRepoContainer>
       )}

@@ -15,6 +15,7 @@ import {
   ConnectDesc,
   ConnectWrapper,
 } from 'styles/home/SummaryCont-styled';
+import profile_img_female from 'assets/images/profile_img_female.png';
 import profile_img_male from 'assets/images/profile_img_male.png';
 import MyScoreGraph from './MyScoreGraph';
 import { getMateReport } from 'apis/user/mateReportGet';
@@ -23,7 +24,7 @@ import { getMyReport } from 'apis/user/myReportGet';
 function PartnerSummaryCont() {
   const [nickname, setNickname] = useState('');
   const [mateNickname, setMateNickName] = useState('');
-  const [gender, setGender] = useState('');
+  const [mateGender, setMateGender] = useState('');
   const [myMateNickname, setMyMateNickname] = useState('');
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function PartnerSummaryCont() {
         const data = response.data;
         setNickname(data.nickname);
         setMateNickName(data.mateNickname);
+        setMateGender(data.gender);
       })
       .catch((error) => {
         //console.error('Error fetching user data:', error);
@@ -63,7 +65,7 @@ function PartnerSummaryCont() {
           <UserInfo>
             <Status>호르몬 힐링 중</Status>
             <UserProfile>
-              <Img src={profile_img_male} />
+              <Img src={mateGender === 'MALE' ? profile_img_male : profile_img_female} />
               <UserNameContainer>
                 <UserName>{nickname} 님</UserName>
                 <PartnerInfo>{mateNickname}님의 배우자</PartnerInfo>

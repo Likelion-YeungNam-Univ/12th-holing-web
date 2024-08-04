@@ -40,3 +40,7 @@ export const TestStartBtn = styled.img`
   margin-top: 4px;
   cursor: pointer;
 `
+
+export const MateTestStartBtn = styled.img`
+  margin-top: 4px;
+`

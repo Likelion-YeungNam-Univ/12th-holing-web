@@ -35,8 +35,6 @@ function MySummaryRepo() {
     getMyReport()
       .then((response) => {
         const data = response.data;
-        console.log(data);
-        console.log('myGender:', data.gender);
         setNickname(data.nickname);
         setTop1Report(data.userRecentReport.top1Report.title);
         setTop2Report(data.userRecentReport.top2Report.title);

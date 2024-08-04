@@ -7,8 +7,10 @@ import {
   OverlayContainer,
   OverlayScore,
   OverlayTotal,
+  MateTestStartBtn,
 } from 'styles/home/MyScoreGraph-styled';
 import { getMateReport } from 'apis/user/mateReportGet';
+import img_mate_start_btn from 'assets/images/mate_test_start_btn.svg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -63,6 +65,7 @@ function MyScoreGraph() {
           {userRecentReport ? `TOTAL` : '테스트 시작'}
         </OverlayTotal>
         <OverlayScore>{value}</OverlayScore>
+        {!userRecentReport && <MateTestStartBtn src={img_mate_start_btn}/>}
       </OverlayContainer>
     </Container>
   );
