@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MediListContainer = styled.div`
   width: 496px;
-  min-height: 211px;
+  /* min-height: 211px; */
   padding: 24px 20px;
   margin: auto;
   margin-top: 22px;
