@@ -67,6 +67,12 @@ export const Comment = styled.div`
   font-size: 32px;
   font-weight: 600;
   text-align: center;
+  width: 200px;
+  /* height: 76px; */
+  /* top: 97px;
+left: 182px;
+gap: 0px;
+opacity: 0px; */
 `;
 export const Btn = styled.div`
   img {

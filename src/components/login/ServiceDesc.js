@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import level1 from 'assets/images/level1.png'; // 추가된 이미지
+import level2 from 'assets/images/level2.png'; // 추가된 이미지
+import level3 from 'assets/images/level3.png'; // 추가된 이미지
 import level4 from 'assets/images/level4.png';
 import login_logo_icon from 'assets/images/login_logo_icon.png';
 import service_ex1 from 'assets/images/service_ex1.png';
@@ -18,6 +21,8 @@ import {
 
 function ServiceDesc() {
   const [totalScore, setTotalScore] = useState(0);
+  const [levelImage, setLevelImage] = useState(level1); // 초기 이미지 설정
+  const [comment, setComment] = useState(''); // 코멘트 상태 추가
 
   // 자가테스트 결과 저장된 점수 합산
   useEffect(() => {
@@ -27,34 +32,38 @@ function ServiceDesc() {
     setTotalScore(sum);
   }, []);
 
-  // totalScore에 따라 다른 메시지를 설정
-  const getComment = (score) => {
-    if (score >= 18) {
-      return '갱년기 증상이 많이 나타나요';
-    } else if (score >= 14) {
-      return '갱년기 증상에 대한 케어가 필요해요';
-    } else if (score >= 8) {
-      return '갱년기 증상이 조금 나타나고 있어요';
+  // totalScore에 따라 다른 메시지와 이미지를 설정
+  useEffect(() => {
+    if (totalScore >= 18) {
+      setLevelImage(level4);
+      setComment('갱년기 증상이 많이 나타나요');
+    } else if (totalScore >= 14) {
+      setLevelImage(level3);
+      setComment('갱년기 증상에 대한 케어가 필요해요');
+    } else if (totalScore >= 8) {
+      setLevelImage(level2);
+      setComment('갱년기 증상이 조금 나타나고 있어요');
     } else {
-      return '갱년기 증상이 거의 없어요';
+      setLevelImage(level1);
+      setComment('갱년기 증상이 거의 없어요');
     }
-  };
+  }, [totalScore]); // totalScore가 변경될 때마다 실행
 
   return (
     <>
       <ImgContainter>
-        <Img src={level4} alt="Level 4"></Img>
+        <Img src={levelImage} alt="Level Indicator" />
         <Score>
           20점 만점에 <span>{totalScore}</span>점으로
         </Score>
-        <Comment>{getComment(totalScore)}</Comment>
+        <Comment>{comment}</Comment> {/* 코멘트 상태 사용 */}
       </ImgContainter>
       <DescContainer>
         <Title>
           전문가의 도움을 받아
           <br />
           <Img src={login_logo_icon} alt="Login Logo Icon" />
-          &nbsp;적극적으로 <span>관리할 필요</span>가 있어요
+          적극적으로 <span>관리할 필요</span>가 있어요
         </Title>
       </DescContainer>
       <DescContainer>
