@@ -11,7 +11,7 @@ const LoginButton = () => {
     const state = Math.random().toString(36).substring(2);
 
     // 인가 요청 URL 생성
-    const authUrl = process.env.REACT_APP_KAKAO_AUTH_URL;
+    const authUrl = "https://kauth.kakao.com/oauth/authorize?client_id=d6f6575143c8fbcb6742cad1756bc92f&redirect_uri=http://3.38.117.253:3000/kakaologin&response_type=code";
     // console.log("CLIENT_ID = ", CLIENT_ID);
     // console.log("REDIRECT_URI = ", REDIRECT_URI);
     console.log("authUrl = ", authUrl);
