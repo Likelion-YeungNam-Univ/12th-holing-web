@@ -64,7 +64,6 @@ function GotoTest( {lastTest, gotest, daysForNext, daysForTest} ) {
 
         {/* 증상테스트하기 버튼 */}
         <BottomBtn>
-          {/* TODO : 비활성화하기 */}
           {daysForTest === 0 ? (
             <GotoBtnColored onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtnColored>
           ) : (

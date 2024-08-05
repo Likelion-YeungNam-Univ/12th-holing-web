@@ -64,7 +64,7 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </TapBtnWrapper>
 
 
-        {/* TODO : 내 리포트 미존재 시 예외처리코드 */}
+        {/* 내 리포트 미존재 시 예외처리코드 */}
         {myErrorCode===404 ? (
           <MateReport target={'나'}/>
         ) : (
@@ -88,12 +88,12 @@ function Tap({ leftTap, setLeftState, setRightState }) {
         </TapBtnWrapper>
 
 
-        {/* TODO : 짝꿍 리포트 미존재 시 예외처리 */}
-        {/* <MateReport target={'짝꿍'}/> */}
-
-        {/*짝꿍 비연동시 예외처리 */}
-        {mateErrorCode===404 ? (
+          {/*짝꿍 비연동시*/}
+        {mateErrorCode === 404 ? (
           <MateCard gender={userInfo.data.gender}/>
+          // 짝꿍 리포트 미존재 시
+        ) : mateErrorCode === 400 ? (    
+          <MateReport target={'짝꿍'}/>
         ) : 
         (
           <>
