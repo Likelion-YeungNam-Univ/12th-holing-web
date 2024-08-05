@@ -12,6 +12,7 @@ import {
 } from 'styles/selfTest/selfTest-styled';
 import { useSelfTest } from 'hooks/test/selfTestHook';
 import { getSelftest } from 'apis/selftest/selftestGet';
+import { completeSelftest } from 'apis/selftest/selftestComplete';
 
 function SelfTest10() {
   const {
@@ -57,6 +58,11 @@ function SelfTest10() {
     localStorage.setItem('selfTestScore', JSON.stringify(currentScores));
     // 다음 페이지로 이동
     handleNextButtonClickWithScore();
+
+    //자가 테스트 완료 PATCH
+    completeSelftest()
+      .then((response) => {})
+      .catch((error) => {});
   };
 
   return (
