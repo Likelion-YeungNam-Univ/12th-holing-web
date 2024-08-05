@@ -28,18 +28,20 @@ const getSurroundingValues = (value, max, step = 1) => {
 // 모달 컴포넌트
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   // 입력된 새 영양제 이름을 저장하는 상태
-  const [medicineData, setMedicineData] = useState({
-    id: '',
-    name: '',
-    takenAt: '',
-    isTaken: '',
-  });
-  const [newMedicine, setNewMedicine] = useState({
-    id: '',
-    name: '',
-    takenAt: '',
-    isTaken: '',
-  });
+  const [medicineData, setMedicineData] = useState();
+  //   {
+  //   id: '',
+  //   name: '',
+  //   takenAt: '',
+  //   isTaken: '',
+  // }
+  const [newMedicine, setNewMedicine] = useState();
+  //   {
+  //   id: '',
+  //   name: '',
+  //   takenAt: '',
+  //   isTaken: '',
+  // }
 
   // 오전/오후 상태
   const [ampm, setAmPm] = useState('오전');
@@ -63,54 +65,54 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   }, [isOpen]);
 
   // 입력값 변경 핸들러
-  const handleChange = () => {
-    // setNewMedicine(e.target.value);
+  const handleChange = (e) => {
+    setNewMedicine(e.target.value);
   };
 
   // 새로운 영양제를 추가하는 함수
-  // const handleAdd = () => {
-  //   if (newMedicine.trim() !== '') {
-  //     console.log('newMedicine is undefined');
-  //     const time = new Date();
-  //     let adjustedHour = hour;
+  const handleAdd = () => {
+    if (newMedicine.trim() !== '') {
+      console.log('newMedicine is undefined');
+      const time = new Date();
+      let adjustedHour = hour;
 
-  //     if (ampm === '오후' && hour !== 12) {
-  //       adjustedHour += 12;
-  //     } else if (ampm === '오전' && hour === 12) {
-  //       adjustedHour = 0;
-  //     }
+      if (ampm === '오후' && hour !== 12) {
+        adjustedHour += 12;
+      } else if (ampm === '오전' && hour === 12) {
+        adjustedHour = 0;
+      }
 
-  //     time.setHours(adjustedHour);
-  //     time.setMinutes(minute);
+      time.setHours(adjustedHour);
+      time.setMinutes(minute);
 
-  //     // 영양제 데이터 생성
-  //     const medicineData = {
-  //       name: newMedicine,
-  //       takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
-  //     };
+      // 영양제 데이터 생성
+      const medicineData = {
+        name: newMedicine,
+        takenAt: `${formatTimeValue(adjustedHour)}:${formatTimeValue(minute)}`,
+      };
 
-  //     // 부모 컴포넌트의 상태 업데이트 함수 호출
-  //     onAddMedicine(medicineData); // 상태 업데이트를 위한 함수 호출
+      // 부모 컴포넌트의 상태 업데이트 함수 호출
+      onAddMedicine(medicineData); // 상태 업데이트를 위한 함수 호출
 
-  //     // POST 영양제 생성
-  //     postMedicines(medicineData)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         // 추가된 영양제 데이터로 상태 업데이트
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching data:', error);
-  //       });
+      // POST 영양제 생성
+      postMedicines(medicineData)
+        .then((response) => {
+          console.log(response.data);
+          // 추가된 영양제 데이터로 상태 업데이트
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
 
-  //     // 입력 필드 초기화
-  //     setNewMedicine('');
-  //     setAmPm('오전');
-  //     setHour(12);
-  //     setMinute(0);
+      // 입력 필드 초기화
+      setNewMedicine('');
+      setAmPm('오전');
+      setHour(12);
+      setMinute(0);
 
-  //     onClose();
-  //   }
-  // };
+      onClose();
+    }
+  };
 
   // 모달을 닫는 함수
   const handleClose = () => {
@@ -156,8 +158,8 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
             {/* 영양제 이름 입력 필드 */}
             <StyledInput
               type="text"
-              // value={newMedicine || ''}
-              defaultValue={newMedicine}
+              value={newMedicine}
+              // defaultValue={newMedicine}
               onChange={handleChange}
               placeholder="먹어야 하는 영양제 이름"
             />
