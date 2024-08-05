@@ -1,21 +1,25 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   CodeTitle,
   CodeDesc,
   CodeInputBox,
 } from 'styles/login/SharePtn-styled';
 import { connectMate } from 'apis/user/mateConnect';
+import { useNavigate } from 'react-router-dom';
 
 function CodeInput() {
+  const navigate = useNavigate();
   const [socialId, setSocialId] = useState('');
 
-  const handleNext = (socialId) => {
-    connectMate(socialId)
-      .then((response) => {
-        console.log('연동 성공');
-      })
-      .catch((error) => {});
+  const handleNext = async (socialId) => {
+    try {
+      const response = await connectMate(socialId);
+      console.log('연동 성공', response);
+      navigate('/');
+    } catch (error) {
+      console.error('연동 실패', error);
+    }
   };
 
   const handleChange = (e) => {
