@@ -13,10 +13,8 @@ import {
     RightTop,
     RightBottom,
     BottomBtn,
-    LeftIconImage,
-    CenterIconImage,
-    RightIconImage,
     GotoBtn,
+    GotoBtnColored,
     BottomText,
     TitleText,
     HigLight
@@ -25,10 +23,9 @@ import img_check from 'assets/images/report_check.png';
 import { CheckImg } from 'styles/report/ReportPage-styled';
 import { useNavigate } from 'react-router-dom';
 
-
-
-function GotoTest() {
+function GotoTest({ lastTest, gotest, daysForNext, daysForTest }) {
   const navigate = useNavigate();
+  console.log("lastTest=", lastTest);
   return (
     <GotoTestWrapper>
         <TopTitle>
@@ -37,31 +34,36 @@ function GotoTest() {
           </TitleText>
         </TopTitle>
 
-        {/* TODO: props로 data 전달 예정 */}
         <IconsWrapper>
           <LeftIcon>
-            <LeftIconImage />
-            <LeftTop>N주차 테스트</LeftTop>
-            <LeftBottom>240608</LeftBottom>
+            <LeftTop>마지막 테스트</LeftTop>
+            <LeftBottom>
+              {lastTest || "없음"}
+            </LeftBottom>
           </LeftIcon>
 
-          <CenterIcon>
-            <CenterIconImage />
-            <CenterTop>N주차 테스트</CenterTop>
-            <CenterBottom>D-DAY</CenterBottom>
+          <CenterIcon gotest={gotest}>
+            <CenterTop gotest={gotest}>이번 테스트</CenterTop>
+            <CenterBottom gotest={gotest}>
+              {daysForTest === 0 ? 'D-DAY' : `D-00${daysForTest}`}
+            </CenterBottom>
           </CenterIcon>
 
           <RightIcon>
-            <RightIconImage />
-            <RightTop>N주차 테스트</RightTop>
-            <RightBottom>D-007</RightBottom>
+            <RightTop>다음 테스트</RightTop>
+            <RightBottom>
+              {daysForNext < 10 ? `D-00${daysForNext}` : `D-0${daysForNext}`}
+            </RightBottom>
           </RightIcon>
         </IconsWrapper>
 
-        {/* 증상테스트하기 버튼 */}
         <BottomBtn>
-          <GotoBtn onClick={()=>{navigate('/symptomTest')}}>나의 증상 테스트하기</GotoBtn>
-          <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>
+          {daysForTest === 0 ? (
+            <GotoBtnColored onClick={() => { navigate('/symptomTest') }}>나의 증상 테스트하기</GotoBtnColored>
+          ) : (
+            <GotoBtn onClick={() => { navigate('/symptomTest') }}>나의 증상 테스트하기</GotoBtn>
+          )}
+          {daysForTest !== 0 && <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>}
         </BottomBtn>
     </GotoTestWrapper>
   )

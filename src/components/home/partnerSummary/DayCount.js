@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Count } from 'styles/home/Count-styled';
-import { getMyReport } from 'apis/user/myReportGet';
+import { getMateReport } from 'apis/user/mateReportGet';
 
 function DayCount() {
 
   const [day, setDay] = useState('');
 
   useEffect(() => {
-    getMyReport()
+    getMateReport()
       .then((response) => {
         const data = response.data;
         setDay(data.dDay);
