@@ -28,14 +28,8 @@ const getSurroundingValues = (value, max, step = 1) => {
 // 모달 컴포넌트
 const Modal = ({ isOpen, onClose, onAddMedicine }) => {
   // 입력된 새 영양제 이름을 저장하는 상태
-  const [medicineData, setMedicineData] = useState();
-  //   {
-  //   id: '',
-  //   name: '',
-  //   takenAt: '',
-  //   isTaken: '',
-  // }
-  const [newMedicine, setNewMedicine] = useState();
+
+  const [newMedicine, setNewMedicine] = useState('');
   //   {
   //   id: '',
   //   name: '',
@@ -159,7 +153,6 @@ const Modal = ({ isOpen, onClose, onAddMedicine }) => {
             <StyledInput
               type="text"
               value={newMedicine}
-              // defaultValue={newMedicine}
               onChange={handleChange}
               placeholder="먹어야 하는 영양제 이름"
             />

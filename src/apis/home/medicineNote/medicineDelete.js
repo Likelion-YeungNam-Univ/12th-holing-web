@@ -5,7 +5,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const jwtToken = load('jwtToken');
 
-const deleteMedicine = ({ medicineId }) => {
+const deleteMedicine = (medicineId) => {
   const endPoint = `/user/medicines/${medicineId}`;
   const url = `${apiUrl}${endPoint}`;
 
@@ -17,6 +17,7 @@ const deleteMedicine = ({ medicineId }) => {
         Accept: '*/*',
         Authorization: `Bearer ${jwtToken}`,
       },
+      params: { medicineId },
     }
   );
 };

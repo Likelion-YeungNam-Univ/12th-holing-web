@@ -46,20 +46,34 @@ function MedicineList() {
   const [medi, setMedi] = useState([]);
 
   // GET 영양제 목록 조회
+  const fetchData = async () => {
+    try {
+      const medicine = await getMedicines();
+      console.log('Data received:', medicine.data);
+      const updatedMedicines = medicine.data.map((item) => ({
+        ...item,
+        isTaken: false, // 기본적으로 체크되지 않도록 설정
+      }));
+      setMedi(updatedMedicines);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const medicine = await getMedicines();
-        console.log('Data received:', medicine.data);
-        const updatedMedicines = medicine.data.map((item) => ({
-          ...item,
-          isTaken: false, // 기본적으로 체크되지 않도록 설정
-        }));
-        setMedi(updatedMedicines);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const medicine = await getMedicines();
+    //     console.log('Data received:', medicine.data);
+    //     const updatedMedicines = medicine.data.map((item) => ({
+    //       ...item,
+    //       isTaken: false, // 기본적으로 체크되지 않도록 설정
+    //     }));
+    //     setMedi(updatedMedicines);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // };
 
     fetchData();
   }, []);
@@ -68,6 +82,8 @@ function MedicineList() {
   const addNewMedicine = (medicineData) => {
     setMedi((prevMedi) => [...prevMedi, { ...medicineData, id: Date.now() }]); // ID는 임시로 현재 시간을 사용
     console.log(medicineData);
+
+    fetchData();
   };
 
   const handleToggle = (medicineId) => {
@@ -79,27 +95,40 @@ function MedicineList() {
   };
 
   // POST 영양제 복용 기록 생성
-  const handleTakenMedicine = async (medicineId, isTaken) => {
-    handleToggle(medicineId); // 상태 업데이트를 먼저 수행
+  const handleTakenMedicine = async (medicineId) => {
+    // medi에서 해당 medicineId에 해당하는 항목을 찾음
+    const medicine = medi.find((item) => item.id === medicineId);
+    console.log(medicine);
 
-    if (isTaken) {
+    // 만약 해당 항목이 존재하지 않는다면 함수 종료
+    if (!medicine) {
+      console.error('Medicine not found');
+      return;
+    }
+
+    handleToggle(medicine.id); // 상태 업데이트를 먼저 수
+    console.log(medicine.id);
+
+    if (!medicine.isTaken) {
       try {
-        const response = await takenMedicine({ medicineId, isTaken: true });
+        console.log('sdsdfs');
+        const response = await takenMedicine(medicine.id);
         console.log(response.data);
       } catch (error) {
-        console.error('Error updating data: ', error);
+        console.error('Error updatingx data: ', error);
       }
     } else {
-      handleDelMediRec(medicineId);
+      handleDelMediRec(medicine.id);
     }
   };
 
   // DELETE 영양제 삭제
   const handleDeleteMedicine = async (medicineId) => {
     try {
-      await deleteMedicine({ medicineId });
+      const res = await deleteMedicine(medicineId);
+      console.log(res);
       setMedi((prevMedi) => prevMedi.filter((item) => item.id !== medicineId));
-      console.log(`영양제가 삭제되었습니다.`);
+      // console.log(`영양제가 삭제되었습니다.`);
     } catch (error) {
       console.error('Error deleting medicine:', error);
     }
@@ -108,8 +137,10 @@ function MedicineList() {
   // DELETE 영양제 복용 기록 삭제
   const handleDelMediRec = async (id) => {
     try {
-      await deleteMediRec({ id });
-      console.log(`영양제 복용 기록이 삭제되었습니다.`);
+      console.log(id);
+      const res = await deleteMediRec(id);
+      console.log(res);
+      // console.log(`영양제 복용 기록이 삭제되었습니다.`);
     } catch (error) {
       console.error('Error deleting medicine:', error);
     }
