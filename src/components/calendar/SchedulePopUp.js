@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import SchedulePopUpContent from './SchedulePopUpContent';
+import { useEffect } from 'react';
 
 const customModalStyles = {
   overlay: {
@@ -10,10 +11,12 @@ const customModalStyles = {
   content: {
     width: '380px',
     height: '529px',
+    borderRadius: '13px',
     margin: 'auto',
     zIndex: 1001,
     paddingTop: '62px',
-    paddingLeft: '36px',
+    paddingLeft: '39px',
+    paddingRigth: '39px',
   },
 };
 
@@ -24,6 +27,18 @@ const SchedulePopUp = ({
   onAddSchedule,
   updateScheduleDates,
 }) => {
+  // 모달이 열릴 때 스크롤 비활성화
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   // 모달이 열려있지 않으면 null 반환
   if (!isOpen) return null;
 

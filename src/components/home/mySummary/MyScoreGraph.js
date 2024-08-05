@@ -1,17 +1,37 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   OverlayContainer,
   OverlayScore,
   OverlayTotal,
+  TestStartBtn,
 } from 'styles/home/MyScoreGraph-styled';
+import { getMyReport } from 'apis/user/myReportGet';
+import img_test_start_btn from 'assets/images/home_test_start_btn.svg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function MyScoreGraph() {
-  const value = 82;
+  const [value, setValue] = useState('');
+  const [userRecentReport, setUserRecentReport] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getMyReport()
+      .then((response) => {
+        const data = response.data;
+        setValue(data.userRecentReport.totalScore);
+        setUserRecentReport(data.userRecentReport);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
+
   const data = {
     labels: ['Score'],
     datasets: [
@@ -39,12 +59,19 @@ function MyScoreGraph() {
     },
   };
 
+  const handleStartClick = () => {
+    navigate('/symptomTest');
+  };
+
   return (
     <Container>
       <Doughnut data={data} options={options} />
       <OverlayContainer>
-        <OverlayTotal>TOTAL</OverlayTotal>
+        <OverlayTotal>
+          {userRecentReport ? `TOTAL` : '테스트 시작'}
+        </OverlayTotal>
         <OverlayScore>{value}</OverlayScore>
+        {!userRecentReport && <TestStartBtn src={img_test_start_btn} onClick={handleStartClick}/>}
       </OverlayContainer>
     </Container>
   );

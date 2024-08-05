@@ -8,9 +8,13 @@ import {
   Button,
 } from 'styles/home/Mission-styled';
 import icon_mission from 'assets/images/icon_mission.png';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function Mission() {
-  const handleClick = () => {};
+  const navigate = useNavigate(); // Initialize useNavigate
+  const handleClick = () => {
+    navigate('/calendar'); // Navigate to the MissionTitleWrapper component
+  };
   return (
     <Wrapper>
       <Title>

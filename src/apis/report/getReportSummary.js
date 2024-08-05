@@ -1,16 +1,17 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 const getReportSummary = async (user) => {
-  const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = user==='my' ? ('/user/me/reports/summary') : ('/user/mate/reports/summary');
   const apiUrl = `${serverUrl}${endpoint}`;
+  const jwtToken = load('jwtToken');
   
   try {
     const res = await axios.get(apiUrl, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${jwtToken}`,
       },
     });
     return res.data;

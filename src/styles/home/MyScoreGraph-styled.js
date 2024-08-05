@@ -35,3 +35,10 @@ export const OverlayScore = styled.div`
   text-align: center;
   color: #5643d1;
 `;
+
+export const TestStartBtn = styled.img`
+  margin-top: 15px;
+  cursor: pointer;
+`;
+
+export const MateTestStartBtn = styled.img``;

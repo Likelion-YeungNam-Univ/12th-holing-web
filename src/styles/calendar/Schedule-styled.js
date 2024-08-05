@@ -96,13 +96,14 @@ export const ScheduleContent = styled.div`
 `;
 
 export const AddScheduleButton = styled.button`
-  background-color: white;
+  height: 76px;
+  width: 426px;
+  background-color: #9180ff;
   border-radius: 21px;
   border: 1px solid #9180ff;
-  background: #fff;
-  color: #9180ff;
-  font-size: 14px;
-  font-weight: 700;
+  color: #FFF;
+  font-size: 25px;
+  font-weight: 600;
   padding: 11px 21px;
   margin-top: 24px;
   margin-bottom: 23px;

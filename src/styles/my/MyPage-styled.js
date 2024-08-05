@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 600px;
+  background-color: #F5F5F5;
+  padding-top: 40px;
+`
 export const ProfileWrapper = styled.div`
   margin: 0 auto;
-  margin-top: 40px;
   width: 496px;
   height: 102px;
   display: flex;
@@ -27,7 +31,7 @@ export const PartnerName = styled.div`
 export const AccountInfoBtn = styled.img`
   width: 24px;
   height: 24px;
-  margin-left: 180px; //폰트 나오면 바꿔야 함
+  margin-left: auto;
   cursor: pointer;
 `;
 export const CreditWrapper1 = styled.div`

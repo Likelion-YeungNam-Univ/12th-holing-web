@@ -6,19 +6,30 @@ export const SchedulePopUpContentWrapper = styled.div`
 `;
 
 export const ScheduleTitle = styled.input`
-  color: #ddd;
+  width: 309px;
+  color: #000;
   font-size: 28px;
   font-weight: 500;
-  text-decoration-line: underline;
   border: none;
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 10px;
+  &::placeholder {
+    color: #ddd;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const ScheduleBody = styled.input`
-  color: #5b5b5b;
+  color: #5B5B5B;
   font-size: 20px;
   font-weight: 500;
   margin-top: 35px;
   border: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const popupButtonStyle = css`

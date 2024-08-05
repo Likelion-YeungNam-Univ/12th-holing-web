@@ -14,20 +14,20 @@ export const DateColumn = styled.div`
 
 export const DateBox = styled.div`
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
 `;
 
 export const PreviousDate = styled.div`
   color: #ddd;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 export const NextDate = styled.div`
   color: #ddd;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 export const DatePopUpWrapper = styled.div`
