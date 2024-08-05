@@ -45,7 +45,8 @@ export const MissionCard = styled.div`
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 26px;
-  border-top: ${({ isCompleted }) => (isCompleted ? '13px solid #9180ff' : '13px solid #DDD')};
+  border-top: ${({ completedStatus }) =>
+    completedStatus === 'active' ? '13px solid #9180ff' : '13px solid #DDD'};
   border-radius: 13px;
   position: relative;
 `;
@@ -103,7 +104,7 @@ export const MissionConnectStart = styled.div`
   margin-top: 22px;
   text-align: center;
   margin-bottom: 36px;
-  z-index: 2;
+  z-index: 1; // 상단바 위로 올라오지 않도록 수정 by성임
   position: relative;
 `;
 
@@ -125,8 +126,10 @@ export const MissionItemWrapper = styled.div`
 `;
 
 export const MissionItem = styled.div`
-  color: ${({ isCompleted }) => (isCompleted ? '#B9BEC9' : 'black')};
-  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
+  color: ${({ completedStatus }) =>
+    completedStatus === 'active' ? '#B9BEC9' : 'black'};
+  text-decoration: ${({ completedStatus }) =>
+    completedStatus === 'active' ? 'line-through' : 'none'};
   font-size: 36px;
   font-weight: 600;
   line-height: 140%;

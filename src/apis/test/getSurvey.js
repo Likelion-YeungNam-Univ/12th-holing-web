@@ -1,17 +1,18 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 // 증상테스트 문항 get
 const getSurvey = async () => {
-  const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = '/survey/symptom-test';
   const apiUrl = `${serverUrl}${endpoint}`;
+  const jwtToken = load('jwtToken');
   
   try {
     const res = await axios.get(apiUrl, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${jwtToken}`,
       },
     });
 
