@@ -17,7 +17,7 @@ const ShareUrl = () => {
 
     if (codeFromUrl) {
       // code가 URL에서 발견되면 쿠키와 상태를 업데이트
-      save('code', codeFromUrl, { path: '/' });
+      save('code', codeFromUrl, { path: '/' }); // 주석 처리된 부분
       setCode(codeFromUrl);
       console.log('code: ', codeFromUrl);
     }

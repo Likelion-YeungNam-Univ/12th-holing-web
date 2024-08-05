@@ -56,6 +56,11 @@ function SelfTest10() {
     }
     // 업데이트된 점수를 로컬 스토리지에 저장
     localStorage.setItem('selfTestScore', JSON.stringify(currentScores));
+
+
+    // TODO : 자가테스트 완료 api 요청
+
+
     // 다음 페이지로 이동
     handleNextButtonClickWithScore();
 
