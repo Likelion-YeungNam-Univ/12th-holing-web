@@ -20,6 +20,7 @@ import { getUserInfo } from 'apis/my/userInfoGet';
 function ShareUrlPtn() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const homeUrl = process.env.REACT_APP_HOME_URL;
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -30,7 +31,6 @@ function ShareUrlPtn() {
     getUserInfo()
       .then((response) => {
         const data = response.data;
-        console.log(data);
         setId(data.socialId);
       })
       .catch((error) => {
@@ -39,14 +39,15 @@ function ShareUrlPtn() {
   }, []);
 
   const copyToClipboard = () => {
-    if (id) {
+    if (id && homeUrl) {
+      const textToCopy = `인증 코드: ${id}\n홈페이지 URL: ${homeUrl}`;
       navigator.clipboard
-        .writeText(id)
+        .writeText(textToCopy)
         .then(() => {
-          alert('인증 코드가 클립보드에 복사되었습니다!');
+          alert('인증 코드와 홈페이지 URL이 클립보드에 복사되었습니다!');
         })
         .catch((error) => {
-          console.error('클립보드 복사 실패:', error);
+          //console.error('클립보드 복사 실패:', error);
         });
     }
   };

@@ -15,10 +15,9 @@ function CodeInput() {
   const handleNext = async (socialId) => {
     try {
       const response = await connectMate(socialId);
-      console.log('연동 성공', response);
       navigate('/');
     } catch (error) {
-      console.error('연동 실패', error);
+      //console.error('연동 실패', error);
     }
   };
 
