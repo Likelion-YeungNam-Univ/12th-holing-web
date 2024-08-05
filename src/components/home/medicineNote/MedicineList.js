@@ -93,11 +93,9 @@ function MedicineList() {
     }
 
     handleToggle(medicine.id); // 상태 업데이트를 먼저 수
-    console.log(medicine.id);
 
     if (!medicine.isTaken) {
       try {
-        console.log('sdsdfs');
         const response = await takenMedicine(medicine.id);
         console.log(response.data);
       } catch (error) {
