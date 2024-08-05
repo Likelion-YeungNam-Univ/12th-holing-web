@@ -61,20 +61,6 @@ function MedicineList() {
   };
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const medicine = await getMedicines();
-    //     console.log('Data received:', medicine.data);
-    //     const updatedMedicines = medicine.data.map((item) => ({
-    //       ...item,
-    //       isTaken: false, // 기본적으로 체크되지 않도록 설정
-    //     }));
-    //     setMedi(updatedMedicines);
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // };
-
     fetchData();
   }, []);
 
