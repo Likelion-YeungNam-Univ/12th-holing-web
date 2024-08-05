@@ -46,7 +46,7 @@ function MySummaryCont() {
             <UserName>{nickname} 님</UserName>{' '}
             <PartnerInfo>
               {mateNickname
-                ? `${mateNickname}님의 배우자`
+                ? `${mateNickname}님의 짝꿍`
                 : '짝꿍을 연동해주세요'}
             </PartnerInfo>
           </UserNameContainer>

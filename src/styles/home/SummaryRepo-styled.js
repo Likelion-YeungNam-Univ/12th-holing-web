@@ -20,8 +20,9 @@ export const SumRepoContainer = styled.div`
 export const SumRepoHeader = styled.div`
   width: 368px;
   height: 51px;
-  font-family: pretendard;
   margin-bottom: 25px;
+  position: relative;
+  z-index: 10001;
 `;
 
 export const SumRepoTitleContainer = styled.div`
@@ -57,6 +58,8 @@ export const RankContainer = styled.div`
 export const RankWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 10001;
 `;
 
 export const Rank = styled.div`
@@ -70,8 +73,6 @@ export const Rank = styled.div`
 export const RankDesc = styled.div`
   width: 392px;
   height: 78px;
-
-  font-family: Pretendard;
   font-size: 28px;
   font-weight: 700;
   line-height: 39.2px;
@@ -91,12 +92,13 @@ export const Divider = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0;
+  position: relative;
+  z-index: 10001;
 `;
 
 export const Count = styled.div`
   color: var(--Gray_4, #5b5b5b);
   text-align: right;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

@@ -45,7 +45,7 @@ export const UserNameContainer = styled.div`
 
 export const UserName = styled.div`
   font-family: Pretendard;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
 `;
 
@@ -56,7 +56,7 @@ export const PartnerInfo = styled.div`
 `;
 
 export const Status = styled.div`
-  width: 76px;
+  width: fit-content;
   height: 17px;
   margin-bottom: 14px;
   color: #9180ff;

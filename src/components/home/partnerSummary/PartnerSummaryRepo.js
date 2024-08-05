@@ -99,7 +99,10 @@ function PartnerSummaryRepo() {
             <>
               <SumRepoHeader>
                 <TitleContainer>
-                  <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                  <SumRepoTitleContainer>
+                    <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                    <RepoIcon src={img_reportIcon}></RepoIcon>
+                  </SumRepoTitleContainer>
                   <DayCount />
                 </TitleContainer>
                 <SumRepoDisc>
@@ -140,7 +143,7 @@ function PartnerSummaryRepo() {
                 </SumRepoDisc>
               </SumRepoHeader>
               <RepoImg
-                src={mateGender === 'MALE' ? img_homeMaleHi : img_homeFemaleHi}
+                src={mateGender === 'MALE' ? img_homeFemaleHi : img_homeMaleHi}
               ></RepoImg>
             </>
           )}

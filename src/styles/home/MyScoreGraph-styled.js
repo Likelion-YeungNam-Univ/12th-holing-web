@@ -37,10 +37,8 @@ export const OverlayScore = styled.div`
 `;
 
 export const TestStartBtn = styled.img`
-  margin-top: 4px;
+  margin-top: 15px;
   cursor: pointer;
-`
+`;
 
-export const MateTestStartBtn = styled.img`
-  margin-top: 4px;
-`
+export const MateTestStartBtn = styled.img``;

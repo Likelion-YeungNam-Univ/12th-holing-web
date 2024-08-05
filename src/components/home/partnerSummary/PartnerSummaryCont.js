@@ -68,7 +68,7 @@ function PartnerSummaryCont() {
               <Img src={mateGender === 'MALE' ? profile_img_male : profile_img_female} />
               <UserNameContainer>
                 <UserName>{nickname} 님</UserName>
-                <PartnerInfo>{mateNickname}님의 배우자</PartnerInfo>
+                <PartnerInfo>{mateNickname}님의 짝꿍</PartnerInfo>
               </UserNameContainer>
             </UserProfile>
           </UserInfo>

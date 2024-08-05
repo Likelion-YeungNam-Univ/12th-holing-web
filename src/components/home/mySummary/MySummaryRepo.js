@@ -36,8 +36,10 @@ function MySummaryRepo() {
     getMyReport()
       .then((response) => {
         const data = response.data;
+        console.log(data);
         setNickname(data.nickname);
         setTop1Report(data.userRecentReport.top1Report.title);
+        console.log(top1Report);
         setTop2Report(data.userRecentReport.top2Report.title);
         setUserRecentReport(data.userRecentReport);
         setMyGender(data.gender);
@@ -58,7 +60,10 @@ function MySummaryRepo() {
         <>
           <SumRepoHeader>
             <TitleContainer>
-              <SumRepoTitle>요약 리포트</SumRepoTitle>
+              <SumRepoTitleContainer>
+                <SumRepoTitle>요약 리포트</SumRepoTitle>
+                <RepoIcon src={img_reportIcon}></RepoIcon>
+              </SumRepoTitleContainer>
               <DayCount />
             </TitleContainer>
             <SumRepoDisc>{nickname}님의 리포트를 자세히 살펴보아요</SumRepoDisc>
@@ -83,7 +88,7 @@ function MySummaryRepo() {
           <SumRepoHeader>
             <TitleContainer>
               <SumRepoTitleContainer>
-                <SumRepoTitle>짝꿍 리포트</SumRepoTitle>
+                <SumRepoTitle>요약 리포트</SumRepoTitle>
                 <RepoIcon src={img_reportIcon}></RepoIcon>
               </SumRepoTitleContainer>
               <DayCount />
@@ -95,7 +100,7 @@ function MySummaryRepo() {
             </SumRepoDisc>
           </SumRepoHeader>
           <RepoImg
-            src={myGender === 'MALE' ? img_homeMaleHi : img_homeFemaleHi}
+            src={myGender === 'MALE' ? img_homeFemaleHi : img_homeMaleHi}
           ></RepoImg>
         </>
       )}
