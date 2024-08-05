@@ -2,8 +2,8 @@ import React from 'react';
 import login_kakao from 'assets/images/login_kakao.png';
 import Cookies from 'js-cookie';
 
-const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+// const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
+// const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
 const LoginButton = () => {
   const handleLogin = () => {
@@ -11,9 +11,9 @@ const LoginButton = () => {
     const state = Math.random().toString(36).substring(2);
 
     // 인가 요청 URL 생성
-    const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&state=${state}`;
-    console.log("CLIENT_ID = ", CLIENT_ID);
-    console.log("REDIRECT_URI = ", REDIRECT_URI);
+    const authUrl = process.env.REACT_APP_KAKAO_AUTH_URL;
+    // console.log("CLIENT_ID = ", CLIENT_ID);
+    // console.log("REDIRECT_URI = ", REDIRECT_URI);
     console.log("authUrl = ", authUrl);
     console.log("state = ", state);
     // 인가 URL로 리다이렉트
