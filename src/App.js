@@ -29,6 +29,7 @@ import SelfTest8 from 'pages/SelfTest/SelfTest8';
 import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
+import CodeInput from 'pages/CodeInput'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
+            <Route path="/code-input" element={<CodeInput />} />
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />
             <Route path="/kakaologin" element={<ShareUrl />} />

@@ -1,32 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import level4_1 from 'assets/images/level4_1.png';
+import { useNavigate } from 'react-router-dom';
 import {
   Header,
   Title,
-  Result,
-  ShareBtn,
   CloseBtn,
+  ConnectWrapper,
+  ConnectTitle,
+  ConnectDesc,
+  ConnectBtn,
+  ConnectHeader,
 } from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
+import img_urlCopyBtn from 'assets/images/url_copy_btn.svg';
+import img_codeInsetBtn from 'assets/images/code_insert_btn.svg';
+import { getUserInfo } from 'apis/my/userInfoGet';
 
 function ShareUrlPtn() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const copyUrlToClipboard = () => {
-    const currentUrl = window.location.href;
-    navigator.clipboard
-      .writeText(currentUrl)
-      .then(() => {
-        setModalIsOpen(true);
-      })
-      .catch((err) => {
-        console.error('Failed to copy: ', err);
-      });
-  };
-
+  const navigate = useNavigate();
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    getUserInfo()
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setId(data.socialId);
+      })
+      .catch((error) => {
+        //console.error('Error fetching user data:', error);
+      });
+  }, []);
+
+  const copyToClipboard = () => {
+    if (id) {
+      navigator.clipboard
+        .writeText(id)
+        .then(() => {
+          alert('인증 코드가 클립보드에 복사되었습니다!');
+        })
+        .catch((error) => {
+          console.error('클립보드 복사 실패:', error);
+        });
+    }
   };
 
   return (
@@ -37,13 +59,29 @@ function ShareUrlPtn() {
         <br />
         <span>짝꿍에게 공유</span>해보아요
       </Title>
-      <Result>
-        <img src={level4_1} alt="result4_1" />
-        {/* {TODO:api} */}
-      </Result>
-      <ShareBtn onClick={copyUrlToClipboard}>
-        URL 복사하여 짝꿍과 연동하기
-      </ShareBtn>
+      <ConnectWrapper>
+        <ConnectHeader>
+          <ConnectTitle>짝꿍에게 전달하기</ConnectTitle>
+          <ConnectDesc>
+            홈페이지 URL과 인증코드를 복사하고 카톡으로
+            <br /> 짝꿍에게 전달해요.
+          </ConnectDesc>
+        </ConnectHeader>
+        <ConnectBtn src={img_urlCopyBtn} onClick={copyToClipboard}></ConnectBtn>
+      </ConnectWrapper>
+      <ConnectWrapper>
+        <ConnectHeader>
+          <ConnectTitle>인증코드 입력하기</ConnectTitle>
+          <ConnectDesc>
+            짝꿍에게 전달받은 인증코드를 입력하고
+            <br /> 짝꿍과 연동해요.
+          </ConnectDesc>
+        </ConnectHeader>
+        <ConnectBtn
+          src={img_codeInsetBtn}
+          onClick={() => navigate('/code-input')}
+        ></ConnectBtn>
+      </ConnectWrapper>
       <Link to="/">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
