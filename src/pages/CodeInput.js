@@ -18,6 +18,7 @@ function CodeInput() {
       navigate('/');
     } catch (error) {
       //console.error('연동 실패', error);
+      alert('연동이 실패했습니다. 인증코드를 확인해주세요.');
     }
   };
 
