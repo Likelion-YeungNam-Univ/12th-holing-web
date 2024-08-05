@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 600px;
+  background-color: #f5f5f5;
+  padding-top: 60px;
+  height: 100vh;
+`;
 export const MyInfoText = styled.div`
   font-size: 28px;
   font-weight: 700;
   margin-left: 52px;
-  margin-top: 60px;
 `;
 export const PhoneNumberRow = styled.div`
   display: flex;
   justify-content: space-between;
   width: 497px;
   margin-left: 52px;
-  margin-top: 60px;
+  margin-top: 35px;
   padding-bottom: 11px;
   border-bottom: 1px solid #b3b3b3;
 `;
@@ -47,7 +52,7 @@ export const EmailRow = styled.div`
   justify-content: space-between;
   width: 497px;
   margin-left: 52px;
-  margin-top: 35px;
+  margin-top: 60px;
   padding-bottom: 11px;
   border-bottom: 1px solid #b3b3b3;
 `;

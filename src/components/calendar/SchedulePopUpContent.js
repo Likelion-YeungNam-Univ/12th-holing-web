@@ -35,12 +35,11 @@ const SchedulePopUpContent = ({
     // postSchedule 함수를 호출하여 데이터를 API에 전송
     postSchedule(scheduleData)
       .then((response) => {
-        console.log('Data posted successfully:', response.data);
         onAddSchedule(response.data);
         updateScheduleDates(date, 1);
       })
       .catch((error) => {
-        console.error('Error posting data:', error);
+        //console.error('Error posting data:', error);
       });
 
     onClose();
@@ -53,7 +52,7 @@ const SchedulePopUpContent = ({
         onChange={handleTitleChange}
       ></ScheduleTitle>
       <ScheduleBody
-        placeholder="일정의 장소 및 시간을 메모하세요"
+        placeholder="일정의 장소 및 시간을 메모하세요."
         onChange={handleContentChange}
       ></ScheduleBody>
       <SchedulePopUpSaveBtn onClick={handleSave}>저장하기</SchedulePopUpSaveBtn>

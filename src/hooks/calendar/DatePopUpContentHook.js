@@ -21,12 +21,13 @@ const DatePopUpContentHook = () => {
     let newDate;
 
     // 휠 방향에 따라 날짜를 증가시키거나 감소시킴
+    // 휠 올리면 숫자 감소, 휠 내리면 숫자 증가
     if (unit === 'year') {
-      newDate = addYears(date, event.deltaY < 0 ? 1 : -1);
+      newDate = addYears(date, event.deltaY > 0 ? 1 : -1);
     } else if (unit === 'month') {
-      newDate = addMonths(date, event.deltaY < 0 ? 1 : -1);
+      newDate = addMonths(date, event.deltaY > 0 ? 1 : -1);
     } else if (unit === 'day') {
-      newDate = addDays(date, event.deltaY < 0 ? 1 : -1);
+      newDate = addDays(date, event.deltaY > 0 ? 1 : -1);
     }
     setDate(newDate);
   };

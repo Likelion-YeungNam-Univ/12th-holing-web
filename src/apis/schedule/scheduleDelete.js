@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
+
+const jwtToken = load('jwtToken');
 
 const deleteSchedule = (scheduleId) => {
   const endPoint = `/calendar/schedules/${scheduleId}`;
@@ -10,7 +12,7 @@ const deleteSchedule = (scheduleId) => {
   return axios.delete(url, {
     headers: {
       Accept: '*/*',
-      Authorization: authToken,
+      Authorization: `Bearer ${jwtToken}`,
     },
   });
 };

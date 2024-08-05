@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MissionTitleWrapper,
   MissionTitle1,
@@ -28,6 +29,7 @@ import {
   MissionNoCardBorderTop,
   MissionRefreshImg,
   MissionRefreshWrapper,
+  MissionConnectCard,
 } from 'styles/calendar/Mission-styled';
 import moment from 'moment';
 import { createMissions } from 'apis/mission/missionsCreate';
@@ -49,6 +51,7 @@ import img_missionRefresh from 'assets/images/mission_refresh_img.svg';
 const Mission = ({ selectedDate, updateMissions }) => {
   const [missions, setMissions] = useState([]);
   const [gender, setGender] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 미션 조회 포맷 YYYY-MM-DD
@@ -57,21 +60,19 @@ const Mission = ({ selectedDate, updateMissions }) => {
     // API 호출을 통해 미션 생성하기
     createMissions()
       .then((response) => {
-        console.log('missions:', response.data);
       })
       .catch((error) => {
         // 미션을 한번 생성하면 409 에러 발생
-        console.error('Missions already exists:', error);
+        //console.error('Missions already exists:', error);
       });
 
     // API 호출을 통해 미션 조회하기
     getMissions(isoDate)
       .then((response) => {
         setMissions(response.data);
-        console.log('missions:', response.data);
       })
       .catch((error) => {
-        console.error('Error fetching missions:', error);
+        //console.error('Error fetching missions:', error);
       });
 
     // API 호출을 통해 성별 조회하기
@@ -81,7 +82,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
         setGender(data.gender);
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error);
+        //console.error('Error fetching user data:', error);
       });
 
     // selectedDate에 대한 미션 조회
@@ -91,7 +92,6 @@ const Mission = ({ selectedDate, updateMissions }) => {
   const handleRefresh = (missionResultId) => {
     patchMissions(missionResultId)
       .then((response) => {
-        console.log('Mission refreshed:', response.data);
         // 미션 새로고침 후 최신 미션 조회
         const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
           'YYYY-MM-DD'
@@ -100,12 +100,11 @@ const Mission = ({ selectedDate, updateMissions }) => {
       })
       .then((response) => {
         setMissions(response.data);
-        console.log('refreshed missions:', response.data);
       })
       .catch((error) => {
         // 날짜가 지난 미션을 새로고침하거나 이미 새로고침을 한 미션에 대해 새로고침을 한 경우
         // 새로 고침은 하나의 미션에 대해서만 가능함
-        console.error('Error refreshing mission:', error);
+        //console.error('Error refreshing mission:', error);
       });
   };
 
@@ -113,7 +112,6 @@ const Mission = ({ selectedDate, updateMissions }) => {
   const handleComplete = (missionResultId) => {
     completeMissions(missionResultId)
       .then((response) => {
-        console.log('Mission completed:', response.data);
         // 미션 완료 후 최신 미션 조회
         const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
           'YYYY-MM-DD'
@@ -125,11 +123,10 @@ const Mission = ({ selectedDate, updateMissions }) => {
         const isoDate = moment(selectedDate, 'YYYY년 M월 D일').format(
           'YYYY-MM-DD'
         );
-        console.log('completed missions:', response.data);
         updateMissions(isoDate, 1);
       })
       .catch((error) => {
-        console.error('Error completing mission:', error);
+        //console.error('Error completing mission:', error);
       });
   };
 
@@ -144,7 +141,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
         </MissionTitleRow>
       </MissionTitleWrapper>
       {missions.isMateConnected === false ? (
-        <MissionCard>
+        <MissionConnectCard>
           <MissionConnectTitleWrapper>
             <MissionConnectTitle>짝꿍 미션</MissionConnectTitle>
             <MissionConnectNextBtn
@@ -157,6 +154,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
           </MissionConnectDescription>
           <MissionConnectPlusBtn
             src={img_missionConnectPlusBtn}
+            onClick={() => navigate('/kakaologin')}
           ></MissionConnectPlusBtn>
           <MissionConnectImg
             src={
@@ -167,7 +165,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
             alt="Connect Image"
           ></MissionConnectImg>
           <MissionConnectStart>짝꿍과 커넥트 시작하기</MissionConnectStart>
-        </MissionCard>
+        </MissionConnectCard>
       ) : missions.length === 0 ? (
         <MissionNoCard>
           <MissionNoCardBorderTop></MissionNoCardBorderTop>
@@ -201,7 +199,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
             </MissionDiscription>
             <MissionRefreshWrapper>
               <MissionRefresh onClick={() => handleRefresh(mission.id)}>
-                새로고침
+                미션 교체하기
               </MissionRefresh>
               <MissionRefreshImg
                 src={img_missionRefresh}
