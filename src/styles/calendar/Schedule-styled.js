@@ -107,4 +107,5 @@ export const AddScheduleButton = styled.button`
   padding: 11px 21px;
   margin-top: 24px;
   margin-bottom: 23px;
+  cursor: pointer;
 `;
