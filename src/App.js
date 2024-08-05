@@ -38,7 +38,8 @@ function App() {
         <Routes>
           {/* 기본 화면프레임 */}
           <Route path="/" element={<Frame />}>
-            <Route index element={<Home />} />
+            <Route index element= {<Start />} />  {/* 시작 화면 */}
+            <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
             <Route path="/report/:id" element={<ReportDetail />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
@@ -70,8 +71,7 @@ function App() {
             <Route index element={<Intro />} />
           </Route>
 
-          {/* 시작 화면 */}
-          <Route path="/start" element={<Start />} />
+          
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
