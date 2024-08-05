@@ -3,6 +3,7 @@ import getGraph from "apis/report/getGraph";
 
 const getGraphHook = (user) => {
   const [graphList, setGraphList] = useState([]);
+  const [errorCode, setErrorCode] = useState(null); // 에러 코드 상태 추가
 
   useEffect(() => {
     const fetchGraph = async () => {
@@ -10,6 +11,7 @@ const getGraphHook = (user) => {
         const data = await getGraph(user); // 그래프 list get API
         setGraphList(data);
       } catch (error) {
+        setErrorCode(error.response ? error.response.status : null);
         console.log('Error fetching survey:', error);
       }
     };
@@ -17,7 +19,7 @@ const getGraphHook = (user) => {
     fetchGraph();
   }, []);
 
-  return graphList;
+  return { graphList,errorCode };
 }
 
 export default getGraphHook;
