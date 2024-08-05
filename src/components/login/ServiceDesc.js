@@ -18,6 +18,7 @@ import {
   Score,
   Comment,
 } from 'styles/login/ServiceDesc-styled';
+import LoginButton from './LoginButton';
 
 function ServiceDesc() {
   const [totalScore, setTotalScore] = useState(0);
@@ -102,6 +103,8 @@ function ServiceDesc() {
           <br />
           미션으로 친밀감을 강화합니다
         </Desc>
+        <LoginButton />
+        {/* 로그인 버튼 */}
       </DescContainer>
     </>
   );

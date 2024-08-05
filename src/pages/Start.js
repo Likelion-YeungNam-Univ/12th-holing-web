@@ -15,10 +15,10 @@ function Start() {
       </Desc>
       <Logo src={logo} alt="Logo"></Logo>
       <Bottom>홀링과 함께 갱년기 증상을 케어해보아요</Bottom>
-      <LoginButton />
-      {/* <Link to="/userInfo">
+      {/* <LoginButton /> */}
+      <Link to="/userInfo">
         <Btn>시작하기</Btn>
-      </Link> */}
+      </Link>
       {/* TODO: 개인정보 페이지 이동 */}
     </Wrapper>
   );
