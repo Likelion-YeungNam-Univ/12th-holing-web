@@ -21,6 +21,12 @@ jobs:
           echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" > .env
           echo "REACT_APP_REST_API_KEY=${{ secrets.REACT_APP_REST_API_KEY }}" >> .env
           echo "REACT_APP_REDIRECT_URI=${{ secrets.REACT_APP_REDIRECT_URI }}" >> .env
-          echo "REACT_APP_KAKAO_AUTH_URL=${{ secrets.REACT_APP_KAKAO_AUTH_URL }}" >> .env
+          echo "REACT_APP_KAKAO_AUTH_URL=https://kauth.kakao.com/oauth/authorize?client_id=${{ secrets.REACT_APP_REST_API_KEY }}&redirect_uri=${{ secrets.REACT_APP_REDIRECT_URI }}&response_type=code" >> .env
+          cat .env  # .env 파일 내용 출력
       - name: Try build
-        run: npm run build
+        run: |
+          echo $REACT_APP_API_URL
+          echo $REACT_APP_REST_API_KEY
+          echo $REACT_APP_REDIRECT_URI
+          echo $REACT_APP_KAKAO_AUTH_URL
+          npm run build
