@@ -61,7 +61,8 @@ function GotoTest({ lastTest, gotest, daysForNext, daysForTest }) {
           {daysForTest === 0 ? (
             <GotoBtnColored onClick={() => { navigate('/symptomTest') }}>나의 증상 테스트하기</GotoBtnColored>
           ) : (
-            <GotoBtn onClick={() => { navigate('/symptomTest') }}>나의 증상 테스트하기</GotoBtn>
+            // 버튼 비활성화
+            <GotoBtn>나의 증상 테스트하기</GotoBtn>
           )}
           {daysForTest !== 0 && <BottomText>매주 테스트를 통해 리포트를 제공받아요</BottomText>}
         </BottomBtn>
