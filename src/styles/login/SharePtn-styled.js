@@ -17,6 +17,7 @@ const BtnStyles = `
   text-align: left;
   border-radius: 13px;
   margin: auto;
+  margin-bottom: 0px;
 `;
 
 export const Header = styled.div`
@@ -25,7 +26,7 @@ export const Header = styled.div`
   line-height: 23.87px;
   text-align: center;
   color: #b9bec9;
-  margin-top: 53px;
+  margin-top: 69px;
   margin-bottom: 9px;
 `;
 
@@ -34,7 +35,7 @@ export const Title = styled.div`
   font-weight: 600;
   line-height: 47.73px;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   span {
     color: #9180ff;
@@ -46,6 +47,8 @@ export const CloseBtn = styled.div`
   background: #f5f5f5;
   color: #5643d1;
   border: 1px solid #5643d1;
+  margin-left: 52px;
+  position: absolute;
 `;
 
 export const ConnectWrapper = styled.div`
