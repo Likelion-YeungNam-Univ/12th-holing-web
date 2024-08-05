@@ -23,8 +23,8 @@ jobs:
           echo "REACT_APP_KAKAO_AUTH_URL=${{ secrets.REACT_APP_KAKAO_AUTH_URL }}" >> .env
 
       # 3. Upload the .env file to the server
-      - name: Upload .env file to server
-        uses: scottyab/github-actions-scp@v1
+      - name: Upload files to EC2
+        uses: appleboy/scp-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}
           port: ${{ secrets.SERVER_SSH_PORT }}
