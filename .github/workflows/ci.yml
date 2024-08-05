@@ -19,6 +19,8 @@ jobs:
       - name: Create .env file
         run: |
           echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" > .env
-          echo "REACT_APP_SECRET_KEY=${{ secrets.REACT_APP_SECRET_KEY }}" >> .env
+          echo "REACT_APP_REST_API_KEY=${{ secrets.REACT_APP_REST_API_KEY }}" >> .env
+          echo "REACT_APP_REDIRECT_URI=${{ secrets.REACT_APP_REDIRECT_URI }}" >> .env
+          echo "REACT_APP_KAKAO_AUTH_URL=${{ secrets.REACT_APP_KAKAO_AUTH_URL }}" >> .env
       - name: Try build
         run: npm run build
