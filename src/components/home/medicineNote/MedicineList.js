@@ -69,7 +69,8 @@ function MedicineList() {
     setMedi((prevMedi) => [...prevMedi, { ...medicineData, id: Date.now() }]); // ID는 임시로 현재 시간을 사용
     console.log(medicineData);
 
-    fetchData();
+    // fetchData();
+    // 화면에 렌더링 시키기 위해 주석처리
   };
 
   const handleToggle = (medicineId) => {
