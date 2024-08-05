@@ -2,26 +2,24 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { useNavigate } from 'react-router-dom';
 import {
   Container,
   OverlayContainer,
   OverlayScore,
   OverlayTotal,
-  TestStartBtn,
+  MateTestStartBtn,
 } from 'styles/home/MyScoreGraph-styled';
-import { getMyReport } from 'apis/user/myReportGet';
-import img_test_start_btn from 'assets/images/home_test_start_btn.svg';
+import { getMateReport } from 'apis/user/mateReportGet';
+import img_mate_start_btn from 'assets/images/mate_test_start_btn.svg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function MyScoreGraph() {
   const [value, setValue] = useState('');
   const [userRecentReport, setUserRecentReport] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
-    getMyReport()
+    getMateReport()
       .then((response) => {
         const data = response.data;
         setValue(data.userRecentReport.totalScore);
@@ -59,10 +57,6 @@ function MyScoreGraph() {
     },
   };
 
-  const handleStartClick = () => {
-    navigate('/symptomTest');
-  };
-
   return (
     <Container>
       <Doughnut data={data} options={options} />
@@ -71,7 +65,7 @@ function MyScoreGraph() {
           {userRecentReport ? `TOTAL` : '테스트 시작'}
         </OverlayTotal>
         <OverlayScore>{value}</OverlayScore>
-        {!userRecentReport && <TestStartBtn src={img_test_start_btn} onClick={handleStartClick}/>}
+        {!userRecentReport && <MateTestStartBtn src={img_mate_start_btn}/>}
       </OverlayContainer>
     </Container>
   );
