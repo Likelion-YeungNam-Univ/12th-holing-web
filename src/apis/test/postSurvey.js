@@ -1,12 +1,13 @@
 import axios from 'axios';
+import { load } from 'react-cookies';
 
 // 증상테스트 결과 post
 const postSurvey = async (selectedDetails, navigate) => {
-
-  const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
   const serverUrl = process.env.REACT_APP_API_URL;
   const endpoint = '/reports';
   const apiUrl = `${serverUrl}${endpoint}`;
+  const jwtToken = load('jwtToken');
+
 
   try {
     // questionScores 제외한 데이터 생성
@@ -20,7 +21,7 @@ const postSurvey = async (selectedDetails, navigate) => {
     const res = await axios.post(apiUrl, filteredDetails, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${jwtToken}`,
       },
     });
 

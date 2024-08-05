@@ -45,7 +45,7 @@ export const UserNameContainer = styled.div`
 
 export const UserName = styled.div`
   font-family: Pretendard;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
 `;
 
@@ -56,7 +56,7 @@ export const PartnerInfo = styled.div`
 `;
 
 export const Status = styled.div`
-  width: 76px;
+  width: fit-content;
   height: 17px;
   margin-bottom: 14px;
   color: #9180ff;
@@ -73,4 +73,39 @@ export const Graph = styled.div`
   margin-top: 15%; /* Adjust margin if necessary */
   margin-left: 30px;
   padding: 0; /* Remove any extra padding */
+`;
+
+export const SummaryConnectContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 453px;
+  height: 165px;
+  border-radius: 13px;
+  background-color: #9180ff;
+  border-color: #ddd;
+  margin: auto;
+  margin-top: 30px;
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+`;
+
+export const ConnectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+`;
+
+export const ConnectTitle = styled.div`
+  color: #f5f5f5;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+export const ConnectDesc = styled.div`
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 13px;
 `;

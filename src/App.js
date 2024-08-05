@@ -62,7 +62,6 @@ function App() {
           </Route>
 
           {/* 테스트 화면프레임 */}
-
           <Route path="/symptomTest" element={<TestFrame />}>
             <Route index element={<SymptomTest />} />
           </Route>
