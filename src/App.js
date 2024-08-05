@@ -46,10 +46,8 @@ function App() {
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/code-input" element={<CodeInput />} />
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/kakaologin" element={<ShareUrl />} />
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -73,7 +71,9 @@ function App() {
             <Route index element={<Intro />} />
           </Route>
 
-          
+          <Route path="/code-input" element={<CodeInput />} />
+          <Route path="/kakaologin" element={<ShareUrl />} />
+
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

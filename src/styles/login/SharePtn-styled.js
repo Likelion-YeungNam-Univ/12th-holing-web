@@ -111,3 +111,23 @@ export const CodeInputBox = styled.input`
     outline: none;
   }
 `;
+
+export const Wrapper = styled.div`
+  width: 600px;
+  margin: 0 auto;
+`;
+
+export const NextBtn = styled.div`
+  cursor: pointer;
+  border-radius: 13px;
+  background: #9180ff;
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 23px 0px;
+  width: 496px;
+  margin-left: 52px;
+  position: absolute;
+  bottom: 66px;
+`;
