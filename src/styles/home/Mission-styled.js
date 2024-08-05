@@ -38,6 +38,7 @@ export const MissionContainer = styled.div`
   background-repeat: no-repeat;
   background-position: right;
   align-self: stretch;
+  cursor: pointer;
 `;
 
 export const Desc = styled.div`
