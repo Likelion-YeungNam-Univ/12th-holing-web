@@ -4,6 +4,7 @@ import { useState } from 'react';
 function useMedicineList(initialMedi) {
   // 약 목록을 저장하는 상태
   const [medi, setMedi] = useState(initialMedi);
+  const [medicines, setMedicines] = useState([]);
 
   // 모달의 표시 여부를 저장하는 상태
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,13 +28,10 @@ function useMedicineList(initialMedi) {
   };
 
   // 새로운 약을 목록에 추가하는 함수
-  const addNewMedicine = (newMedicine, time) => {
-    const nextId = medi.length + 1;
-    const newMedi = [
-      ...medi,
-      { id: nextId, text: newMedicine, time: time, completed: false },
-    ];
-    setMedi(newMedi);
+  const addNewMedicine = (medicineName, time) => {
+    const newMedicine = { name: medicineName, takenAt: time };
+    setMedicines((prevMedicines) => [...prevMedicines, newMedicine]);
+    console.log('새로운 영양제:', newMedicine);
   };
 
   // 약을 목록에서 삭제하는 함수
