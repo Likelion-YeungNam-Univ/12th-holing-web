@@ -24,7 +24,7 @@ jobs:
 
       # 3. Upload the .env file to the server
       - name: Upload files to EC2
-        uses: appleboy/scp-action@v1.0.3
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}
           port: ${{ secrets.SERVER_SSH_PORT }}
