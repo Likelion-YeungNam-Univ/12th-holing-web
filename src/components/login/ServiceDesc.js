@@ -44,7 +44,9 @@ function ServiceDesc() {
     <>
       <ImgContainter>
         <Img src={level4} alt="Level 4"></Img>
-        <Score>20점 만점에 {totalScore}점으로</Score>
+        <Score>
+          20점 만점에 <span>{totalScore}</span>점으로
+        </Score>
         <Comment>{getComment(totalScore)}</Comment>
       </ImgContainter>
       <DescContainer>

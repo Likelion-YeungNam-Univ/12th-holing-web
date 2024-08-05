@@ -46,7 +46,8 @@ function App() {
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/kakaologin" element={<ShareUrl />} />
+            {/* <Route path="/kakaologin" element={<ShareUrl />} /> */}
+            <Route path="/kakaologin" element={<UserInfo />} />
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />

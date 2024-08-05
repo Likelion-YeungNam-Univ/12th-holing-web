@@ -14,6 +14,8 @@ import {
 } from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
 
+// <연동 받는사람>
+
 const Login = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -38,9 +40,7 @@ const Login = () => {
       <ServiceDesc />
       {/* <LoginButton /> */}
 
-      <ShareBtn onClick={copyUrlToClipboard}>
-        URL 복사하여 짝꿍과 연동하기
-      </ShareBtn>
+      <ShareBtn onClick={copyUrlToClipboard}>짝꿍과 연동하기</ShareBtn>
       <Link to="/">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
