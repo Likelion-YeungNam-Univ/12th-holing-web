@@ -1,5 +1,5 @@
 import React from 'react';
-import login_kakao from 'assets/images/login_kakao.png';
+import login_kakao from 'assets/images/login_kakao.svg';
 import Cookies from 'js-cookie';
 
 const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
@@ -27,6 +27,7 @@ const LoginButton = () => {
         display: 'flex', // 버튼 내부 요소를 플렉스 박스로 설정
         justifyContent: 'center',
         margin: 'auto',
+        marginTop: '121px',
         marginBottom: '25px',
         border: 'none',
         borderRadius: '13px',
