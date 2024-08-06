@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import ShareUrlPtn from 'components/login/ShareUrlPtn';
+// import ShareUrlPtn from 'components/login/ShareUrlPtn';
+import UserInfo from './UserInfo';
 import { load, save } from 'react-cookies'; // react-cookies에서 필요한 메서드만 가져오기
+import Loading from 'pages/Loading.js';
 
 const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
 // TODO: 헷갈리지 않게 파일명 바꾸기
@@ -66,7 +68,7 @@ const ShareUrl = () => {
 
   return (
     <div>
-      <ShareUrlPtn /> {/* 로그인 관련 UI를 렌더링하는 컴포넌트 */}
+      <Loading /> {/* 로그인 관련 UI를 렌더링하는 컴포넌트 */}
     </div>
   );
 };

@@ -11,7 +11,7 @@ import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
 import Login from 'pages/Login';
-import ShareUrl from 'pages/ShareUrl';
+import LoginExe from 'pages/LoginExe';
 import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
 import Intro from 'pages/intro';
@@ -49,9 +49,10 @@ function App() {
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
             {/* 로그인 후 넘어가는 페이지 */}
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+            <Route path="/login" element={<Start />} />
             {/* <Route path="/kakaologin" element={<ShareUrl />} /> */}
-            <Route path="/kakaologin" element={<ShareUrl />} />
+            <Route path="/kakaologin" element={<LoginExe />} />
             {/* 카카오 로그인이 실행되는 페이지 */}
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
@@ -77,7 +78,7 @@ function App() {
           </Route>
 
           <Route path="/code-input" element={<CodeInput />} />
-          <Route path="/kakaologin" element={<ShareUrl />} />
+          <Route path="/kakaologin" element={<Loading />} />
 
           <Route path="/loading" element={<Loading />} />
         </Routes>
