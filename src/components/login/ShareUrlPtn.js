@@ -13,6 +13,8 @@ import {
   ConnectHeader,
   Wrapper,
   UrlWrapper,
+  ConnectContainer,
+  // Container,
 } from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
 import img_urlCopyBtn from 'assets/images/url_copy_btn.svg';
@@ -65,6 +67,7 @@ function ShareUrlPtn() {
           <br />
           <span>짝꿍에게 공유</span>해보아요
         </Title>
+
         <ConnectWrapper>
           <ConnectHeader>
             <ConnectTitle>짝꿍에게 전달하기</ConnectTitle>
@@ -75,10 +78,11 @@ function ShareUrlPtn() {
           </ConnectHeader>
           <UrlWrapper>
             홈페이지 주소: {homeUrl}
-            <br />인증 코드: {id}
+            <br />
+            인증 코드: {id}
           </UrlWrapper>
         </ConnectWrapper>
-        <ConnectWrapper>
+        <ConnectContainer>
           <ConnectHeader>
             <ConnectTitle>인증코드 입력하기</ConnectTitle>
             <ConnectDesc>
@@ -90,15 +94,16 @@ function ShareUrlPtn() {
             src={img_codeInsetBtn}
             onClick={() => navigate('/code-input')}
           ></ConnectBtn>
-        </ConnectWrapper>
+        </ConnectContainer>
         <Link to="/home">
           <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
         </Link>
-        <ShareLink
+
+        {/* <ShareLink
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel="카카오톡에서 붙여넣기하여 짝꿍과 함께하세요!"
-        />
+        /> */}
       </Wrapper>
     </>
   );

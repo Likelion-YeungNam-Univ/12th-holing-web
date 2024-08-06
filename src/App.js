@@ -32,6 +32,7 @@ import CodeInput from 'pages/CodeInput';
 import Loading from 'pages/Loading';
 import ReportFrame from 'components/comonents/frame/ReportFrame';
 import StartInfo from 'pages/StartInfo';
+import ShareUrlPtn from 'components/login/ShareUrlPtn';
 
 function App() {
   return (
@@ -42,7 +43,6 @@ function App() {
           {/* 기본 화면프레임 */}
           <Route path="/" element={<IntroFrame />}>
             <Route path="/" element={<Start />} /> {/* 시작 화면 */}
-
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -55,10 +55,9 @@ function App() {
             <Route path="/selftest9" element={<SelfTest9 />} />
             <Route path="/selftest10" element={<SelfTest10 />} />
             <Route path="/userInfo" element={<UserInfo />} />
-
+            <Route path="/shareptn" element={<ShareUrlPtn />} />
             <Route path="/code-input" element={<CodeInput />} />
-            <Route path="/startInfo" element={<StartInfo/>} />
-
+            <Route path="/startInfo" element={<StartInfo />} />
           </Route>
 
           <Route path="/" element={<Frame />}>
@@ -76,10 +75,9 @@ function App() {
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
           </Route>
-          <Route path="/" element={<ReportFrame/>}>
+          <Route path="/" element={<ReportFrame />}>
             <Route path="/report/:id" element={<ReportDetail />} />
           </Route>
-
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
