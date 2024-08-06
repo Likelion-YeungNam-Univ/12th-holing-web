@@ -30,10 +30,9 @@ import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
-import CodeInput from 'pages/CodeInput';
+
 import Loading from 'pages/Loading';
 import CenterFrame from 'components/comonents/frame/CenterFrame';
-import TestTopBar from 'components/comonents/topBar/TestTopBar';
 
 function App() {
   return (
