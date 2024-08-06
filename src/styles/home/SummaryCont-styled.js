@@ -13,6 +13,7 @@ export const SummaryContainer = styled.div`
   border-width: 1px;
   border-style: solid;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const UserInfo = styled.div`
@@ -88,6 +89,7 @@ export const SummaryConnectContainer = styled.div`
   border-width: 1px;
   border-style: solid;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const ConnectWrapper = styled.div`
