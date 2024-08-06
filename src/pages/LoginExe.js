@@ -8,7 +8,7 @@ import Loading from 'pages/Loading.js';
 
 const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
 // TODO: 헷갈리지 않게 파일명 바꾸기
-const ShareUrl = () => {
+const LoginExe = () => {
   const location = useLocation(); // 현재 위치 객체를 가져옴
   const [code, setCode] = useState(load('code')); // 쿠키에서 초기값 설정
 
@@ -73,4 +73,4 @@ const ShareUrl = () => {
   );
 };
 
-export default ShareUrl;
+export default LoginExe;

@@ -57,7 +57,6 @@ function App() {
             <Route path="/userInfo" element={<UserInfo />} />
 
             <Route path="/code-input" element={<CodeInput />} />
-            <Route path="/loading" element={<Loading />} />
             <Route path="/startInfo" element={<StartInfo/>} />
 
           </Route>
@@ -70,7 +69,7 @@ function App() {
             <Route path="/account-info" element={<AccountInfo />} />
             {/* 로그인 후 넘어가는 페이지 */}
             <Route path="/login" element={<Start />} />
-            <Route path="/kakaologin" element={<LoginExe />} />
+            <Route path="/loading" element={<LoginExe />} />
           </Route>
 
           {/* 테스트 프레임 */}
