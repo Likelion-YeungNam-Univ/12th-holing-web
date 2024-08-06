@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { FrameWrapper } from 'styles/ComonItem-styled';
 
-function IntrFrame() {
+function IntroFrame() {
   return (
     <FrameWrapper>
       <Outlet /> {/* 중첩라우팅 */}
@@ -10,4 +10,4 @@ function IntrFrame() {
   );
 }
 
-export default IntrFrame;
+export default IntroFrame;
