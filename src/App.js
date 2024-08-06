@@ -65,7 +65,6 @@ function App() {
           <Route path="/" element={<Frame />}>
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
-            <Route path="/report/:id" element={<ReportDetail />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
@@ -74,9 +73,10 @@ function App() {
             <Route path="/kakaologin" element={<LoginExe />} />
           </Route>
 
-          {/* 테스트 화면프레임 */}
-          <Route path="/symptomTest" element={<TestFrame />}>
-            <Route index element={<SymptomTest />} />
+          {/* 테스트 프레임 */}
+          <Route path="/" element={<TestFrame />}>
+            <Route path="/symptomTest" element={<SymptomTest />} />
+            <Route path="/report/:id" element={<ReportDetail />} />
           </Route>
 
         </Routes>
