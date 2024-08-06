@@ -23,8 +23,8 @@ function MenuBar() {
     // 현재 페이지에 따른 아이콘 변경
     <MenuWrapper>
       <MenuList>
-        <Menu onClick={() => navigate('/')}>
-          <MenuIcon src={ getMenuIcon('/', img_actHome, img_inactHome) }/>
+        <Menu onClick={() => navigate('/home')}>
+          <MenuIcon src={ getMenuIcon('/home', img_actHome, img_inactHome) }/>
         </Menu>
         <Menu onClick={() => navigate('/report')}>
           <MenuIcon src={ getMenuIcon('/report', img_actReport, img_inactReport) }/>
