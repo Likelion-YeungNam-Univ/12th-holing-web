@@ -5,7 +5,7 @@ import ShareUrlPtn from 'components/login/ShareUrlPtn';
 import { load, save } from 'react-cookies'; // react-cookies에서 필요한 메서드만 가져오기
 
 const authToken = process.env.REACT_APP_API_AUTH_TOKEN;
-
+// TODO: 헷갈리지 않게 파일명 바꾸기
 const ShareUrl = () => {
   const location = useLocation(); // 현재 위치 객체를 가져옴
   const [code, setCode] = useState(load('code')); // 쿠키에서 초기값 설정

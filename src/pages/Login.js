@@ -37,10 +37,10 @@ const Login = () => {
     <>
       <ServiceDesc />
       {/* <LoginButton /> */}
-
+      {/* 
       <ShareBtn onClick={copyUrlToClipboard}>
         URL 복사하여 짝꿍과 연동하기
-      </ShareBtn>
+      </ShareBtn> */}
       <Link to="/">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>

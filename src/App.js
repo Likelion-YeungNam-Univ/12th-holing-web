@@ -30,7 +30,6 @@ import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
-import Loading from 'components/login/Loading';
 
 function App() {
   return (
@@ -48,10 +47,11 @@ function App() {
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
             <Route path="/userInfo" element={<UserInfo />} />
+            {/* 로그인 후 넘어가는 페이지 */}
             <Route path="/login" element={<Login />} />
             {/* <Route path="/kakaologin" element={<ShareUrl />} /> */}
             <Route path="/kakaologin" element={<ShareUrl />} />
-            {/* 카카오 로그인 시 넘어가는 페이지 */}
+            {/* 카카오 로그인이 실행되는 페이지 */}
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -63,7 +63,6 @@ function App() {
             <Route path="/selftest8" element={<SelfTest8 />} />
             <Route path="/selftest9" element={<SelfTest9 />} />
             <Route path="/selftest10" element={<SelfTest10 />} />
-            <Route path="/loading" element={<Loading />} />
           </Route>
 
           {/* 테스트 화면프레임 */}
