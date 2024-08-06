@@ -2,27 +2,19 @@
 // import LoginButton from 'components/login/LoginButton';
 import ServiceDesc from 'components/login/ServiceDesc';
 import { LoginDesc } from 'styles/login/ServiceDesc-styled';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import level4_1 from 'assets/images/level4_1.png';
 import {
-  Header,
-  Title,
-  Result,
-  ShareBtn,
   CloseBtn,
   ConnectBtn,
 } from 'styles/login/SharePtn-styled';
-import ShareLink from 'hooks/login/ShareLink';
 
-const Login = () => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-
+const StartInfo = () => {
   return (
     <>
       <ServiceDesc />
       <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
-      <Link to="/">
+      <Link to="/home">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
 
@@ -31,4 +23,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default StartInfo;

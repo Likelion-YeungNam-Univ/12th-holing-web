@@ -10,11 +10,9 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
-import Login from 'pages/Login';
 import LoginExe from 'pages/LoginExe';
 import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
-import Intro from 'pages/intro';
 import UserInfo from 'pages/UserInfo';
 import { CookiesProvider } from 'react-cookie';
 import FeSelfTest from 'pages/SelfTest/FeSelfTest';
@@ -32,8 +30,8 @@ import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
 
 import Loading from 'pages/Loading';
-import CenterFrame from 'components/comonents/frame/CenterFrame';
 import ReportFrame from 'components/comonents/frame/ReportFrame';
+import StartInfo from 'pages/StartInfo';
 
 function App() {
   return (
@@ -59,8 +57,9 @@ function App() {
             <Route path="/userInfo" element={<UserInfo />} />
 
             <Route path="/code-input" element={<CodeInput />} />
-            <Route path="/kakaologin" element={<Loading />} />
-          <Route path="/loading" element={<Loading />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/startInfo" element={<StartInfo/>} />
+
           </Route>
 
           <Route path="/" element={<Frame />}>
