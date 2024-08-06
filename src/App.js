@@ -29,6 +29,7 @@ import SelfTest8 from 'pages/SelfTest/SelfTest8';
 import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
+import CodeInput from 'pages/CodeInput';
 import Loading from 'components/login/Loading';
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
         <Routes>
           {/* 기본 화면프레임 */}
           <Route path="/" element={<Frame />}>
-            <Route index element= {<Start />} />  {/* 시작 화면 */}
+            <Route index element={<Start />} /> {/* 시작 화면 */}
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
             <Route path="/report/:id" element={<ReportDetail />} />
@@ -75,7 +76,8 @@ function App() {
             <Route index element={<Intro />} />
           </Route>
 
-          
+          <Route path="/code-input" element={<CodeInput />} />
+          <Route path="/kakaologin" element={<ShareUrl />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
