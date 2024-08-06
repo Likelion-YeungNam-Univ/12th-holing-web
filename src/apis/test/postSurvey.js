@@ -27,7 +27,7 @@ const postSurvey = async (selectedDetails, navigate) => {
 
     console.log('filteredDetails=', filteredDetails);
     alert(res.data);
-    navigate('/');
+    navigate('/home');
     // return res.data;
   } catch (error) {
     console.log('Error details:', error.response ? error.response.data : error.message);

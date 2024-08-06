@@ -15,6 +15,7 @@ export const SumRepoContainer = styled.div`
   padding-left: 40px;
   padding-right: 40px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const SumRepoHeader = styled.div`
@@ -28,7 +29,7 @@ export const SumRepoHeader = styled.div`
 export const SumRepoTitleContainer = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const SumRepoTitle = styled.div`
   font-weight: 700;
@@ -40,7 +41,7 @@ export const SumRepoTitle = styled.div`
 
 export const RepoIcon = styled.img`
   margin-left: 4px;
-`
+`;
 
 export const SumRepoDisc = styled.div`
   font-weight: 500;
@@ -132,4 +133,4 @@ export const RepoImg = styled.img`
   bottom: 0px;
   right: 0px;
   z-index: 1000;
-`
+`;

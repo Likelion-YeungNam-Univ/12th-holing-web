@@ -84,7 +84,7 @@ export const options = {
   },
   elements: {
     point: {
-      radius: 0.5, // 도트의 반지름 설정
+      radius: 3.0, // 도트의 반지름 설정
     },
   },
 };
