@@ -30,6 +30,7 @@ import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
+import Loading from 'pages/Loading';
 
 function App() {
   return (
@@ -77,6 +78,8 @@ function App() {
 
           <Route path="/code-input" element={<CodeInput />} />
           <Route path="/kakaologin" element={<ShareUrl />} />
+
+          <Route path="/loading" element={<Loading />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
