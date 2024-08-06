@@ -29,7 +29,7 @@ function Home() {
           </SwiperSlide>
         </Swiper>
       </SwiperWrapper>
-      <SymptomTest />
+      {/* <SymptomTest /> */}
 
       <MedicineNote />
       <Mission />
