@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Link 컴포넌트를 불러옵니다.
+// import { Link } from 'react-router-dom';
 import logo from 'assets/images/logo.gif';
 import { Wrapper, Title, Desc, Logo, Bottom, Btn } from 'styles/Start-styled';
+import LoginButton from 'components/login/LoginButton';
 
 function Start() {
   return (
@@ -14,9 +15,11 @@ function Start() {
       </Desc>
       <Logo src={logo} alt="Logo"></Logo>
       <Bottom>홀링과 함께 갱년기 증상을 케어해보아요</Bottom>
-      <Link to="/userInfo">
+      {/* <LoginButton /> */}
+      <LoginButton />
+      {/* <Link to="/userInfo">
         <Btn>시작하기</Btn>
-      </Link>
+      </Link> */}
       {/* TODO: 개인정보 페이지 이동 */}
     </Wrapper>
   );

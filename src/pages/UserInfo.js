@@ -16,6 +16,7 @@ import UserInfo_Fe2 from 'assets/images/UserInfo_Fe2.png';
 import UserInfo_Ma1 from 'assets/images/UserInfo_Ma1.png';
 import UserInfo_Ma2 from 'assets/images/UserInfo_Ma2.png';
 import { useImageToggle } from 'hooks/useImgToggle'; // 경로를 올바르게 수정
+import LogoCenterBar from 'components/comonents/topBar/LogoCenterTopBar';
 
 function UserInfo() {
   const [selectedGender, setSelectedGender] = useState(null);
@@ -68,37 +69,40 @@ function UserInfo() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <Title>개인정보기입</Title>
-        <Desc>
-          자신의 <span>성별</span>을 체크해주세요
-        </Desc>
-      </Header>
-      <Gender>
-        <ImgContainer onClick={handleFemaleClick}>
-          <Img
-            src={selectedGender === 'female' ? UserInfo_Fe2 : UserInfo_Fe1}
-            alt="Female"
-          />
-          <TextStyled align="right" active={selectedGender === 'female'}>
-            여성
-          </TextStyled>
-        </ImgContainer>
-        <ImgContainer onClick={handleMaleClick}>
-          <Img
-            src={selectedGender === 'male' ? UserInfo_Ma2 : UserInfo_Ma1}
-            alt="Male"
-          />
-          <TextStyled align="left" active={selectedGender === 'male'}>
-            남성
-          </TextStyled>
-        </ImgContainer>
-      </Gender>
-      <NextBtn enabled={isNextBtnEnabled} onClick={handleNextButtonClick}>
-        다음
-      </NextBtn>
-    </Wrapper>
+    <>
+      <LogoCenterBar></LogoCenterBar>
+      <Wrapper>
+        <Header>
+          <Title>개인정보기입</Title>
+          <Desc>
+            자신의 <span>성별</span>을 체크해주세요
+          </Desc>
+        </Header>
+        <Gender>
+          <ImgContainer onClick={handleFemaleClick}>
+            <Img
+              src={selectedGender === 'female' ? UserInfo_Fe2 : UserInfo_Fe1}
+              alt="Female"
+            />
+            <TextStyled align="right" active={selectedGender === 'female'}>
+              여성
+            </TextStyled>
+          </ImgContainer>
+          <ImgContainer onClick={handleMaleClick}>
+            <Img
+              src={selectedGender === 'male' ? UserInfo_Ma2 : UserInfo_Ma1}
+              alt="Male"
+            />
+            <TextStyled align="left" active={selectedGender === 'male'}>
+              남성
+            </TextStyled>
+          </ImgContainer>
+        </Gender>
+        <NextBtn enabled={isNextBtnEnabled} onClick={handleNextButtonClick}>
+          다음
+        </NextBtn>
+      </Wrapper>
+    </>
   );
 }
 

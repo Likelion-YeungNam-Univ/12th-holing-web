@@ -12,6 +12,7 @@ import {
 } from 'styles/selfTest/selfTest-styled';
 import { useSelfTest } from 'hooks/test/selfTestHook';
 import { getSelftest } from 'apis/selftest/selftestGet';
+import LogoCenterBar from 'components/comonents/topBar/LogoCenterTopBar';
 
 function SelfTest6() {
   const {
@@ -60,41 +61,44 @@ function SelfTest6() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <Title>갱년기 자가진단 테스트</Title>
-        <Num>
-          <span>06</span>/10
-        </Num>
-        <Question>{statement}</Question>
-      </Header>
-      <Img src={imgUrl} alt="test1"></Img>
-      <AnsContainer>
-        <Answer
-          onClick={() => handleAnswerClick(choice1)}
-          isSelected={selectedAnswer === choice1}
+    <>
+      <LogoCenterBar></LogoCenterBar>
+      <Wrapper>
+        <Header>
+          <Title>갱년기 자가진단 테스트</Title>
+          <Num>
+            <span>06</span>/10
+          </Num>
+          <Question>{statement}</Question>
+        </Header>
+        <Img src={imgUrl} alt="test1"></Img>
+        <AnsContainer>
+          <Answer
+            onClick={() => handleAnswerClick(choice1)}
+            isSelected={selectedAnswer === choice1}
+          >
+            {choice1}
+          </Answer>
+          <Answer
+            onClick={() => handleAnswerClick(choice2)}
+            isSelected={selectedAnswer === choice2}
+          >
+            {choice2}
+          </Answer>
+        </AnsContainer>
+        <NextBtn
+          disabled={!isButtonActive}
+          style={{
+            backgroundColor: isButtonActive ? '#9180FF' : '#DDDDDD',
+            color: isButtonActive ? '#FFFFFF' : '#B3B3B3',
+            cursor: isButtonActive ? 'pointer' : 'not-allowed',
+          }}
+          onClick={handleNext} // 클릭 시 페이지 이동
         >
-          {choice1}
-        </Answer>
-        <Answer
-          onClick={() => handleAnswerClick(choice2)}
-          isSelected={selectedAnswer === choice2}
-        >
-          {choice2}
-        </Answer>
-      </AnsContainer>
-      <NextBtn
-        disabled={!isButtonActive}
-        style={{
-          backgroundColor: isButtonActive ? '#9180FF' : '#DDDDDD',
-          color: isButtonActive ? '#FFFFFF' : '#B3B3B3',
-          cursor: isButtonActive ? 'pointer' : 'not-allowed',
-        }}
-        onClick={handleNext} // 클릭 시 페이지 이동
-      >
-        다음
-      </NextBtn>
-    </Wrapper>
+          다음
+        </NextBtn>
+      </Wrapper>
+    </>
   );
 }
 

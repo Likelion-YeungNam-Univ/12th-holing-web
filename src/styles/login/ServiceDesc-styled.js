@@ -50,26 +50,36 @@ export const Score = styled.div`
   top: 35px;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #F5F5F5;
-  font-size:18px;
+  color: #f5f5f5;
+  font-size: 18px;
   font-weight: 500;
+  span {
+    font-weight: 700;
+    text-decoration: underline;
+  }
 `;
 export const Comment = styled.div`
   position: absolute;
   top: 118px;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #F5F5F5;
+  color: #f5f5f5;
   font-size: 32px;
   font-weight: 600;
   text-align: center;
+  width: 200px;
+  /* height: 76px; */
+  /* top: 97px;
+left: 182px;
+gap: 0px;
+opacity: 0px; */
 `;
 export const Btn = styled.div`
   img {
     width: 400px;
     height: auto;
     mar
-  }
+  };
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
@@ -82,4 +92,5 @@ export const LoginDesc = styled.div`
   line-height: 16.71px;
   text-align: center;
   margin-bottom: 40px;
+  margin-top: 25px;
 `;
