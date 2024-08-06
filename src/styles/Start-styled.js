@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   /* gap: 0px;
   opacity: 0;*/
   width: 100%;
-  height: 100vh;
+  height: fit-content;
 `;
 
 export const Title = styled.div`
