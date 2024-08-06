@@ -53,7 +53,7 @@ function ServiceDesc() {
   return (
     <>
       <ImgContainter>
-        <Img src={levelImage} alt="Level Indicator" />
+        <Img src={levelImage} alt="Level Indicator"></Img>
         <Score>
           20점 만점에 <span>{totalScore}</span>점으로
         </Score>
@@ -63,7 +63,7 @@ function ServiceDesc() {
         <Title>
           전문가의 도움을 받아
           <br />
-          <Img src={login_logo_icon} alt="Login Logo Icon" />
+          <Img src={login_logo_icon} alt="Login Logo Icon"></Img>
           적극적으로 <span>관리할 필요</span>가 있어요
         </Title>
       </DescContainer>
@@ -77,7 +77,7 @@ function ServiceDesc() {
           함께 갱년기와 중년기의 삶을 함께 걷는 호르몬 힐링 서비스입니다.
         </Desc>
       </DescContainer>
-      <Img src={service_ex1} alt="Service Example 1" />
+      <Img src={service_ex1} alt="Service Example 1"></Img>
       <DescContainer>
         <DescTitle>나와 짝꿍의 갱년기 증상을 한눈에 파악해요</DescTitle>
         <Desc>
@@ -86,7 +86,7 @@ function ServiceDesc() {
           짝꿍의 리포트도 함께 확인하여 서로의 상태를 한눈에 파악해요
         </Desc>
       </DescContainer>
-      <Img src={service_ex2} alt="Service Example 2" />
+      <Img src={service_ex2} alt="Service Example 2"></Img>
       <DescContainer>
         <DescTitle>홀링의 리포트를 더 자세히 살펴보아요</DescTitle>
         <Desc>
@@ -95,7 +95,7 @@ function ServiceDesc() {
           그에 대한 솔루션을 받아보아요
         </Desc>
       </DescContainer>
-      <Img src={service_ex3} alt="Service Example 3" />
+      <Img src={service_ex3} alt="Service Example 3"></Img>
       <DescContainer>
         <DescTitle>증상 리포트를 토대로 미션을 제안해요</DescTitle>
         <Desc>
