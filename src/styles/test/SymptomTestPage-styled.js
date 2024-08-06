@@ -100,7 +100,7 @@ export const Choice = styled.li`
 // ----- choiceText 공통스타일
 const choiceTextStyled = css`
     width: 82px;
-    height: fit-content;
+    height: 20px;
     font-weight: 700;
     font-size: 15px;
     line-height: 17.9px;
