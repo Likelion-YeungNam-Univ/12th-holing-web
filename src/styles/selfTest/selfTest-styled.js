@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin-top: 50px;
-  /* display: flex; */
+  width: 600px;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100vh;
   background-color: #f5f5f5;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
 `;
 
 export const Header = styled.div`
