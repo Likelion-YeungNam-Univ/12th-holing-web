@@ -48,7 +48,7 @@ export const CloseBtn = styled.div`
   color: #5643d1;
   border: 1px solid #5643d1;
   margin-left: 52px;
-  position: absolute;
+  margin-top: 25px;
 `;
 
 export const ConnectWrapper = styled.div`
@@ -147,8 +147,12 @@ export const ConnectBtn = styled.div`
   padding: 23px 0px;
   width: 496px;
   margin-left: 52px;
-  position: absolute;
+
   bottom: 66px;
+`;
+
+export const IntroWrapper = styled.div`
+  padding-bottom: 40px;
 `;
 
 export const UrlWrapper = styled.div`

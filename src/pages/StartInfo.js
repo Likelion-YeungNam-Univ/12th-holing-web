@@ -12,23 +12,24 @@ import {
   ShareBtn,
   CloseBtn,
   ConnectBtn,
+  IntroWrapper,
 } from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
 
-const Login = () => {
+const StartInfo = () => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <>
+    <IntroWrapper>
       <ServiceDesc />
-      <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
-      <Link to="/">
-        <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
-      </Link>
 
+      <>
+        <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
+        <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
+      </>
       <LoginDesc>카카오로 연동하여 나의 짝꿍의 리포트도 연결해보아요</LoginDesc>
-    </>
+    </IntroWrapper>
   );
 };
 
-export default Login;
+export default StartInfo;

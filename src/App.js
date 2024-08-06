@@ -10,7 +10,7 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
-import Login from 'pages/Login';
+import StartInfo from 'pages/StartInfo';
 import LoginExe from 'pages/LoginExe';
 import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
@@ -69,7 +69,7 @@ function App() {
             <Route path="/userInfo" element={<UserInfo />} />
             {/* 로그인 후 넘어가는 페이지 */}
             {/* <Route path="/login" element={<Login />} /> */}
-            <Route path="/login" element={<Start />} />
+            <Route path="/login" element={<StartInfo />} />
             {/* <Route path="/kakaologin" element={<ShareUrl />} /> */}
             <Route path="/kakaologin" element={<LoginExe />} />
             {/* 카카오 로그인이 실행되는 페이지 */}
