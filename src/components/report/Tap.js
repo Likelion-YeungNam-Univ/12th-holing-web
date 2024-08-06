@@ -45,13 +45,6 @@ function Tap({ leftTap, setLeftState, setRightState }) {
     fetchUserInfo();
   }, []);
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //   console.log("userInfo =", userInfo); // 유저 정보 콘솔 출력
-  //   console.log("userInfo.data.gender =", userInfo.data.gender); // 유저 정보 콘솔 출력
-  //   }
-  // }, [userInfo]);
-
   return (
     <TapWrapper>
       {/* 탭버튼 */}
