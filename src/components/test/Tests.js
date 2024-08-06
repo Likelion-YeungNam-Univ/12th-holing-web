@@ -109,14 +109,17 @@ function Tests() {
                       )
                     }
                   >
-                    <img
-                      src={
-                        selectedChoices[test.id] === choice.id
-                          ? choice.selectedImg
-                          : choice.unselectedImg
-                      }
-                      alt={choice.text}
-                    />
+                    <ImageWrapper>
+                      <img
+                        src={
+                          selectedChoices[test.id] === choice.id
+                            ? choice.selectedImg
+                            : choice.unselectedImg
+                        }
+                        alt={choice.text}
+                      />
+                    </ImageWrapper>
+
                     {selectedChoices[test.id] === choice.id ? (
                       <ChoiceTextColored>{choice.text}</ChoiceTextColored>
                     ) : (
