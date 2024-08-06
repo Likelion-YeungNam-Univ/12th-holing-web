@@ -65,8 +65,6 @@ function App() {
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            {/* 로그인 후 넘어가는 페이지 */}
-            <Route path="/login" element={<Start />} />
           </Route>
           <Route path="/loading" element={<LoginExe />} />
           {/* 테스트 프레임 */}
