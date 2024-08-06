@@ -21,7 +21,7 @@ function LogoCenterBarWithBack() {
             <IoIosArrowBack style={{ color: '#5B5B5B', width: '28px', height: '28px', marginLeft:'32px' }} />
           </BackIconWrapper>
 
-          <CenterLogoImg onClick={()=>navigate('/')} src= {img_logo} alt="Logo"></CenterLogoImg>
+          <CenterLogoImg onClick={()=>navigate('/home')} src= {img_logo} alt="Logo"></CenterLogoImg>
           
         </TestTopBarWrapper>
       </TestTopBarContainer>

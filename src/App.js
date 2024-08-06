@@ -31,6 +31,7 @@ import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
 import Loading from 'pages/Loading';
+import CenterFrame from 'components/comonents/frame/CenterFrame';
 
 function App() {
   return (
@@ -39,8 +40,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* 기본 화면프레임 */}
+          <Route path="/" element={<IntroFrame />}>
+            <Route path="/" element={<Start />} /> {/* 시작 화면 */}
+          </Route>
+
           <Route path="/" element={<Frame />}>
-            <Route index element={<Start />} /> {/* 시작 화면 */}
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
             <Route path="/report/:id" element={<ReportDetail />} />
@@ -73,7 +77,7 @@ function App() {
           </Route>
 
           {/* 로고 가운데 화면프레임 */}
-          <Route path="/intro" element={<IntroFrame />}>
+          <Route path="/intro" element={<CenterFrame />}>
             <Route index element={<Intro />} />
           </Route>
 
