@@ -3,17 +3,18 @@
 import ServiceDesc from 'components/login/ServiceDesc';
 import { LoginDesc } from 'styles/login/ServiceDesc-styled';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  CloseBtn,
-  ConnectBtn,
-} from 'styles/login/SharePtn-styled';
+import { Link, useNavigate } from 'react-router-dom';
+import { CloseBtn, ConnectBtn } from 'styles/login/SharePtn-styled';
 
 const StartInfo = () => {
+  // const navigate = useNavigate();
+
   return (
     <>
       <ServiceDesc />
-      <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
+      <Link to="/shareptn">
+        <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
+      </Link>
       <Link to="/home">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
