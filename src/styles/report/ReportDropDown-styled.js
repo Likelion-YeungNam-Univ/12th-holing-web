@@ -35,7 +35,7 @@ export const Solution = styled.div`
   align-items: center;
   width: 424px;
   height: 134px;
-  margin-bottom: 19px;
+  margin-bottom: 20px;
 `
 export const SolutionNumBlue = styled.div`
   font-weight: 200;
@@ -43,6 +43,7 @@ export const SolutionNumBlue = styled.div`
   line-height: 134.4px;
   color: #9180FF;
   margin-right: 57px;
+  width: 80px;
 `
 export const SolutionNumGray = styled.div`
   font-weight: 200;
@@ -50,10 +51,11 @@ export const SolutionNumGray = styled.div`
   line-height: 134.4px;
   color: #8A8A8A;
   margin-right: 57px;
+  width: 80px;
 `
 export const SolutionText = styled.div`
   width: 280px;
-  height: 96px;
+  height: fit-content;
   font-weight: 400;
   font-size: 17px;
   line-height: 24px;
