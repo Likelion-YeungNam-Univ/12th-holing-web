@@ -12,10 +12,10 @@ const LoginButton = () => {
 
     // 인가 요청 URL 생성
     const authUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&state=${state}`;
-    console.log("CLIENT_ID = ", CLIENT_ID);
-    console.log("REDIRECT_URI = ", REDIRECT_URI);
-    console.log("authUrl = ", authUrl);
-    console.log("state = ", state);
+    console.log('CLIENT_ID = ', CLIENT_ID);
+    console.log('REDIRECT_URI = ', REDIRECT_URI);
+    console.log('authUrl = ', authUrl);
+    console.log('state = ', state);
     // 인가 URL로 리다이렉트
     window.location.href = authUrl;
   };
@@ -31,6 +31,7 @@ const LoginButton = () => {
         marginBottom: '25px',
         border: 'none',
         borderRadius: '13px',
+        cursor: 'pointer',
       }}
     >
       <img

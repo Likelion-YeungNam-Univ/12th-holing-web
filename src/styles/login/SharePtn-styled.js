@@ -47,24 +47,27 @@ export const CloseBtn = styled.div`
   background: #f5f5f5;
   color: #5643d1;
   border: 1px solid #5643d1;
-  margin-left: 52px;
+  /* margin-left: 52px; */
   margin-top: 25px;
 `;
 
 export const ConnectWrapper = styled.div`
   width: 496px;
-  height: 126px;
+  min-height: 200px; /* Increase the minimum height */
   border-radius: 30px;
   background: #ebecee;
   padding: 20px 30px;
-  margin-left: 52px;
+  /* margin-left: 52px; */
   margin-bottom: 39px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between;
+  align-items: center;  */
 `;
 
 export const ConnectHeader = styled.div`
   display: block;
+  margin-bottom: auto; /* Push UrlWrapper to the bottom */
 `;
 
 export const ConnectTitle = styled.div`
@@ -78,10 +81,6 @@ export const ConnectDesc = styled.div`
   margin-top: 11px;
   margin-bottom: 15px;
 `;
-
-// export const ConnectBtn = styled.img`
-//   cursor: pointer;
-// `;
 
 export const CodeTitle = styled.div`
   font-size: 40px;
@@ -100,7 +99,7 @@ export const CodeDesc = styled.div`
 
 export const CodeInputBox = styled.input`
   width: 494px;
-  margin-left: 52px;
+  /* margin-left: 52px; */
   text-align: left;
   margin-top: 48px;
   border: none;
@@ -119,6 +118,10 @@ export const CodeInputBox = styled.input`
 export const Wrapper = styled.div`
   width: fit-content;
   margin: 0 auto;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const NextBtn = styled.div`
@@ -131,12 +134,12 @@ export const NextBtn = styled.div`
   font-weight: 600;
   padding: 23px 0px;
   width: 496px;
-  margin-left: 52px;
+  /* margin-left: 52px; */
   position: absolute;
   bottom: 66px;
 `;
 
-export const ConnectBtn = styled.div`
+export const ConnectBtn = styled.img`
   cursor: pointer;
   border-radius: 13px;
   background: #9180ff;
@@ -145,9 +148,10 @@ export const ConnectBtn = styled.div`
   font-size: 25px;
   font-weight: 600;
   padding: 23px 0px;
-  width: 496px;
-  margin-left: 52px;
-
+  width: 83px;
+  height: 86px;
+  display: flex;
+  /* margin-left: 52px; */
   bottom: 66px;
 `;
 
@@ -157,14 +161,39 @@ export const IntroWrapper = styled.div`
 
 export const UrlWrapper = styled.div`
   color: #5b5b5b;
+  /* display: flex; */
+  justify-content: center;
   text-align: center;
   font-size: 17px;
   font-weight: 500;
   border-radius: 8px;
   background: #fff;
   width: 426px;
-  height: 124px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-bottom: 21px;
+  height: fit-content;
+  padding: 20px;
+
+  margin-top: auto; /* Push UrlWrapper to the bottom */
 `;
+
+export const ConnectContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px; /* Optional: Adjust the spacing between items */
+
+  width: 496px;
+
+  border-radius: 30px;
+  background: #ebecee;
+  padding: 20px 30px;
+  /* margin-left: 52px; */
+  margin-bottom: 39px;
+  display: flex;
+  /* flex-direction: column; */
+`;
+
+// export const Container = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+// `;
