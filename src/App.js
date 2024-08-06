@@ -29,7 +29,7 @@ import SelfTest8 from 'pages/SelfTest/SelfTest8';
 import SelfTest9 from 'pages/SelfTest/SelfTest9';
 import SelfTest10 from 'pages/SelfTest/SelfTest10';
 import Start from 'pages/Start';
-import CodeInput from 'pages/CodeInput'
+import CodeInput from 'pages/CodeInput';
 import Loading from 'pages/Loading';
 import CenterFrame from 'components/comonents/frame/CenterFrame';
 
@@ -51,19 +51,7 @@ function App() {
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/feselftest" element={<FeSelfTest />} />
-            <Route path="/selftest" element={<SelfTest />} />
-            <Route path="/selftest2" element={<SelfTest2 />} />
-            <Route path="/selftest3" element={<SelfTest3 />} />
-            <Route path="/selftest4" element={<SelfTest4 />} />
-            <Route path="/selftest5" element={<SelfTest5 />} />
-            <Route path="/selftest6" element={<SelfTest6 />} />
-            <Route path="/selftest7" element={<SelfTest7 />} />
-            <Route path="/selftest8" element={<SelfTest8 />} />
-            <Route path="/selftest9" element={<SelfTest9 />} />
-            <Route path="/selftest10" element={<SelfTest10 />} />
           </Route>
 
           {/* 테스트 화면프레임 */}
@@ -78,9 +66,21 @@ function App() {
 
           <Route path="/code-input" element={<CodeInput />} />
           <Route path="/kakaologin" element={<ShareUrl />} />
-
           <Route path="/loading" element={<Loading />} />
 
+          <Route path="/userInfo" element={<UserInfo />} />
+          <Route path="/feselftest" element={<FeSelfTest />} />
+          <Route path="/selftest" element={<SelfTest />} />
+          <Route path="/selftest2" element={<SelfTest2 />} />
+          <Route path="/selftest3" element={<SelfTest3 />} />
+          <Route path="/selftest4" element={<SelfTest4 />} />
+          <Route path="/selftest5" element={<SelfTest5 />} />
+          <Route path="/selftest6" element={<SelfTest6 />} />
+          <Route path="/selftest7" element={<SelfTest7 />} />
+          <Route path="/selftest8" element={<SelfTest8 />} />
+          <Route path="/selftest9" element={<SelfTest9 />} />
+          <Route path="/selftest10" element={<SelfTest10 />} />
+          
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
