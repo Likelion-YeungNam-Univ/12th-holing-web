@@ -33,6 +33,7 @@ import CodeInput from 'pages/CodeInput';
 
 import Loading from 'pages/Loading';
 import CenterFrame from 'components/comonents/frame/CenterFrame';
+import ShareUrl from 'pages/LoginExe';
 
 function App() {
   return (
@@ -97,7 +98,7 @@ function App() {
           </Route>
 
           <Route path="/code-input" element={<CodeInput />} />
-          <Route path="/kakaologin" element={<Loading />} />
+          <Route path="/kakaologin" element={<ShareUrl />} />
 
           <Route path="/loading" element={<Loading />} />
         </Routes>

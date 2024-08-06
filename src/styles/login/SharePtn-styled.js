@@ -76,6 +76,7 @@ export const ConnectTitle = styled.div`
 export const ConnectDesc = styled.div`
   width: 316px;
   margin-top: 11px;
+  margin-bottom: 15px;
 `;
 
 // export const ConnectBtn = styled.img`
@@ -116,7 +117,7 @@ export const CodeInputBox = styled.input`
 `;
 
 export const Wrapper = styled.div`
-  width: 600px;
+  width: fit-content;
   margin: 0 auto;
 `;
 
@@ -152,4 +153,18 @@ export const ConnectBtn = styled.div`
 
 export const IntroWrapper = styled.div`
   padding-bottom: 40px;
+`;
+
+export const UrlWrapper = styled.div`
+  color: #5b5b5b;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 8px;
+  background: #fff;
+  width: 426px;
+  height: 124px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 21px;
 `;
