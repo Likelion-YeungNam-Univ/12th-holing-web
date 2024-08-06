@@ -51,7 +51,6 @@ function App() {
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/userInfo" element={<UserInfo />} />
             <Route path="/login" element={<Login />} />
           </Route>
 

@@ -90,7 +90,7 @@ function ShareUrlPtn() {
             onClick={() => navigate('/code-input')}
           ></ConnectBtn>
         </ConnectWrapper>
-        <Link to="/">
+        <Link to="/home">
           <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
         </Link>
         <ShareLink

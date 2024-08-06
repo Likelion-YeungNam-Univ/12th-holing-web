@@ -6,10 +6,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
   background-color: #f5f5f5;
   padding-top: 60px;
   padding-bottom: 60px;
+  margin: 0 auto -100px auto;
   box-sizing: border-box;
 `;
 
@@ -80,7 +80,7 @@ export const NextBtn = styled.div`
   width: 496px;
   height: 76px;
   margin: auto;
-  margin-top: 71px;
+  margin-top: 50px;
   padding: 10px 0;
   border-radius: 13px;
   display: flex;

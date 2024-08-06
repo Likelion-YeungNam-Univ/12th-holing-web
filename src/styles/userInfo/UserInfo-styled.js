@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin-top: 50px;
+  width: 600px;
+  margin: 0 auto;
+  padding: 50px;
   background-color: #f5f5f5;
+  padding-bottom: 60px;
+  margin: 0 auto -150px auto;
+  box-sizing: border-box;
 `;
 
 export const Header = styled.div`
