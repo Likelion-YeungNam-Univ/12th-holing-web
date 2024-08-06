@@ -154,7 +154,7 @@ const Mission = ({ selectedDate, updateMissions }) => {
           </MissionConnectDescription>
           <MissionConnectPlusBtn
             src={img_missionConnectPlusBtn}
-            onClick={() => navigate('/kakaologin')}
+            onClick={() => navigate('/shareptn')}
           ></MissionConnectPlusBtn>
           <MissionConnectImg
             src={

@@ -66,7 +66,7 @@ function PartnerSummaryRepo() {
   }, []);
 
   const handleConnectClick = () => {
-    navigate('/kakaologin');
+    navigate('/shareptn');
   };
 
   return (
