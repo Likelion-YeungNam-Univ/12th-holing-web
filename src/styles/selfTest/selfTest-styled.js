@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin-top: 50px;
-  /* display: flex; */
+  width: 600px;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #f5f5f5;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: 0 auto -100px auto;
+  box-sizing: border-box;
 `;
 
 export const Header = styled.div`
@@ -76,7 +80,7 @@ export const NextBtn = styled.div`
   width: 496px;
   height: 76px;
   margin: auto;
-  margin-top: 71px;
+  margin-top: 50px;
   padding: 10px 0;
   border-radius: 13px;
   display: flex;

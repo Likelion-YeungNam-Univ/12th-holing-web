@@ -54,6 +54,7 @@
 //     }
 //   };
 
+<<<<<<< HEAD
 //   return (
 //     <>
 //       <LogoCenterBar></LogoCenterBar>
@@ -102,5 +103,55 @@
 //     </>
 //   );
 // }
+=======
+  return (
+    <>
+      <LogoCenterBar></LogoCenterBar>
+      <Wrapper>
+        <Header>카톡으로 전송하여</Header>
+        <Title>
+          나의 증상을
+          <br />
+          <span>짝꿍에게 공유</span>해보아요
+        </Title>
+        <ConnectWrapper>
+          <ConnectHeader>
+            <ConnectTitle>짝꿍에게 전달하기</ConnectTitle>
+            <ConnectDesc>
+              홈페이지 URL과 인증코드를 복사하고 카톡으로
+              <br /> 짝꿍에게 전달해요.
+            </ConnectDesc>
+          </ConnectHeader>
+          <ConnectBtn
+            src={img_urlCopyBtn}
+            onClick={copyToClipboard}
+          ></ConnectBtn>
+        </ConnectWrapper>
+        <ConnectWrapper>
+          <ConnectHeader>
+            <ConnectTitle>인증코드 입력하기</ConnectTitle>
+            <ConnectDesc>
+              짝꿍에게 전달받은 인증코드를 입력하고
+              <br /> 짝꿍과 연동해요.
+            </ConnectDesc>
+          </ConnectHeader>
+          <ConnectBtn
+            src={img_codeInsetBtn}
+            onClick={() => navigate('/code-input')}
+          ></ConnectBtn>
+        </ConnectWrapper>
+        <Link to="/home">
+          <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
+        </Link>
+        <ShareLink
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="카카오톡에서 붙여넣기하여 짝꿍과 함께하세요!"
+        />
+      </Wrapper>
+    </>
+  );
+}
+>>>>>>> 3001b0d4d305e85c750606dc40a20c2256c57849
 
 // export default ShareUrlPtn;
