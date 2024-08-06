@@ -40,9 +40,9 @@ function App() {
       <GlobalStyles /> {/* 전역스타일링 */}
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Start />} /> {/* 시작 화면 */}
           {/* 기본 화면프레임 */}
           <Route path="/" element={<IntroFrame />}>
-            <Route path="/" element={<Start />} /> {/* 시작 화면 */}
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -59,7 +59,6 @@ function App() {
             <Route path="/code-input" element={<CodeInput />} />
             <Route path="/startInfo" element={<StartInfo />} />
           </Route>
-
           <Route path="/" element={<Frame />}>
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
@@ -68,9 +67,8 @@ function App() {
             <Route path="/account-info" element={<AccountInfo />} />
             {/* 로그인 후 넘어가는 페이지 */}
             <Route path="/login" element={<Start />} />
-            <Route path="/loading" element={<LoginExe />} />
           </Route>
-
+          <Route path="/loading" element={<LoginExe />} />
           {/* 테스트 프레임 */}
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />

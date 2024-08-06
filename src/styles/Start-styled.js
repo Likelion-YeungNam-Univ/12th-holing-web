@@ -15,20 +15,22 @@ export const Wrapper = styled.div`
   /* background-position: 1098px 2706px; // 배경 이미지 위치 설정 */
   /* gap: 0px;
   opacity: 0;*/
-  width: 100%;
+  width: 600px;
   height: fit-content;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const Title = styled.div`
-  font-family: Pretendard;
   font-size: 48px;
   font-weight: 700;
   line-height: 67.2px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 70px;
 `;
 export const Desc = styled.div`
-  font-family: Pretendard;
   font-size: 23px;
   font-weight: 600;
   line-height: 32.2px;
@@ -37,13 +39,12 @@ export const Desc = styled.div`
 `;
 
 export const Logo = styled.img`
-  margin-top: 121px;
+  margin-top: 40px;
   width: 258px;
   height: 285.16px;
 `;
 
 export const Bottom = styled.div`
-  font-family: Pretendard;
   font-size: 20px;
   font-weight: 500;
   line-height: 23.87px;
@@ -62,7 +63,6 @@ export const Btn = styled.div`
   align-items: center;
   background-color: #9180ff;
   color: #ffffff;
-  font-family: Pretendard;
   font-size: 25px;
   font-weight: 600;
   line-height: 29.83px;

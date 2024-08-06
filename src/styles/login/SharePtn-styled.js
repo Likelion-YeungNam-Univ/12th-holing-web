@@ -49,6 +49,7 @@ export const CloseBtn = styled.div`
   border: 1px solid #5643d1;
   /* margin-left: 52px; */
   margin-top: 25px;
+  margin-bottom: 40px;
 `;
 
 export const ConnectWrapper = styled.div`
@@ -116,12 +117,15 @@ export const CodeInputBox = styled.input`
 `;
 
 export const Wrapper = styled.div`
-  width: fit-content;
+  width: 600px;
   margin: 0 auto;
 
   align-items: center;
   display: flex;
   flex-direction: column;
+  background-color: #f5f5f5;
+  height: 100vh;
+  margin: 0 auto -100px auto;
 `;
 
 export const NextBtn = styled.div`
@@ -137,6 +141,7 @@ export const NextBtn = styled.div`
   /* margin-left: 52px; */
   position: absolute;
   bottom: 66px;
+  margin-bottom: 20px;
 `;
 
 export const ConnectBtn = styled.img`
