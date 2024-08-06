@@ -21,7 +21,7 @@ function SelfTest10() {
     handleAnswerClick,
     isButtonActive,
     handleNextButtonClickWithScore,
-  } = useSelfTest('/login');
+  } = useSelfTest('</login>');
 
   const [statement, setStatement] = useState('');
   const [imgUrl, setImgUrl] = useState('');
