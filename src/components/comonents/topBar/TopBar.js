@@ -8,7 +8,7 @@ function TopBar() {
   return (
     <>
       <TopBarWrapper>
-        <LogoImg onClick={()=>navigate('/')}  src= {img_logo} alt="Logo"></LogoImg>
+        <LogoImg onClick={()=>navigate('/home')}  src= {img_logo} alt="Logo"></LogoImg>
       </TopBarWrapper>
     </>
   );
