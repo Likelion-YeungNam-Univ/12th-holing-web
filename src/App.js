@@ -10,11 +10,9 @@ import MyFullCalendar from 'pages/MyFullCalendar';
 import MyPage from 'pages/MyPage';
 import AccountInfo from 'pages/AccountInfo';
 import SymptomTest from 'pages/symptomTest';
-import StartInfo from 'pages/StartInfo';
 import LoginExe from 'pages/LoginExe';
 import TestFrame from 'components/comonents/frame/TestFrame';
 import IntroFrame from 'components/comonents/frame/IntroFrame';
-import Intro from 'pages/intro';
 import UserInfo from 'pages/UserInfo';
 import { CookiesProvider } from 'react-cookie';
 import FeSelfTest from 'pages/SelfTest/FeSelfTest';
@@ -32,8 +30,8 @@ import Start from 'pages/Start';
 import CodeInput from 'pages/CodeInput';
 
 import Loading from 'pages/Loading';
-import CenterFrame from 'components/comonents/frame/CenterFrame';
-import ShareUrl from 'pages/LoginExe';
+import ReportFrame from 'components/comonents/frame/ReportFrame';
+import StartInfo from 'pages/StartInfo';
 
 function App() {
   return (
@@ -44,9 +42,7 @@ function App() {
           {/* 기본 화면프레임 */}
           <Route path="/" element={<IntroFrame />}>
             <Route path="/" element={<Start />} /> {/* 시작 화면 */}
-          </Route>
 
-          <Route path="/" element={<CenterFrame />}>
             <Route path="/feselftest" element={<FeSelfTest />} />
             <Route path="/selftest" element={<SelfTest />} />
             <Route path="/selftest2" element={<SelfTest2 />} />
@@ -58,49 +54,33 @@ function App() {
             <Route path="/selftest8" element={<SelfTest8 />} />
             <Route path="/selftest9" element={<SelfTest9 />} />
             <Route path="/selftest10" element={<SelfTest10 />} />
+            <Route path="/userInfo" element={<UserInfo />} />
+
+            <Route path="/code-input" element={<CodeInput />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/startInfo" element={<StartInfo/>} />
+
           </Route>
 
           <Route path="/" element={<Frame />}>
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
-            <Route path="/report/:id" element={<ReportDetail />} />
             <Route path="/calendar" element={<MyFullCalendar />} />
             <Route path="/my" element={<MyPage />} />
             <Route path="/account-info" element={<AccountInfo />} />
-            <Route path="/userInfo" element={<UserInfo />} />
             {/* 로그인 후 넘어가는 페이지 */}
-            {/* <Route path="/login" element={<Login />} /> */}
-            <Route path="/login" element={<StartInfo />} />
-            {/* <Route path="/kakaologin" element={<ShareUrl />} /> */}
+            <Route path="/login" element={<Start />} />
             <Route path="/kakaologin" element={<LoginExe />} />
-            {/* 카카오 로그인이 실행되는 페이지 */}
-            {/* <Route path="/feselftest" element={<FeSelfTest />} />
-            <Route path="/selftest" element={<SelfTest />} />
-            <Route path="/selftest2" element={<SelfTest2 />} />
-            <Route path="/selftest3" element={<SelfTest3 />} />
-            <Route path="/selftest4" element={<SelfTest4 />} />
-            <Route path="/selftest5" element={<SelfTest5 />} />
-            <Route path="/selftest6" element={<SelfTest6 />} />
-            <Route path="/selftest7" element={<SelfTest7 />} />
-            <Route path="/selftest8" element={<SelfTest8 />} />
-            <Route path="/selftest9" element={<SelfTest9 />} />
-            <Route path="/selftest10" element={<SelfTest10 />} /> */}
           </Route>
 
-          {/* 테스트 화면프레임 */}
-          <Route path="/symptomTest" element={<TestFrame />}>
-            <Route index element={<SymptomTest />} />
+          {/* 테스트 프레임 */}
+          <Route path="/" element={<TestFrame />}>
+            <Route path="/symptomTest" element={<SymptomTest />} />
+          </Route>
+          <Route path="/" element={<ReportFrame/>}>
+            <Route path="/report/:id" element={<ReportDetail />} />
           </Route>
 
-          {/* 로고 가운데 화면프레임 */}
-          <Route path="/intro" element={<CenterFrame />}>
-            <Route index element={<Intro />} />
-          </Route>
-
-          <Route path="/code-input" element={<CodeInput />} />
-          <Route path="/kakaologin" element={<ShareUrl />} />
-
-          <Route path="/loading" element={<Loading />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
