@@ -79,7 +79,7 @@ export const Btn = styled.div`
     width: 400px;
     height: auto;
     mar
-  }
+  };
   display: flex;
   justify-content: center;
   margin-bottom: 25px;

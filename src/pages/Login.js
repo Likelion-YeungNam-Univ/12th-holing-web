@@ -11,44 +11,21 @@ import {
   Result,
   ShareBtn,
   CloseBtn,
+  ConnectBtn,
 } from 'styles/login/SharePtn-styled';
 import ShareLink from 'hooks/login/ShareLink';
 
 const Login = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const copyUrlToClipboard = () => {
-    const currentUrl = window.location.href;
-    navigator.clipboard
-      .writeText(currentUrl)
-      .then(() => {
-        setModalIsOpen(true);
-      })
-      .catch((err) => {
-        console.error('Failed to copy: ', err);
-      });
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
       <ServiceDesc />
-      {/* <LoginButton /> */}
-      {/* 
-      <ShareBtn onClick={copyUrlToClipboard}>
-        URL 복사하여 짝꿍과 연동하기
-      </ShareBtn> */}
+      <ConnectBtn>짝꿍과 연동하기</ConnectBtn>
       <Link to="/">
         <CloseBtn>닫고 홈화면으로 돌아가기</CloseBtn>
       </Link>
-      <ShareLink
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="카카오톡에서 붙여넣기하여 짝꿍과 함께하세요!"
-      />
+
       <LoginDesc>카카오로 연동하여 나의 짝꿍의 리포트도 연결해보아요</LoginDesc>
     </>
   );

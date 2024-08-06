@@ -78,9 +78,9 @@ export const ConnectDesc = styled.div`
   margin-top: 11px;
 `;
 
-export const ConnectBtn = styled.img`
-  cursor: pointer;
-`;
+// export const ConnectBtn = styled.img`
+//   cursor: pointer;
+// `;
 
 export const CodeTitle = styled.div`
   font-size: 40px;
@@ -121,6 +121,21 @@ export const Wrapper = styled.div`
 `;
 
 export const NextBtn = styled.div`
+  cursor: pointer;
+  border-radius: 13px;
+  background: #9180ff;
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 23px 0px;
+  width: 496px;
+  margin-left: 52px;
+  position: absolute;
+  bottom: 66px;
+`;
+
+export const ConnectBtn = styled.div`
   cursor: pointer;
   border-radius: 13px;
   background: #9180ff;

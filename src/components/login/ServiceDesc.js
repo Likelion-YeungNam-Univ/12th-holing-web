@@ -103,8 +103,6 @@ function ServiceDesc() {
           <br />
           미션으로 친밀감을 강화합니다
         </Desc>
-        <LoginButton />
-        {/* 로그인 버튼 */}
       </DescContainer>
     </>
   );
