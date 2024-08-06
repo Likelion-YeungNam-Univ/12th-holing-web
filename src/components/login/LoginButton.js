@@ -1,6 +1,5 @@
 import React from 'react';
 import login_kakao from 'assets/images/login_kakao.svg';
-import Cookies from 'js-cookie';
 
 const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
