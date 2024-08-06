@@ -117,3 +117,10 @@ export const ChoiceTextColored = styled.p`
   ${choiceTextStyled};
   color: #5643D1;
 `
+export const ImageWrapper = styled.div`
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
