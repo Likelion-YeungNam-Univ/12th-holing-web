@@ -33,6 +33,7 @@ import CodeInput from 'pages/CodeInput';
 
 import Loading from 'pages/Loading';
 import CenterFrame from 'components/comonents/frame/CenterFrame';
+import ReportFrame from 'components/comonents/frame/ReportFrame';
 
 function App() {
   return (
@@ -76,6 +77,8 @@ function App() {
           {/* 테스트 프레임 */}
           <Route path="/" element={<TestFrame />}>
             <Route path="/symptomTest" element={<SymptomTest />} />
+          </Route>
+          <Route path="/" element={<ReportFrame/>}>
             <Route path="/report/:id" element={<ReportDetail />} />
           </Route>
 
